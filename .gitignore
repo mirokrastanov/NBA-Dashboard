@@ -40,3 +40,20 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+
+# HTML & CSS - Ignore private dev folders
+_submission/
+_templates/
+
+# Ext
+.zip
+*.dat 
+
+# JS Dependency directories
+node_modules/
+jspm_packages/
+
+# API KEYS & private variables
+_private/
+*.env
