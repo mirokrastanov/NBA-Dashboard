@@ -402,8 +402,8 @@ main .recent-orders a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 1.6rem;
-    width: 4.2rem;
+    height: 2.5rem;
+    width: 6rem;
     cursor: pointer;
     border-radius: var(--border-radius-1);
 }
@@ -462,6 +462,52 @@ main .recent-orders a {
 
 .user-profile h2 {
     margin-bottom: 0.2rem;
+}
+
+
+.nav form {
+    max-width: 400px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.nav form .form-input {
+    display: flex;
+    align-items: center;
+    height: 36px;
+}
+
+.nav form .form-input input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: var(--color-white);
+    border-radius: 36px 0 0 36px;
+    outline: none;
+    width: 100%;
+    color: var(--color-dark);
+    border: 2px solid var(--color-primary);
+}
+
+.nav form .form-input button {
+    width: 80px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-primary);
+    color: var(--color-dark);
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
+}
+
+.nav form button span {
+    font-size: 30px;
 }
 
 
@@ -627,9 +673,11 @@ main .recent-orders a {
     }
 
     .nav .dark-mode {
-        width: 4.4rem;
+        min-width: 60px;
+        max-width: 80px;
         position: absolute;
-        left: 66%;
+        left: 55%;
+        transform: translateX(-50%);
     }
 
     .profile .info {
@@ -647,6 +695,35 @@ main .recent-orders a {
 
     .nav button span {
         font-size: 2rem;
+    }
+
+    .nav form {
+        max-width: 100px;
+    }
+
+    .nav form .form-input input {
+        display: none;
+    }
+
+    .nav form .form-input button {
+        left: 10%;
+        
+        background: transparent;
+        color: var(--color-dark);
+        border-radius: none;
+    }
+
+    .nav form.show .form-input input {
+        display: block;
+        width: 100%;
+    }
+
+    .nav form.show .form-input button {
+        width: 36px;
+        height: 100%;
+        color: var(--color-dark);
+        background: var(--color-danger);
+        border-radius: 0 36px 36px 0;
     }
 
 }
