@@ -38,6 +38,19 @@ export class AppComponent implements OnInit, OnDestroy {
     menuEl.style.display = 'none';
   }
 
+  searchHandler(e: MouseEvent, sForm: HTMLElement, sBtn: HTMLElement, sIcon: HTMLElement): void {
+
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      sForm.classList.toggle('show');
+      if (sForm.classList.contains('show')) {
+        sIcon.textContent = 'close';
+      } else {
+        sIcon.textContent = 'search';
+      }
+    }
+  }
+
   modeSwitchHandler(light: HTMLElement, dark: HTMLElement): void {
     this.document.body.classList.toggle('dark-mode-variables');
     light.classList.toggle('active');
