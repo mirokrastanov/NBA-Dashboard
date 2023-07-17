@@ -14,9 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
   intervals: any[] = [];
 
   ngOnInit(): void {
-    console.log(this.document);
-    console.log(window.innerWidth + 'x' + window.innerHeight);
-
+    // console.log(window.innerWidth + 'x' + window.innerHeight);
     let aside = () => document.body.querySelector('aside')!;
     let interval = setInterval(() => {
       if (window.innerWidth > 768) {
@@ -27,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }, 100);
     this.intervals.push(interval);
   }
+
   ngOnDestroy(): void {
     this.intervals.forEach(timer => clearInterval(timer));
   }
@@ -34,16 +33,14 @@ export class AppComponent implements OnInit, OnDestroy {
   menuHandler(menuEl: HTMLElement): void {
     menuEl.style.display = 'block';
   }
+
   closeHandler(menuEl: HTMLElement): void {
     menuEl.style.display = 'none';
   }
-  currentMode: string = 'light';
+
   modeSwitchHandler(light: HTMLElement, dark: HTMLElement): void {
     this.document.body.classList.toggle('dark-mode-variables');
     light.classList.toggle('active');
     dark.classList.toggle('active');
   }
-
-
-
 }
