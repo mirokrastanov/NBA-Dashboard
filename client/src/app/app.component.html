@@ -79,5 +79,38 @@
   </aside>
   <!-- End of Sidebar Section -->
 
+  <!-- Main Content -->
+  <main>
+    <div class="nav">
+      <button id="menu-btn" (click)="menuHandler(sideMenu)">
+        <span class="material-icons-sharp">
+          menu
+        </span>
+      </button>
+      <div class="dark-mode" (click)="modeSwitchHandler(light, dark)">
+        <span #light class="material-icons-sharp active">
+          light_mode
+        </span>
+        <span #dark class="material-icons-sharp">
+          dark_mode
+        </span>
+      </div>
+
+      <div class="profile">
+        <div class="info">
+          <p>Hey, <b>Reza</b></p>
+          <small class="text-muted">Admin</small>
+        </div>
+        <div class="profile-photo">
+          <img src="assets/images/profile-1.jpg">
+        </div>
+      </div>
+
+    </div>
+    <!-- End of Nav -->
+
+
+  </main>
+  <!-- End of Main Content -->
 
 </div>
