@@ -673,10 +673,10 @@ main .recent-orders a {
     }
 
     .nav .dark-mode {
-        min-width: 60px;
-        max-width: 80px;
+        min-width: 50px;
+        max-width: 60px;
         position: absolute;
-        left: 55%;
+        margin-right: 15px;
         transform: translateX(-50%);
     }
 
@@ -684,7 +684,7 @@ main .recent-orders a {
         display: none;
     }
 
-    .nav button {
+    .nav button:not(.nav form button) {
         display: inline-block;
         background-color: transparent;
         cursor: pointer;
@@ -698,7 +698,7 @@ main .recent-orders a {
     }
 
     .nav form {
-        max-width: 100px;
+        width: 57%;
     }
 
     .nav form .form-input input {
@@ -706,8 +706,6 @@ main .recent-orders a {
     }
 
     .nav form .form-input button {
-        left: 10%;
-        
         background: transparent;
         color: var(--color-dark);
         border-radius: none;
@@ -721,9 +719,22 @@ main .recent-orders a {
     .nav form.show .form-input button {
         width: 36px;
         height: 100%;
-        color: var(--color-dark);
-        background: var(--color-danger);
+        color: var(--color-white);
+        background: var(--color-primary);
         border-radius: 0 36px 36px 0;
     }
 
+    .nav form.show .form-input button span {
+        font-size: 1rem;
+        margin: 0;
+        padding: 0;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .nav form {
+        width: 40%;
+        margin-left: 30px;
+    }
 }

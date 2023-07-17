@@ -82,11 +82,11 @@
   <!-- Main Content -->
   <main>
     <div class="nav">
-      <form id="search-ctr" action="#">
+      <form id="search-ctr" action="#" #searchForm>
         <div class="form-input">
           <input type="search" placeholder="Search...">
-          <button class="search-btn" type="submit">
-            <span class="material-icons-sharp">
+          <button class="search-btn" type="submit" #searchBtn (click)="searchHandler($event, searchForm, searchBtn, searchIcon)">
+            <span class="material-icons-sharp" #searchIcon>
               search
             </span>
           </button>
