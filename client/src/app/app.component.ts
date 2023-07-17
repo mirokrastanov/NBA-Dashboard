@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'client';
+
+  menuHandler(menuEl: HTMLElement): void {
+    menuEl.style.display = 'block';
+  }
+  closeHandler(menuEl: HTMLElement): void {
+    menuEl.style.display = 'none';
+  }
+
 }
