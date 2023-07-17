@@ -191,6 +191,33 @@
     </div>
     <!-- End of New Users Section -->
 
+    <!-- Recent Orders Table -->
+    <div class="recent-orders">
+      <h2>Recent Orders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Course Name</th>
+            <th>Course Number</th>
+            <th>Payment</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{order.productName}}</td>
+            <td>{{order.productNumber}}</td>
+            <td>{{order.paymentStatus}}</td>
+            <td>{{order.status}}</td>
+            <td>Details</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="#">Show All</a>
+    </div>
+    <!-- End of Recent Orders -->
+
   </main>
   <!-- End of Main Content -->
 
