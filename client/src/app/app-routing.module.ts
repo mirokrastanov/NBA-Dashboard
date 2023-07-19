@@ -5,7 +5,7 @@ import { DashboardComponent } from './core/dashboard/dashboard.component';
 
 const routes: Routes = [ // UPPER/LOWER CASE MATTERS !!!!!!! routerLink in the html should MATCH IT!!!
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent}, 
+  { path: 'dashboard', component: DashboardComponent },
 ];
 
 @NgModule({
