@@ -11,7 +11,7 @@ export class NbaApiService {
 
   constructor(private http: HttpClient) { }
 
-  fetchData(target: string) { // TODO ==> Add and implement dynamic query params input
+  nbaFetch(target: string) { // TODO ==> Add and implement dynamic query params input
     if (!target) target = endpointsNBA.stats;
     let address = endpointsNBA[target];
     return this.http.get<any>(proxy + address);

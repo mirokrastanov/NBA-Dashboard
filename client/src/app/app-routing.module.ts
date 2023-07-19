@@ -17,7 +17,7 @@ const routes: Routes = [ // UPPER/LOWER CASE MATTERS !!!!!!! routerLink in the h
 })
 export class AppRoutingModule {
   constructor(private router: Router, @Inject(DOCUMENT) private document: Document) {
-    router.events.subscribe((event) => {
+    this.router.events.subscribe((event) => {
       // console.log(event);
       if (event instanceof NavigationStart || event instanceof NavigationSkipped) {
         // console.log('path change');
