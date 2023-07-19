@@ -1,1 +1,16 @@
-<p>players works!</p>
+<h1>Players</h1>
+
+<table>
+    <tr align="center">
+        <th>Name</th>
+        <th>ID</th>
+        <th>Position</th>
+        <th>Team</th>
+    </tr>
+    <tr *ngFor="let player of playersArray" align="center">
+        <td>{{player.first_name}} {{player.last_name}}</td>
+        <td>{{player.id}}</td>
+        <td>{{player.position}}</td>
+        <td>{{player.team.abbreviation}} (Use as link)</td>
+    </tr>
+</table>

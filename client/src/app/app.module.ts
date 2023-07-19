@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { NbaModule } from './nba/nba.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     RouterModule,
     HttpClientModule,
+    NbaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

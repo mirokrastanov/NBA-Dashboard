@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NbaApiService } from '../nba-api.service';
+import { Player } from '../nba-types';
 
 @Component({
   selector: 'app-players',
@@ -8,17 +9,18 @@ import { NbaApiService } from '../nba-api.service';
 })
 export class PlayersComponent implements OnInit {
   constructor(private apiService: NbaApiService) { }
-  playersArray: any;
-  metaObject: any;
+  playersArray: Player[] | null = null;
+  metaObject: { [key: string]: any } = {};
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
 
   ngOnInit(): void {
-    this.apiService.nbaFetch('play').subscribe({
+    this.apiService.nbaFetch('players').subscribe({
       next: (data) => {
         this.playersArray = data.data;
         this.metaObject = data.meta;
         console.log(data);
+        console.log(this.playersArray);
         console.log(this.metaObject);
         console.log(data.data[0]);
       },
@@ -28,7 +30,8 @@ export class PlayersComponent implements OnInit {
       },
       complete: () => {
         this.unsubscribed = true;
-        console.log('Subscription ended!');
+        if (!this.playersArray)
+          console.log('Subscription ended!');
       },
     });
   }
