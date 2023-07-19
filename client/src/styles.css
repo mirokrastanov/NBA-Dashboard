@@ -138,10 +138,16 @@ aside .toggle {
 aside .toggle .logo {
     display: flex;
     gap: 0.5rem;
+    transition: linear 0.2s;
 }
 
 aside .toggle .logo img {
     height: 2.8rem;
+}
+
+aside .toggle .logo:hover {
+    transform: scale(1.1);
+    box-shadow: var(--box-shadow);
 }
 
 aside .toggle .close {
@@ -192,6 +198,10 @@ aside .sidebar a.active {
     color: var(--color-primary);
     background-color: var(--color-light);
     margin-left: 0;
+}
+
+aside .sidebar a:nth-of-type(1).active {
+    border-radius: 15px 15px 0px 0px;
 }
 
 aside .sidebar a.active::before {
@@ -636,6 +646,10 @@ main .recent-orders a {
     aside .sidebar a:hover::after {
         content: none;
         opacity: 0;
+    }
+
+    aside .sidebar a:nth-of-type(1).active {
+        border-radius: 0px;
     }
 
     main {
