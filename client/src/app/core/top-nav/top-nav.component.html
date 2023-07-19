@@ -1,0 +1,37 @@
+<div class="nav">
+    <form id="search-ctr" action="#" #searchForm>
+        <div class="form-input">
+            <input type="search" placeholder="Search...">
+            <button class="search-btn" type="submit" #searchBtn
+                (click)="searchHandler($event, searchForm, searchBtn, searchIcon)">
+                <span class="material-icons-sharp" #searchIcon>
+                    search
+                </span>
+            </button>
+        </div>
+    </form>
+    <button id="menu-btn" (click)="menuHandler()">
+        <span class="material-icons-sharp">
+            menu
+        </span>
+    </button>
+    <div class="dark-mode" (click)="modeSwitchHandler(light, dark)">
+        <span #light class="material-icons-sharp active">
+            light_mode
+        </span>
+        <span #dark class="material-icons-sharp">
+            dark_mode
+        </span>
+    </div>
+
+    <div class="profile">
+        <div class="info">
+            <p>Hey, <b>Username</b></p>
+            <small class="text-muted">Admin</small>
+        </div>
+        <div class="profile-photo">
+            <img src="assets/images/profile-1.jpg">
+        </div>
+    </div>
+
+</div>
