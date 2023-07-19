@@ -6,11 +6,17 @@
         <th>ID</th>
         <th>Position</th>
         <th>Team</th>
+        <th>Height feet</th>
+        <th>Height inches</th>
+        <th>Weight pounds</th>
     </tr>
     <tr *ngFor="let player of playersArray" align="center">
         <td>{{player.first_name}} {{player.last_name}}</td>
         <td>{{player.id}}</td>
         <td>{{player.position}}</td>
-        <td>{{player.team.abbreviation}} (Use as link)</td>
+        <td>{{player.team.abbreviation}} (Use as link -- and del this note xD)</td>
+        <td>{{player.height_feet}}</td>
+        <td>{{player.height_inches}}</td>
+        <td>{{player.weight_pounds}}</td>
     </tr>
 </table>
