@@ -147,7 +147,6 @@ aside .toggle .logo img {
 
 aside .toggle .logo:hover {
     transform: scale(1.1);
-    box-shadow: var(--box-shadow);
 }
 
 aside .toggle .close {
@@ -401,6 +400,7 @@ main .recent-orders a {
     display: flex;
     justify-content: flex-end;
     gap: 2rem;
+    margin-bottom: 1.4rem;
 }
 
 .nav button {
@@ -653,7 +653,7 @@ main .recent-orders a {
     }
 
     main {
-        margin-top: 8rem;
+        margin-top: 5rem;
         padding: 0 1rem;
     }
 
@@ -713,7 +713,7 @@ main .recent-orders a {
 
     .nav form {
         width: 57%;
-        margin-left: 10px;
+        margin-left: 50px;
     }
 
     .nav form .form-input input {
@@ -723,7 +723,17 @@ main .recent-orders a {
     .nav form .form-input button {
         background: transparent;
         color: var(--color-dark);
-        border-radius: none;
+        border-radius: 0px;
+        width: fit-content;
+        padding: 0px 15px;
+        position: absolute;
+    }
+
+    #menu-btn {
+        height: 100%;
+        left: 0;
+        width: fit-content;
+        padding: 0px 15px;
     }
 
     .nav form.show {
@@ -757,6 +767,7 @@ main .recent-orders a {
         color: var(--color-white);
         background: var(--color-primary);
         border-radius: 0 36px 36px 0;
+        position: relative;
     }
 
     .nav form.show .form-input button span {
