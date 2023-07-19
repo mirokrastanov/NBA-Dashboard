@@ -1,9 +1,9 @@
 <aside #sideMenu>
     <div class="toggle">
-        <div class="logo">
+        <a class="logo" [routerLink]="['dashboard']">
             <img src="assets/images/logo.png">
             <h2><span class="danger">Data</span></h2>
-        </div>
+        </a>
         <div #closeMenu class="close" id="close-btn" (click)="closeHandler(sideMenu)">
             <span class="material-icons-sharp">
                 close
@@ -12,62 +12,62 @@
     </div>
 
     <div class="sidebar">
-        <a href="#" data-tooltip="Dashboard">
+        <a data-tooltip="Dashboard" [routerLink]="['dashboard']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">
                 dashboard
             </span>
             <h3>Dashboard</h3>
         </a>
-        <a href="#" data-tooltip="Users">
+        <a data-tooltip="Users">
             <span class="material-icons-sharp">
                 person_outline
             </span>
             <h3>Users</h3>
         </a>
-        <a href="#" data-tooltip="History">
+        <a data-tooltip="History">
             <span class="material-icons-sharp">
                 receipt_long
             </span>
             <h3>History</h3>
         </a>
-        <a href="#" class="active" data-tooltip="Analytics">
+        <a data-tooltip="Analytics">
             <span class="material-icons-sharp">
                 insights
             </span>
             <h3>Analytics</h3>
         </a>
-        <a href="#" data-tooltip="Tickets">
+        <a data-tooltip="Tickets">
             <span class="material-icons-sharp">
                 mail_outline
             </span>
             <h3>Tickets</h3>
             <span class="message-count">27</span>
         </a>
-        <a href="#" data-tooltip="Sale List">
+        <a data-tooltip="Sale List">
             <span class="material-icons-sharp">
                 inventory
             </span>
             <h3>Sale List</h3>
         </a>
-        <a href="#" data-tooltip="Reports">
+        <a data-tooltip="Reports">
             <span class="material-icons-sharp">
                 report_gmailerrorred
             </span>
             <h3>Reports</h3>
         </a>
-        <a href="#" data-tooltip="Settings">
+        <a data-tooltip="Settings">
             <span class="material-icons-sharp">
                 settings
             </span>
             <h3>Settings</h3>
         </a>
-        <a href="#" data-tooltip="New Login">
+        <a data-tooltip="New Login">
             <span class="material-icons-sharp">
                 add
             </span>
             <h3>New Login</h3>
         </a>
-        <a href="#" data-tooltip="Logout">
+        <a data-tooltip="Logout">
             <span class="material-icons-sharp">
                 logout
             </span>

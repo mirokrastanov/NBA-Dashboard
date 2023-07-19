@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { TopNavComponent } from './top-nav/top-nav.component';
-
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -16,6 +16,7 @@ import { TopNavComponent } from './top-nav/top-nav.component';
   imports: [
     CommonModule,
     SharedModule,
+    RouterModule,
   ],
   exports: [
     DashboardComponent,
