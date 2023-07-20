@@ -50,8 +50,9 @@ html {
 
 ::-webkit-scrollbar {
     background: var(--color-white);
-    width: 3vw;
-
+    width: 12px;
+    max-width: 2.5vw;
+    min-width: 1vw;
 }
 
 ::-webkit-scrollbar-track {
