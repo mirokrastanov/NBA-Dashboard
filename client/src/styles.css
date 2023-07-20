@@ -4,6 +4,7 @@
 
 :root {
     --color-primary: #6C9BCF;
+    --color-primary-o-05: #6c9acf85;
     --color-danger: #FF0060;
     --color-success: #1B9C85;
     --color-warning: #F7D060;
@@ -45,6 +46,28 @@
 
 html {
     font-size: 14px;
+}
+
+::-webkit-scrollbar {
+    background: var(--color-white);
+    width: 3vw;
+
+}
+
+::-webkit-scrollbar-track {
+    margin-top: 4.7rem;
+    margin-bottom: 0.2rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary-o-05);
+    border-radius: 15px;
+    background-clip: padding-box;
+    box-shadow: var(--box-shadow);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
 }
 
 body {
