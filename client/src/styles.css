@@ -49,7 +49,7 @@ html {
 }
 
 ::-webkit-scrollbar {
-    background: var(--color-white);
+    background: var(--color-background);
     width: 12px;
     max-width: 2.5vw;
     min-width: 1vw;
