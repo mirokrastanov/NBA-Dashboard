@@ -5,13 +5,15 @@ import { PlayerDetailsComponent } from './player-details/player-details.componen
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { StandingsComponent } from './standings/standings.component';
+import { TeamsComponent } from './teams/teams.component';
 
 
 @NgModule({
   declarations: [
     PlayersComponent,
     PlayerDetailsComponent,
-    StandingsComponent
+    StandingsComponent,
+    TeamsComponent
   ],
   imports: [
     CommonModule,
