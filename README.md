@@ -4,8 +4,14 @@
 # Tech to be used
 ## Front End side 
 - Angular SPA - Incorporates an open source API with NBA data and all of Angular's magic.
+- Update: The project employs a few CUSTOM BUILT web scrapers (built by me) in order to fetch important additional data, unavailable from the open API source I'll use.
+- In addition all of the info will be fetched at preset intervals and stored as a json doc on Firebase to avoid running into forcemajor, issues or maintenance leading to those outside services being unavailable during the project defence.
+- (TBD) I'd also like to setup a secondary layer of backup in the form of a custom back end server that will only be used to replace firebase in case their service somehow fails at the day of the defence too. But that is still not certain as there are many tasks still on the dev track for me.
+
 ## Back End side 
-- A Node.js server using Express.js. Firebase as a database for hosting the Users and additional application information (TBD). Some sort of a encryption and hashing techniques would also be employed (TBD).
+- A Node.js server using Express.js. (As a secondary backup layer in case Firebase is in maintenance etc - TBD on whether such a measure would make it to the release date)  
+- Firebase as a database for hosting the Users and additional application information (a complete copy of the whole dynamic data that will be fetched by the app). 
+- Some sort of a encryption and hashing techniques would also be employed (TBD).
 
 ## README - NYI (In progress...)
 ## DEMO - NYI (In progress...)
