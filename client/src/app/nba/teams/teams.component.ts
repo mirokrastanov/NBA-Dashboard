@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NbaApiService } from '../nba-api.service';
 import { Team } from '../nba-types';
 
@@ -7,7 +7,7 @@ import { Team } from '../nba-types';
   templateUrl: './teams.component.html',
   styleUrls: ['./teams.component.css']
 })
-export class TeamsComponent {
+export class TeamsComponent implements OnInit {
   constructor(private apiService: NbaApiService) { }
   teamsArray: Team[] | null = null;
   metaObject: { [key: string]: any } = {};
@@ -34,7 +34,7 @@ export class TeamsComponent {
       },
       complete: () => {
         this.unsubscribed = true;
-        console.log('Subscription ended!');
+        console.log('Subscription ended! Teams data fetched!');
       },
     });
   }

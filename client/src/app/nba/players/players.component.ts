@@ -33,7 +33,7 @@ export class PlayersComponent implements OnInit {
       },
       complete: () => {
         this.unsubscribed = true;
-        console.log('Subscription ended!');
+        console.log('Subscription ended! Players data fetched!');
       },
     });
   }
