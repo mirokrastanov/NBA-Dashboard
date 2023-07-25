@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { endpointsNBA, proxy, noProxy } from '../util/global-contants';
+import { endpointsNBA, proxy, noProxy } from '../util/global-constants';
 import { EMPTY } from 'rxjs'; // returns an empty observable
 
 
