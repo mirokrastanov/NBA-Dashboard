@@ -430,7 +430,8 @@ main .recent-orders a {
 
 .nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding-left: 2%;
     align-items: center;
     gap: 1.5rem;
     position: fixed;
@@ -515,7 +516,6 @@ main .recent-orders a {
 .user-profile h2 {
     margin-bottom: 0.2rem;
 }
-
 
 .nav form {
     width: 55%;
