@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NbaModule } from './nba/nba.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NbaModule } from './nba/nba.module';
     RouterModule,
     HttpClientModule,
     NbaModule,
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

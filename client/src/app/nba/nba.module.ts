@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { StandingsComponent } from './standings/standings.component';
 import { TeamsComponent } from './teams/teams.component';
+import { UserModule } from '../user/user.module';
 
 
 @NgModule({
@@ -19,10 +20,13 @@ import { TeamsComponent } from './teams/teams.component';
     CommonModule,
     SharedModule,
     RouterModule,
+    UserModule,
   ],
   exports: [
     PlayersComponent,
     PlayerDetailsComponent,
+    StandingsComponent,
+    TeamsComponent,
   ],
 })
 export class NbaModule { }

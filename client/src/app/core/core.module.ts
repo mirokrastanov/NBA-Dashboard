@@ -7,6 +7,7 @@ import { TopNavComponent } from './top-nav/top-nav.component';
 import { RouterModule } from '@angular/router';
 import { GlobalLoaderComponent } from './global-loader/global-loader.component';
 import { ErrorComponent } from './error/error.component';
+import { UserModule } from '../user/user.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ErrorComponent } from './error/error.component';
     CommonModule,
     SharedModule,
     RouterModule,
+    UserModule,
   ],
   exports: [
     DashboardComponent,
