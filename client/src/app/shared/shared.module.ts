@@ -6,13 +6,13 @@ import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
-    SpinnerComponent
+    SpinnerComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
-
+    SpinnerComponent,
   ],
 })
 export class SharedModule { }
