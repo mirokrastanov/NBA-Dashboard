@@ -8,6 +8,9 @@ import { TeamsComponent } from './teams/teams.component';
 import { UserModule } from '../user/user.module';
 import { NbaRoutingModule } from './nba-routing.module';
 import { CoreModule } from '../core/core.module';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { NewsComponent } from './news/news.component';
+import { AnalysisComponent } from './analysis/analysis.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { CoreModule } from '../core/core.module';
     PlayersComponent,
     PlayerDetailsComponent,
     StandingsComponent,
-    TeamsComponent
+    TeamsComponent,
+    TransactionsComponent,
+    NewsComponent,
+    AnalysisComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +35,9 @@ import { CoreModule } from '../core/core.module';
     PlayerDetailsComponent,
     StandingsComponent,
     TeamsComponent,
+    TransactionsComponent,
+    NewsComponent,
+    AnalysisComponent,
   ],
 })
 export class NbaModule { }
