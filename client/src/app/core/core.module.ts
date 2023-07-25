@@ -26,6 +26,8 @@ import { ErrorComponent } from './error/error.component';
     DashboardComponent,
     SidebarComponent,
     TopNavComponent,
+    GlobalLoaderComponent,
+    ErrorComponent,
   ],
 })
 export class CoreModule { }

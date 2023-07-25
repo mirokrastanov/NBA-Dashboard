@@ -1,0 +1,10 @@
+.loader-wrapper {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    width: 100vw;
+    height: calc(80vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
