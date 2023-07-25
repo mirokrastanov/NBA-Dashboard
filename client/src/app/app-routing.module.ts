@@ -3,12 +3,13 @@ import { NavigationSkipped, NavigationStart, Router, RouterModule, Routes } from
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { PlayersComponent } from './nba/players/players.component';
 import { DOCUMENT } from '@angular/common';
+import { LoginComponent } from './user/login/login.component';
 
 
 const routes: Routes = [ // UPPER/LOWER CASE MATTERS !!!!!!! routerLink in the html should MATCH IT!!!
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'players', component: PlayersComponent },
+  { path: 'nba', component: DashboardComponent },
+  { path: 'user', component: LoginComponent },
 ];
 
 @NgModule({
