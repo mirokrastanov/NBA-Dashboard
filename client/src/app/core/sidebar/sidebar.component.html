@@ -1,8 +1,8 @@
 <aside #sideMenu>
     <div class="toggle">
-        <a class="logo" [routerLink]="['nba/dashboard']">
+        <a class="logo" [routerLink]="['/dashboard']">
             <img src="assets/images/logo.png">
-            <h2><span class="danger">Data</span></h2>
+            <h2><span class="danger">Dashboard</span></h2>
         </a>
         <div #closeMenu class="close" id="close-btn" (click)="closeHandler(sideMenu)">
             <span class="material-icons-sharp">
@@ -12,47 +12,47 @@
     </div>
 
     <div class="sidebar">
-        <a data-tooltip="Dashboard" [routerLink]="['nba/dashboard']" [routerLinkActive]="['active']">
+        <a data-tooltip="Dashboard" [routerLink]="['/dashboard']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">dashboard</span>
             <h3>Dashboard</h3>
         </a>
-        <a data-tooltip="Standings" [routerLink]="['nba/standings']" [routerLinkActive]="['active']">
+        <a data-tooltip="Standings" [routerLink]="['/nba/standings']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">leaderboard</span>
             <h3>Standings</h3>
         </a>
-        <a data-tooltip="Teams" [routerLink]="['nba/teams']" [routerLinkActive]="['active']">
+        <a data-tooltip="Teams" [routerLink]="['/nba/teams']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">groups</span>
             <h3>Teams</h3>
         </a>
-        <a data-tooltip="Players" [routerLink]="['nba/players']" [routerLinkActive]="['active']">
+        <a data-tooltip="Players" [routerLink]="['/nba/players']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">person</span>
             <h3>Players</h3>
         </a>
-        <a data-tooltip="Transactions" [routerLink]="['nba/transactions']" [routerLinkActive]="['active']">
+        <a data-tooltip="Transactions" [routerLink]="['/nba/transactions']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">currency_exchange</span>
             <h3>Transactions</h3>
         </a>
-        <a data-tooltip="News" [routerLink]="['nba/news']" [routerLinkActive]="['active']">
+        <a data-tooltip="News" [routerLink]="['/nba/news']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">feed</span>
             <h3>News</h3>
         </a>
-        <a data-tooltip="Analysis" [routerLink]="['nba/analysis']" [routerLinkActive]="['active']">
+        <a data-tooltip="Analysis" [routerLink]="['/nba/analysis']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">insights</span>
             <h3>Analysis</h3>
         </a>
-        <a *ngIf="isLogged" data-tooltip="profile" [routerLink]="['user/profile']" [routerLinkActive]="['active']">
+        <a *ngIf="isLogged" data-tooltip="profile" [routerLink]="['/user/profile']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">manage_accounts</span>
             <h3>My Profile</h3>
         </a>
-        <a *ngIf="!isLogged" data-tooltip="Login" [routerLink]="['user/login']" [routerLinkActive]="['active']">
+        <a *ngIf="!isLogged" data-tooltip="Login" [routerLink]="['/user/login']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">add</span>
             <h3>Login</h3>
         </a>
-        <a *ngIf="!isLogged" data-tooltip="Register" [routerLink]="['user/register']" [routerLinkActive]="['active']">
+        <a *ngIf="!isLogged" data-tooltip="Register" [routerLink]="['/user/register']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">person_add_alt</span>
             <h3>Register</h3>
         </a>
-        <a *ngIf="isLogged" data-tooltip="Logout" [routerLink]="['user/logout']" [routerLinkActive]="['active']">
+        <a *ngIf="isLogged" data-tooltip="Logout" [routerLink]="['/user/logout']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">logout</span>
             <h3>Logout</h3>
         </a>
