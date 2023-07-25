@@ -1,1 +1,26 @@
-<p>teams works!</p>
+<h1>Teams</h1>
+
+<div *ngIf="isLoading">
+    <app-global-loader></app-global-loader>
+</div>
+
+<table *ngIf="!isLoading">
+    <tr align="center">
+        <th>Abbreviation</th>
+        <th>Full Name</th>
+        <th>Name</th>
+        <th>ID</th>
+        <th>City</th>
+        <th>Division</th>
+        <th>Conference</th>
+    </tr>
+    <tr *ngFor="let team of teamsArray" align="center">
+        <td>{{team.abbreviation}}</td>
+        <td>{{team.full_name}}</td>
+        <td>{{team.name}}</td>
+        <td>{{team.id}}</td>
+        <td>{{team.city}}</td>
+        <td>{{team.division}}</td>
+        <td>{{team.conference}}</td>
+    </tr>
+</table>
