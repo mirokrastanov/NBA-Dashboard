@@ -615,6 +615,14 @@ main .recent-orders a {
 
 }
 
+@media screen and (max-height: 620px) and (min-width: 1200px) {
+    aside .sidebar a:last-child {
+        position: initial;
+        width: 100%;
+        margin-bottom: 25%;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .container {
         width: 100%;
