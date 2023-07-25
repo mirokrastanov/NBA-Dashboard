@@ -5,6 +5,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { RouterModule } from '@angular/router';
+import { GlobalLoaderComponent } from './global-loader/global-loader.component';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -12,6 +14,8 @@ import { RouterModule } from '@angular/router';
     DashboardComponent,
     SidebarComponent,
     TopNavComponent,
+    GlobalLoaderComponent,
+    ErrorComponent,
   ],
   imports: [
     CommonModule,

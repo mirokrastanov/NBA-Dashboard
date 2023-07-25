@@ -1,15 +1,16 @@
 import { NgModule, Inject } from '@angular/core';
 import { NavigationSkipped, NavigationStart, Router, RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
-import { PlayersComponent } from './nba/players/players.component';
 import { DOCUMENT } from '@angular/common';
 import { LoginComponent } from './user/login/login.component';
+import { ErrorComponent } from './core/error/error.component';
 
 
 const routes: Routes = [ // UPPER/LOWER CASE MATTERS !!!!!!! routerLink in the html should MATCH IT!!!
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'nba', component: DashboardComponent },
   { path: 'user', component: LoginComponent },
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({
