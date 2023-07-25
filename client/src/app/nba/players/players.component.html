@@ -1,6 +1,10 @@
 <h1>Players</h1>
 
-<table>
+<div *ngIf="isLoading">
+    <app-global-loader></app-global-loader>
+</div>
+
+<table *ngIf="!isLoading">
     <tr align="center">
         <th>Name</th>
         <th>ID</th>

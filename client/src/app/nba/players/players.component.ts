@@ -13,6 +13,7 @@ export class PlayersComponent implements OnInit {
   metaObject: { [key: string]: any } = {};
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
+  isLoading: boolean = true;
 
   ngOnInit(): void {
     this.apiService.nbaFetch('players').subscribe({
@@ -23,15 +24,16 @@ export class PlayersComponent implements OnInit {
         console.log(this.playersArray);
         console.log(this.metaObject);
         console.log(data.data[0]);
+        this.isLoading = false;
       },
       error: (err) => {
         this.errorOccurred = true;
         console.log(err);
+        this.isLoading = false;
       },
       complete: () => {
         this.unsubscribed = true;
-        if (!this.playersArray)
-          console.log('Subscription ended!');
+        console.log('Subscription ended!');
       },
     });
   }
