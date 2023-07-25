@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { PlayersComponent } from './players/players.component';
 import { PlayerDetailsComponent } from './player-details/player-details.component';
 import { SharedModule } from '../shared/shared.module';
-import { RouterModule } from '@angular/router';
 import { StandingsComponent } from './standings/standings.component';
 import { TeamsComponent } from './teams/teams.component';
 import { UserModule } from '../user/user.module';
+import { NbaRoutingModule } from './nba-routing.module';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -19,8 +20,9 @@ import { UserModule } from '../user/user.module';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule,
     UserModule,
+    NbaRoutingModule,
+    CoreModule,
   ],
   exports: [
     PlayersComponent,
