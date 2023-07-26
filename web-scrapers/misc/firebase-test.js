@@ -1,5 +1,5 @@
 import { scrapeStandings } from "./scrapers.js";
-import { firebaseConfig, scrapeURLs } from './constants.js';
+import { firebaseConfig, scrapeURLs } from '../constants.js';
 
 import { initializeApp } from 'firebase/app';
 import {
