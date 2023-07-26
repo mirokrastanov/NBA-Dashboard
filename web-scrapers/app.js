@@ -11,6 +11,7 @@ import { initializeApp } from 'firebase/app';
 // } from "firebase/auth";
 import { getDatabase, ref, set, get, child } from 'firebase/database';
 import { scrapeTransactions } from './scrapers/transactions.js';
+import { scrapeLeaders } from './scrapers/leaders.js';
 
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getDatabase(firebaseApp);
@@ -18,22 +19,19 @@ const db = getDatabase(firebaseApp);
 
 
 async function scrapeAll() {
-    const standings = await scrapeStandings(scrapeURLs.standings);
-    console.log(standings);
-    const players = await scrapePlayers(scrapeURLs.players);
-    console.log(players);
-    const news = await scrapeNews(scrapeURLs.news);
-    console.log(news);
-    const analysis = await scrapeAnalysis(scrapeURLs.analysis);
-    console.log(analysis);
-    const transactions = await scrapeTransactions(scrapeURLs.transactions);
-    console.log(transactions);
+    // const standings = await scrapeStandings(scrapeURLs.standings);
+    // const players = await scrapePlayers(scrapeURLs.players);
+    // const news = await scrapeNews(scrapeURLs.news);
+    // const analysis = await scrapeAnalysis(scrapeURLs.analysis);
+    // const transactions = await scrapeTransactions(scrapeURLs.transactions);
+    const leadersAverages = await scrapeLeaders(scrapeURLs.leaders.averages);
 
-    set(ref(db, 'nba/standings'), standings);
-    set(ref(db, 'nba/players'), players);
-    set(ref(db, 'nba/news'), news);
-    set(ref(db, 'nba/analysis'), analysis);
-    set(ref(db, 'nba/transactions'), transactions);
+    // set(ref(db, 'nba/standings'), standings);
+    // set(ref(db, 'nba/players'), players);
+    // set(ref(db, 'nba/news'), news);
+    // set(ref(db, 'nba/analysis'), analysis);
+    // set(ref(db, 'nba/transactions'), transactions);
+    set(ref(db, 'nba/leaders/averages'), leadersAverages);
 
     console.log('Saved to Firebase!');
 
