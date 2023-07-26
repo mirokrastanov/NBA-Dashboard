@@ -26,6 +26,7 @@ async function scrapeAll() {
     // const transactions = await scrapeTransactions(scrapeURLs.transactions);
     const leadersAverages = await scrapeLeaders(scrapeURLs.leaders.averages);
     const leadersTotals = await scrapeLeaders(scrapeURLs.leaders.totals);
+    const leadersMisc = await scrapeLeaders(scrapeURLs.leaders.misc);
 
     // set(ref(db, 'nba/standings'), standings);
     // set(ref(db, 'nba/players'), players);
@@ -34,6 +35,7 @@ async function scrapeAll() {
     // set(ref(db, 'nba/transactions'), transactions);
     set(ref(db, 'nba/leaders/averages'), leadersAverages);
     set(ref(db, 'nba/leaders/totals'), leadersTotals);
+    set(ref(db, 'nba/leaders/misc'), leadersMisc);
 
     console.log('Saved to Firebase!');
 
