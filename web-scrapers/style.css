@@ -1,0 +1,66 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Avant Garde, Avantgarde, Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+
+}
+
+h2 {
+    font-weight: normal;
+    color: antiquewhite;
+    font-size: 30px;
+}
+
+body {
+    background-color: antiquewhite;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ctr {
+    background-color: rgb(0, 183, 255);
+    width: 98%;
+    height: 98%;
+    padding: 2%;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2%;
+}
+
+.btn {
+    padding: 5px 20px;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 15px;
+    border: none;
+    overflow: auto;
+    outline: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(255, 205, 139);
+}
+
+.sub-ctr {
+    width: 400px;
+    background-color: rgba(22, 11, 53, 0.555);
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
