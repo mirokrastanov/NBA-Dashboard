@@ -89,7 +89,7 @@ a {
 img {
     display: block;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 h1 {
@@ -498,6 +498,19 @@ main .recent-orders a {
     font-size: 40px;
 }
 
+.nav .profile:hover::after {
+    position: absolute;
+    top: 60px;
+    content: attr(data-tooltip);
+    color: var(--color-primary);
+    opacity: 1;
+    background-color: var(--color-light);
+    padding: 3px 10px;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
 .user-profile {
     display: flex;
     justify-content: center;
@@ -615,19 +628,6 @@ main .recent-orders a {
         left: 9rem;
         width: calc(100% - 9rem);
         padding-right: 2%;
-    }
-
-    .nav .profile:hover::after {
-        position: absolute;
-        top: 60px;
-        content: attr(data-tooltip);
-        color: var(--color-primary);
-        opacity: 1;
-        background-color: var(--color-light);
-        padding: 3px 10px;
-        font-weight: 700;
-        font-size: 14px;
-        border-radius: 5px;
     }
 
     main .analyse {
@@ -750,7 +750,7 @@ main .recent-orders a {
     }
 
     main {
-        margin-top: 5rem;
+        margin-top: 0rem;
         padding: 0 1rem;
     }
 
