@@ -163,7 +163,7 @@ aside {
 aside .toggle {
     display: flex;
     align-items: center;
-    justify-content: baseline;
+    justify-content: center;
     margin-top: 1.4rem;
 }
 
@@ -432,6 +432,7 @@ main .recent-orders a {
     display: flex;
     justify-content: space-between;
     padding-left: 2%;
+    padding-right: 2%;
     align-items: center;
     gap: 1.5rem;
     position: fixed;
@@ -475,18 +476,26 @@ main .recent-orders a {
 
 .nav .profile {
     display: flex;
-    gap: 0.5rem;
     height: 2.5rem;
-    width: 15%;
-    text-align: right;
+    flex-direction: row;
+    width: fit-content;
     justify-content: center;
+    gap: 0;
+    text-align: right;
+    cursor: pointer;
 }
 
 .nav .profile .profile-photo {
-    width: 30%;
-    height: auto;
-    border-radius: 50%;
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
+}
+
+.nav .profile .profile-photo span {
+    font-size: 40px;
 }
 
 .user-profile {
@@ -605,6 +614,20 @@ main .recent-orders a {
     .nav {
         left: 9rem;
         width: calc(100% - 9rem);
+        padding-right: 2%;
+    }
+
+    .nav .profile:hover::after {
+        position: absolute;
+        top: 60px;
+        content: attr(data-tooltip);
+        color: var(--color-primary);
+        opacity: 1;
+        background-color: var(--color-light);
+        padding: 3px 10px;
+        font-weight: 700;
+        font-size: 14px;
+        border-radius: 5px;
     }
 
     main .analyse {
@@ -782,7 +805,7 @@ main .recent-orders a {
     }
 
     .nav form {
-        width: 57%;
+        width: 37%;
     }
 
     .nav form .form-input input {
@@ -844,7 +867,6 @@ main .recent-orders a {
         margin: 0;
         padding: 0;
     }
-
 }
 
 @media screen and (max-width: 400px) {
