@@ -30,6 +30,7 @@ async function scrapeAll() {
     // const leadersMisc = await scrapeLeaders(scrapeURLs.leaders.misc);
     // const leadersAdvanced = await scrapeLeaders(scrapeURLs.leaders.advanced);
     const teamStatsAverages = await scrapeTeamStats(scrapeURLs.teamStats.averages);
+    const teamStatsTotals = await scrapeTeamStats(scrapeURLs.teamStats.totals);
 
     // set(ref(db, 'nba/standings'), standings);
     // set(ref(db, 'nba/players'), players);
@@ -41,6 +42,7 @@ async function scrapeAll() {
     // set(ref(db, 'nba/leaders/misc'), leadersMisc);
     // set(ref(db, 'nba/leaders/advanced'), leadersAdvanced);
     set(ref(db, 'nba/teamStats/averages'), teamStatsAverages);
+    set(ref(db, 'nba/teamStats/totals'), teamStatsTotals);
 
     console.log('Saved to Firebase!');
 
