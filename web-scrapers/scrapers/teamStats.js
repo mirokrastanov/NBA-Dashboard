@@ -55,8 +55,17 @@ export async function scrapeTeamStats(url) {
 
     const headers = await scrapeHeaders();
     headers[headers.indexOf('#')] = 'id';
-    const body = await scrapeBody(headers);
     
+    // ".", "#", "$", "/", "[", or "]"
+    for (let i = 0; i < headers.length; i++) {
+        let x = headers[i];
+        if (x.includes('/')) {
+            x = x.split('/').join('|');
+            headers[i] = x;
+        }
+    }
+    const body = await scrapeBody(headers);
+
     // console.log(headers);
     // console.log(body);
 
@@ -67,4 +76,4 @@ export async function scrapeTeamStats(url) {
     };
 }
 
-// scrapeTeamStats(scrapeURLs.teamStats.advanced);
+// scrapeTeamStats(scrapeURLs.teamStats.misc);
