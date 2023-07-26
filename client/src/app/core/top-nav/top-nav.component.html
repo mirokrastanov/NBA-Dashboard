@@ -24,10 +24,15 @@
         </span>
     </div>
 
-    <div class="profile">
-        <div class="info" [routerLink]="['/user/profile']">
-            <small class="text-muted">Hello,</small>
+    <div class="profile" [routerLink]="['/user/profile']" data-tooltip="Profile">
+        <div class="info">
+            <small class="text-muted">Hello</small>
             <p id="user-link"><b>Username</b></p>
+        </div>
+        <div class="profile-photo">
+            <span class="material-icons-sharp">
+                account_circle
+            </span>
         </div>
     </div>
 
