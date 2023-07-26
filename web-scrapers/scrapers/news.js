@@ -42,7 +42,7 @@ export async function scrapeNews(url) {
 
     browser.close();
     return {
-        news: newsResult,
+        data: newsResult,
         updatedAt: ['MM/DD/YYYY, HH:MM:SS', (new Date()).toLocaleString()],
     };
 }

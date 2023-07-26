@@ -60,7 +60,7 @@ export async function scrapePlayers(url) {
 
     browser.close();
     return {
-        players: body,
+        data: body,
         updatedAt: ['MM/DD/YYYY, HH:MM:SS', (new Date()).toLocaleString()],
     };
 }
