@@ -10,6 +10,7 @@ import { initializeApp } from 'firebase/app';
 //     onAuthStateChanged, signOut,
 // } from "firebase/auth";
 import { getDatabase, ref, set, get, child } from 'firebase/database';
+import { scrapeTransactions } from './scrapers/transactions.js';
 
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getDatabase(firebaseApp);
@@ -25,11 +26,14 @@ async function scrapeAll() {
     console.log(news);
     const analysis = await scrapeAnalysis(scrapeURLs.analysis);
     console.log(analysis);
+    const transactions = await scrapeTransactions(scrapeURLs.transactions);
+    console.log(transactions);
 
     set(ref(db, 'nba/standings'), standings);
     set(ref(db, 'nba/players'), players);
     set(ref(db, 'nba/news'), news);
     set(ref(db, 'nba/analysis'), analysis);
+    set(ref(db, 'nba/transactions'), transactions);
 
     console.log('Saved to Firebase!');
 
