@@ -12,7 +12,7 @@ import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +22,7 @@ import { UserModule } from './user/user.module';
     HttpClientModule,
     NbaModule,
     UserModule,
-    
+
 
 
 
