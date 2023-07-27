@@ -6,23 +6,40 @@
         <form #registerForm="ngForm" (ngSubmit)="registerHandler(registerForm)">
             <h2>Register</h2>
             <div class="inputBox form-group">
-                <input name="username" type="text" ngModel required />
-                <label for="username">Username</label>
+                <input name="username" type="text" ngModel required #usernameInput="ngModel" />
+                <label for="username">Username
+                    <span *ngIf="usernameInput.touched">
+                        <span class="danger" *ngIf="usernameInput.errors?.['required']">is required!</span>
+                    </span>
+                </label>
                 <i></i>
             </div>
             <div class="inputBox">
-                <input name="email" type="text" ngModel required email />
-                <label for="email">Email</label>
+                <input name="email" type="text" ngModel required email #emailInput="ngModel" />
+                <label for="email">Email
+                    <span *ngIf="emailInput.touched">
+                        <span class="danger" *ngIf="emailInput.errors?.['required']">is required!</span>
+                        <span class="danger" *ngIf="emailInput.errors?.['email']">is invalid!</span>
+                    </span>
+                </label>
                 <i></i>
             </div>
             <div class="inputBox">
-                <input name="password" type="password" ngModel required />
-                <label for="password">Password</label>
+                <input name="password" type="password" ngModel required #passwordInput="ngModel" [appMinCount]="6" />
+                <label for="password">Password
+                    <span *ngIf="passwordInput.touched">
+                        <span class="danger" *ngIf="passwordInput.errors?.['appMinCount']"> is too short!</span>
+                    </span>
+                </label>
                 <i></i>
             </div>
             <div class="inputBox">
-                <input name="repeatPassword" type="password" ngModel required />
-                <label for="repeatPassword">Repeat Password</label>
+                <input name="repeatPassword" type="password" ngModel required #repeatPasswordInput="ngModel" />
+                <label for="repeatPassword">Repeat Password
+                    <span *ngIf="repeatPasswordInput.touched">
+                        <span class="danger" *ngIf="repeatPasswordInput.errors?.['required']"> is required!</span>
+                    </span>
+                </label>
                 <i></i>
             </div>
             <button type="submit">Register</button>
