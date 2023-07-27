@@ -1,1 +1,24 @@
-<p>login works!</p>
+<!-- <div class="DEV-ONLY">{{ loginForm.value | json }}</div> -->
+
+<div id="login-ctr">
+    <div class="box">
+        <span class="borderLine"></span>
+        <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
+            <h2>Login</h2>
+            <div class="inputBox">
+                <input name="email" type="text" ngModel required email />
+                <label for="email">Email</label>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input name="password" type="password" ngModel required />
+                <label for="password">Password</label>
+                <i></i>
+            </div>
+            <button type="submit">Login</button>
+            <div class="links">
+                <span>Not a member?</span><a [routerLink]="['/user/register']">Register Here</a>
+            </div>
+        </form>
+    </div>
+</div>
