@@ -1,1 +1,29 @@
-<p>register works!</p>
+<div class="box">
+    <form #registerForm="ngForm" (ngSubmit)="registerHandler(registerForm)">
+        <h2>Register</h2>
+        <div class="inputBox form-group">
+            <input name="username" type="text" required="required" ngModel />
+            <label for="username">Username</label>
+            <i></i>
+        </div>
+        <div class="inputBox">
+            <input name="email" type="text" ngModel />
+            <label for="email">Email</label>
+            <i></i>
+        </div>
+        <div class="inputBox">
+            <input name="password" type="password" ngModel />
+            <label for="password">Password</label>
+            <i></i>
+        </div>
+        <div class="inputBox">
+            <input name="repeatPassword" type="password" ngModel />
+            <label for="repeatPassword">Repeat Password</label>
+            <i></i>
+        </div>
+        <div class="links">
+            <span>Have an Account? <a [routerLink]="['/user/login']">Login Here</a></span>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</div>
