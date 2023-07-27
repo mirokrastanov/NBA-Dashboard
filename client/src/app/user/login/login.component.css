@@ -1,0 +1,218 @@
+#login-ctr {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    position: relative;
+    width: 380px;
+    height: 420px;
+    background-color: var(--color-light);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent,
+            var(--color-primary), var(--color-primary), var(--color-primary));
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.box::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent,
+            var(--color-primary), var(--color-primary), var(--color-primary));
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+
+.borderLine {
+    position: absolute;
+    top: 0;
+    inset: 0;
+}
+
+.borderLine::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent,
+            var(--color-primary), var(--color-primary), var(--color-primary));
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -1.5s;
+}
+
+.borderLine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent,
+            var(--color-primary), var(--color-primary), var(--color-primary));
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -4.5s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.box form {
+    position: absolute;
+    inset: 4px;
+    background-color: var(--color-background);
+    padding: 30px 40px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.box form h2 {
+    color: var(--color-dark);
+    font-weight: 500;
+    font-size: 2.2em;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+.box form .inputBox {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+
+.box form .inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: var(--color-white);
+    font-size: 1.5em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+}
+
+.box form .inputBox label {
+    position: absolute;
+    left: 0;
+    padding: 20px 0px 10px;
+    pointer-events: none;
+    color: var(--color-dark-variant);
+    font-size: 1.25em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+.box form .inputBox input:valid~label,
+.box form .inputBox input:focus~label {
+    color: var(--color-dark);
+    font-size: 1em;
+    transform: translateY(-34px);
+}
+
+.box form .inputBox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-dark);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+
+.box form .inputBox input:valid~i,
+.box form .inputBox input:focus~i {
+    height: 44px;
+}
+
+.box form .links {
+    position: absolute;
+    bottom: 0;
+    padding: 0 10px 15px 0;
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.box form .links span {
+    display: inline-block;
+    color: var(--color-dark-variant);
+    font-size: 1.25em;
+}
+
+.box form .links a {
+    color: var(--color-dark-variant);
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: 900;
+}
+
+.box form .links a:hover {
+    color: var(--color-dark);
+}
+
+.box form button[type="submit"] {
+    margin: auto 0;
+    border: none;
+    outline: none;
+    padding: 12px 25px;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    cursor: pointer;
+    font-size: 1.5em;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    width: fit-content;
+    text-align: center;
+}
+
+.box form button[type="submit"]:hover {
+    opacity: 0.8;
+}
+
+.box form button[type="submit"]:active {
+    opacity: 0.6;
+}
