@@ -6,13 +6,22 @@
         <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
             <h2>Login</h2>
             <div class="inputBox">
-                <input name="email" type="text" ngModel required email />
-                <label for="email">Email</label>
+                <input name="email" type="text" ngModel required email #emailInput="ngModel" />
+                <label for="email">Email
+                    <span *ngIf="emailInput.touched">
+                        <span class="danger" *ngIf="emailInput.errors?.['required']">is required!</span>
+                        <span class="danger" *ngIf="emailInput.errors?.['email']">is invalid!</span>
+                    </span>
+                </label>
                 <i></i>
             </div>
             <div class="inputBox">
-                <input name="password" type="password" ngModel required />
-                <label for="password">Password</label>
+                <input name="password" type="password" ngModel required #passwordInput="ngModel" [appMinCount]="6" />
+                <label for="password">Password
+                    <span *ngIf="passwordInput.touched">
+                        <span class="danger" *ngIf="passwordInput.errors?.['appMinCount']"> is too short!</span>
+                    </span>
+                </label>
                 <i></i>
             </div>
             <button type="submit">Login</button>
