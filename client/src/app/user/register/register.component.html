@@ -1,23 +1,24 @@
+<!-- <div class="DEV-ONLY">{{ registerForm.value | json }}</div> -->
 <div class="box">
     <form #registerForm="ngForm" (ngSubmit)="registerHandler(registerForm)">
         <h2>Register</h2>
         <div class="inputBox form-group">
-            <input name="username" type="text" required="required" ngModel />
+            <input name="username" type="text" ngModel required />
             <label for="username">Username</label>
             <i></i>
         </div>
         <div class="inputBox">
-            <input name="email" type="text" ngModel />
+            <input name="email" type="text" ngModel required email />
             <label for="email">Email</label>
             <i></i>
         </div>
         <div class="inputBox">
-            <input name="password" type="password" ngModel />
+            <input name="password" type="password" ngModel required />
             <label for="password">Password</label>
             <i></i>
         </div>
         <div class="inputBox">
-            <input name="repeatPassword" type="password" ngModel />
+            <input name="repeatPassword" type="password" ngModel required />
             <label for="repeatPassword">Repeat Password</label>
             <i></i>
         </div>

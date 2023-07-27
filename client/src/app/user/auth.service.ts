@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
+import { RegisterUser } from '../util/user-interfaces';
 
-
-interface User {
-  username: string,
-  email: string,
-  password: string,
-}
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +9,7 @@ interface User {
 export class AuthService {
   constructor() { }
 
-  user: User | null = null;
+  user: RegisterUser | null = null;
 
 
 
