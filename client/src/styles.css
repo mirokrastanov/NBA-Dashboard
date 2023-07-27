@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
 
 :root {
-    --color-primary: #6C9BCF;
+    --color-primary: #6C9BCF; /* #6C9BCF | #45f3ff */
     --color-primary-o-05: #6c9acf85;
     --color-danger: #FF0060;
     --color-success: #1B9C85;
@@ -26,6 +26,7 @@
 }
 
 .dark-mode-variables {
+    --color-primary: #45f3ff;
     --color-background: #181a1e;
     --color-white: #202528;
     --color-dark: #edeffd;
@@ -466,11 +467,12 @@ main .recent-orders a {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--color-dark);
 }
 
 .dark-mode span.active {
     background-color: var(--color-primary);
-    color: white;
+    color: var(--color-white);
     border-radius: var(--border-radius-1);
 }
 
@@ -569,7 +571,7 @@ main .recent-orders a {
     justify-content: center;
     align-items: center;
     background: var(--color-primary);
-    color: var(--color-dark);
+    color: var(--color-white);
     font-size: 18px;
     border: none;
     outline: none;
