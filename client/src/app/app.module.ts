@@ -9,6 +9,8 @@ import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NbaModule } from './nba/nba.module';
 import { UserModule } from './user/user.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { firebaseConfig } from './util/global-constants';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { UserModule } from './user/user.module';
     HttpClientModule,
     NbaModule,
     UserModule,
-
+    AngularFireModule.initializeApp(firebaseConfig),
 
 
 
