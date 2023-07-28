@@ -248,3 +248,14 @@
 .box form button[type="submit"]:active {
     opacity: 0.6;
 }
+
+.box form button.spinner-ctr {
+    background-color: var(--color-background);
+}
+
+.spinner-ctr #spinner {
+    position: absolute;
+    bottom: 55px;
+    left: 50px;
+    transform: scale(0.8);
+}
