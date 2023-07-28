@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { AbstractControl, FormControl, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginUser } from 'src/app/util/user-interfaces';
 import { AuthService } from '../auth.service';
@@ -15,31 +15,31 @@ export class LoginComponent {
     private router: Router,
     private authService: AuthService,
   ) { }
-
+  errorMessage: string | null = null;
   isLoggingIn: boolean = false;
 
   login(form: NgForm): void {
-    // const value: LoginUser = form.value;
-    // if (form.invalid) {
-    //   console.log(form.invalid);
-    // }
-    // console.log(form.controls['email'].value);
-
-
-
+    const formEmail: AbstractControl<any> = form.controls['email'];
+    const formPassword: AbstractControl<any> = form.controls['password'];
+    const params: LoginUser = {
+      email: formEmail.value,
+      password: formPassword.value,
+    };
     this.isLoggingIn = true;
+    this.errorMessage = null;
 
-    this.authService.login({
-      email: form.controls['email'].value,
-      password: form.controls['password'].value,
-    }).subscribe(
-      (next: any) => {
+    this.authService.login(params).subscribe(
+      () => {
         this.isLoggingIn = false;
+        this.errorMessage = null;
         this.router.navigate(['/dashboard']);
       },
       (error: any) => {
         this.isLoggingIn = false;
-        // show error.message
+        this.errorMessage = error.message;
+        setTimeout(() => {
+          this.errorMessage = null;
+        }, 5000);
       })
   }
 
