@@ -13,15 +13,14 @@ export class AuthService {
     private auth: AngularFireAuth
   ) { }
 
-  user: RegisterUser | null = null;
-
   login(params: LoginUser): Observable<any> {
-
     return from(this.auth.signInWithEmailAndPassword(
       params.email, params.password
     ));
   }
 
-
+  register(params: RegisterUser): Observable<any> {
+    return of({});
+  }
 
 }
