@@ -17,7 +17,7 @@ export class MinCountDirective implements Validator {
   constructor() { }
 
   validate(control: AbstractControl<any, any>): ValidationErrors | null {
-    console.log(control, control.value == null);
+    // console.log(control, control.value == null);
     
     if (this.appMinCount == undefined
       || control.value?.length >= this.appMinCount
