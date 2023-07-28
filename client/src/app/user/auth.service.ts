@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginUser, RegisterUser } from '../util/user-interfaces';
-import { Observable, from, of } from 'rxjs';
+import { BehaviorSubject, Observable, from, of } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-
 
 @Injectable({
   providedIn: 'root'
@@ -10,28 +9,46 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 export class AuthService {
   constructor(
-    private auth: AngularFireAuth
-  ) { }
+    public fireAuth: AngularFireAuth
+  ) { this.authStatusListener(); }
 
-  // save CURRENT USER
-  // add display name during reg
-  // also add an option to edit it in their profile
+  currentUser: any = undefined;
+  private authStatusSub = new BehaviorSubject(this.currentUser);
+  currentAuthStatus = this.authStatusSub.asObservable();
 
+  authStatusListener(): void {
+    this.fireAuth.onAuthStateChanged((credential) => {
+      if (credential) {
+        if (!localStorage.getItem('user')) {
+          console.log(credential);
+          this.authStatusSub.next(credential);
+          localStorage.setItem('user', JSON.stringify(credential));
+          console.log('User is logged in');
+        }
+      } else {
+        this.authStatusSub.next(null);
+        if (localStorage.getItem('user')) {
+          localStorage.removeItem('user');
+          console.log('User is logged out');
+        }
+      }
+    })
+  }
 
   login(params: LoginUser): Observable<any> {
-    return from(this.auth.signInWithEmailAndPassword(
+    return from(this.fireAuth.signInWithEmailAndPassword(
       params.email, params.password
     ));
   }
 
   register(params: LoginUser): Observable<any> {
-    return from(this.auth.createUserWithEmailAndPassword(
+    return from(this.fireAuth.createUserWithEmailAndPassword(
       params.email, params.password
     ));
   }
 
   logout(): void {
-    this.auth.signOut();
+    this.fireAuth.signOut();
     localStorage.removeItem('user');
   }
 }
