@@ -29,6 +29,8 @@ import { MaxCountDirective } from './directives/max-count.directive';
         LoginComponent,
         RegisterComponent,
         ProfileComponent,
+        MinCountDirective,
+        MaxCountDirective
     ],
 })
 export class UserModule { }
