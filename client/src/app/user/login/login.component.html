@@ -3,7 +3,7 @@
 <div id="login-ctr">
     <div class="box">
         <span class="borderLine"></span>
-        <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <h2>Login</h2>
             <div class="inputBox">
                 <input name="email" type="text" ngModel required email #emailInput="ngModel" />
@@ -24,7 +24,10 @@
                 </label>
                 <i></i>
             </div>
-            <button type="submit">Login</button>
+            <button *ngIf="!isLoggingIn" type="submit">Login</button>
+            <button *ngIf="isLoggingIn" type="submit" disabled class="spinner-ctr">
+                <app-spinner id="spinner"></app-spinner>
+            </button>
             <div class="links">
                 <span>Not a member?</span><a [routerLink]="['/user/register']">Register Here</a>
             </div>
@@ -37,3 +40,4 @@
         </form>
     </div>
 </div>
+<div class="error"></div>
