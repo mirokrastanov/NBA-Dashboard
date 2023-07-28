@@ -16,10 +16,12 @@ export class LoginComponent {
       console.log(form.invalid);
     }
     // add validator conditionals
-    console.log(form.controls['email'].status);
-    console.log(form.controls['password'].status);
+    // console.log(form.controls['email'].status);
+    // console.log(form.controls['password'].status);
     
+  }
 
+  recoverPassword(form: NgForm): void {
 
   }
 

@@ -17,13 +17,13 @@ export class RegisterComponent {
       console.log(form.invalid);
     }
     // add validator conditionals
-    console.log(form.controls['username'].status);
-    console.log(form.controls['email'].status);
-    console.log(form.controls['password'].status);
-    console.log(form.controls['repeatPassword'].status);
+    // console.log(form.controls['username'].status);
+    // console.log(form.controls['email'].status);
+    // console.log(form.controls['password'].status);
+    // console.log(form.controls['repeatPassword'].status);
     
-
-
   }
+
+
 
 }
