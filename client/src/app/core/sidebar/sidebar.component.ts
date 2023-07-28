@@ -1,5 +1,6 @@
-import { Component, Inject, OnInit, OnDestroy, Output } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy, Output, OnChanges } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AuthService } from 'src/app/user/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,15 +8,16 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit, OnDestroy {
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+  constructor(@Inject(DOCUMENT) private document: Document, private authService: AuthService) { }
   aside = () => this.document.body.querySelector('aside')!;
 
-  isLogged: boolean = localStorage.getItem('user') ? true : false;
-  // TODO: add additional firebase auth based state checking
+  isAuthenticated: any = false;
 
   intervals: any[] = [];
 
   ngOnInit(): void {
+    this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
+
     // console.log(window.innerWidth + 'x' + window.innerHeight);
     let interval = setInterval(() => {
       if (window.innerWidth > 768) {
