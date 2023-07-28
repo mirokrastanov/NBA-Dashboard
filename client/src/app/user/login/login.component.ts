@@ -39,9 +39,10 @@ export class LoginComponent {
     }
 
     this.authService.login(params).subscribe({
-      next: () => {
+      next: (data) => {
         this.isLoggingIn = false;
         this.errorMessage = null;
+        localStorage.setItem('user', JSON.stringify(data.user));
         this.router.navigate(['/dashboard']);
       },
       error: (err) => {
