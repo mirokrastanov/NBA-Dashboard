@@ -8,7 +8,7 @@
             <div class="inputBox">
                 <input name="email" type="text" ngModel required email #emailInput="ngModel" />
                 <label for="email">Email
-                    <span *ngIf="emailInput.touched">
+                    <span *ngIf="emailInput.dirty">
                         <span class="danger" *ngIf="emailInput.errors?.['required']">is required!</span>
                         <span class="danger" *ngIf="emailInput.errors?.['email']">is invalid!</span>
                     </span>
@@ -18,7 +18,7 @@
             <div class="inputBox">
                 <input name="password" type="password" ngModel required #passwordInput="ngModel" [appMinCount]="6" />
                 <label for="password">Password
-                    <span *ngIf="passwordInput.touched">
+                    <span *ngIf="passwordInput.dirty">
                         <span class="danger" *ngIf="passwordInput.errors?.['appMinCount']"> is too short!</span>
                     </span>
                 </label>
