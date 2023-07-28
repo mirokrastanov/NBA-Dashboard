@@ -47,6 +47,10 @@ export class AuthService {
     ));
   }
 
+  async updateProfile(params: any): Promise<any> {
+    return (await this.fireAuth.currentUser)?.updateProfile(params);
+  }
+
   logout(): void {
     this.fireAuth.signOut();
     localStorage.removeItem('user');
