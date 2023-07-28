@@ -13,14 +13,21 @@ export class AuthService {
     private auth: AngularFireAuth
   ) { }
 
+  // save CURRENT USER
+  // add display name during reg
+  // also add an option to edit it in their profile
+  
+
   login(params: LoginUser): Observable<any> {
     return from(this.auth.signInWithEmailAndPassword(
       params.email, params.password
     ));
   }
 
-  register(params: RegisterUser): Observable<any> {
-    return of({});
+  register(params: LoginUser): Observable<any> {
+    return from(this.auth.createUserWithEmailAndPassword(
+      params.email, params.password
+    ));
   }
 
 }
