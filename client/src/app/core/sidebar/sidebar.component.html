@@ -52,7 +52,7 @@
             <span class="material-icons-sharp">person_add_alt</span>
             <h3>Register</h3>
         </a>
-        <a *ngIf="isAuthenticated" data-tooltip="Logout" [routerLink]="['/user/logout']" [routerLinkActive]="['active']">
+        <a *ngIf="isAuthenticated" data-tooltip="Logout" (click)="onLogout()">
             <span class="material-icons-sharp">logout</span>
             <h3>Logout</h3>
         </a>
