@@ -28,6 +28,23 @@ export class LoginComponent {
     this.isLoggingIn = true;
     this.errorMessage = null;
 
+    if (params.email == '' || params.password == '') {
+      this.errorMessage = 'Inputs cannot be empty'
+    } else if (!formEmail.valid) {
+      this.errorMessage = 'Invalid Email'
+    } else if (!formPassword.valid) {
+      this.errorMessage = 'Password must be longer than 6 characters'
+    }
+    if (this.errorMessage != null) {
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 5000);
+      setTimeout(() => {
+        this.isLoggingIn = false;
+      }, 1000);
+      return;
+    }
+
     this.authService.login(params).subscribe(
       () => {
         this.isLoggingIn = false;
