@@ -4,7 +4,7 @@
 <div id="login-ctr">
     <div class="box">
         <span class="borderLine"></span>
-        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
             <h2>Login</h2>
             <div class="inputBox">
                 <input name="email" type="text" ngModel required email #emailInput="ngModel" />
@@ -33,7 +33,7 @@
                 <span>Not a member?</span><a [routerLink]="['/user/register']">Register Here</a>
             </div>
             <div class="links recover">
-                <span (click)="recoverPassword(loginForm)"
+                <span (click)="onRecoverPassword(loginForm)"
                     data-tooltip="Enter your Email. We will send you recovery instructions."
                     [ngClass]="!emailInput.errors?.['email'] && !emailInput.errors?.['required'] ? 'valid-recover' : ''">Recover
                     Password</span>
