@@ -33,16 +33,21 @@ export class RegisterComponent {
 
     if (params.email == '' || params.password == '' || formUsername.value == ''
       || formRepeatPassword.value == '') this.errorMessage = 'Inputs cannot be empty';
+    else if (!formUsername.valid) this.errorMessage = 'Username must be 8 or fewer characters';
     else if (!formEmail.valid) this.errorMessage = 'Invalid Email';
     else if (!formPassword.valid) this.errorMessage = 'Password must be 6 or more characters';
-    else if (!formRepeatPassword.valid) this.errorMessage = 'Passwords must match';
+    else if (!formRepeatPassword.valid || formRepeatPassword.value != formPassword.value) this.errorMessage = 'Passwords must match';
+    else if (form.invalid) {
+      this.errorMessage = 'Invalid inputs';
+      return;
+    }
 
     if (this.errorMessage != null) {
       setTimeout(() => { this.errorMessage = null }, 5000);
       setTimeout(() => { this.isLoggingIn = false }, 1000);
       return;
     }
-
+    
     this.authService.register(params).subscribe({
       next: (response) => {
         this.isLoggingIn = false;
