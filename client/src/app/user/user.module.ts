@@ -7,6 +7,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { FormsModule } from '@angular/forms';
 import { MinCountDirective } from './directives/min-count.directive';
 import { SharedModule } from "../shared/shared.module";
+import { MaxCountDirective } from './directives/max-count.directive';
 
 
 
@@ -15,7 +16,8 @@ import { SharedModule } from "../shared/shared.module";
         LoginComponent,
         RegisterComponent,
         ProfileComponent,
-        MinCountDirective
+        MinCountDirective,
+        MaxCountDirective
     ],
     imports: [
         CommonModule,
