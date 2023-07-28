@@ -8,10 +8,10 @@
         <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
             <h2>Register</h2>
             <div class="inputBox form-group">
-                <input name="username" type="text" ngModel required #usernameInput="ngModel" />
+                <input name="username" type="text" ngModel required #usernameInput="ngModel" [appMaxCount]="8" />
                 <label for="username">Username
                     <span *ngIf="usernameInput.dirty"> <!-- usernameInput.touched -->
-                        <span class="danger" *ngIf="usernameInput.errors?.['required']">is required!</span>
+                        <span class="danger" *ngIf="usernameInput.errors?.['appMaxCount']">is too long!</span>
                     </span>
                 </label>
                 <i></i>
@@ -39,12 +39,16 @@
                 <input name="repeatPassword" type="password" ngModel required #repeatPasswordInput="ngModel" />
                 <label for="repeatPassword">Repeat Password
                     <span *ngIf="repeatPasswordInput.dirty">
-                        <span class="danger" *ngIf="repeatPasswordInput.errors?.['required']"> is required!</span>
+                        <span class="danger" *ngIf="repeatPasswordInput.value != passwordInput.value"> must
+                            match!</span>
                     </span>
                 </label>
                 <i></i>
             </div>
-            <button type="submit">Register</button>
+            <button *ngIf="!isLoggingIn" type="submit">Register</button>
+            <button *ngIf="isLoggingIn" type="submit" disabled class="spinner-ctr">
+                <app-spinner id="spinner2"></app-spinner>
+            </button>
             <div class="links">
                 <span>Have an Account?</span><a [routerLink]="['/user/login']">Login Here</a>
             </div>
