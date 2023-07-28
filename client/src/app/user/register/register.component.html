@@ -1,9 +1,11 @@
+<div *ngIf="errorMessage != null" class="error">{{errorMessage}}</div>
+
 <!-- <div class="DEV-ONLY">{{ registerForm.value | json }}</div> -->
 
 <div id="register-ctr">
     <div class="box">
         <span class="borderLine"></span>
-        <form #registerForm="ngForm" (ngSubmit)="registerHandler(registerForm)">
+        <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
             <h2>Register</h2>
             <div class="inputBox form-group">
                 <input name="username" type="text" ngModel required #usernameInput="ngModel" />
