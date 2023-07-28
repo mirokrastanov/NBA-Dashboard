@@ -259,3 +259,21 @@
     left: 50px;
     transform: scale(0.8);
 }
+
+.error {
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    position: absolute;
+    top: 10%;
+    left: 55%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    color: var(--color-dark-variant);
+    padding: 4px 10px;
+    width: 70%;
+    height: fit-content;
+    border-radius: 13px;
+    letter-spacing: 0.025em;
+    text-align: center;
+    z-index: 1000;
+}
