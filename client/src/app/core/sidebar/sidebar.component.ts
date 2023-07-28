@@ -36,4 +36,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
   closeHandler(menuEl: HTMLElement): void {
     menuEl.style.display = 'none';
   }
+
+  onLogout(): void {
+    this.authService.logout();
+    this.isAuthenticated = false;
+  }
 }
