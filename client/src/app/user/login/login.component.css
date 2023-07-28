@@ -177,6 +177,38 @@
     align-items: center;
 }
 
+.box form .links.recover {
+    bottom: 110px;
+    right: -46px;
+}
+
+.box form .links.recover span.valid-recover {
+    font-weight: 900;
+}
+
+.box form .links.recover span.valid-recover:hover {
+    color: var(--color-dark);
+    cursor: pointer;
+}
+
+.box form .links.recover span:not(.valid-recover):hover::after {
+    position: absolute;
+    top: -80px;
+    left: 35%;
+    transform: translateX(-50%);
+    width: 250px;
+    content: attr(data-tooltip);
+    color: var(--color-dark-variant);
+    opacity: 1;
+    background-color: var(--color-white);
+    padding: 10px 10px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;
+    letter-spacing: 0.025em;
+    box-shadow: var(--box-shadow);
+}
+
 .box form .links span {
     display: inline-block;
     color: var(--color-dark-variant);
