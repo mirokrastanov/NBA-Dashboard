@@ -16,7 +16,7 @@ export class AuthService {
   // save CURRENT USER
   // add display name during reg
   // also add an option to edit it in their profile
-  
+
 
   login(params: LoginUser): Observable<any> {
     return from(this.auth.signInWithEmailAndPassword(
@@ -30,4 +30,8 @@ export class AuthService {
     ));
   }
 
+  logout(): void {
+    this.auth.signOut();
+    localStorage.removeItem('user');
+  }
 }
