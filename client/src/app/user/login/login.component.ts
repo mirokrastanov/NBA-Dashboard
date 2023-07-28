@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginUser } from 'src/app/util/user-interfaces';
@@ -18,7 +18,7 @@ export class LoginComponent {
   errorMessage: string | null = null;
   isLoggingIn: boolean = false;
 
-  login(form: NgForm): void {
+  onLogin(form: NgForm): void {
     const formEmail: AbstractControl<any> = form.controls['email'];
     const formPassword: AbstractControl<any> = form.controls['password'];
     const params: LoginUser = {
@@ -39,10 +39,11 @@ export class LoginComponent {
     }
 
     this.authService.login(params).subscribe({
-      next: (data) => {
+      next: (response) => {
         this.isLoggingIn = false;
         this.errorMessage = null;
-        localStorage.setItem('user', JSON.stringify(data.user));
+        form.reset();
+        localStorage.setItem('user', JSON.stringify(response.user));
         this.router.navigate(['/dashboard']);
       },
       error: (err) => {
@@ -54,7 +55,7 @@ export class LoginComponent {
     });
   }
 
-  recoverPassword(form: NgForm): void {
+  onRecoverPassword(form: NgForm): void {
 
   }
 
