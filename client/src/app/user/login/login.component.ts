@@ -28,36 +28,29 @@ export class LoginComponent {
     this.isLoggingIn = true;
     this.errorMessage = null;
 
-    if (params.email == '' || params.password == '') {
-      this.errorMessage = 'Inputs cannot be empty'
-    } else if (!formEmail.valid) {
-      this.errorMessage = 'Invalid Email'
-    } else if (!formPassword.valid) {
-      this.errorMessage = 'Password must be longer than 6 characters'
-    }
+    if (params.email == '' || params.password == '') this.errorMessage = 'Inputs cannot be empty';
+    else if (!formEmail.valid) this.errorMessage = 'Invalid Email';
+    else if (!formPassword.valid) this.errorMessage = 'Password must be 6 or more characters';
+
     if (this.errorMessage != null) {
-      setTimeout(() => {
-        this.errorMessage = null;
-      }, 5000);
-      setTimeout(() => {
-        this.isLoggingIn = false;
-      }, 1000);
+      setTimeout(() => { this.errorMessage = null }, 5000);
+      setTimeout(() => { this.isLoggingIn = false }, 1000);
       return;
     }
 
-    this.authService.login(params).subscribe(
-      () => {
+    this.authService.login(params).subscribe({
+      next: () => {
         this.isLoggingIn = false;
         this.errorMessage = null;
         this.router.navigate(['/dashboard']);
       },
-      (error: any) => {
+      error: (err) => {
         this.isLoggingIn = false;
-        this.errorMessage = error.message;
-        setTimeout(() => {
-          this.errorMessage = null;
-        }, 5000);
-      })
+        this.errorMessage = err.message;
+        setTimeout(() => { this.errorMessage = null }, 5000);
+      },
+      complete: () => { }
+    });
   }
 
   recoverPassword(form: NgForm): void {
