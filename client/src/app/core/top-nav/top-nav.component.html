@@ -24,7 +24,7 @@
         </span>
     </div>
 
-    <a class="profile" [routerLink]="['/user/profile']" data-tooltip="Profile">
+    <a *ngIf="isAuthenticated" class="profile" [routerLink]="['/user/profile']" data-tooltip="Profile">
         <div class="info">
             <small class="text-muted">Hello</small>
             <p id="user-link"><b>Username</b></p>
