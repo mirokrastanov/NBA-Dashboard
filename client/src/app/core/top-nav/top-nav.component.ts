@@ -1,14 +1,22 @@
 import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AuthService } from 'src/app/user/auth.service';
 
 @Component({
   selector: 'app-top-nav',
   templateUrl: './top-nav.component.html',
   styleUrls: ['./top-nav.component.css']
 })
-export class TopNavComponent {
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+export class TopNavComponent implements OnInit {
+  constructor(@Inject(DOCUMENT) private document: Document, private authService: AuthService) { }
   aside = () => this.document.body.querySelector('aside')!;
+
+  isAuthenticated: any = false;
+
+  ngOnInit(): void {
+    this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
+    
+  }
 
   menuHandler(): void {
     this.aside().style.display = 'block';
