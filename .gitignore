@@ -54,6 +54,7 @@ _templates/
 # JS Dependency directories
 node_modules/
 jspm_packages/
+.firebase/
 
 # API KEYS & private variables
 _private/
