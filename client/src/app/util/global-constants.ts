@@ -4,7 +4,7 @@ export const noProxy: string = 'https://';
 export const nbaAPIdomain: string = 'www.balldontlie.io/api/v1';
 
 // API - A BACKUP OPTION if needed as it has very limited data and a lot of important information missing
-export const endpointsNBA: any = { 
+export const endpointsNBA: any = {
     players: nbaAPIdomain + '/players',
     teams: nbaAPIdomain + '/teams',
     games: nbaAPIdomain + '/games',
@@ -13,6 +13,16 @@ export const endpointsNBA: any = {
 };
 
 // MY Firebase DB - with scraped data - TODO: deploy the scraper online so it updates it on certain interval
+export const firebaseConfig = {
+    apiKey: "AIzaSyAoQvUDD11vzDNgv9kuBlnnyDquxvHYQWI",
+    authDomain: "nba-1-480a7.firebaseapp.com",
+    databaseURL: "https://nba-1-480a7-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "nba-1-480a7",
+    storageBucket: "nba-1-480a7.appspot.com",
+    messagingSenderId: "130806097515",
+    appId: "1:130806097515:web:b478223fb8d42565bab32e"
+};
+
 export const dbROOT: string = 'https://nba-1-480a7-default-rtdb.europe-west1.firebasedatabase.app/';
 export const dbSuffix: string = '.json';
 export const dbTarget: {} | string = {
