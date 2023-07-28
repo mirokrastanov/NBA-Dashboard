@@ -10,7 +10,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   constructor(@Inject(DOCUMENT) private document: Document) { }
   aside = () => this.document.body.querySelector('aside')!;
 
-  isLogged: boolean = false;
+  isLogged: boolean = localStorage.getItem('user') ? true : false;
+  // TODO: add additional firebase auth based state checking
 
   intervals: any[] = [];
 
