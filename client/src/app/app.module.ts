@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { NbaModule } from './nba/nba.module';
 import { UserModule } from './user/user.module';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { firebaseConfig } from './util/global-constants';
 
 @NgModule({
@@ -25,7 +26,7 @@ import { firebaseConfig } from './util/global-constants';
     NbaModule,
     UserModule,
     AngularFireModule.initializeApp(firebaseConfig),
-
+    AngularFireAuthModule,
 
 
     AppRoutingModule, // SHOULD REMAIN LAST !!!
