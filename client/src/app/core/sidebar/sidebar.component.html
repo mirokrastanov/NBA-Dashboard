@@ -28,19 +28,22 @@
             <span class="material-icons-sharp">person</span>
             <h3>Players</h3>
         </a>
-        <a data-tooltip="Transactions" [routerLink]="['/nba/transactions']" [routerLinkActive]="['active']">
+        <a *ngIf="isAuthenticated" data-tooltip="Transactions" [routerLink]="['/nba/transactions']"
+            [routerLinkActive]="['active']">
             <span class="material-icons-sharp">currency_exchange</span>
             <h3>Transactions</h3>
         </a>
-        <a data-tooltip="News" [routerLink]="['/nba/news']" [routerLinkActive]="['active']">
+        <a *ngIf="isAuthenticated" data-tooltip="News" [routerLink]="['/nba/news']" [routerLinkActive]="['active']">
             <span class="material-icons-sharp">feed</span>
             <h3>News</h3>
         </a>
-        <a data-tooltip="Analysis" [routerLink]="['/nba/analysis']" [routerLinkActive]="['active']">
+        <a *ngIf="isAuthenticated" data-tooltip="Analysis" [routerLink]="['/nba/analysis']"
+            [routerLinkActive]="['active']">
             <span class="material-icons-sharp">insights</span>
             <h3>Analysis</h3>
         </a>
-        <a *ngIf="isAuthenticated" data-tooltip="profile" [routerLink]="['/user/profile']" [routerLinkActive]="['active']">
+        <a *ngIf="isAuthenticated" data-tooltip="profile" [routerLink]="['/user/profile']"
+            [routerLinkActive]="['active']">
             <span class="material-icons-sharp">manage_accounts</span>
             <h3>My Profile</h3>
         </a>
@@ -48,7 +51,8 @@
             <span class="material-icons-sharp">add</span>
             <h3>Login</h3>
         </a>
-        <a *ngIf="!isAuthenticated" data-tooltip="Register" [routerLink]="['/user/register']" [routerLinkActive]="['active']">
+        <a *ngIf="!isAuthenticated" data-tooltip="Register" [routerLink]="['/user/register']"
+            [routerLinkActive]="['active']">
             <span class="material-icons-sharp">person_add_alt</span>
             <h3>Register</h3>
         </a>
