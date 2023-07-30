@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoginUser, RegisterUser } from '../util/user-interfaces';
 import { BehaviorSubject, Observable, from, of } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,27 +10,25 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 export class AuthService {
   constructor(
-    public fireAuth: AngularFireAuth
+    public fireAuth: AngularFireAuth,
+    private router: Router,
   ) { this.authStatusListener(); }
 
   isAuthenticated: boolean = false;
   currentUser: any = undefined;
-  private authStatusSub = new BehaviorSubject(this.currentUser);
-  currentAuthStatus = this.authStatusSub.asObservable();
 
   authStatusListener(): void {
     this.fireAuth.onAuthStateChanged((credential) => {
       if (credential) {
         this.isAuthenticated = true;
+        this.currentUser = credential;
         if (!localStorage.getItem('user')) {
           console.log(credential);
-          this.authStatusSub.next(credential);
           localStorage.setItem('user', JSON.stringify(credential));
           console.log('User is logged in');
-        }        
+        }
       } else {
         this.isAuthenticated = false;
-        this.authStatusSub.next(null);
         if (localStorage.getItem('user')) {
           localStorage.removeItem('user');
           console.log('User is logged out');
@@ -57,5 +56,6 @@ export class AuthService {
   logout(): void {
     this.fireAuth.signOut();
     this.authStatusListener();
+    this.router.navigate(['/dashboard']);
   }
 }
