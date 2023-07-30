@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ErrorComponent } from '../core/error/error.component';
+import { AuthActivate } from '../guards/auth.activate';
 
 const routes: Routes = [
     {
@@ -12,7 +13,7 @@ const routes: Routes = [
             { path: '', component: ErrorComponent },
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
-            { path: 'profile', component: ProfileComponent },
+            { path: 'profile', component: ProfileComponent, canActivate: [AuthActivate] },
         ],
     },
 ];
