@@ -7,6 +7,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { NewsComponent } from './news/news.component';
 import { AnalysisComponent } from './analysis/analysis.component';
 import { ErrorComponent } from '../core/error/error.component';
+import { AuthActivate } from '../guards/auth.activate';
 
 const routes: Routes = [
     {
@@ -16,9 +17,9 @@ const routes: Routes = [
             { path: 'standings', component: StandingsComponent },
             { path: 'teams', component: TeamsComponent },
             { path: 'players', component: PlayersComponent },
-            { path: 'transactions', component: TransactionsComponent },
-            { path: 'news', component: NewsComponent },
-            { path: 'analysis', component: AnalysisComponent },
+            { path: 'transactions', component: TransactionsComponent, canActivate: [AuthActivate] },
+            { path: 'news', component: NewsComponent, canActivate: [AuthActivate] },
+            { path: 'analysis', component: AnalysisComponent, canActivate: [AuthActivate] },
         ]
     },
 ];
