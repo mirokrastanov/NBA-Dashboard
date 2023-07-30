@@ -27,7 +27,10 @@
     <a *ngIf="isAuthenticated" class="profile" [routerLink]="['/user/profile']" data-tooltip="Profile">
         <div class="info">
             <small class="text-muted">Hello</small>
-            <p id="user-link"><b>Username</b></p>
+            <p id="user-link">
+                <b *ngIf="isAuthenticated">{{currentUser.displayName}}</b>
+                <b *ngIf="!isAuthenticated">Username</b>
+            </p>
         </div>
         <div class="profile-photo">
             <span class="material-icons-sharp">
