@@ -12,6 +12,7 @@ export class AuthService {
     public fireAuth: AngularFireAuth
   ) { this.authStatusListener(); }
 
+  isAuthenticated: boolean = false;
   currentUser: any = undefined;
   private authStatusSub = new BehaviorSubject(this.currentUser);
   currentAuthStatus = this.authStatusSub.asObservable();
@@ -19,13 +20,15 @@ export class AuthService {
   authStatusListener(): void {
     this.fireAuth.onAuthStateChanged((credential) => {
       if (credential) {
+        this.isAuthenticated = true;
         if (!localStorage.getItem('user')) {
           console.log(credential);
           this.authStatusSub.next(credential);
           localStorage.setItem('user', JSON.stringify(credential));
           console.log('User is logged in');
-        }
+        }        
       } else {
+        this.isAuthenticated = false;
         this.authStatusSub.next(null);
         if (localStorage.getItem('user')) {
           localStorage.removeItem('user');
@@ -53,6 +56,6 @@ export class AuthService {
 
   logout(): void {
     this.fireAuth.signOut();
-    localStorage.removeItem('user');
+    this.authStatusListener();
   }
 }
