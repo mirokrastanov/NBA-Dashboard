@@ -12,10 +12,14 @@ export class TopNavComponent implements OnInit {
   aside = () => this.document.body.querySelector('aside')!;
 
   isAuthenticated: any = false;
+  get currentUser(): any {
+    return this.authService.currentUser;
+  }
+
 
   ngOnInit(): void {
     this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
-    
+
   }
 
   menuHandler(): void {
