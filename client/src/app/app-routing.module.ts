@@ -29,6 +29,7 @@ export class AppRoutingModule {
         }
 
         this.authService.authStatusListener();
+        console.log('Authenticated: ', authService.isAuthenticated);
       }
     });
   }
