@@ -12,6 +12,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
   aside = () => this.document.body.querySelector('aside')!;
 
   isAuthenticated: any = false;
+  get currentUser(): any {
+    return this.authService.currentUser;
+  }
 
   intervals: any[] = [];
 
@@ -38,7 +41,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   onLogout(): void {
-    this.authService.logout();
     this.isAuthenticated = false;
+    this.authService.logout();
   }
 }
