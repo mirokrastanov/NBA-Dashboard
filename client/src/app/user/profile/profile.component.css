@@ -2,7 +2,7 @@
     background-color: var(--color-light);
     padding: 10px 30px;
     font-size: 20px;
-    border-radius: 20px;
+    border-radius: 13px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -11,13 +11,12 @@
 }
 
 .ques p {
+    color: var(--color-dark);
     letter-spacing: 0.025em;
-    transition: all 0.3s ease-in-out;
 }
 
-.ques:hover p {
-    color: var(--color-primary);
-    margin-left: 0.6rem;
+.ques:hover {
+    background-color: var(--color-dark-variant-2);
 }
 
 .ans {
@@ -25,7 +24,7 @@
     width: 100%;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 13px 13px;
 }
 
 .fav span {
@@ -43,6 +42,8 @@
 }
 
 .fav {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
+    border-radius: 13px;
     width: 100%;
 }
 
@@ -51,7 +52,13 @@
 }
 
 .fav.fav-active .ques {
-    border-radius: 20px 20px 0 0;
+    border-radius: 13px 13px 0 0;
+}
+
+.fav.fav-active .ques p,
+.fav.fav-active .ques span {
+    font-weight: 700;
+    color: var(--color-primary);
 }
 
 .fav-active span {
@@ -59,8 +66,9 @@
 }
 
 .ans p {
-    background-color: aqua;
-    padding: 5px 30px;
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    padding: 10px 30px;
     font-size: 20px;
-    border-top: 1px solid var(--color-background);
+    border-top: 2px solid var(--color-background);
 }
