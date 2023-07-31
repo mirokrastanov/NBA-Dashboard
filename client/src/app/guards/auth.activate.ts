@@ -15,7 +15,7 @@ export class AuthActivate implements CanActivate {
         | Observable<boolean | UrlTree>
         | Promise<boolean | UrlTree> {
 
-        if (this.authService.isAuthenticated) {
+        if (this.authService.currentUser != null ? true : false) {
             return true;
         } else {
             this.router.navigate(['/user/login']);

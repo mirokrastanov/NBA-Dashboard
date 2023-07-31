@@ -29,7 +29,7 @@ export class AppRoutingModule {
         }
 
         this.authService.authStatusListener();
-        console.log('Authenticated: ', authService.isAuthenticated);
+        console.log('Authenticated: ', authService.currentUser != null ? true : false);
       }
     });
   }

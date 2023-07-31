@@ -12,13 +12,15 @@ export class AuthService {
   constructor(
     public fireAuth: AngularFireAuth,
     private router: Router,
-  ) { this.authStatusListener(); }
+  ) {
+    this.authStatusListener();
+  }
 
-  isAuthenticated: boolean = false;
+  isAuthenticated: boolean = this.fireAuth.currentUser != null ? true : false;
   currentUser: any = undefined;
 
   authStatusListener(): void {
-    this.fireAuth.onAuthStateChanged((credential) => {
+    this.fireAuth.onAuthStateChanged(async (credential) => {
       if (credential) {
         this.isAuthenticated = true;
         this.currentUser = credential;

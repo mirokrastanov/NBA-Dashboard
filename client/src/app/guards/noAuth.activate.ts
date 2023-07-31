@@ -8,11 +8,6 @@ import { AuthService } from "../user/auth.service";
 export class NoAuthActivate implements CanActivate {
     constructor(private authService: AuthService, private router: Router) { }
 
-    get isAuthenticated(): any {
-        this.authService.authStatusListener();
-        return localStorage.getItem('user');
-    }
-
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot):
@@ -20,7 +15,8 @@ export class NoAuthActivate implements CanActivate {
         | Observable<boolean | UrlTree>
         | Promise<boolean | UrlTree> {
 
-        if (this.isAuthenticated) {
+        
+        if (localStorage.getItem('user')) {
             this.router.navigate(['/dashboard']);
             alert('You are already logged in. Redirecting you to the dashboard!');
             return false;
