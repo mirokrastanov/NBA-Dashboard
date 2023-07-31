@@ -47,15 +47,15 @@ export class RegisterComponent {
       setTimeout(() => { this.isLoggingIn = false }, 1000);
       return;
     }
-    
+
     this.authService.register(params).subscribe({
       next: (response) => {
         this.isLoggingIn = false;
         this.errorMessage = null;
+        // response.user.updateProfile({ displayName: formUsername.value });
         this.authService.authStatusListener();
-        this.authService.updateProfile({
-          displayName: formUsername.value,
-        });
+        this.authService.updateProfile({ displayName: formUsername.value });
+        this.authService.sendVerificationEmail();
         form.reset();
         localStorage.setItem('user', JSON.stringify(response.user));
         this.router.navigate(['/dashboard']);
