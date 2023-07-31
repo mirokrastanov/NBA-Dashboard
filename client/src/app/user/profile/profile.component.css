@@ -1,3 +1,7 @@
+.content-full {
+    grid-template-columns: 1fr;
+}
+
 .ques {
     background-color: var(--color-light);
     padding: 10px 30px;
@@ -11,6 +15,7 @@
 }
 
 .ques p {
+    width: 100%;
     color: var(--color-dark);
     letter-spacing: 0.025em;
 }
