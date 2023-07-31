@@ -3,7 +3,8 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
 
 :root {
-    --color-primary: #257fe6; /* #6C9BCF | #45f3ff */
+    --color-primary: #257fe6;
+    /* #6C9BCF | #45f3ff */
     --color-primary-o-05: #6c9acf85;
     --color-danger: #FF0060;
     --color-success: #1B9C85;
@@ -500,12 +501,15 @@ main .recent-orders a {
 
 .nav .profile .profile-photo span {
     font-size: 40px;
+    color: var(--color-primary);
 }
 
-.nav .profile:hover::after {
+.nav .profile:hover::after,
+.nav .dark-mode:hover::after {
     position: absolute;
-    top: 60px;
+    top: 70px;
     content: attr(data-tooltip);
+    letter-spacing: 0.025em;
     color: var(--color-primary);
     opacity: 1;
     background-color: var(--color-light);
@@ -543,6 +547,10 @@ main .recent-orders a {
     margin-bottom: 0.2rem;
 }
 
+.nav .profile .info * {
+    color: var(--color-primary);
+}
+
 .nav form {
     width: 55%;
 }
@@ -564,6 +572,11 @@ main .recent-orders a {
     width: 100%;
     color: var(--color-dark);
     border: 2px solid var(--color-primary);
+}
+
+#search-ctr > div > input[type=search] {
+    font-size: 18px;
+    letter-spacing: 0.025em;
 }
 
 .nav form .form-input button {
@@ -620,6 +633,7 @@ main .recent-orders a {
 
     aside .sidebar a:hover::after {
         content: attr(data-tooltip);
+        letter-spacing: 0.05em;
         background-color: var(--color-light);
         opacity: 1;
         padding: 3px 10px;
