@@ -1,0 +1,66 @@
+.ques {
+    background-color: var(--color-light);
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.ques p {
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease-in-out;
+}
+
+.ques:hover p {
+    color: var(--color-primary);
+    margin-left: 0.6rem;
+}
+
+.ans {
+    max-height: 0px;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    border-radius: 0 0 20px 20px;
+}
+
+.fav span {
+    font-size: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.fav-list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.fav {
+    width: 100%;
+}
+
+.fav.fav-active .ans {
+    max-height: fit-content;
+}
+
+.fav.fav-active .ques {
+    border-radius: 20px 20px 0 0;
+}
+
+.fav-active span {
+    transform: rotate(45deg);
+}
+
+.ans p {
+    background-color: aqua;
+    padding: 5px 30px;
+    font-size: 20px;
+    border-top: 1px solid var(--color-background);
+}
