@@ -15,8 +15,10 @@ export class LoginComponent {
     private router: Router,
     private authService: AuthService,
   ) { }
+
   errorMessage: string | null = null;
   isLoggingIn: boolean = false;
+  isRecoveringPassword: boolean = false;
 
   onLogin(form: NgForm): void {
     const formEmail: AbstractControl<any> = form.controls['email'];
@@ -56,7 +58,21 @@ export class LoginComponent {
   }
 
   onRecoverPassword(form: NgForm): void {
-
+    this.isRecoveringPassword = true;
+    this.authService.recoverPassword(form.controls['email'].value).subscribe({
+      next: (response) => {
+        this.isRecoveringPassword = false;
+        this.errorMessage = null;
+        form.reset();
+        alert('Success! You can recover your password in your email account.');
+      },
+      error: (err) => {
+        this.isRecoveringPassword = false;
+        this.errorMessage = err.message;
+        setTimeout(() => { this.errorMessage = null }, 5000);
+      },
+      complete: () => { }
+    });
   }
 
 }
