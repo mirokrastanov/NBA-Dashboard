@@ -15,21 +15,20 @@ export class AuthService {
   ) { this.authStatusListener(); }
 
   isAuthenticated: boolean = false;
-  currentUser: unknown = undefined;
+  currentUser: any = undefined;
 
   authStatusListener(): void {
     this.fireAuth.onAuthStateChanged((credential) => {
       if (credential) {
         this.isAuthenticated = true;
         this.currentUser = credential;
+        localStorage.setItem('user', JSON.stringify(credential));
         if (!localStorage.getItem('user')) {
           console.log(credential);
-          localStorage.setItem('user', JSON.stringify(credential));
           console.log('User is logged in');
         }
       } else {
         this.isAuthenticated = false;
-        this.currentUser = null;
         if (localStorage.getItem('user')) {
           localStorage.removeItem('user');
           console.log('User is logged out');
@@ -57,5 +56,13 @@ export class AuthService {
   logout(): void {
     this.fireAuth.signOut();
     this.router.navigate(['/dashboard']);
+  }
+
+  recoverPassword(email: string): Observable<void> {
+    return from(this.fireAuth.sendPasswordResetEmail(email));
+  }
+
+  async sendVerificationEmail(): Promise<any> {
+    return (await this.fireAuth.currentUser)?.sendEmailVerification();
   }
 }
