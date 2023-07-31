@@ -33,9 +33,10 @@ export class PlayersComponent implements OnInit {
       },
       complete: () => {
         this.unsubscribed = true;
-        console.log('Subscription ended! Players data fetched!');
+        console.log('Players data fetched!');
       },
     });
+    // this.apiService.testFetch();
   }
 
 
