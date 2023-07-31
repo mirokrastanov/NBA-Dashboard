@@ -3,6 +3,7 @@ import { AbstractControl, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginUser, RegisterUser } from 'src/app/util/user-interfaces';
 import { AuthService } from '../auth.service';
+import { Database, set, ref, update } from '@angular/fire/database';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class RegisterComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
+    public database: Database,
   ) { }
   errorMessage: string | null = null;
   isLoggingIn: boolean = false;
@@ -56,8 +58,13 @@ export class RegisterComponent {
         this.authService.authStatusListener();
         this.authService.updateProfile({ displayName: formUsername.value });
         this.authService.sendVerificationEmail();
-        form.reset();
         localStorage.setItem('user', JSON.stringify(response.user));
+        set(ref(this.database, 'users/' + response.user.uid), {
+          name: formUsername.value,
+          email: formEmail.value,
+          uid: response.user.uid,
+        });
+        form.reset();
         this.router.navigate(['/dashboard']);
       },
       error: (err) => {
