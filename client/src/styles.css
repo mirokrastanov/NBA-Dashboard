@@ -269,75 +269,75 @@ main {
     grid-area: main;
 }
 
-main .analyse {
+main .content-lg {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.6rem;
 }
 
-main .analyse>div {
+main .content-lg>div {
     background-color: var(--color-white);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
     margin-top: 1rem;
     box-shadow: var(--box-shadow);
-    cursor: pointer;
+    /* cursor: pointer; */
     transition: all 0.3s ease;
 }
 
-main .analyse>div:hover {
+main .content-lg>div:hover {
     box-shadow: none;
 }
 
-main .analyse>div .status {
+main .content-lg>div .status {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-main .analyse h3 {
+main .content-lg h3 {
     margin-left: 0.6rem;
     font-size: 1rem;
 }
 
-main .analyse .progresss {
+main .content-lg .progresss {
     position: relative;
     width: 92px;
     height: 92px;
     border-radius: 50%;
 }
 
-main .analyse svg {
+main .content-lg svg {
     width: 7rem;
     height: 7rem;
 }
 
-main .analyse svg circle {
+main .content-lg svg circle {
     fill: none;
     stroke-width: 10;
     stroke-linecap: round;
     transform: translate(5px, 5px);
 }
 
-main .analyse .sales svg circle {
+main .content-lg .sales svg circle {
     stroke: var(--color-success);
     stroke-dashoffset: 350;
     stroke-dasharray: 440;
 }
 
-main .analyse .visits svg circle {
+main .content-lg .visits svg circle {
     stroke: var(--color-danger);
     stroke-dashoffset: 0;
     stroke-dasharray: 440;
 }
 
-main .analyse .searches svg circle {
+main .content-lg .searches svg circle {
     stroke: var(--color-primary);
     stroke-dashoffset: -30;
     stroke-dasharray: 200;
 }
 
-main .analyse .progresss .percentage {
+main .content-lg .progresss .percentage {
     position: absolute;
     top: -3px;
     left: -1px;
@@ -348,7 +348,7 @@ main .analyse .progresss .percentage {
     width: 100%;
 }
 
-main .analyse .progresss .percentage p {
+main .content-lg .progresss .percentage p {
     font-size: 22px;
     font-weight: 700;
 }
@@ -632,7 +632,7 @@ main .recent-orders a {
         padding-right: 2%;
     }
 
-    main .analyse {
+    main .content-lg {
         grid-template-columns: 1fr;
         gap: 0;
     }
