@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
-
+    
     // console.log(window.innerWidth + 'x' + window.innerHeight);
     let interval = setInterval(() => {
       if (window.innerWidth > 768) {
@@ -41,7 +41,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   onLogout(): void {
-    this.isAuthenticated = false;
     this.authService.logout();
+    this.authService.authStatusListener();
+    this.isAuthenticated = false;
   }
 }
