@@ -15,7 +15,7 @@ export class AuthService {
   ) { this.authStatusListener(); }
 
   isAuthenticated: boolean = false;
-  currentUser: any = undefined;
+  currentUser: unknown = undefined;
 
   authStatusListener(): void {
     this.fireAuth.onAuthStateChanged((credential) => {
@@ -29,6 +29,7 @@ export class AuthService {
         }
       } else {
         this.isAuthenticated = false;
+        this.currentUser = null;
         if (localStorage.getItem('user')) {
           localStorage.removeItem('user');
           console.log('User is logged out');
@@ -55,7 +56,6 @@ export class AuthService {
 
   logout(): void {
     this.fireAuth.signOut();
-    this.authStatusListener();
     this.router.navigate(['/dashboard']);
   }
 }
