@@ -11,8 +11,8 @@ export class ProfileComponent {
 
   onFavClick(e: MouseEvent): void {
     const subTarget: HTMLElement | EventTarget | any = e.target!;
-    if (!subTarget.classList.contains('ques')) return;
-    
+    if (subTarget.parentElement.classList.contains('ans')) return;
+
     const target: HTMLElement | EventTarget | any = e.currentTarget!;
     const ques = this.document.querySelectorAll('.fav');
 
