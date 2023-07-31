@@ -25,14 +25,14 @@
                 </label>
                 <i></i>
             </div>
-            <button *ngIf="!isLoggingIn" type="submit">Login</button>
-            <button *ngIf="isLoggingIn" type="submit" disabled class="spinner-ctr">
+            <button *ngIf="!isLoggingIn && !isRecoveringPassword" type="submit">Login</button>
+            <button *ngIf="isLoggingIn || isRecoveringPassword" type="submit" disabled class="spinner-ctr">
                 <app-spinner id="spinner"></app-spinner>
             </button>
             <div class="links">
                 <span>Not a member?</span><a [routerLink]="['/user/register']">Register Here</a>
             </div>
-            <div class="links recover">
+            <div class="links recover" *ngIf="!isRecoveringPassword">
                 <span (click)="onRecoverPassword(loginForm)"
                     data-tooltip="Enter your Email. We will send you recovery instructions."
                     [ngClass]="!emailInput.errors?.['email'] && !emailInput.errors?.['required'] ? 'valid-recover' : ''">Recover
