@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "nba-1-480a7"
+  },
+  "targets": {
+    "nba-1-480a7": {
+      "hosting": {
+        "client": [
+          "nba-1-480a7"
+        ]
+      }
+    }
   }
 }
