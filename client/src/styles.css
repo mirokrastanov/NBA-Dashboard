@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
 
 :root {
-    --color-primary: #6C9BCF; /* #6C9BCF | #45f3ff */
+    --color-primary: #257fe6; /* #6C9BCF | #45f3ff */
     --color-primary-o-05: #6c9acf85;
     --color-danger: #FF0060;
     --color-success: #1B9C85;
@@ -13,6 +13,7 @@
     --color-dark: #363949;
     --color-light: rgba(132, 139, 200, 0.18);
     --color-dark-variant: #677483;
+    --color-dark-variant-2: #c1c9d3a1;
     --color-background: #f6f6f9;
 
     --card-border-radius: 2rem;
@@ -31,6 +32,7 @@
     --color-white: #202528;
     --color-dark: #edeffd;
     --color-dark-variant: #a3bdcc;
+    --color-dark-variant-2: #2a2e33a2;
     --color-light: rgba(0, 0, 0, 0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
 }
