@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { endpointsNBA, proxy, noProxy } from '../util/global-constants';
+import { endpointsNBA, proxy, noProxy, dbROOT, dbSuffix } from '../util/global-constants';
 import { EMPTY } from 'rxjs'; // returns an empty observable
 import { Database, set, ref, update } from '@angular/fire/database';
 
@@ -19,6 +19,9 @@ export class NbaApiService {
     return this.http.get<any>(proxy + address);
   }
 
+  firebaseDbFetch(dbTarget: string) {
+    return this.http.get<any>(dbROOT + dbTarget + dbSuffix);
+  }
 
   // testFetch(): void {
   //   set(ref(this.database, 'users/' + 'test'), {
