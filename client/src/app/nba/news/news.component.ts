@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { NbaApiService } from '../nba-api.service';
 import { News } from '../nba-types';
 import { dbTarget } from 'src/app/util/global-constants';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-news',
@@ -9,7 +10,10 @@ import { dbTarget } from 'src/app/util/global-constants';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent {
-  constructor(private apiService: NbaApiService) { }
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private apiService: NbaApiService
+  ) { }
   newsArray: News[] | null = null;
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
@@ -21,7 +25,7 @@ export class NewsComponent {
         this.newsArray = data;
         console.log(this.newsArray);
         console.log(this.newsArray![0]);
-        
+
         this.isLoading = false;
       },
       error: (err) => {
@@ -37,5 +41,20 @@ export class NewsComponent {
   }
 
 
+  onFavClick(e: MouseEvent): void {
+    const subTarget: HTMLElement | EventTarget | any = e.target!;
+    if (subTarget.parentElement.classList.contains('ans')) return;
+
+    const target: HTMLElement | EventTarget | any = e.currentTarget!;
+    const ques = this.document.querySelectorAll('.fav');
+
+    if (target.classList.contains('fav-active')) target.classList.remove('fav-active');
+    else {
+      target.classList.add('fav-active');
+      ques.forEach(x => {
+        if (x != target) x.classList.remove('fav-active');
+      })
+    }
+  }
 
 }
