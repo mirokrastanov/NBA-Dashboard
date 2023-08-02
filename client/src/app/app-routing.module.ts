@@ -7,8 +7,8 @@ import { AuthService } from './user/auth.service';
 
 
 const routes: Routes = [ // UPPER/LOWER CASE MATTERS !!!!!!! routerLink in the html should MATCH IT!!!
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: '', component: DashboardComponent },
+  { path: 'dashboard', redirectTo: '/', pathMatch: 'full' },
 
 
   { path: '**', component: ErrorComponent }, // SHOULD REMAIN LAST !!!
