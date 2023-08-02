@@ -7,7 +7,7 @@
 <div *ngIf="!isLoading" class="content-lg content-full">
     <div class="user-favorites">
         <div class="fav-list">
-            <div class="fav" (click)="onFavClick($event)" *ngFor="let item of newsArray">
+            <div class="fav" (click)="onFavClick($event)" *ngFor="let item of newsArray; let i = index">
                 <div class="ques">
                     <p>{{item.title}}</p>
                     <span class="material-icons-sharp">add</span>
@@ -20,7 +20,7 @@
                     </div>
                     <div>
                         <p>Source: {{item.sourceTxt}}</p>
-                        <a>Read more...</a>
+                        <a (click)="onReadMoreClick($event)" [attr.data-index]="i">Read more...</a>
                     </div>
                 </div>
             </div>
