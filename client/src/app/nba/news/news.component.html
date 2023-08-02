@@ -1,6 +1,10 @@
 <h1>News</h1>
 
-<div class="content-lg content-full">
+<div *ngIf="isLoading">
+    <app-global-loader></app-global-loader>
+</div>
+
+<div *ngIf="!isLoading" class="content-lg content-full">
     <div class="user-favorites">
         <div class="fav-list">
             <div class="fav" (click)="onFavClick($event)" *ngFor="let item of newsArray">
