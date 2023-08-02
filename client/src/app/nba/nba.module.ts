@@ -29,8 +29,8 @@ import { NewsItemComponent } from './news-item/news-item.component';
     CommonModule,
     SharedModule,
     UserModule,
-    NbaRoutingModule,
     CoreModule,
+    NbaRoutingModule,
   ],
   exports: [
     PlayersComponent,
@@ -40,6 +40,7 @@ import { NewsItemComponent } from './news-item/news-item.component';
     TransactionsComponent,
     NewsComponent,
     AnalysisComponent,
+    NewsItemComponent,
   ],
 })
 export class NbaModule { }
