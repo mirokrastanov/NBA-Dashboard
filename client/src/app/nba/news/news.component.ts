@@ -43,10 +43,14 @@ export class NewsComponent {
 
   onFavClick(e: MouseEvent): void {
     const subTarget: HTMLElement | EventTarget | any = e.target!;
-    if (subTarget.parentElement.classList.contains('ans')) return;
+    if (subTarget.parentElement.parentElement.classList.contains('ans')
+      || subTarget.parentElement.classList.contains('ans')
+      || subTarget.classList.contains('ans')) return;
 
     const target: HTMLElement | EventTarget | any = e.currentTarget!;
     const ques = this.document.querySelectorAll('.fav');
+    // console.log('sub target -->', subTarget);
+    // console.log('target -->', target);
 
     if (target.classList.contains('fav-active')) target.classList.remove('fav-active');
     else {
