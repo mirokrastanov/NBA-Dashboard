@@ -3,6 +3,7 @@ import { NbaApiService } from '../nba-api.service';
 import { News } from '../nba-types';
 import { dbTarget } from 'src/app/util/global-constants';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -12,7 +13,8 @@ import { DOCUMENT } from '@angular/common';
 export class NewsComponent {
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private apiService: NbaApiService
+    private apiService: NbaApiService,
+    private router: Router
   ) { }
   newsArray: News[] | null = null;
   unsubscribed: boolean = false;
@@ -40,7 +42,6 @@ export class NewsComponent {
     });
   }
 
-
   onFavClick(e: MouseEvent): void {
     const subTarget: HTMLElement | EventTarget | any = e.target!;
     if (subTarget.parentElement.parentElement.classList.contains('ans')
@@ -61,4 +62,11 @@ export class NewsComponent {
     }
   }
 
+  onReadMoreClick(e: MouseEvent): void {
+    e.preventDefault();
+    const target: HTMLElement | EventTarget | any = e.target!;
+    // console.log(target.dataset.index);
+    const currentIndex = target.dataset.index;
+    this.router.navigate([`/nba/news/${currentIndex}`]);
+  }
 }
