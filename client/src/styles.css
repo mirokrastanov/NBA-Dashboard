@@ -560,6 +560,18 @@ main .recent-orders a {
     height: 36px;
 }
 
+.nav form .form-input #search-select {
+    height: 100%;
+    width: fit-content;
+    padding-right: 2px;
+    font-size: 18px;
+    border: 2px solid var(--color-primary);
+    border-left: none;
+    border-right: none;
+    background: var(--color-white);
+    color: var(--color-dark);
+}
+
 .nav form .form-input input {
     flex-grow: 1;
     padding: 0 16px;
@@ -573,7 +585,7 @@ main .recent-orders a {
     border: 2px solid var(--color-primary);
 }
 
-#search-ctr > div > input[type=search] {
+#search-ctr>div>input[type=search] {
     font-size: 18px;
     letter-spacing: 0.025em;
 }
@@ -829,6 +841,10 @@ main .recent-orders a {
         display: none;
     }
 
+    .nav form .form-input #search-select {
+        display: none;
+    }
+
     .nav form .form-input button {
         background: transparent;
         color: var(--color-dark);
@@ -868,6 +884,10 @@ main .recent-orders a {
         display: block;
         width: 100%;
         background-color: var(--color-white);
+    }
+
+    .nav form.show .form-input #search-select {
+        display: block;
     }
 
     .nav form.show .form-input button {
