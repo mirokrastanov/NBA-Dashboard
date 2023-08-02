@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { GlobalLoaderComponent } from './global-loader/global-loader.component';
 import { ErrorComponent } from './error/error.component';
 import { UserModule } from '../user/user.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { UserModule } from '../user/user.module';
     SharedModule,
     RouterModule,
     UserModule,
+    FormsModule,
   ],
   exports: [
     DashboardComponent,
