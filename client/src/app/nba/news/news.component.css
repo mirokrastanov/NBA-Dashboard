@@ -1,3 +1,151 @@
+.content-full {
+    grid-template-columns: 1fr;
+    width: 99%;
+}
+
+.user-favorites {
+    width: fit-content;
+    margin: 10px auto;
+    width: 100%;
+}
+
+.fav {
+    max-width: 1000px;
+}
+
+.ques {
+    background-color: var(--color-light);
+    padding: 10px 30px;
+    font-size: 18px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.ques p {
+    width: 100%;
+    color: var(--color-dark);
+}
+
+.ques:hover {
+    background-color: var(--color-dark-variant-2);
+}
+
+.ans {
+    max-height: 0px;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    border-radius: 0 0 13px 13px;
+}
+
+.fav span {
+    font-size: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.fav-list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.fav {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
+    border-radius: 13px;
+    width: 100%;
+}
+
+.fav.fav-active .ans {
+    max-height: fit-content;
+}
+
+.fav.fav-active .ques {
+    border-radius: 13px 13px 0 0;
+}
+
+.fav.fav-active .ques p,
+.fav.fav-active .ques span {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.fav-active span {
+    transform: rotate(45deg);
+}
+
+.ans div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--color-light);
+    border-top: 2px solid var(--color-background);
+    height: fit-content;
+}
+
+.ans div:nth-child(1) {
+    background-color: var(--color-light);
+    border-top: 2px solid var(--color-background);
+}
+
+.ans div {
+    overflow: hidden;
+}
+
+.ans div p {
+    width: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-right: 50px;
+}
+
+.ans div p,
+.ans div a {
+    padding: 5px 20px;
+    color: var(--color-dark);
+    font-size: 14px;
+}
+
+.ans div a {
+    padding: 15px 30px;
+    display: block;
+    height: inherit;
+    color: var(--color-primary);
+    font-weight: 700;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.ans div a:hover {
+    background-color: var(--color-dark-variant-2);
+}
+
+.ans div img {
+    max-width: 500px;
+    border-radius: 15px;
+    margin: 0 auto;
+    background-color: var(--color-light);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
+}
+
+
+
+
+
+
+
+
 .news-ctr {
     background-color: var(--color-white);
     padding: 10px;
