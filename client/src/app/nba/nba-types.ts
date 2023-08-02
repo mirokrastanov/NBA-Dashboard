@@ -18,3 +18,12 @@ export interface Player {
     weight_pounds: null | number;
     team: Team;
 }
+
+export interface News {
+    body: string,
+    img: string,
+    postedOn: string,
+    sourceTxt: string,
+    sourceURL: string,
+    title: string,
+}
