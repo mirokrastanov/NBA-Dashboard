@@ -1,32 +1,35 @@
-<p>news works!</p>
+<h1>News</h1>
 
-
-
-<!-- Card template >>> TO *ngFor with data from firebase -->
-<div class="news-card" title="Click to read source">
-    <a href="" target="_blank" class="news-title">TITLE</a>
-    <p class="news-posted-on">Jul 24, 2023 5:57 PM</p>
-    <div class="news-img">
-        <a href="" target="_blank">
-            <img src="" alt="news-article-img" />
-        </a>
-    </div>
-    <div class="news-content">
-        <div class="news-body">
-            <p>BODY</p>
-        </div>
-        <div class="news-source">
-            <a href="" target="_blank">SOURCE TEXT</a>
+<div class="content-lg content-full">
+    <div class="user-favorites">
+        <div class="fav-list">
+            <div class="fav" (click)="onFavClick($event)" *ngFor="let item of newsArray">
+                <div class="ques">
+                    <p>{{item.title}}</p>
+                    <span class="material-icons-sharp">add</span>
+                </div>
+                <div class="ans">
+                    <div>
+                        <p *ngIf="item.postedOn">{{item.postedOn}}</p>
+                        <img src="{{item.img}}" alt="news-article-img" *ngIf="item.img" />
+                        <p *ngIf="item.body">{{item.body}}</p>
+                    </div>
+                    <div>
+                        <p>Source: {{item.sourceTxt}}</p>
+                        <a>Read more...</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 
-<div class="news-ctr" *ngFor="let item of newsArray">
+<!-- <div class="news-ctr" *ngFor="let item of newsArray">
     <p *ngIf="item.body">{{item.body}}</p>
     <p *ngIf="item.body">{{item.img}}</p>
     <p *ngIf="item.body">{{item.postedOn}}</p>
     <p>{{item.sourceTxt}}</p>
     <p>{{item.sourceURL}}</p>
     <p>{{item.title}}</p>
-</div>
+</div> -->
