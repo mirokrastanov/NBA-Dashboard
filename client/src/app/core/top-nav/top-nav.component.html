@@ -1,9 +1,13 @@
 <div class="nav">
-    <form id="search-ctr" action="#" #searchForm>
+    <form id="search-ctr" #searchForm="ngForm" #sForm>
         <div class="form-input">
-            <input type="search" placeholder="Search...">
+            <input name="search-string" type="search" placeholder="Search..." ngModel #input="ngModel">
+            <select name="search-select" id="search-select">
+                <option value="players">Players</option>
+                <option value="teams">Teams</option>
+            </select>
             <button class="search-btn" type="submit" #searchBtn
-                (click)="searchHandler($event, searchForm, searchBtn, searchIcon)">
+                (click)="searchHandler($event, sForm, searchBtn, searchIcon)">
                 <span class="material-icons-sharp" #searchIcon>
                     search
                 </span>
