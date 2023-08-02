@@ -20,3 +20,13 @@
         </div>
     </div>
 </div>
+
+
+<div class="news-ctr" *ngFor="let item of newsArray">
+    <p *ngIf="item.body">{{item.body}}</p>
+    <p *ngIf="item.body">{{item.img}}</p>
+    <p *ngIf="item.body">{{item.postedOn}}</p>
+    <p>{{item.sourceTxt}}</p>
+    <p>{{item.sourceURL}}</p>
+    <p>{{item.title}}</p>
+</div>
