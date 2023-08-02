@@ -11,6 +11,7 @@ import { CoreModule } from '../core/core.module';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { NewsComponent } from './news/news.component';
 import { AnalysisComponent } from './analysis/analysis.component';
+import { NewsItemComponent } from './news-item/news-item.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { AnalysisComponent } from './analysis/analysis.component';
     TransactionsComponent,
     NewsComponent,
     AnalysisComponent,
+    NewsItemComponent,
   ],
   imports: [
     CommonModule,
