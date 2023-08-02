@@ -8,6 +8,7 @@ import { NewsComponent } from './news/news.component';
 import { AnalysisComponent } from './analysis/analysis.component';
 import { ErrorComponent } from '../core/error/error.component';
 import { AuthActivate } from '../guards/auth.activate';
+import { NewsItemComponent } from './news-item/news-item.component';
 
 const routes: Routes = [
     {
@@ -19,6 +20,7 @@ const routes: Routes = [
             { path: 'players', component: PlayersComponent },
             { path: 'transactions', component: TransactionsComponent, canActivate: [AuthActivate] },
             { path: 'news', component: NewsComponent, canActivate: [AuthActivate] },
+            { path: 'news/:id', component: NewsItemComponent, canActivate: [AuthActivate] },
             { path: 'analysis', component: AnalysisComponent, canActivate: [AuthActivate] },
         ]
     },
