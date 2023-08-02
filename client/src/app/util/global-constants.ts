@@ -25,7 +25,7 @@ export const firebaseConfig = {
 
 export const dbROOT: string = 'https://nba-1-480a7-default-rtdb.europe-west1.firebasedatabase.app/';
 export const dbSuffix: string = '.json';
-export const dbTarget: {} | string = {
+export const dbTarget: any = {
     nba: {
         analysis: 'nba/analysis/data/',
         leaders: {
