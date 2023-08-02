@@ -107,6 +107,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     margin-right: 50px;
+    line-height: 2;
 }
 
 .ans div p,
