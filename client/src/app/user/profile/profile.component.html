@@ -9,21 +9,26 @@
                 <img src="../../../assets/images/user-avatar.png" alt="profile-img">
             </div>
             <div class="details-inner">
-                
+
                 <div>
-                    <p>Username: </p><p><b>{{authProfile.displayName}}</b></p>
+                    <p>Username: </p>
+                    <p><b>{{authProfile.displayName}}</b></p>
                 </div>
                 <div>
-                    <p>Email: </p><p><b>{{authProfile.email}}</b></p>
+                    <p>Email: </p>
+                    <p><b>{{authProfile.email}}</b></p>
                 </div>
                 <div>
-                    <p>Email verified: </p><p><b>{{authProfile.emailVerified ? 'Yes' : 'No'}}</b></p>
+                    <p>Email verified: </p>
+                    <p><b>{{authProfile.emailVerified ? 'Yes' : 'No'}}</b></p>
                 </div>
                 <div>
-                    <p>Created on: </p><p><b>{{authProfile.createdAt | date }}</b></p>
+                    <p>Created on: </p>
+                    <p><b>{{authProfile.createdAt | date }}</b></p>
                 </div>
                 <div>
-                    <p>Last login: </p><p><b>{{authProfile.lastLoginAt | date }}</b></p>
+                    <p>Last login: </p>
+                    <p><b>{{authProfile.lastLoginAt | date }}</b></p>
                 </div>
             </div>
         </div>
@@ -34,21 +39,27 @@
         <div class="fav-list">
             <div class="fav" (click)="onFavClick($event)">
                 <div class="ques">
-                    <p>Click to show content 1</p>
+                    <p>Players (<b>{{favPlayers.length}}</b>)</p>
                     <span class="material-icons-sharp">add</span>
                 </div>
                 <div class="ans">
-                    <p>This is content 1. Click to hide.</p>
+                    <p>This is content 1. Players below...</p>
+                    <div class="profile-fav-card" *ngFor="let item of favTeams">
+                        player card here...
+                    </div>
                 </div>
             </div>
 
             <div class="fav" (click)="onFavClick($event)">
                 <div class="ques">
-                    <p>Click to show content 2</p>
+                    <p>Teams (<b>{{favTeams.length}}</b>)</p>
                     <span class="material-icons-sharp">add</span>
                 </div>
                 <div class="ans">
-                    <p>This is content 2. Click to hide.</p>
+                    <p>This is content 2. Teams below...</p>
+                    <div class="profile-fav-card" *ngFor="let item of favTeams">
+                        player card here...
+                    </div>
                 </div>
             </div>
         </div>
