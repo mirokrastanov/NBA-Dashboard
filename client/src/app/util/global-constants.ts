@@ -48,7 +48,7 @@ export const dbTarget: any = {
         },
         transactions: 'nba/transactions/data/',
     },
-    users: {},
+    users: 'users/',
 };
 
 // TODO --> add firebase fetching URL for users + auth all
