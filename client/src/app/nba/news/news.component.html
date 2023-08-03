@@ -5,9 +5,10 @@
 </div>
 
 <div *ngIf="!isLoading" class="content-lg content-full">
-    <div class="user-favorites">
+    <div class="na-ctr">
         <div class="fav-list">
-            <div class="fav" (click)="onFavClick($event)" *ngFor="let item of newsArray; let i = index">
+            <div class="fav" (click)="onFavClick($event)"
+                *ngFor="let item of newsArray; let i = index; first as isFirst" [ngClass]="{ 'fav-active' : isFirst }">
                 <div class="ques">
                     <p>{{item.title}}</p>
                     <span class="material-icons-sharp">add</span>
