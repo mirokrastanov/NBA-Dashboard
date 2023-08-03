@@ -3,6 +3,8 @@ import { Component, Inject } from '@angular/core';
 import { Database } from '@angular/fire/database';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { NbaApiService } from 'src/app/nba/nba-api.service';
+import { dbTarget } from 'src/app/util/global-constants';
 
 @Component({
   selector: 'app-profile',
@@ -15,9 +17,10 @@ export class ProfileComponent {
     private router: Router,
     private authService: AuthService,
     public database: Database,
+    private apiService: NbaApiService,
   ) { }
-  authProfile: {} | null = null;
-  dbProfile: {} | null = null;
+  authProfile: any | null = null;
+  dbProfile: any | null = null;
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
   isLoading: boolean = true;
@@ -25,6 +28,25 @@ export class ProfileComponent {
   ngOnInit(): void {
     this.authProfile = JSON.parse(localStorage.getItem('user')!);
     console.log(this.authProfile);
+    this.apiService.firebaseDbFetch(dbTarget.users).subscribe({
+        next: (data) => {
+          Object.entries(data).filter(([key, value], i) => {
+            console.log(key, value);
+            if (this.authProfile!.uid == key) this.dbProfile = value;
+          });
+          console.log(this.dbProfile);
+          this.isLoading = false;
+        },
+        error: (err) => {
+          this.errorOccurred = true;
+          console.log(err);
+          this.isLoading = false;
+        },
+        complete: () => {
+          this.unsubscribed = true;
+          // console.log('Data fetched!');
+        },
+      });
 
 
   }
@@ -32,23 +54,6 @@ export class ProfileComponent {
   onUpdateClick(e: MouseEvent): void {
     // get Update profile from the auth service !!! >> see what fits best
 
-    // this.apiService.firebaseDbFetch().subscribe({
-    //   next: (data) => {
-    //     this.authProfile = data;
-    //     // console.log(this.authProfile);
-
-    //     this.isLoading = false;
-    //   },
-    //   error: (err) => {
-    //     this.errorOccurred = true;
-    //     console.log(err);
-    //     this.isLoading = false;
-    //   },
-    //   complete: () => {
-    //     this.unsubscribed = true;
-    //     // console.log('News item data fetched!');
-    //   },
-    // });
   }
 
   onFavClick(e: MouseEvent): void {
