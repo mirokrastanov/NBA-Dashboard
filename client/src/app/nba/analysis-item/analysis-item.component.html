@@ -1,1 +1,37 @@
-<p>analysis-item works!</p>
+<h1>Analysis > Details</h1>
+
+<div *ngIf="isLoading">
+    <app-global-loader></app-global-loader>
+</div>
+
+<div *ngIf="!isLoading" class="content-lg content-full">
+    <div class="na-ctr">
+        <div class="fav-list">
+            <div class="fav fav-active">
+                <div class="ques">
+                    <p>{{item!.title}}</p>
+                    <a [routerLink]="['/nba/analysis']">
+                        <span class="material-icons-sharp">arrow_back_ios</span>
+                        Back to Analysis
+                    </a>
+                </div>
+                <div class="ans">
+                    <div>
+                        <p *ngIf="item!.postedOn">{{item!.postedOn}}</p>
+                        <img src="{{item!.img}}" alt="article-img" *ngIf="item!.img" />
+                        <img class="img2" src="{{item!.img2}}" alt="article-img" *ngIf="!item!.img && item!.img2" />
+                        <p class="ans-body" *ngIf="item!.body">{{item!.body}}</p>
+                        <p class="ans-no-body" *ngIf="!item!.body">This article is only available on the source
+                            website.</p>
+                    </div>
+                    <div>
+                        <p>Author: {{item!.author}}</p>
+                        <a href="{{item!.sourceURL}}" target="_blank">Open Source
+                            <span class="material-icons-sharp">launch</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
