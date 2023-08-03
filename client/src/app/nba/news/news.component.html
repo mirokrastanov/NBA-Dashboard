@@ -18,11 +18,14 @@
                         <p *ngIf="item.postedOn">{{item.postedOn}}</p>
                         <img src="{{item.img}}" alt="news-article-img" *ngIf="item.img" />
                         <p *ngIf="item.body">{{item.body}}</p>
-                        <p class="ans-no-body" *ngIf="!item.body">This article is only available on the source website.</p>
+                        <p class="ans-no-body" *ngIf="!item.body">This article is only available on the source website.
+                        </p>
                     </div>
                     <div>
                         <p>Source: {{item.sourceTxt}}</p>
-                        <a *ngIf="item.body" (click)="onReadMoreClick($event)" [attr.data-index]="i">Read more...</a>
+                        <a *ngIf="item.body" (click)="onReadMoreClick($event)" [attr.data-index]="i">Read more
+                            <span class="material-icons-sharp">arrow_forward_ios</span>
+                        </a>
                         <a *ngIf="!item.body" href="{{item.sourceURL}}" target="_blank">Open Source...</a>
                     </div>
                 </div>
