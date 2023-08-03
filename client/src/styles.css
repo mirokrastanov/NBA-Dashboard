@@ -564,7 +564,8 @@ main .recent-orders a {
     height: 100%;
     width: fit-content;
     padding-right: 2px;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 700;
     border: 2px solid var(--color-primary);
     border-left: none;
     border-right: none;
