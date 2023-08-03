@@ -140,3 +140,7 @@
     pointer-events: none;
 }
 
+.ans .ans-no-body {
+    width: 100%;
+    margin: 20px;
+}
