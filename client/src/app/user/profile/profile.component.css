@@ -96,12 +96,32 @@
 .details-inner:nth-child(1) {
     width: 30%;
     min-width: 200px;
-}
-
-.details-inner:nth-child(2) {
-    width: 60%;
+    margin-right: 1%;
 }
 
 .details-inner:nth-child(1) img {
     object-fit: cover;
+}
+
+.details-inner:nth-child(2) {
+    min-width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.details-inner:nth-child(2) div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.details-inner:nth-child(2) div p {
+    font-size: 16px;
+    line-height: 2;
 }
