@@ -16,7 +16,7 @@ export class AnalysisComponent {
     private apiService: NbaApiService,
     private router: Router
   ) { }
-  newsArray: Analysis[] | null = null;
+  itemsArray: Analysis[] | null = null;
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
   isLoading: boolean = true;
@@ -24,10 +24,9 @@ export class AnalysisComponent {
   ngOnInit(): void {
     this.apiService.firebaseDbFetch(dbTarget.nba.analysis).subscribe({
       next: (data) => {
-        this.newsArray = data;
-        console.log(this.newsArray);
-        console.log(this.newsArray![0]);
-
+        this.itemsArray = data;
+        // console.log(this.itemsArray);
+        // console.log(this.itemsArray![0]);
         this.isLoading = false;
       },
       error: (err) => {
@@ -37,7 +36,7 @@ export class AnalysisComponent {
       },
       complete: () => {
         this.unsubscribed = true;
-        console.log('Analysis data fetched!');
+        // console.log('Analysis data fetched!');
       },
     });
   }
