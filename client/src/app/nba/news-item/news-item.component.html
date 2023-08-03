@@ -1,6 +1,39 @@
-<p>news-item works!</p>
+<h1>News</h1>
+
+<div *ngIf="isLoading">
+    <app-global-loader></app-global-loader>
+</div>
+
+<div *ngIf="!isLoading" class="content-lg content-full">
+    <div class="na-ctr">
+        <div class="fav-list">
+            <div class="fav fav-active">
+                <div class="ques">
+                    <p>{{newsItem!.title}}</p>
+                    <a [routerLink]="['/nba/news']">
+                        <span class="material-icons-sharp">arrow_back_ios</span>
+                        Back to News
+                    </a>
+                </div>
+                <div class="ans">
+                    <div>
+                        <p *ngIf="newsItem!.postedOn">{{newsItem!.postedOn}}</p>
+                        <img src="{{newsItem!.img}}" alt="news-article-img" *ngIf="newsItem!.img" />
+                        <p class="ans-body" *ngIf="newsItem!.body">{{newsItem!.body}}</p>
+                        <p class="ans-no-body" *ngIf="!newsItem!.body">This article is only available on the source website.</p>
+                    </div>
+                    <div>
+                        <p>Source: {{newsItem!.sourceTxt}}</p>
+                        <a href="{{newsItem!.sourceURL}}" target="_blank">Open Source...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
+<!-- <p>news-item works!</p>
 <div class="news-card" title="Click to read source">
     <a href="" target="_blank" class="news-title">TITLE</a>
     <p class="news-posted-on">Jul 24, 2023 5:57 PM</p>
@@ -17,4 +50,4 @@
             <a href="" target="_blank">SOURCE TEXT</a>
         </div>
     </div>
-</div>
+</div> -->
