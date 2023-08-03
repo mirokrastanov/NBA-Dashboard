@@ -9,11 +9,22 @@
                 <img src="../../../assets/images/user-avatar.png" alt="profile-img">
             </div>
             <div class="details-inner">
-                <p>created at: time</p>
-                <p>username</p>
-                <p>email</p>
-                <p>verified: true</p>
-                <p>last login time</p>
+                
+                <div>
+                    <p>Username: </p><p><b>{{authProfile.displayName}}</b></p>
+                </div>
+                <div>
+                    <p>Email: </p><p><b>{{authProfile.email}}</b></p>
+                </div>
+                <div>
+                    <p>Email verified: </p><p><b>{{authProfile.emailVerified ? 'Yes' : 'No'}}</b></p>
+                </div>
+                <div>
+                    <p>Created on: </p><p><b>{{authProfile.createdAt | date }}</b></p>
+                </div>
+                <div>
+                    <p>Last login: </p><p><b>{{authProfile.lastLoginAt | date }}</b></p>
+                </div>
             </div>
         </div>
     </div>
