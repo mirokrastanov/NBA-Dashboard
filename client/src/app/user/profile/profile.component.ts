@@ -24,6 +24,8 @@ export class ProfileComponent {
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
   isLoading: boolean = true;
+  favTeams: number[] = [];
+  favPlayers: number[] = [];
 
   ngOnInit(): void {
     this.authProfile = JSON.parse(localStorage.getItem('user')!);
