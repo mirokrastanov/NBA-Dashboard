@@ -9,6 +9,7 @@ import { AnalysisComponent } from './analysis/analysis.component';
 import { ErrorComponent } from '../core/error/error.component';
 import { AuthActivate } from '../guards/auth.activate';
 import { NewsItemComponent } from './news-item/news-item.component';
+import { AnalysisItemComponent } from './analysis-item/analysis-item.component';
 
 const routes: Routes = [
     {
@@ -22,6 +23,7 @@ const routes: Routes = [
             { path: 'news', component: NewsComponent, canActivate: [AuthActivate] },
             { path: 'news/:id', component: NewsItemComponent, canActivate: [AuthActivate] },
             { path: 'analysis', component: AnalysisComponent, canActivate: [AuthActivate] },
+            { path: 'analysis/:id', component: AnalysisItemComponent, canActivate: [AuthActivate] },
         ]
     },
 ];
