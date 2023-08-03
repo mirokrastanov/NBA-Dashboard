@@ -1,0 +1,267 @@
+.content-full {
+    grid-template-columns: 1fr;
+    width: 99%;
+}
+
+.na-ctr {
+    width: fit-content;
+    margin: 10px auto;
+    width: 100%;
+}
+
+.fav {
+    max-width: 1000px;
+}
+
+.ques {
+    background-color: var(--color-light);
+    font-size: 18px;
+    border-radius: 13px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+    flex-direction: row;
+    gap: 10px;
+    height: fit-content;
+    position: relative;
+    height: fit-content;
+}
+
+.ques p {
+    width: 100%;
+    color: var(--color-dark);
+    padding: 15px 20px;
+}
+
+.ans {
+    max-height: 0px;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    border-radius: 0 0 13px 13px;
+}
+
+.fav span {
+    font-size: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.fav-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.fav {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
+    border-radius: 13px;
+    width: 100%;
+}
+
+.fav.fav-active .ans {
+    max-height: fit-content;
+}
+
+.fav.fav-active .ques {
+    border-radius: 13px 13px 0 0;
+}
+
+.fav.fav-active .ques p,
+.fav.fav-active .ques span {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.fav-active span {
+    transform: rotate(45deg);
+}
+
+.ans div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--color-light);
+    border-top: 2px solid var(--color-background);
+    height: fit-content;
+}
+
+.ans div:nth-child(1) {
+    background-color: var(--color-light);
+    border-top: 2px solid var(--color-background);
+}
+
+.ans div {
+    overflow: hidden;
+}
+
+.ans div p {
+    width: 100%;
+    line-height: 1.6;
+}
+
+.ques a {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    white-space: nowrap;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-primary);
+    min-height: fit-content;
+    cursor: pointer;
+    border-top-right-radius: 13px;
+}
+
+.ques a span {
+    transform: rotate(0deg);
+}
+
+.ans div p,
+.ans div a {
+    padding: 5px 20px;
+    color: var(--color-dark);
+    font-size: 16px;
+}
+
+.ans div a {
+    padding: 15px 30px;
+    display: block;
+    height: inherit;
+    color: var(--color-primary);
+    font-weight: 700;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.ans div a:hover,
+.ques a:hover {
+    background-color: var(--color-dark-variant-2);
+}
+
+.ques a:hover span {
+    transform: translateX(-10px);
+}
+
+.ans div img {
+    max-width: 700px;
+    border-radius: 15px;
+    margin: 0 auto;
+    background-color: var(--color-light);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
+    pointer-events: none;
+}
+
+.ans .img2 {
+    width: auto;
+    height: auto;
+    max-width: 100px;
+    max-height: 100px;
+    margin: 5px 20px;
+
+}
+
+.ans div:has(.img2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.ans .ans-body {
+    max-width: 800px;
+    margin: 10px auto;
+    letter-spacing: 0.025em;
+}
+
+.ans .ans-no-body {
+    width: 100%;
+    margin: 20px;
+}
+
+.ans div:nth-child(2) a {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    white-space: nowrap;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-primary);
+    min-height: fit-content;
+    cursor: pointer;
+    border-top-right-radius: 13px;
+}
+
+.ans div:nth-child(2) a span {
+    transform: rotate(0deg);
+    font-size: 22px;
+}
+
+.ans div:nth-child(2) a:hover {
+    border-top-right-radius: 0;
+}
+
+.ans div:nth-child(2) a:hover span {
+    margin-left: 10px;
+}
+
+
+@media screen and (max-width: 768px) {    
+    .content-lg.content-full {
+        width: inherit;
+    }
+    
+    .content-lg.content-full .na-ctr {
+        margin: 5px auto;
+        padding: 10px;
+        border-radius: 22px;
+    }
+    
+    .content-lg.content-full .na-ctr .ques {
+        padding: 0;
+    }
+ 
+    .ans div p,
+    .ans div a {
+        font-size: 14px;
+        padding: 2px 10px;
+    }
+
+    .ques p,
+    .ques a {
+        font-size: 16px;
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width: 400px) {    
+    .content-lg.content-full .na-ctr {
+        margin: 0 auto;
+        padding: 0;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 330px) {    
+    .content-lg.content-full .na-ctr {
+        margin: 0;
+        padding: 0;
+        width: 80%;
+    }
+}
