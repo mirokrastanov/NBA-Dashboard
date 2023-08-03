@@ -27,3 +27,13 @@ export interface News {
     sourceURL: string,
     title: string,
 }
+
+export interface Analysis {
+    author: string,
+    body: string,
+    img: string,
+    img2: string,
+    postedOn: string,
+    sourceURL: string,
+    title: string,
+}
