@@ -12,6 +12,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { NewsComponent } from './news/news.component';
 import { AnalysisComponent } from './analysis/analysis.component';
 import { NewsItemComponent } from './news-item/news-item.component';
+import { AnalysisItemComponent } from './analysis-item/analysis-item.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { NewsItemComponent } from './news-item/news-item.component';
     NewsComponent,
     AnalysisComponent,
     NewsItemComponent,
+    AnalysisItemComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { NewsItemComponent } from './news-item/news-item.component';
     NewsComponent,
     AnalysisComponent,
     NewsItemComponent,
+    AnalysisItemComponent,
   ],
 })
 export class NbaModule { }
