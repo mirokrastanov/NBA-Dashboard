@@ -711,6 +711,10 @@ main .recent-orders a {
             'main';
     }
 
+    .container main {
+        padding: 0;
+    }
+
     aside {
         position: fixed;
         background-color: var(--color-white);
@@ -908,7 +912,16 @@ main .recent-orders a {
 }
 
 @media screen and (max-width: 400px) {
+    .nav {
+        gap: 0;
+        padding: 0 0 0 50px;
+    }
+
     .nav form {
         width: 50%;
+    }
+
+    .nav .profile .profile-photo {
+        display: none;
     }
 }
