@@ -1,4 +1,4 @@
-<h1>News</h1>
+<h1>News > Details</h1>
 
 <div *ngIf="isLoading">
     <app-global-loader></app-global-loader>
@@ -20,11 +20,14 @@
                         <p *ngIf="newsItem!.postedOn">{{newsItem!.postedOn}}</p>
                         <img src="{{newsItem!.img}}" alt="news-article-img" *ngIf="newsItem!.img" />
                         <p class="ans-body" *ngIf="newsItem!.body">{{newsItem!.body}}</p>
-                        <p class="ans-no-body" *ngIf="!newsItem!.body">This article is only available on the source website.</p>
+                        <p class="ans-no-body" *ngIf="!newsItem!.body">This article is only available on the source
+                            website.</p>
                     </div>
                     <div>
                         <p>Source: {{newsItem!.sourceTxt}}</p>
-                        <a href="{{newsItem!.sourceURL}}" target="_blank">Open Source...</a>
+                        <a href="{{newsItem!.sourceURL}}" target="_blank">Open Source
+                            <span class="material-icons-sharp">launch</span>
+                        </a>
                     </div>
                 </div>
             </div>
