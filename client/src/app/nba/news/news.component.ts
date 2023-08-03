@@ -25,9 +25,8 @@ export class NewsComponent {
     this.apiService.firebaseDbFetch(dbTarget.nba.news).subscribe({
       next: (data) => {
         this.newsArray = data;
-        console.log(this.newsArray);
-        console.log(this.newsArray![0]);
-
+        // console.log(this.newsArray);
+        // console.log(this.newsArray![0]);
         this.isLoading = false;
       },
       error: (err) => {
@@ -37,7 +36,7 @@ export class NewsComponent {
       },
       complete: () => {
         this.unsubscribed = true;
-        console.log('News data fetched!');
+        // console.log('News data fetched!');
       },
     });
   }
