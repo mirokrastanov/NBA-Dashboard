@@ -92,7 +92,7 @@ table td:nth-of-type(2) {
     cursor: pointer;
 }
 
-table td:nth-of-type(2):hover {
+table td:nth-of-type(2):hover a {
     color: var(--color-primary);
     font-weight: 700;
 }
@@ -110,7 +110,7 @@ table td:nth-of-type(5) {
     cursor: pointer;
 }
 
-table td:nth-of-type(5):hover {
+table td:nth-of-type(5):hover a {
     color: var(--color-primary);
     font-weight: 700;
 }
