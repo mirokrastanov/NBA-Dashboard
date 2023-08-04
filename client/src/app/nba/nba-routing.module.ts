@@ -10,6 +10,8 @@ import { ErrorComponent } from '../core/error/error.component';
 import { AuthActivate } from '../guards/auth.activate';
 import { NewsItemComponent } from './news-item/news-item.component';
 import { AnalysisItemComponent } from './analysis-item/analysis-item.component';
+import { PlayerItemComponent } from './player-item/player-item.component';
+import { TeamItemComponent } from './team-item/team-item.component';
 
 const routes: Routes = [
     {
@@ -18,7 +20,9 @@ const routes: Routes = [
             { path: '', component: ErrorComponent },
             { path: 'standings', component: StandingsComponent },
             { path: 'teams', component: TeamsComponent },
+            { path: 'teams/:id', component: TeamItemComponent },
             { path: 'players', component: PlayersComponent },
+            { path: 'players/:id', component: PlayerItemComponent },
             { path: 'transactions', component: TransactionsComponent, canActivate: [AuthActivate] },
             { path: 'news', component: NewsComponent, canActivate: [AuthActivate] },
             { path: 'news/:id', component: NewsItemComponent, canActivate: [AuthActivate] },
