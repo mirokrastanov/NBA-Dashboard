@@ -9,15 +9,29 @@ export interface Team {
 }
 
 export interface Player {
-    id: number;
-    first_name: string;
-    last_name: string;
-    position: string;
-    height_feet: null | number;
-    height_inches: null | number;
-    weight_pounds: null | number;
-    team: Team;
+    'Age': string,
+    'Current Team': string,
+    'Draft Status': string,
+    'HT': string,
+    'Nationality': string,
+    'Player': string,
+    'Pos': string,
+    'Pre-Draft Team': string,
+    'WT': string,
+    'YOS': string,
+    'id': string,
 }
+
+// export interface PlayerBackup {
+//     id: number;
+//     first_name: string;
+//     last_name: string;
+//     position: string;
+//     height_feet: null | number;
+//     height_inches: null | number;
+//     weight_pounds: null | number;
+//     team: Team;
+// }
 
 export interface News {
     body: string,
