@@ -1,6 +1,7 @@
 .content-full {
     grid-template-columns: 1fr;
     width: 99%;
+    background-color: var(--color-background);
 }
 
 .na-ctr {
@@ -14,7 +15,7 @@
 }
 
 .ques {
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     font-size: 18px;
     border-radius: 13px;
     display: flex;
@@ -84,13 +85,13 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     border-top: 2px solid var(--color-background);
     height: fit-content;
 }
 
 .ans div:nth-child(1) {
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     border-top: 2px solid var(--color-background);
 }
 
