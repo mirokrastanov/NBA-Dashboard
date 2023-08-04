@@ -1,15 +1,13 @@
 <h1>User Profile</h1>
 
-<div class="content-lg content-full">
+<div class="content-full">
 
     <div class="user-details">
-        <h1>Details</h1>
         <div class="details-outer">
             <div class="details-inner">
                 <img src="../../../assets/images/user-avatar.png" alt="profile-img">
             </div>
             <div class="details-inner">
-
                 <div>
                     <p>Username: </p>
                     <p><b>{{authProfile.displayName}}</b></p>
@@ -35,7 +33,6 @@
     </div>
 
     <div class="user-favorites">
-        <h1>Favorites</h1>
         <div class="fav-list">
             <div class="fav" (click)="onFavClick($event)">
                 <div class="ques">
