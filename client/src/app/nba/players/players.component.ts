@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NbaApiService } from '../nba-api.service';
 import { Player, Team } from '../nba-types';
 import { dbTarget } from 'src/app/util/global-constants';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-players',
@@ -9,7 +10,10 @@ import { dbTarget } from 'src/app/util/global-constants';
   styleUrls: ['./players.component.css']
 })
 export class PlayersComponent implements OnInit {
-  constructor(private apiService: NbaApiService) { }
+  constructor(
+    private apiService: NbaApiService,
+    private route: ActivatedRoute,
+  ) { }
   playersALL: Player[] | null = null;
   teamsALL: Team[] | null = null;
   playersSHOWN: Player[] | null = null;
@@ -20,6 +24,7 @@ export class PlayersComponent implements OnInit {
   isLoading: boolean = true;
 
   ngOnInit(): void {
+    this.currentPage = Number(this.route.snapshot.paramMap.get('num'));
     this.apiService.nbaFetch('teams').subscribe({
       next: (data) => {
         this.teamsALL = data.data;
@@ -29,7 +34,7 @@ export class PlayersComponent implements OnInit {
           return x;
         });
         this.teamsALL!.sort((a, b) => a.full_name.localeCompare(b.full_name));
-        console.log(this.teamsALL);
+        // console.log(this.teamsALL);
         // console.log(this.teamsALL![0]);
 
         this.apiService.firebaseDbFetch(dbTarget.nba.players).subscribe({
@@ -44,7 +49,7 @@ export class PlayersComponent implements OnInit {
             // console.log(this.playersALL);
             // console.log(this.playersALL![0]);
             this.isLoading = false;
-            this.changePage(1);
+            this.changePage(this.currentPage);
           },
           error: (err) => {
             this.errorOccurred = true;
@@ -53,12 +58,14 @@ export class PlayersComponent implements OnInit {
           },
           complete: () => {
             this.unsubscribed = true;
-            console.log('Players data fetched!');
+            // console.log('Players data fetched!');
           },
         });
       },
       error: (err) => { console.log(err) },
-      complete: () => { console.log('Teams data fetched!') },
+      complete: () => {
+        // console.log('Teams data fetched!');
+      },
     });
   }
 
@@ -82,9 +89,10 @@ export class PlayersComponent implements OnInit {
     this.currentPage = page;
     this.playersSHOWN = [];
     for (let i = (page - 1) * this.perPage; i < (page * this.perPage); i++) {
+      if (i >= this.playersALL!.length) return;
       this.playersSHOWN.push(this.playersALL![i]);
     }
-    console.log(this.playersSHOWN);
+    // console.log(this.playersSHOWN);
   }
 
   numPages(): number {
