@@ -7,24 +7,26 @@
 <div *ngIf="!isLoading" class="players-ctr">
     <div class="page-btns">
         <div class="page-btn page-back">
-            <span class="material-icons-sharp">arrow_left</span>
+            <span class="material-icons-sharp">chevron_left</span>
         </div>
         <div class="page-display">
             <span>{{currentPage}}</span>
         </div>
         <div class="page-btn page-forward">
-            <span class="material-icons-sharp">arrow_right</span>
+            <span class="material-icons-sharp">chevron_right</span>
         </div>
     </div>
     <div class="players-table">
         <table>
             <tr>
+                <th>#</th>
                 <th>Player</th>
                 <th>Age</th>
                 <th>Position</th>
                 <th>Current Team</th>
             </tr>
-            <tr *ngFor="let player of playersSHOWN;">
+            <tr *ngFor="let player of playersSHOWN; let i = index;">
+                <td>{{ ((currentPage - 1) * perPage) + i }}</td>
                 <td [attr.data-id]="player['id']">
                     <span class="material-icons-sharp before"></span>
                     {{player['Player']}}
