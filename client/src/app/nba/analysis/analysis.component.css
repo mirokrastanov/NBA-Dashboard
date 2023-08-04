@@ -1,12 +1,15 @@
 .content-full {
     grid-template-columns: 1fr;
     width: 99%;
+    background-color: var(--color-background);
 }
 
-.na-ctr {
+.content-full .na-ctr {
     width: fit-content;
     margin: 10px auto;
     width: 100%;
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .fav {
@@ -14,7 +17,7 @@
 }
 
 .ques {
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     padding: 10px 30px;
     font-size: 18px;
     border-radius: 13px;
@@ -22,16 +25,24 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
 }
 
 .ques p {
     width: 100%;
     color: var(--color-dark);
+    transition: all 0.1s ease-in-out;
 }
 
 .ques:hover {
-    background-color: var(--color-dark-variant-2);
+    background-color: var(--color-light);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
+}
+
+.ques:hover p {
+    color: var(--color-primary);
+    font-weight: 700;
 }
 
 .ans {
@@ -56,7 +67,8 @@
 }
 
 .fav {
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
+    /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px; */
+    box-shadow: var(--box-shadow);
     border-radius: 13px;
     width: 100%;
 }
@@ -85,13 +97,13 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     border-top: 2px solid var(--color-background);
     height: fit-content;
 }
 
 .ans div:nth-child(1) {
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     border-top: 2px solid var(--color-background);
 }
 
@@ -191,6 +203,11 @@
 
 .ans div:nth-child(2) a:hover span {
     margin-left: 10px;
+}
+
+.fav-active {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
+    margin: 10px 0 20px 0;
 }
 
 
