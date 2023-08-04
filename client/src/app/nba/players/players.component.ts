@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NbaApiService } from '../nba-api.service';
-import { Player } from '../nba-types';
+import { Player, Team } from '../nba-types';
 import { dbTarget } from 'src/app/util/global-constants';
 
 @Component({
@@ -11,6 +11,7 @@ import { dbTarget } from 'src/app/util/global-constants';
 export class PlayersComponent implements OnInit {
   constructor(private apiService: NbaApiService) { }
   playersALL: Player[] | null = null;
+  teamsALL: Team[] | null = null;
   playersSHOWN: Player[] | null = null;
   currentPage: number = 1;
   perPage: number = 25;
@@ -19,24 +20,45 @@ export class PlayersComponent implements OnInit {
   isLoading: boolean = true;
 
   ngOnInit(): void {
-    this.apiService.firebaseDbFetch(dbTarget.nba.players).subscribe({
-      next: (data: Player[]) => {
-        this.playersALL = data.slice()
-          .sort((a, b) => a['Player'].localeCompare(b['Player']));
-        // console.log(this.playersALL);
-        // console.log(this.playersALL![0]);
-        this.isLoading = false;
-        this.changePage(1);
+    this.apiService.nbaFetch('teams').subscribe({
+      next: (data) => {
+        this.teamsALL = data.data;
+        this.teamsALL!.map((x) => {
+          if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
+          if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
+          return x;
+        });
+        this.teamsALL!.sort((a, b) => a.full_name.localeCompare(b.full_name));
+        console.log(this.teamsALL);
+        // console.log(this.teamsALL![0]);
+
+        this.apiService.firebaseDbFetch(dbTarget.nba.players).subscribe({
+          next: (data: Player[]) => {
+            this.playersALL = data.slice()
+              .sort((a, b) => a['Player'].localeCompare(b['Player']));
+            this.playersALL.map((x) => {
+              let teamID = this.teamsALL!.find(y => y.full_name == x['Current Team'])?.id;
+              x['teamID'] = String(teamID);
+              return x;
+            });
+            // console.log(this.playersALL);
+            // console.log(this.playersALL![0]);
+            this.isLoading = false;
+            this.changePage(1);
+          },
+          error: (err) => {
+            this.errorOccurred = true;
+            console.log(err);
+            this.isLoading = false;
+          },
+          complete: () => {
+            this.unsubscribed = true;
+            console.log('Players data fetched!');
+          },
+        });
       },
-      error: (err) => {
-        this.errorOccurred = true;
-        console.log(err);
-        this.isLoading = false;
-      },
-      complete: () => {
-        this.unsubscribed = true;
-        console.log('Players data fetched!');
-      },
+      error: (err) => { console.log(err) },
+      complete: () => { console.log('Teams data fetched!') },
     });
   }
 
