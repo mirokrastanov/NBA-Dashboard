@@ -173,7 +173,10 @@ td:nth-of-type(5):hover span.before::before {
     content: 'group';
 }
 
-
+td a {
+    display: block;
+    width: 100%;
+}
 
 
 @media screen and (max-width: 768px) {
