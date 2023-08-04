@@ -2,7 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NbaApiService } from '../nba-api.service';
 import { Player, Team } from '../nba-types';
 import { dbTarget } from 'src/app/util/global-constants';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-players',
@@ -13,6 +13,7 @@ export class PlayersComponent implements OnInit {
   constructor(
     private apiService: NbaApiService,
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
   playersALL: Player[] | null = null;
   teamsALL: Team[] | null = null;
@@ -73,6 +74,7 @@ export class PlayersComponent implements OnInit {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.changePage(this.currentPage);
+      this.router.navigate([`/nba/players/page/${this.currentPage}`]);
     }
   }
 
@@ -80,6 +82,7 @@ export class PlayersComponent implements OnInit {
     if (this.currentPage < this.numPages()) {
       this.currentPage++;
       this.changePage(this.currentPage);
+      this.router.navigate([`/nba/players/page/${this.currentPage}`]);
     }
   }
 
