@@ -98,6 +98,7 @@ img {
 h1 {
     font-weight: 800;
     font-size: 1.8rem;
+    text-align: center;
 }
 
 h2 {
@@ -200,6 +201,7 @@ aside .sidebar {
     position: relative;
     top: 1.5rem;
     transition: all 0.3s ease;
+    /* border: 2px solid var(--color-primary); */
 }
 
 aside .sidebar:hover {
