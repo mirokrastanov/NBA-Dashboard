@@ -26,11 +26,20 @@
                 <th>Current Team</th>
             </tr>
             <tr *ngFor="let player of playersSHOWN; let i = index;">
-                <td>{{ ((currentPage - 1) * perPage) + i }}</td>
-                <td [attr.data-id]="player['id']">
-                    <span class="material-icons-sharp before"></span>
-                    {{player['Player']}}
-                    <span class="material-icons-sharp after"></span>
+                <td>{{ ((currentPage - 1) * perPage) + i + 1 }}</td>
+                <td>
+                    <a *ngIf="player['id'] && player['id'] != ''" [attr.data-id]="player['id']"
+                        routerLink="/nba/players/id_{{player['id']}}">
+                        <span class="material-icons-sharp before"></span>
+                        {{player['Player']}}
+                        <span class="material-icons-sharp after"></span>
+                    </a>
+                    <a *ngIf="!player['id'] || player['id'] == ''" [attr.data-id]="player['id']"
+                        routerLink="/nba/players/nn_{{player['Player']}}">
+                        <span class="material-icons-sharp before"></span>
+                        {{player['Player']}}
+                        <span class="material-icons-sharp after"></span>
+                    </a>
                 </td>
                 <td>{{player['Age']}}</td>
                 <td>{{player['Pos']}}</td>
