@@ -29,14 +29,14 @@ export class ProfileComponent {
 
   ngOnInit(): void {
     this.authProfile = JSON.parse(localStorage.getItem('user')!);
-    console.log(this.authProfile);
+    // console.log(this.authProfile);
     this.apiService.firebaseDbFetch(dbTarget.users).subscribe({
         next: (data) => {
           Object.entries(data).filter(([key, value], i) => {
-            console.log(key, value);
+            // console.log(key, value);
             if (this.authProfile!.uid == key) this.dbProfile = value;
           });
-          console.log(this.dbProfile);
+          // console.log(this.dbProfile);
           this.isLoading = false;
         },
         error: (err) => {
