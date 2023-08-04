@@ -1,13 +1,13 @@
 .players-ctr {
     background-color: var(--color-white);
-    padding: 20px;
+    padding: 10px;
     border-radius: 18px;
     box-shadow: var(--box-shadow);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 15px;
+    row-gap: 10px;
     margin-bottom: 20px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
 }
@@ -67,7 +67,7 @@
 .players-table {
     background-color: var(--color-light);
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     border-radius: 13px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
 }
