@@ -153,3 +153,22 @@ td:nth-of-type(1):hover span.before::before {
 td:nth-of-type(4):hover span.before::before {
     content: 'group';
 }
+
+
+
+
+@media screen and (max-width: 768px) {    
+    .players-table table td:nth-of-type(2),
+    .players-table table td:nth-of-type(3),
+    .players-table table th:nth-of-type(2),
+    .players-table table th:nth-of-type(3) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {    
+    .players-table table td:nth-of-type(4),
+    .players-table table th:nth-of-type(4) {
+        display: none;
+    }
+}
