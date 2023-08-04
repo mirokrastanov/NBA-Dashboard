@@ -1,9 +1,18 @@
 .content-full {
     grid-template-columns: 1fr;
+    padding: 10px 20px 20px 20px;
+}
+
+.profile-ctr {
+    padding: 10px;
+}
+
+h1 {
+    padding: 0;
 }
 
 .ques {
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     padding: 10px 30px;
     font-size: 20px;
     border-radius: 13px;
@@ -12,6 +21,7 @@
     justify-content: space-between;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    box-shadow: var(--box-shadow);
 }
 
 .ques p {
@@ -21,7 +31,7 @@
 }
 
 .ques:hover {
-    background-color: var(--color-dark-variant-2);
+    background-color: var(--color-light);
 }
 
 .ans {
@@ -44,10 +54,14 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .fav {
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
+    /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px; */
+    box-shadow: var(--box-shadow);
     border-radius: 13px;
     width: 100%;
 }
@@ -71,11 +85,12 @@
 }
 
 .ans p {
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     color: var(--color-dark);
     padding: 10px 30px;
     font-size: 20px;
     border-top: 2px solid var(--color-background);
+    box-shadow: var(--box-shadow);
 }
 
 .details-outer {
@@ -88,9 +103,10 @@
 }
 
 .details-inner {   
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     border-radius: 13px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
+    /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px; */
+    box-shadow: var(--box-shadow);
 }
 
 .details-inner:nth-child(1) {
@@ -124,4 +140,8 @@
 .details-inner:nth-child(2) div p {
     font-size: 16px;
     line-height: 2;
+}
+
+.user-favorites {
+    margin-top: 30px;
 }
