@@ -4,7 +4,47 @@
     <app-global-loader></app-global-loader>
 </div>
 
-<table *ngIf="!isLoading">
+<div *ngIf="!isLoading" class="players-ctr">
+    <div class="page-btns">
+        <div class="page-btn page-back">
+            <span class="material-icons-sharp">arrow_left</span>
+        </div>
+        <div class="page-display">
+            <span>{{currentPage}}</span>
+        </div>
+        <div class="page-btn page-forward">
+            <span class="material-icons-sharp">arrow_right</span>
+        </div>
+    </div>
+    <div class="players-table">
+        <table>
+            <tr>
+                <th>Player</th>
+                <th>Age</th>
+                <th>Position</th>
+                <th>Current Team</th>
+            </tr>
+            <tr *ngFor="let player of playersSHOWN;">
+                <td [attr.data-id]="player['id']">
+                    <span class="material-icons-sharp before"></span>
+                    {{player['Player']}}
+                    <span class="material-icons-sharp after"></span>
+                </td>
+                <td>{{player['Age']}}</td>
+                <td>{{player['Pos']}}</td>
+                <td>
+                    <span class="material-icons-sharp before"></span>
+                    {{player['Current Team']}}
+                    <span class="material-icons-sharp after"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- <table *ngIf="!isLoading">
     <tr align="center">
         <th>Name</th>
         <th>ID</th>
@@ -23,4 +63,4 @@
         <td>{{player.height_inches}}</td>
         <td>{{player.weight_pounds}}</td>
     </tr>
-</table>
+</table> -->
