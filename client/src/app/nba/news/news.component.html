@@ -4,7 +4,7 @@
     <app-global-loader></app-global-loader>
 </div>
 
-<div *ngIf="!isLoading" class="content-lg content-full">
+<div *ngIf="!isLoading" class="content-full">
     <div class="na-ctr">
         <div class="fav-list">
             <div class="fav" (click)="onFavClick($event)"
@@ -26,7 +26,9 @@
                         <a *ngIf="item.body" (click)="onReadMoreClick($event)" [attr.data-index]="i">Read more
                             <span class="material-icons-sharp">arrow_forward_ios</span>
                         </a>
-                        <a *ngIf="!item.body" href="{{item.sourceURL}}" target="_blank">Open Source...</a>
+                        <a *ngIf="!item.body" href="{{item.sourceURL}}" target="_blank">Open Source
+                            <span class="material-icons-sharp">launch</span>
+                        </a>
                     </div>
                 </div>
             </div>
