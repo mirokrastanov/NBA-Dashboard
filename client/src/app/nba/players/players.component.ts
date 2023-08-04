@@ -79,6 +79,7 @@ export class PlayersComponent implements OnInit {
   changePage(page: number): void {
     if (page < 1) page = 1;
     if (page > this.numPages()) page = this.numPages();
+    this.currentPage = page;
     this.playersSHOWN = [];
     for (let i = (page - 1) * this.perPage; i < (page * this.perPage); i++) {
       this.playersSHOWN.push(this.playersALL![i]);
