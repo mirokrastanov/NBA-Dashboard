@@ -6,13 +6,13 @@
 
 <div *ngIf="!isLoading" class="players-ctr">
     <div class="page-btns">
-        <div class="page-btn page-back">
+        <div *ngIf="currentPage > 1" class="page-btn page-back" (click)="onPageBack()">
             <span class="material-icons-sharp">chevron_left</span>
         </div>
         <div class="page-display">
             <span>{{currentPage}}</span>
         </div>
-        <div class="page-btn page-forward">
+        <div *ngIf="currentPage < numPages()" class="page-btn page-forward" (click)="onPageForward()">
             <span class="material-icons-sharp">chevron_right</span>
         </div>
     </div>
@@ -29,13 +29,13 @@
                 <td>{{ ((currentPage - 1) * perPage) + i + 1 }}</td>
                 <td>
                     <a *ngIf="player['id'] && player['id'] != ''" [attr.data-id]="player['id']"
-                        routerLink="/nba/players/id_{{player['id']}}">
+                        routerLink="/nba/players/player/id_{{player['id']}}">
                         <span class="material-icons-sharp before"></span>
                         {{player['Player']}}
                         <span class="material-icons-sharp after"></span>
                     </a>
                     <a *ngIf="!player['id'] || player['id'] == ''" [attr.data-id]="player['id']"
-                        routerLink="/nba/players/nn_{{player['Player']}}">
+                        routerLink="/nba/players/player/nn_{{player['Player']}}">
                         <span class="material-icons-sharp before"></span>
                         {{player['Player']}}
                         <span class="material-icons-sharp after"></span>
