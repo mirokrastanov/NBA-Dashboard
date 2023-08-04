@@ -9,7 +9,7 @@
         <div *ngIf="currentPage > 1" class="page-btn page-back" (click)="onPageBack()">
             <span class="material-icons-sharp">chevron_left</span>
         </div>
-        <div class="page-display">
+        <div title="page" class="page-display">
             <span>{{currentPage}}</span>
         </div>
         <div *ngIf="currentPage < numPages()" class="page-btn page-forward" (click)="onPageForward()">
@@ -43,10 +43,12 @@
                 </td>
                 <td>{{player['Age']}}</td>
                 <td>{{player['Pos']}}</td>
-                <td [attr.data-id]="player['teamID']">
-                    <span class="material-icons-sharp before"></span>
-                    {{player['Current Team']}}
-                    <span class="material-icons-sharp after"></span>
+                <td>
+                    <a [attr.data-id]="player['teamID']" routerLink="/nba/teams/{{player['teamID']}}">
+                        <span class="material-icons-sharp before"></span>
+                        {{player['Current Team']}}
+                        <span class="material-icons-sharp after"></span>
+                    </a>
                 </td>
             </tr>
         </table>
