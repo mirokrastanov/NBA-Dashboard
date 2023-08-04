@@ -20,6 +20,7 @@ export interface Player {
     'WT': string,
     'YOS': string,
     'id': string,
+    'teamID': string,
 }
 
 // export interface PlayerBackup {
