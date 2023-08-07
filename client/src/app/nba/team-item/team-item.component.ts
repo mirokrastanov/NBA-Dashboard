@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Player, Team } from '../nba-types';
+import { Links, Player, Team } from '../nba-types';
 import { NbaApiService } from '../nba-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { dbTarget } from 'src/app/util/global-constants';
@@ -15,6 +15,7 @@ export class TeamItemComponent {
   playersALL: Player[] | null = null;
   teamsALL: Team[] | null = null;
   currentTeam: Team | undefined;
+  currentLinks: Links | undefined;
   routeID: string | number | null = null;
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
@@ -34,17 +35,13 @@ export class TeamItemComponent {
         });
         this.currentTeam = this.teamsALL!.find(x => x.id == this.routeID)
         console.log(this.currentTeam);
-        this.apiService.firebaseDbFetch(dbTarget.nba.players).subscribe({
-          next: (data: Player[]) => {
-            // this.playersALL = data.slice();
-            // let player: Player[] | undefined;
-            // player = this.playersALL!.filter(x => x['Player']!.toLowerCase() == this.routeID!.toLowerCase());
-            // player.map((x) => {
-            //   let teamID = this.teamsALL!.find(y => y.full_name == x['Current Team'])?.id;
-            //   x['teamID'] = String(teamID);
-            //   this.teamID = teamID!;
-            //   return x;
-            // });
+
+
+        // INNER 1
+        this.apiService.firebaseDbFetch(dbTarget.nba.teamLinks).subscribe({
+          next: (data: Links[]) => {
+            this.currentLinks =  data.find(x => this.currentTeam!.full_name.toLowerCase().includes(x.name));
+            console.log(this.currentLinks);
             this.isLoading = false;
           },
           error: (err) => {
@@ -57,6 +54,31 @@ export class TeamItemComponent {
             // console.log('Players data fetched!');
           },
         });
+
+        // INNER 2
+        // this.apiService.firebaseDbFetch(dbTarget.nba.players).subscribe({
+        //   next: (data: Player[]) => {
+        //     // this.playersALL = data.slice();
+        //     // let player: Player[] | undefined;
+        //     // player = this.playersALL!.filter(x => x['Player']!.toLowerCase() == this.routeID!.toLowerCase());
+        //     // player.map((x) => {
+        //     //   let teamID = this.teamsALL!.find(y => y.full_name == x['Current Team'])?.id;
+        //     //   x['teamID'] = String(teamID);
+        //     //   this.teamID = teamID!;
+        //     //   return x;
+        //     // });
+        //     this.isLoading = false;
+        //   },
+        //   error: (err) => {
+        //     this.errorOccurred = true;
+        //     console.log(err);
+        //     this.isLoading = false;
+        //   },
+        //   complete: () => {
+        //     this.unsubscribed = true;
+        //     // console.log('Players data fetched!');
+        //   },
+        // });
       },
       error: (err) => { console.log(err) },
       complete: () => {
