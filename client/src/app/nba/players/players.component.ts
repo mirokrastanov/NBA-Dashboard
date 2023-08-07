@@ -2,7 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NbaApiService } from '../nba-api.service';
 import { Player, Team } from '../nba-types';
 import { dbTarget } from 'src/app/util/global-constants';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationSkipped, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-players',
@@ -14,7 +14,25 @@ export class PlayersComponent implements OnInit {
     private apiService: NbaApiService,
     private route: ActivatedRoute,
     private router: Router,
-  ) { }
+  ) {
+    this.router.events.subscribe((event) => {
+      // console.log(event);
+      if (event instanceof NavigationStart || event instanceof NavigationSkipped) {
+        if (event.url == '/nba/players') {
+          this.changePage(1);
+        } else if (event.url.startsWith('/nba/players/page/')) {
+          const url = event.url.split('/');
+          const page: number = Number(url[url.length - 1]);
+          // console.log(page, this.currentPage);
+          if (page != this.currentPage) {
+            this.changePage(page);
+          }
+          // console.log(page, this.currentPage);
+        }
+      }
+    });
+  }
+
   playersALL: Player[] | null = null;
   teamsALL: Team[] | null = null;
   playersSHOWN: Player[] | null = null;
@@ -87,6 +105,7 @@ export class PlayersComponent implements OnInit {
   }
 
   changePage(page: number): void {
+    if (isNaN(page)) page = 1;
     if (page < 1) page = 1;
     if (page > this.numPages()) page = this.numPages();
     this.currentPage = page;
