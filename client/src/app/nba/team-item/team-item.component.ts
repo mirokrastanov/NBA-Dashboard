@@ -17,8 +17,8 @@ export class TeamItemComponent {
   currentTeam: Team | undefined;
   currentLinks: Links | undefined;
   stats: {
-    advanced: [string, any][] | StatsAdvanced[], averages: [string, any][] | StatsAverages[],
-    misc: [string, any][] | StatsMisc[], totals: [string, any][] | StatsTotals[],
+    advanced: StatsAdvanced | StatsAdvanced[] | any, averages: StatsAverages | StatsAverages[],
+    misc: StatsMisc | StatsMisc[], totals: StatsTotals | StatsTotals[],
   } = { advanced: [], averages: [], misc: [], totals: [] };
   routeID: string | number | null = null;
   unsubscribed: boolean = false;
@@ -28,6 +28,7 @@ export class TeamItemComponent {
   ngOnInit(): void {
     this.routeID = this.route.snapshot.paramMap.get('id');
     // console.log(this.routeID);
+    // OUTER 1 - Teams
     this.apiService.nbaFetch('teams').subscribe({
       next: (data) => {
         this.teamsALL = data.data;
@@ -63,9 +64,7 @@ export class TeamItemComponent {
               }
               if (this.currentTeam!.full_name.includes(v['Team'])) {
                 // v['id'] = this.currentTeam!.id.toString();
-                let arr = Object.entries(v);
-                arr.pop();
-                this.stats.advanced = arr;
+                this.stats.advanced = v;
                 // console.log(arr);
               }
             });
@@ -90,9 +89,7 @@ export class TeamItemComponent {
               }
               if (this.currentTeam!.full_name.includes(v['Team'])) {
                 // v['id'] = this.currentTeam!.id.toString();
-                let arr = Object.entries(v);
-                arr.pop();
-                this.stats.averages = arr;
+                this.stats.averages = v;
                 // console.log(arr);
               }
             });
@@ -117,9 +114,7 @@ export class TeamItemComponent {
               }
               if (this.currentTeam!.full_name.includes(v['Team'])) {
                 // v['id'] = this.currentTeam!.id.toString();
-                let arr = Object.entries(v);
-                arr.pop();
-                this.stats.misc = arr;
+                this.stats.misc = v;
                 // console.log(arr);
               }
             });
@@ -144,9 +139,7 @@ export class TeamItemComponent {
               }
               if (this.currentTeam!.full_name.includes(v['Team'])) {
                 // v['id'] = this.currentTeam!.id.toString();
-                let arr = Object.entries(v);
-                arr.pop();
-                this.stats.totals = arr;
+                this.stats.totals = v;
                 // console.log(arr);
               }
             });
