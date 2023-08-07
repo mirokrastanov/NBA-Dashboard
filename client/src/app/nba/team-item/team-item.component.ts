@@ -42,7 +42,17 @@ export class TeamItemComponent {
         // INNER 1 - Links
         this.apiService.firebaseDbFetch(dbTarget.nba.teamLinks).subscribe({
           next: (data: Links[]) => {
-            this.currentLinks = data.find(x => this.currentTeam!.full_name.toLowerCase().includes(x.name));
+            let found = data.filter(x => this.currentTeam!.full_name.toLowerCase().includes(x.name));
+            // console.log(found);
+            if (found.length == 1) this.currentLinks = found[0];
+            else {
+              let arr = this.currentTeam!.full_name.toLowerCase().split(' ');
+              found.forEach(x => {
+                arr.forEach(y => {
+                  if (y == x.name.toLowerCase()) this.currentLinks = x;
+                })
+              });
+            }
             // console.log(this.currentLinks);
             this.isLoading = false;
           },
