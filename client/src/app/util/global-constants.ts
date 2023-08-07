@@ -1,3 +1,5 @@
+import { DB } from "./user-interfaces";
+
 export const proxy: string = 'https://proxy-1.mirokrastanov.repl.co/';
 export const noProxy: string = 'https://';
 
@@ -25,7 +27,7 @@ export const firebaseConfig = {
 
 export const dbROOT: string = 'https://nba-1-480a7-default-rtdb.europe-west1.firebasedatabase.app/';
 export const dbSuffix: string = '.json';
-export const dbTarget: any = {
+export const dbTarget: DB = {
     nba: {
         analysis: 'nba/analysis/data/',
         leaders: {
@@ -47,6 +49,7 @@ export const dbTarget: any = {
             totals: 'nba/teamStats/totals/data/',
         },
         transactions: 'nba/transactions/data/',
+        teamLinks: 'nba/teamLinks/data/',
     },
     users: 'users/',
 };
