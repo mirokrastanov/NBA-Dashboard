@@ -80,6 +80,30 @@ export interface StatsAdvanced {
     'id': string,
 };
 
+export interface StatsAverages {
+    '3P%': string,
+    '3PA': string,
+    '3PM': string,
+    'APG': string,
+    'BPG': string,
+    'DRB': string,
+    'FG%': string,
+    'FGA': string,
+    'FGM': string,
+    'FT%': string,
+    'FTA': string,
+    'FTM': string,
+    'GP': string,
+    'MPG': string,
+    'ORB': string,
+    'PF': string,
+    'PPG': string,
+    'RPG': string,
+    'SPG': string,
+    'TOV': string,
+    'Team': string,
+    'id': string,
+};
 
 
 
