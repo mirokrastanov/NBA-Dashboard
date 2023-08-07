@@ -52,3 +52,14 @@ export interface Analysis {
     sourceURL: string,
     title: string,
 }
+
+export interface Links {
+    href: string,
+    logo: string,
+    name: string,
+}
+
+// TODO 
+// STANDINGS, teamStats, transactions and userEXTRA for users --- if favorites make it through :)
+
+
