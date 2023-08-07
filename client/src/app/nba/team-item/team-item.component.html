@@ -7,9 +7,9 @@
 <div *ngIf="!isLoading" class="team-outer">
     <div class="team-title">
         <h1 id="team-main-title">{{currentTeam!['full_name']}}</h1>
-        <a [routerLink]="['/nba/players']">
+        <a [routerLink]="['/nba/teams']">
             <span class="material-icons-sharp">arrow_back_ios</span>
-            Back to Players
+            Back to Teams
         </a>
     </div>
     <div class="team-inner">
@@ -21,15 +21,15 @@
             <p>Abbreviation</p>
             <p>{{currentTeam!['abbreviation']}}</p>
         </div>
-        <!-- <div class="team-stat player-team">
-            <p>Current Team</p>
-            <p [attr.data-teamID]="currentTeam!['teamID']">
-                <a class="a-left" routerLink="/nba/teams/{{teamID}}">
-                    {{currentTeam!['Current Team']}}
-                    <span class="material-icons-sharp">arrow_forward_ios</span>
+        <div class="team-stat team-url">
+            <p>Official Website</p>
+            <p [attr.data-teamID]="currentTeam!['id']">
+                <a class="a-left" href="{{currentLinks!['href']}}" target="_blank">
+                    Click here
+                    <span class="material-icons-sharp">launch</span>
                 </a>
             </p>
-        </div> -->
+        </div>
         <div class="team-stat">
             <p>City</p>
             <p>{{currentTeam!['city']}}</p>
