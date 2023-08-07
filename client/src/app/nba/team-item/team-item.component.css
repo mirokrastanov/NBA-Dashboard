@@ -7,11 +7,25 @@
     padding: 10px;
     border-radius: 18px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
     row-gap: 10px;
     margin-bottom: 20px;
+}
+
+.team-logo {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+}
+
+.team-logo img {
+    height: 350px;
+    padding: 10px;
 }
 
 .team-title {
@@ -76,7 +90,8 @@
     gap: 2%;
 }
 
-.team-inner .team-stat {
+.team-inner .team-stat,
+.team-logo {
     background-color: var(--color-white);
     box-shadow: var(--box-shadow);
     width: 49%;
