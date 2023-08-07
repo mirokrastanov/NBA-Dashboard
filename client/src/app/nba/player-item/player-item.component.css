@@ -1,0 +1,53 @@
+.player-inner .player-stat.hidden-stat {
+    display: none;
+}
+
+.player-outer {
+    background-color: var(--color-background);
+    padding: 10px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.player-title {
+    box-shadow: var(--box-shadow);
+    background-color: var(--color-white);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+    border-radius: 13px;
+}
+
+.player-title h1 {
+    font-size: 32px;
+}
+
+.player-title a {
+    position: absolute;
+    height: 100%;
+    width: fit-content;
+    padding: 10px 20px;
+    right: 0;
+    top: 0;
+    border-radius: 0 13px 13px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-primary);
+    font-weight: 700;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 16px;
+    border-left: 2px solid var(--color-light);
+}
