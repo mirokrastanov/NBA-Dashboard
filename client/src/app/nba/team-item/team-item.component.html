@@ -18,7 +18,7 @@
             <p>{{currentTeam!['full_name']}}</p>
         </div>
         <div class="grid-full">
-            <div class="team-logo">
+            <div class="team-logo" *ngIf="currentLinks">
                 <img src="{{currentLinks!['logo']}}" alt="team-logo-image">
             </div>
             <div class="grid-extra">
@@ -42,7 +42,7 @@
         </div>
         <div class="team-stat team-url">
             <p>Official Website</p>
-            <p [attr.data-teamID]="currentTeam!['id']">
+            <p [attr.data-teamID]="currentTeam!['id']" *ngIf="currentLinks">
                 <a class="a-left" href="{{currentLinks!['href']}}" target="_blank">
                     Click here
                     <span class="material-icons-sharp">launch</span>
