@@ -15,7 +15,22 @@
     margin-bottom: 20px;
 }
 
+.grid-full {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%;
+    grid-template-areas: 
+    'logo line';
+}
+
+.grid-extra {
+    grid-area: line;
+    row-gap: 13px;
+}
+
 .team-logo {
+    grid-area: logo;
     height: 300px;
     display: flex;
     justify-content: center;
@@ -24,7 +39,7 @@
 }
 
 .team-logo img {
-    height: 350px;
+    height: 120%;
     padding: 10px;
 }
 
@@ -172,7 +187,18 @@
     transform: translateX(10px);
 }
 
+.grid-extra,
+.team-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 
+.grid-extra .grid-line.team-stat {
+    width: 100%;
+}
 
 
 
@@ -219,4 +245,15 @@
         width: 100%;
     }
 
+    .grid-full {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: 
+        'logo'
+        'line';
+        margin-bottom: 12px;
+    }
+
+    .grid-extra {
+        row-gap: 0px;
+    }
 }
