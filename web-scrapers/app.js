@@ -13,6 +13,7 @@ import { getDatabase, ref, set, get, child } from 'firebase/database';
 import { scrapeTransactions } from './scrapers/transactions.js';
 import { scrapeLeaders } from './scrapers/leaders.js';
 import { scrapeTeamStats } from './scrapers/teamStats.js';
+import { scrapeTeamLinks } from './scrapers/teamLinks.js';
 
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getDatabase(firebaseApp);
@@ -33,6 +34,7 @@ async function scrapeAll() {
     const teamStatsTotals = await scrapeTeamStats(scrapeURLs.teamStats.totals);
     const teamStatsMisc = await scrapeTeamStats(scrapeURLs.teamStats.misc);
     const teamStatsAdvanced = await scrapeTeamStats(scrapeURLs.teamStats.advanced);
+    const teamLinks = await scrapeTeamLinks(scrapeURLs.teamLinks);
 
     set(ref(db, 'nba/standings'), standings);
     set(ref(db, 'nba/players'), players);
@@ -47,6 +49,7 @@ async function scrapeAll() {
     set(ref(db, 'nba/teamStats/totals'), teamStatsTotals);
     set(ref(db, 'nba/teamStats/misc'), teamStatsMisc);
     set(ref(db, 'nba/teamStats/advanced'), teamStatsAdvanced);
+    set(ref(db, 'nba/teamLinks'), teamLinks);
 
     console.log('Saved to Firebase!');
 
@@ -56,4 +59,3 @@ async function scrapeAll() {
 scrapeAll()
     .then(() => console.log('Scraping finished!'))
     .catch((err) => console.log(err))
-    
