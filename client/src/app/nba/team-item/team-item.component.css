@@ -159,3 +159,49 @@
 
 
 
+
+
+
+@media screen and (max-width: 1200px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .team-title h1#team-main-title {
+        font-size: 24px;
+        margin-left: 15%;
+        margin-right: auto;
+    }
+
+    .team-inner .team-stat.hidden-stat {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .team-title h1#team-main-title {
+        display: none;
+    }
+
+    .team-inner .team-stat.hidden-stat {
+        display: flex;
+    }
+
+    .team-title {
+        height: 40px;
+    }
+
+    .team-title a {
+        width: 100%;
+        border-left: none;
+    }
+
+    .team-title a:hover {
+        border-radius: 13px;
+    }
+
+    .team-inner .team-stat {
+        width: 100%;
+    }
+
+}
