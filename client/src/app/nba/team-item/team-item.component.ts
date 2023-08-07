@@ -17,9 +17,9 @@ export class TeamItemComponent {
   currentTeam: Team | undefined;
   currentLinks: Links | undefined;
   stats: {
-    advanced: null | StatsAdvanced, averages: null | StatsAverages,
-    misc: null | StatsMisc, totals: null | StatsTotals,
-  } = { advanced: null, averages: null, misc: null, totals: null };
+    advanced: [string, any][] | StatsAdvanced[], averages: [string, any][] | StatsAverages[],
+    misc: [string, any][] | StatsMisc[], totals: [string, any][] | StatsTotals[],
+  } = { advanced: [], averages: [], misc: [], totals: [] };
   routeID: string | number | null = null;
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
@@ -38,7 +38,7 @@ export class TeamItemComponent {
         });
         this.currentTeam = this.teamsALL!.find(x => x.id == this.routeID)
         console.log(this.currentTeam);
-        // INNER 1
+        // INNER 1 - Links
         this.apiService.firebaseDbFetch(dbTarget.nba.teamLinks).subscribe({
           next: (data: Links[]) => {
             this.currentLinks = data.find(x => this.currentTeam!.full_name.toLowerCase().includes(x.name));
@@ -54,7 +54,7 @@ export class TeamItemComponent {
             this.unsubscribed = true;
           },
         });
-        // INNER 2
+        // INNER 2 - Advanced
         this.apiService.firebaseDbFetch(dbTarget.nba.teamStats.advanced).subscribe({
           next: (data: StatsAdvanced[]) => {
             Object.entries(data).forEach(([i, v]) => {
@@ -62,8 +62,11 @@ export class TeamItemComponent {
                 v['Team'] = v['Team'].substring(5);
               }
               if (this.currentTeam!.full_name.includes(v['Team'])) {
-                v['id'] = this.currentTeam!.id.toString();
-                this.stats.advanced = v;
+                // v['id'] = this.currentTeam!.id.toString();
+                let arr = Object.entries(v);
+                arr.pop();
+                this.stats.advanced = arr;
+                // console.log(arr);
               }
             });
             // console.log(this.stats);
@@ -78,7 +81,7 @@ export class TeamItemComponent {
             this.unsubscribed = true;
           },
         });
-        // INNER 3
+        // INNER 3 - Averages
         this.apiService.firebaseDbFetch(dbTarget.nba.teamStats.advanced).subscribe({
           next: (data: StatsAverages[]) => {
             Object.entries(data).forEach(([i, v]) => {
@@ -86,8 +89,11 @@ export class TeamItemComponent {
                 v['Team'] = v['Team'].substring(5);
               }
               if (this.currentTeam!.full_name.includes(v['Team'])) {
-                v['id'] = this.currentTeam!.id.toString();
-                this.stats.averages = v;
+                // v['id'] = this.currentTeam!.id.toString();
+                let arr = Object.entries(v);
+                arr.pop();
+                this.stats.averages = arr;
+                // console.log(arr);
               }
             });
             // console.log(this.stats);
@@ -102,7 +108,7 @@ export class TeamItemComponent {
             this.unsubscribed = true;
           },
         });
-        // INNER 4
+        // INNER 4 - Misc
         this.apiService.firebaseDbFetch(dbTarget.nba.teamStats.advanced).subscribe({
           next: (data: StatsMisc[]) => {
             Object.entries(data).forEach(([i, v]) => {
@@ -110,8 +116,11 @@ export class TeamItemComponent {
                 v['Team'] = v['Team'].substring(5);
               }
               if (this.currentTeam!.full_name.includes(v['Team'])) {
-                v['id'] = this.currentTeam!.id.toString();
-                this.stats.misc = v;
+                // v['id'] = this.currentTeam!.id.toString();
+                let arr = Object.entries(v);
+                arr.pop();
+                this.stats.misc = arr;
+                // console.log(arr);
               }
             });
             // console.log(this.stats);
@@ -126,7 +135,34 @@ export class TeamItemComponent {
             this.unsubscribed = true;
           },
         });
-
+        // INNER 5 - Totals
+        this.apiService.firebaseDbFetch(dbTarget.nba.teamStats.advanced).subscribe({
+          next: (data: StatsTotals[]) => {
+            Object.entries(data).forEach(([i, v]) => {
+              if (v['Team'].includes('L.A.')) {
+                v['Team'] = v['Team'].substring(5);
+              }
+              if (this.currentTeam!.full_name.includes(v['Team'])) {
+                // v['id'] = this.currentTeam!.id.toString();
+                let arr = Object.entries(v);
+                arr.pop();
+                this.stats.totals = arr;
+                // console.log(arr);
+              }
+            });
+            console.log(this.stats);
+            this.isLoading = false;
+          },
+          error: (err) => {
+            this.errorOccurred = true;
+            console.log(err);
+            this.isLoading = false;
+          },
+          complete: () => {
+            this.unsubscribed = true;
+          },
+        });
+        // END OF INNER FETCH CHAIN 
       },
       error: (err) => { console.log(err) },
       complete: () => {
