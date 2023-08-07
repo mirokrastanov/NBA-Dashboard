@@ -16,6 +16,7 @@ export class PlayerItemComponent {
   teamsALL: Team[] | null = null;
   routeName: string | null = null;
   currentPlayer: Player | null = null;
+  teamID: string | number | null = null;
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
   isLoading: boolean = true;
@@ -40,6 +41,7 @@ export class PlayerItemComponent {
             player.map((x) => {
               let teamID = this.teamsALL!.find(y => y.full_name == x['Current Team'])?.id;
               x['teamID'] = String(teamID);
+              this.teamID = teamID!;
               return x;
             });
             this.currentPlayer = player[0];
