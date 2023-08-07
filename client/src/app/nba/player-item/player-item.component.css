@@ -145,3 +145,33 @@
         display: none;
     }
 }
+
+@media screen and (max-width: 768px) {    
+    .player-title h1#player-main-title {
+        display: none;
+    }
+    
+    .player-inner .player-stat.hidden-stat {
+        display: flex;
+    }
+
+    .player-title {
+        height: 40px;
+    }
+
+    .player-title a {
+        width: 100%;
+        border-left: none;
+    }
+
+    .player-title a:hover {
+        border-radius: 13px;
+    }
+
+    .player-inner .player-stat {
+        width: 100%;
+    }
+
+}
+
+
