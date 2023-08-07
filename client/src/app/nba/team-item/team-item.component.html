@@ -58,5 +58,29 @@
                 <p>{{item.value}}</p>
             </div>
         </ng-container>
+
+        <h1>Team Stats - Averages</h1>
+        <ng-container *ngFor="let item of stats.averages | keyvalue">
+            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
+                <p>{{item.key}}</p>
+                <p>{{item.value}}</p>
+            </div>
+        </ng-container>
+
+        <h1>Team Stats - Misc</h1>
+        <ng-container *ngFor="let item of stats.misc | keyvalue">
+            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
+                <p>{{item.key}}</p>
+                <p>{{item.value}}</p>
+            </div>
+        </ng-container>
+
+        <h1>Team Stats - Totals</h1>
+        <ng-container *ngFor="let item of stats.totals | keyvalue">
+            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
+                <p>{{item.key}}</p>
+                <p>{{item.value}}</p>
+            </div>
+        </ng-container>
     </div>
 </div>
