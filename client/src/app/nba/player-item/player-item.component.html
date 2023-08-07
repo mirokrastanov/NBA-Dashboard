@@ -1,1 +1,68 @@
-<p>player-item works!</p>
+<h1>Player</h1>
+
+<div *ngIf="isLoading">
+    <app-global-loader></app-global-loader>
+</div>
+
+<div *ngIf="!isLoading" class="player-outer">
+    <div class="player-title">
+        <h1 id="player-main-title">{{currentPlayer!['Player']}}</h1>
+        <a [routerLink]="['/nba/players']">
+            <span class="material-icons-sharp">arrow_back_ios</span>
+            Back to Players
+        </a>
+    </div>
+    <div class="player-inner">
+        <div class="player-stat hidden-stat">
+            <p>Name</p>
+            <p>{{currentPlayer!['Player']}}</p>
+        </div>
+        <div class="player-stat">
+            <p>Age</p>
+            <p>{{currentPlayer!['Age']}}</p>
+        </div>
+        <div class="player-stat">
+            <p>Current Team</p>
+            <p [attr.data-teamID]="currentPlayer!['teamID']">{{currentPlayer!['Current Team']}}</p>
+        </div>
+        <div class="player-stat">
+            <p>Position</p>
+            <p>{{currentPlayer!['Pos']}}</p>
+        </div>
+        <div class="player-stat">
+            <p>Nationality</p>
+            <p>{{currentPlayer!['Nationality']}}</p>
+        </div>
+        <div class="player-stat">
+            <p>Draft Status</p>
+            <p>{{currentPlayer!['Draft Status']}}</p>
+        </div>
+        <div class="player-stat">
+            <p>Pre-Draft Team</p>
+            <p>{{currentPlayer!['Pre-Draft Team']}}</p>
+        </div>
+        <div class="player-stat">
+            <p>Height</p>
+            <p>{{currentPlayer!['HT']}}</p>
+        </div>
+        <div class="player-stat">
+            <p>Weight</p>
+            <p>{{currentPlayer!['WT']}}</p>
+        </div>
+        <div class="player-stat">
+            <p>Years of Service</p>
+            <p>{{currentPlayer!['YOS']}}</p>
+        </div>
+        <div class="player-stat info">
+            <p>More Information</p>
+            <p>
+                <a class="a-left" href="https://basketball.realgm.com/search/?q={{currentPlayer!['Player']}}">
+                    Click here
+                    <span class="material-icons-sharp">
+                        launch
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
