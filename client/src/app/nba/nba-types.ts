@@ -105,6 +105,27 @@ export interface StatsAverages {
     'id': string,
 };
 
+export interface StatsMisc {
+    '20 Ast': string,
+    '20 Reb': string,
+    '5 Blk': string,
+    '5 Stl': string,
+    'Ast|TO': string,
+    'Dbl Dbl': string,
+    'FT|FGA': string,
+    'HOB': string,
+    'High Game': string,
+    "L's": string,
+    'MOV': string,
+    'Stl|TO': string,
+    'Team': string,
+    'Techs': string,
+    'Tpl Dbl': string,
+    "W's": string,
+    'Win %': string,
+    'id': string,
+};
+
 
 
 // TODO 
