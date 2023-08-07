@@ -23,7 +23,7 @@ const routes: Routes = [
             { path: 'teams/:id', component: TeamItemComponent },
             { path: 'players', redirectTo: '/nba/players/page/1', pathMatch: 'full' },
             { path: 'players/page/:num', component: PlayersComponent },
-            { path: 'players/player/:id', component: PlayerItemComponent },
+            { path: 'players/player/:name', component: PlayerItemComponent },
             { path: 'transactions', component: TransactionsComponent, canActivate: [AuthActivate] },
             { path: 'news', component: NewsComponent, canActivate: [AuthActivate] },
             { path: 'news/:id', component: NewsItemComponent, canActivate: [AuthActivate] },
