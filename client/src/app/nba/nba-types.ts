@@ -6,7 +6,7 @@ export interface Team {
     division: string;
     name: string;
     full_name: string;
-}
+};
 
 export interface Player {
     'Age': string,
@@ -21,7 +21,7 @@ export interface Player {
     'YOS': string,
     'id': string,
     'teamID': string,
-}
+};
 
 // export interface PlayerBackup {
 //     id: number;
@@ -32,7 +32,7 @@ export interface Player {
 //     height_inches: null | number;
 //     weight_pounds: null | number;
 //     team: Team;
-// }
+// };
 
 export interface News {
     body: string,
@@ -41,7 +41,7 @@ export interface News {
     sourceTxt: string,
     sourceURL: string,
     title: string,
-}
+};
 
 export interface Analysis {
     author: string,
@@ -51,13 +51,37 @@ export interface Analysis {
     postedOn: string,
     sourceURL: string,
     title: string,
-}
+};
 
 export interface Links {
     href: string,
     logo: string,
     name: string,
-}
+};
+
+export interface StatsAdvanced {
+    'AST%': string,
+    'BLK%': string,
+    'DRB%': string,
+    'DRtg': string,
+    'FIC40': string,
+    'ORB%': string,
+    'ORtg': string,
+    'PPS': string,
+    'Pace': string,
+    'Poss': string,
+    'STL%': string,
+    'TOV%': string,
+    'TRB%': string,
+    'TS%': string,
+    'Team': string,
+    'Total S%': string,
+    'eFG%': string,
+    'id': string,
+};
+
+
+
 
 // TODO 
 // STANDINGS, teamStats, transactions and userEXTRA for users --- if favorites make it through :)
