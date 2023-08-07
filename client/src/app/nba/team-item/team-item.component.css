@@ -129,12 +129,12 @@
     transform: translateX(5px);
 }
 
-.team-inner .team-stat.player-team {
+.team-inner .team-stat.team-url {
     padding: 10px 20px 4px 20px;
     
 }
 
-.team-inner .team-stat.player-team a {
+.team-inner .team-stat.team-url a {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -148,12 +148,12 @@
     padding: 4px 20px;
 }
 
-.team-inner .team-stat.player-team a span {
+.team-inner .team-stat.team-url a span {
     transition: all 0.3s ease-in-out;
     margin-left: 5px;
 }
 
-.team-inner .team-stat.player-team a:hover span {
+.team-inner .team-stat.team-url a:hover span {
     transform: translateX(10px);
 }
 
