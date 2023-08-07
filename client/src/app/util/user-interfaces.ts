@@ -11,3 +11,29 @@ export interface LoginUser {
     password: string,
 };
 
+export interface DB {
+    nba: {
+        analysis: string,
+        leaders: {
+            advanced: string,
+            averages: string,
+            misc: string,
+            totals: string,
+        },
+        news: string,
+        players: string,
+        standings: {
+            east: string,
+            west: string,
+        },
+        teamStats: {
+            advanced: string,
+            averages: string,
+            misc: string,
+            totals: string,
+        },
+        transactions: string,
+        teamLinks: string,
+    },
+    users: string,
+};
