@@ -129,3 +129,19 @@
 }
 
 
+
+@media screen and (max-width: 1200px) {    
+    h1 {
+        font-size: 20px;
+    }
+
+    .player-title h1#player-main-title {
+        font-size: 24px;
+        margin-left: 15%;
+        margin-right: auto;
+    }
+
+    .player-inner .player-stat.hidden-stat {
+        display: none;
+    }
+}
