@@ -613,6 +613,49 @@ main .recent-orders a {
 }
 
 
+.a-left,
+.a-right {
+    position: relative;
+}
+
+.a-left::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-primary);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.a-left:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.a-right::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    right: 0;
+    background-color: var(--color-primary);
+    transform-origin: bottom left;
+    transition: transform 0.25s ease-out;
+}
+
+.a-right:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom right;
+}
+
+
+
 @media screen and (max-width: 1200px) {
     .container {
         width: 95%;
