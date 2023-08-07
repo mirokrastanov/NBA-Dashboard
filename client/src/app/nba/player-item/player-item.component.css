@@ -54,6 +54,7 @@
 
 .player-title span {
     transition: all 0.3s ease-in-out;
+    margin-right: 5px;
 }
 
 .player-title a:hover {
@@ -115,7 +116,7 @@
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     white-space: nowrap;
-    font-size: 16px;
+    font-size: 18px;
     position: relative;
     font-weight: 700;
 }
@@ -128,9 +129,40 @@
     transform: translateX(5px);
 }
 
+.player-inner .player-stat.player-team {
+    padding: 10px 20px 4px 20px;
+    
+}
+
+.player-inner .player-stat.player-team a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-primary);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 0 10px;
+    padding: 4px 20px;
+}
+
+.player-inner .player-stat.player-team a span {
+    transition: all 0.3s ease-in-out;
+    margin-left: 5px;
+}
+
+.player-inner .player-stat.player-team a:hover span {
+    transform: translateX(10px);
+}
 
 
-@media screen and (max-width: 1200px) {    
+
+
+
+
+@media screen and (max-width: 1200px) {
     h1 {
         font-size: 20px;
     }
@@ -146,11 +178,11 @@
     }
 }
 
-@media screen and (max-width: 768px) {    
+@media screen and (max-width: 768px) {
     .player-title h1#player-main-title {
         display: none;
     }
-    
+
     .player-inner .player-stat.hidden-stat {
         display: flex;
     }
@@ -173,5 +205,3 @@
     }
 
 }
-
-
