@@ -13,6 +13,9 @@
         </a>
     </div>
     <div class="team-inner">
+        <div class="team-logo">
+            <img src="{{currentLinks!['logo']}}" alt="team-logo-image">
+        </div>
         <div class="team-stat hidden-stat">
             <p>Name</p>
             <p>{{currentTeam!['full_name']}}</p>
@@ -21,6 +24,10 @@
             <p>Abbreviation</p>
             <p>{{currentTeam!['abbreviation']}}</p>
         </div>
+        <!-- <div class="team-stat">
+            <p>Short Name</p>
+            <p>{{currentTeam!['name']}}</p>
+        </div> -->
         <div class="team-stat team-url">
             <p>Official Website</p>
             <p [attr.data-teamID]="currentTeam!['id']">
