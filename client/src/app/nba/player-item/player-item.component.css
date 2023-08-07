@@ -96,3 +96,36 @@
     font-size: 20px;
     font-weight: 700;
 }
+
+.player-inner .player-stat.info {
+    padding: 10px 20px 4px 20px;
+}
+
+.player-inner .player-stat.info a {
+    height: 100%;
+    width: 100%;
+    padding: 5px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+    gap: 5px;
+    color: var(--color-primary);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 16px;
+    position: relative;
+    font-weight: 700;
+}
+
+.player-inner .player-stat.info a span {
+    transition: all 0.3s ease-in-out;
+}
+
+.player-inner .player-stat.info a:hover span {
+    transform: translateX(5px);
+}
+
+
