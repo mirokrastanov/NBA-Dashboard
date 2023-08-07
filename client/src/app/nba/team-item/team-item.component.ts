@@ -17,8 +17,8 @@ export class TeamItemComponent {
   currentTeam: Team | undefined;
   currentLinks: Links | undefined;
   stats: {
-    advanced: StatsAdvanced | StatsAdvanced[] | any, averages: StatsAverages | StatsAverages[],
-    misc: StatsMisc | StatsMisc[], totals: StatsTotals | StatsTotals[],
+    advanced: StatsAdvanced | StatsAdvanced[] | any, averages: StatsAverages | StatsAverages[] | any,
+    misc: StatsMisc | StatsMisc[] | any, totals: StatsTotals | StatsTotals[] | any,
   } = { advanced: [], averages: [], misc: [], totals: [] };
   routeID: string | number | null = null;
   unsubscribed: boolean = false;
@@ -81,7 +81,7 @@ export class TeamItemComponent {
           },
         });
         // INNER 3 - Averages
-        this.apiService.firebaseDbFetch(dbTarget.nba.teamStats.advanced).subscribe({
+        this.apiService.firebaseDbFetch(dbTarget.nba.teamStats.averages).subscribe({
           next: (data: StatsAverages[]) => {
             Object.entries(data).forEach(([i, v]) => {
               if (v['Team'].includes('L.A.')) {
@@ -106,7 +106,7 @@ export class TeamItemComponent {
           },
         });
         // INNER 4 - Misc
-        this.apiService.firebaseDbFetch(dbTarget.nba.teamStats.advanced).subscribe({
+        this.apiService.firebaseDbFetch(dbTarget.nba.teamStats.misc).subscribe({
           next: (data: StatsMisc[]) => {
             Object.entries(data).forEach(([i, v]) => {
               if (v['Team'].includes('L.A.')) {
@@ -131,7 +131,7 @@ export class TeamItemComponent {
           },
         });
         // INNER 5 - Totals
-        this.apiService.firebaseDbFetch(dbTarget.nba.teamStats.advanced).subscribe({
+        this.apiService.firebaseDbFetch(dbTarget.nba.teamStats.totals).subscribe({
           next: (data: StatsTotals[]) => {
             Object.entries(data).forEach(([i, v]) => {
               if (v['Team'].includes('L.A.')) {
