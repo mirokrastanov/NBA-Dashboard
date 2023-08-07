@@ -1,1 +1,57 @@
-<p>team-item works!</p>
+<h1>Team</h1>
+
+<div *ngIf="isLoading">
+    <app-global-loader></app-global-loader>
+</div>
+
+<div *ngIf="!isLoading" class="team-outer">
+    <div class="team-title">
+        <h1 id="team-main-title">{{currentTeam!['full_name']}}</h1>
+        <a [routerLink]="['/nba/players']">
+            <span class="material-icons-sharp">arrow_back_ios</span>
+            Back to Players
+        </a>
+    </div>
+    <div class="team-inner">
+        <div class="team-stat hidden-stat">
+            <p>Name</p>
+            <p>{{currentTeam!['full_name']}}</p>
+        </div>
+        <div class="team-stat">
+            <p>Abbreviation</p>
+            <p>{{currentTeam!['abbreviation']}}</p>
+        </div>
+        <!-- <div class="team-stat player-team">
+            <p>Current Team</p>
+            <p [attr.data-teamID]="currentTeam!['teamID']">
+                <a class="a-left" routerLink="/nba/teams/{{teamID}}">
+                    {{currentTeam!['Current Team']}}
+                    <span class="material-icons-sharp">arrow_forward_ios</span>
+                </a>
+            </p>
+        </div> -->
+        <div class="team-stat">
+            <p>City</p>
+            <p>{{currentTeam!['city']}}</p>
+        </div>
+        <div class="team-stat">
+            <p>Conference</p>
+            <p>{{currentTeam!['conference']}}</p>
+        </div>
+        <div class="team-stat">
+            <p>Division</p>
+            <p>{{currentTeam!['division']}}</p>
+        </div>
+        <!-- <div class="team-stat info">
+            <p>More Information</p>
+            <p>
+                <a class="a-left" href="https://basketball.realgm.com/search/?q={{currentTeam!['']}}" target="_blank">
+                    Click here
+                    <span class="material-icons-sharp">
+                        launch
+                    </span>
+                </a>
+            </p>
+        </div> -->
+    </div>
+</div>
