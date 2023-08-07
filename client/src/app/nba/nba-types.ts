@@ -126,9 +126,33 @@ export interface StatsMisc {
     'id': string,
 };
 
+export interface StatsTotals {
+    '3P%': string,
+    '3PA': string,
+    '3PM': string,
+    'AST': string,
+    'BLK': string,
+    'DRB': string,
+    'FG%': string,
+    'FGA': string,
+    'FGM': string,
+    'FT%': string,
+    'FTA': string,
+    'FTM': string,
+    'GP': string,
+    'MIN': string,
+    'ORB': string,
+    'PF': string,
+    'PTS': string,
+    'REB': string,
+    'STL': string,
+    'TOV': string,
+    'Team': string,
+    'id': string,
+};
 
 
 // TODO 
-// STANDINGS, teamStats, transactions and userEXTRA for users --- if favorites make it through :)
+// STANDINGS, transactions and userEXTRA for users --- if favorites make it through :)
 
 
