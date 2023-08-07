@@ -21,21 +21,26 @@
             <p>Age</p>
             <p>{{currentPlayer!['Age']}}</p>
         </div>
-        <div class="player-stat">
+        <div class="player-stat player-team">
             <p>Current Team</p>
-            <p [attr.data-teamID]="currentPlayer!['teamID']">{{currentPlayer!['Current Team']}}</p>
+            <p [attr.data-teamID]="currentPlayer!['teamID']">
+                <a class="a-left" routerLink="/nba/teams/{{teamID}}">
+                    {{currentPlayer!['Current Team']}}
+                    <span class="material-icons-sharp">arrow_forward_ios</span>
+                </a>
+            </p>
         </div>
         <div class="player-stat">
             <p>Position</p>
             <p>{{currentPlayer!['Pos']}}</p>
         </div>
         <div class="player-stat">
-            <p>Nationality</p>
-            <p>{{currentPlayer!['Nationality']}}</p>
-        </div>
-        <div class="player-stat">
             <p>Draft Status</p>
             <p>{{currentPlayer!['Draft Status']}}</p>
+        </div>
+        <div class="player-stat">
+            <p>Nationality</p>
+            <p>{{currentPlayer!['Nationality']}}</p>
         </div>
         <div class="player-stat">
             <p>Pre-Draft Team</p>
