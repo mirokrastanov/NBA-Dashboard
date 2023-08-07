@@ -33,14 +33,9 @@
                 <div class="grid-line team-stat">
                     <p>Division</p>
                     <p>{{currentTeam!['division']}}</p>
-
                 </div>
             </div>
         </div>
-        <!-- <div class="team-stat">
-            <p>Short Name</p>
-            <p>{{currentTeam!['name']}}</p>
-        </div> -->
         <div class="team-stat">
             <p>Abbreviation</p>
             <p>{{currentTeam!['abbreviation']}}</p>
@@ -54,16 +49,14 @@
                 </a>
             </p>
         </div>
-        <!-- <div class="team-stat info">
-            <p>More Information</p>
-            <p>
-                <a class="a-left" href="https://basketball.realgm.com/search/?q={{currentTeam!['']}}" target="_blank">
-                    Click here
-                    <span class="material-icons-sharp">
-                        launch
-                    </span>
-                </a>
-            </p>
-        </div> -->
+    </div>
+    <div class="team-inner inner-stats">
+        <h1>Team Stats - Advanced</h1>
+        <ng-container *ngFor="let item of stats.advanced | keyvalue">
+            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
+                <p>{{item.key}}</p>
+                <p>{{item.value}}</p>
+            </div>
+        </ng-container>
     </div>
 </div>
