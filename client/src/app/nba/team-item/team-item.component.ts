@@ -78,7 +78,32 @@ export class TeamItemComponent {
             this.unsubscribed = true;
           },
         });
-        
+        // INNER 3
+        this.apiService.firebaseDbFetch(dbTarget.nba.teamStats.advanced).subscribe({
+          next: (data: StatsAverages[]) => {
+            Object.entries(data).forEach(([i, v]) => {
+              if (v['Team'].includes('L.A.')) {
+                v['Team'] = v['Team'].substring(5);
+              }
+              if (this.currentTeam!.full_name.includes(v['Team'])) {
+                v['id'] = this.currentTeam!.id.toString();
+                this.stats.averages = v;
+              }
+            });
+            // console.log(this.stats);
+            this.isLoading = false;
+          },
+          error: (err) => {
+            this.errorOccurred = true;
+            console.log(err);
+            this.isLoading = false;
+          },
+          complete: () => {
+            this.unsubscribed = true;
+          },
+        });
+
+
       },
       error: (err) => { console.log(err) },
       complete: () => {
