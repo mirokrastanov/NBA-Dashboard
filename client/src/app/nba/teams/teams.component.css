@@ -259,13 +259,13 @@
 }
 
 .team-inner .team-logo::after {
-    position: relative;
-    top: 20px;
+    position: absolute;
+    top: 50%;
     left: 50%;
     box-shadow: none;
     background-color: transparent;
     opacity: 0;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     content: '';
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
