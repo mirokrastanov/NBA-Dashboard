@@ -201,7 +201,7 @@ aside .sidebar {
     background-color: var(--color-white);
     box-shadow: var(--box-shadow);
     border-radius: 15px;
-    height: 88vh;
+    height: 84vh;
     position: relative;
     top: 1.5rem;
     transition: all 0.3s ease;
@@ -679,6 +679,10 @@ main .recent-orders a {
         height: 2.4rem;
     }
 
+    aside .sidebar {
+        height: 88vh;
+    }
+
     aside .sidebar h3 {
         display: none;
     }
@@ -688,8 +692,8 @@ main .recent-orders a {
     }
 
     aside .sidebar a:last-child {
-        position: relative;
-        margin-top: 1.8rem;
+        position: absolute;
+        bottom: 5rem;
     }
 
     aside .sidebar a:hover::after {
