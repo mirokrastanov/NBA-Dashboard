@@ -252,9 +252,14 @@
 }
 
 .team-inner .team-stat.team-stat-small.small-highlight {
+    position: relative;
+    transition: all 0.2s ease-in-out;
     box-shadow: var(--box-shadow-2);
 }
 
+.team-inner .team-stat.team-stat-small.small-highlight p {
+    color: var(--color-primary);
+}
 
 
 
