@@ -157,6 +157,9 @@
     transform: translateX(10px);
 }
 
+.player-stat p:nth-of-type(2) {
+    color: var(--color-dark);
+}
 
 
 
