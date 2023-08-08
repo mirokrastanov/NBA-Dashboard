@@ -49,38 +49,21 @@
                 </a>
             </p>
         </div>
-    </div>
-    <div class="team-inner inner-stats">
-        <h1>Team Stats - Advanced</h1>
-        <ng-container *ngFor="let item of stats.advanced | keyvalue">
-            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
-                <p>{{item.key}}</p>
-                <p>{{item.value}}</p>
-            </div>
-        </ng-container>
-
-        <h1>Team Stats - Averages</h1>
-        <ng-container *ngFor="let item of stats.averages | keyvalue">
-            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
-                <p>{{item.key}}</p>
-                <p>{{item.value}}</p>
-            </div>
-        </ng-container>
-
-        <h1>Team Stats - Misc</h1>
-        <ng-container *ngFor="let item of stats.misc | keyvalue">
-            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
-                <p>{{item.key}}</p>
-                <p>{{item.value}}</p>
-            </div>
-        </ng-container>
-
-        <h1>Team Stats - Totals</h1>
-        <ng-container *ngFor="let item of stats.totals | keyvalue">
-            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
-                <p>{{item.key}}</p>
-                <p>{{item.value}}</p>
-            </div>
-        </ng-container>
+        <div class="team-stat team-url">
+            <p>Team Stats</p>
+            <p [attr.data-teamID]="currentTeam!['id']" class="a-left">
+                <a routerLink="/nba/teams/{{currentTeam!['id']}}/stats">View stats
+                    <span class="material-icons-sharp">arrow_forward_ios</span>
+                </a>
+            </p>
+        </div>
+        <div class="team-stat team-url">
+            <p>Team Roster</p>
+            <p [attr.data-teamID]="currentTeam!['id']" class="a-left">
+                <a routerLink="/nba/teams/{{currentTeam!['id']}}/roster">Open Roster
+                    <span class="material-icons-sharp">arrow_forward_ios</span>
+                </a>
+            </p>
+        </div>
     </div>
 </div>
