@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbaApiService } from '../nba-api.service';
-import { Team } from '../nba-types';
+import { Links, Player, Team } from '../nba-types';
+import { dbTarget } from 'src/app/util/global-constants';
 
 @Component({
   selector: 'app-teams',
@@ -9,34 +10,43 @@ import { Team } from '../nba-types';
 })
 export class TeamsComponent implements OnInit {
   constructor(private apiService: NbaApiService) { }
-  teamsArray: Team[] | null = null;
-  metaObject: { [key: string]: any } = {};
+  teamsALL: Team[] | null = null;
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
   isLoading: boolean = true;
 
   ngOnInit(): void {
+    // OUTER 1 - Teams
     this.apiService.nbaFetch('teams').subscribe({
       next: (data) => {
-        this.teamsArray = data.data;
-        this.metaObject = data.meta;
-        console.log(data);
-        console.log(data.data[0]);
-        let test: object = {};
-        console.log(test.hasOwnProperty('teams'));
+        this.teamsALL = data.data;
+        this.teamsALL!.map((x) => {
+          if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
+          if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
+          return x;
+        });
+        // INNER 1 - Links
+        this.apiService.firebaseDbFetch(dbTarget.nba.teamLinks).subscribe({
+          next: (data: Links[]) => {
+            
 
-        this.isLoading = false;
+            this.isLoading = false;
+          },
+          error: (err) => {
+            this.errorOccurred = true;
+            console.log(err);
+            this.isLoading = false;
+          },
+          complete: () => {
+            this.unsubscribed = true;
+          },
+        });
       },
-      error: (err) => {
-        this.errorOccurred = true;
-        console.log(err);
-        this.isLoading = false;
-      },
+      error: (err) => { console.log(err) },
       complete: () => {
-        this.unsubscribed = true;
-        console.log('Subscription ended! Teams data fetched!');
+        // console.log('Teams data fetched!');
       },
     });
-  }
+  };
 
 }
