@@ -193,7 +193,7 @@
 }
 
 .team-inner .team-stat.team-stat-small {
-    width: 11%;
+    width: 12.5%;
     padding: 10px 5px;
     box-shadow: var(--box-shadow);
 }
@@ -225,7 +225,7 @@
     padding: 5px 10px;
 }
 
-.team-inner > a {
+.team-inner>a {
     width: 49%;
     font-size: 20px;
     font-weight: 700;
@@ -236,6 +236,27 @@
     margin: 10px 0;
     box-shadow: var(--box-shadow);
 }
+
+.team-inner .inner-title {
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    padding: 10px 30px;
+    margin: 10px 0;
+    border-radius: 13px;
+}
+
+.team-inner .inner-title h1 {
+    font-size: 22px;
+    letter-spacing: 0.05em;
+}
+
+.team-inner .team-stat.team-stat-small.small-highlight {
+    box-shadow: var(--box-shadow-2);
+}
+
+
+
 
 
 
@@ -255,7 +276,7 @@
     }
 
     .team-inner .team-stat.team-stat-small {
-        width: 15.75%;
+        width: 14.75%;
     }
 }
 
@@ -302,14 +323,14 @@
     }
 
     .team-inner .team-stat.team-stat-small {
-        width: 24%;
+        width: 23%;
     }
 
     .grid-extra .grid-line.team-stat {
         margin-bottom: 20px;
         padding: 5px 10px;
     }
-    
+
 }
 
 @media screen and (max-width: 450px) {
