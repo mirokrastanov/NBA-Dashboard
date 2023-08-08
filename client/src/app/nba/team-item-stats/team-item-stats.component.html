@@ -18,6 +18,12 @@
             <p>Name</p>
             <p>{{currentTeam!['full_name']}}</p>
         </div>
+        <h1 class="team-stat team-url">
+            <a class="a-left" href="https://www.nba.com/stats/help/glossary" target="_blank">
+                Stats Dictionary
+                <span class="material-icons-sharp">launch</span>
+            </a>
+        </h1>
         <h1>Team Stats - Advanced</h1>
         <ng-container *ngFor="let item of stats.advanced | keyvalue">
             <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
