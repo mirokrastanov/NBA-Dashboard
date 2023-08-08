@@ -14,7 +14,6 @@ import { PlayerItemComponent } from './player-item/player-item.component';
 import { TeamItemComponent } from './team-item/team-item.component';
 import { TeamItemStatsComponent } from './team-item-stats/team-item-stats.component';
 import { TeamItemRosterComponent } from './team-item-roster/team-item-roster.component';
-import { TransactionItemComponent } from './transaction-item/transaction-item.component';
 
 const routes: Routes = [
     {
@@ -30,7 +29,6 @@ const routes: Routes = [
             { path: 'players/page/:num', component: PlayersComponent },
             { path: 'players/player/:name', component: PlayerItemComponent },
             { path: 'transactions', component: TransactionsComponent, canActivate: [AuthActivate] },
-            { path: 'transactions/:id', component: TransactionItemComponent, canActivate: [AuthActivate] },
             { path: 'news', component: NewsComponent, canActivate: [AuthActivate] },
             { path: 'news/:id', component: NewsItemComponent, canActivate: [AuthActivate] },
             { path: 'analysis', component: AnalysisComponent, canActivate: [AuthActivate] },
