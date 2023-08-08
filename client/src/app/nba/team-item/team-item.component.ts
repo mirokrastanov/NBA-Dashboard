@@ -20,10 +20,7 @@ export class TeamItemComponent {
   } = { east: [], west: [] };
   currentTeam: Team | undefined;
   currentLinks: Links | undefined;
-  confStanding: {
-    east: string,
-    west: string,
-  } = { east: '', west: '' };
+  currentStanding: Standings | null = null; 
   routeID: string | number | null = null;
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
@@ -91,16 +88,12 @@ export class TeamItemComponent {
               });
               xTeam = xFiltered.join('').trim().toLowerCase();
               if (xTeam == currentName) {
-                console.log(x['Team'][1], ' >> ', x);
-
-                
-                
+                // console.log(x['Team'][1], ' >> ', x);
+                this.currentStanding = x;
+                console.log(this.currentStanding);
               }
-
-
             });
-
-            // console.log(this.standings!.east);
+            console.log('east', this.standings!.east);
             this.isLoading = false;
           },
           error: (err) => {
@@ -134,16 +127,12 @@ export class TeamItemComponent {
               });
               xTeam = xFiltered.join('').trim().toLowerCase();
               if (xTeam == currentName) {
-                console.log(x['Team'][1], ' >> ', x);
-
-                
-                
+                // console.log(x['Team'][1], ' >> ', x);
+                this.currentStanding = x;
+                console.log(this.currentStanding);
               }
-
-
             });
-
-            // console.log(this.standings!.west);
+            console.log('west', this.standings!.west);
           },
           error: (err) => {
             this.errorOccurred = true;
