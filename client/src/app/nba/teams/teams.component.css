@@ -257,6 +257,24 @@
     transform: scale(1.03);
 }
 
+.team-inner .team-logo:hover::after {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    content: attr(data-tooltip);
+    letter-spacing: 0.025em;
+    color: var(--color-primary);
+    opacity: 1;
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow-2);
+    padding: 3px 10px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 5px;
+    z-index: 2;
+    white-space: nowrap;
+}
 
 
 
