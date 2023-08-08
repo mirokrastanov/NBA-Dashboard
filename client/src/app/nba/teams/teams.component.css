@@ -242,6 +242,7 @@
     transition: all 0.3s ease-in-out;
     box-shadow: var(--box-shadow-2);
     position: relative;
+    cursor: pointer;
 }
 
 .team-inner .team-logo img {
@@ -298,6 +299,16 @@
     }
 }
 
+@media screen and (max-width: 1000px) {
+    .team-inner .team-logo {
+        height: 150px;
+    }
+
+    .team-inner .team-logo:hover::after {
+        font-size: 16px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .team-title h1#team-main-title {
         display: none;
@@ -343,10 +354,25 @@
     .team-inner .team-stat.team-stat-small {
         width: 24%;
     }
+
+    .team-inner .team-logo {
+        width: 32%;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .team-inner .team-logo {
+        width: 49%;
+    }
 }
 
 @media screen and (max-width: 450px) {
     .team-inner .team-stat.team-stat-small {
         width: 49%;
+    }
+
+    .team-inner .team-logo {
+        width: 100%;
     }
 }
