@@ -7,9 +7,9 @@
 <div *ngIf="!isLoading" class="team-outer">
     <div class="team-inner">
         <ng-container *ngFor="let item of teamsALL;">
-            <div class="team-logo" [attr.data-tooltip]="item!.full_name">
+            <a routerLink="/nba/teams/{{item!.id}}" class="team-logo" [attr.data-tooltip]="item!.full_name">
                 <img src="{{item!.logo}}" alt="team-logo-image">
-            </div>
+            </a>
         </ng-container>
     </div>
 </div>
