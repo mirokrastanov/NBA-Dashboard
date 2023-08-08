@@ -4,6 +4,15 @@
     <app-global-loader></app-global-loader>
 </div>
 
+<div *ngIf="!isLoading" class="team-outer">
+    <div class="team-inner"></div>
+</div>
+
+
+<!-- <div *ngIf="isLoading">
+    <app-global-loader></app-global-loader>
+</div>
+
 <table *ngIf="!isLoading">
     <tr align="center">
         <th>Abbreviation</th>
@@ -23,4 +32,4 @@
         <td>{{team.division}}</td>
         <td>{{team.conference}}</td>
     </tr>
-</table>
+</table> -->
