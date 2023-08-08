@@ -74,3 +74,47 @@
 
 
 
+
+@media screen and (max-width: 1200px) {
+    .t-date h1 {
+        width: 60%;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .t-date h1 {
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .t-event {
+        padding: 10px 10px 5px 10px;
+    }
+
+    .t-event>p {
+        font-size: 16px;
+        text-align: center;
+        letter-spacing: normal;
+    }
+
+    .t-tags {
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    .t-tag {
+        font-size: 14px;
+        letter-spacing: normal;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .t-event {
+        padding: 2px;
+    }
+
+    .t-tag span {
+        display: none;
+    }
+}
