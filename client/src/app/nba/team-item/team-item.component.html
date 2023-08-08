@@ -67,12 +67,45 @@
             </p>
         </div>
         <div class="team-stat team-url">
-            <p>Team Advanced Stats</p>
+            <p>Advanced Stats</p>
             <p [attr.data-teamID]="currentTeam!['id']" class="a-left">
-                <a routerLink="/nba/teams/{{currentTeam!['id']}}/stats">Open Stats
+                <a routerLink="/nba/teams/{{currentTeam!['id']}}/stats">Open Advanced Stats
                     <span class="material-icons-sharp">arrow_forward_ios</span>
                 </a>
             </p>
         </div>
+        <div class="inner-title">
+            <h1>Main Stats</h1>
+        </div>
+        <ng-container *ngFor="let item of currentStanding | keyvalue">
+            <div *ngIf="item.key == 'Team'" class="team-stat-small team-stat small-highlight">
+                <p>{{'CONF RANK'}}</p>
+                <p>{{item.value[0]}}</p>
+            </div>
+        </ng-container>
+        <ng-container *ngFor="let item of currentStanding | keyvalue">
+            <div *ngIf="item.key == 'w'" class="team-stat-small team-stat">
+                <p>{{'WINS'}}</p>
+                <p>{{item.value[0]}}</p>
+            </div>
+        </ng-container>
+        <ng-container *ngFor="let item of currentStanding | keyvalue">
+            <div *ngIf="item.key == 'L'" class="team-stat-small team-stat">
+                <p>{{'LOSSES'}}</p>
+                <p>{{item.value[0]}}</p>
+            </div>
+        </ng-container>
+        <ng-container *ngFor="let item of currentStanding | keyvalue">
+            <div *ngIf="item.key == 'WIN%'" class="team-stat-small team-stat">
+                <p>{{'WIN %'}}</p>
+                <p>{{item.value[0]}}</p>
+            </div>
+        </ng-container>
+        <ng-container *ngFor="let item of currentStanding | keyvalue">
+            <div *ngIf="item.key != 'w' && item.key != 'L' && item.key != 'WIN%' && item.key != 'Team'" class="team-stat-small team-stat">
+                <p>{{item.key}}</p>
+                <p>{{item.value[0]}}</p>
+            </div>
+        </ng-container>
     </div>
 </div>
