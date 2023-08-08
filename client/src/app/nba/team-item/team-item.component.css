@@ -266,6 +266,10 @@
         display: flex;
     }
 
+    .team-inner .team-stat.hidden-stat p:nth-of-type(2) {
+        font-size: 24px;
+    }
+
     .team-title {
         height: 40px;
     }
