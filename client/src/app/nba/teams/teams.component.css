@@ -258,6 +258,21 @@
     transform: scale(1.03);
 }
 
+.team-inner .team-logo::after {
+    position: relative;
+    top: 20px;
+    left: 50%;
+    box-shadow: none;
+    background-color: transparent;
+    opacity: 0;
+    transform: translateX(-50%);
+    content: '';
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
 .team-inner .team-logo:hover::after {
     position: absolute;
     top: -20px;
