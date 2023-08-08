@@ -17,7 +17,6 @@ import { PlayerItemComponent } from './player-item/player-item.component';
 import { TeamItemComponent } from './team-item/team-item.component';
 import { TeamItemStatsComponent } from './team-item-stats/team-item-stats.component';
 import { TeamItemRosterComponent } from './team-item-roster/team-item-roster.component';
-import { TransactionItemComponent } from './transaction-item/transaction-item.component';
 
 
 @NgModule({
@@ -35,7 +34,6 @@ import { TransactionItemComponent } from './transaction-item/transaction-item.co
     TeamItemComponent,
     TeamItemStatsComponent,
     TeamItemRosterComponent,
-    TransactionItemComponent,
   ],
   imports: [
     CommonModule,
@@ -58,7 +56,6 @@ import { TransactionItemComponent } from './transaction-item/transaction-item.co
     TeamItemComponent,
     TeamItemStatsComponent,
     TeamItemRosterComponent,
-    TransactionItemComponent,
   ],
 })
 export class NbaModule { }
