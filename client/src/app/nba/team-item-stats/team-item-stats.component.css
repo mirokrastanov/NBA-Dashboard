@@ -232,6 +232,9 @@
     box-shadow: var(--box-shadow);
 }
 
+.team-inner .team-stat {
+    width: 100%;
+}
 
 
 @media screen and (max-width: 1200px) {
