@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbaApiService } from '../nba-api.service';
-import { Links, Player, Team } from '../nba-types';
+import { Links, Player, Team, Team2 } from '../nba-types';
 import { dbTarget } from 'src/app/util/global-constants';
 
 @Component({
@@ -10,7 +10,8 @@ import { dbTarget } from 'src/app/util/global-constants';
 })
 export class TeamsComponent implements OnInit {
   constructor(private apiService: NbaApiService) { }
-  teamsALL: Team[] | null = null;
+
+  teamsALL: Team2[] | null = null;
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
   isLoading: boolean = true;
@@ -28,8 +29,23 @@ export class TeamsComponent implements OnInit {
         // INNER 1 - Links
         this.apiService.firebaseDbFetch(dbTarget.nba.teamLinks).subscribe({
           next: (data: Links[]) => {
-            
-
+            // console.log(data);
+            let links = data.slice();
+            for (let i = 0; i < this.teamsALL!.length; i++) {
+              let current = this.teamsALL![i];
+              let found = links.slice().filter(x => current.full_name.toLowerCase().includes(x.name));
+              // console.log(found);
+              if (found.length == 1) this.teamsALL![i].logo = found[0].logo;
+              else {
+                let arr = current!.full_name.toLowerCase().split(' ');
+                found.forEach(x => {
+                  arr.forEach(y => {
+                    if (y == x.name.toLowerCase()) this.teamsALL![i].logo = x.logo;
+                  })
+                });
+              }
+            }
+            console.log(this.teamsALL![0]);
             this.isLoading = false;
           },
           error: (err) => {
