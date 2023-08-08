@@ -184,7 +184,7 @@ interface TransactionLines {
 
 export interface Transactions {
     date: string,
-    lines: [TransactionLines],
+    lines: TransactionLines[],
 };
 
 // TODO
