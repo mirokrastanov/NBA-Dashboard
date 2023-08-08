@@ -25,6 +25,7 @@
 
     --box-shadow: 0 2rem 3rem var(--color-light);
     --box-shadow-2: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
+    --box-shadow-3: 0 2rem 3rem rgba(0, 0, 0, 0.3);
 }
 
 .dark-mode-variables {
@@ -36,6 +37,8 @@
     --color-dark-variant-2: #2a2e33a2;
     --color-light: rgba(0, 0, 0, 0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
+    --box-shadow-2: rgba(105, 105, 105, 0.2) 0px 1px 3px, rgba(109, 109, 109, 0.2) 0px 2px 2px;
+    --box-shadow-3: 0 2rem 3rem rgba(255, 255, 255, 0.2);
 }
 
 * {
