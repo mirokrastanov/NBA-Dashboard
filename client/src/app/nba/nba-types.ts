@@ -8,6 +8,17 @@ export interface Team {
     full_name: string;
 };
 
+export interface Team2 {
+    id: number;
+    abbreviation: string;
+    city: string;
+    conference: string;
+    division: string;
+    name: string;
+    full_name: string;
+    logo: string;
+};
+
 export interface Player {
     'Age': string,
     'Current Team': string,
