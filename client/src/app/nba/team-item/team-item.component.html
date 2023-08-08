@@ -23,6 +23,10 @@
             </div>
             <div class="grid-extra">
                 <div class="grid-line team-stat">
+                    <p>Abbreviation</p>
+                    <p>{{currentTeam!['abbreviation']}}</p>
+                </div>
+                <div class="grid-line team-stat">
                     <p>City</p>
                     <p>{{currentTeam!['city']}}</p>
                 </div>
@@ -36,24 +40,12 @@
                 </div>
             </div>
         </div>
-        <div class="team-stat">
-            <p>Abbreviation</p>
-            <p>{{currentTeam!['abbreviation']}}</p>
-        </div>
         <div class="team-stat team-url">
             <p>Official Website</p>
             <p [attr.data-teamID]="currentTeam!['id']" *ngIf="currentLinks">
                 <a class="a-left" href="{{currentLinks!['href']}}" target="_blank">
-                    Click here
+                    Open Website
                     <span class="material-icons-sharp">launch</span>
-                </a>
-            </p>
-        </div>
-        <div class="team-stat team-url">
-            <p>Team Stats</p>
-            <p [attr.data-teamID]="currentTeam!['id']" class="a-left">
-                <a routerLink="/nba/teams/{{currentTeam!['id']}}/stats">View stats
-                    <span class="material-icons-sharp">arrow_forward_ios</span>
                 </a>
             </p>
         </div>
@@ -69,8 +61,16 @@
             <p>Stats Dictionary</p>
             <p class="a-left">
                 <a href="https://www.nba.com/stats/help/glossary" target="_blank">
-                    View Dictionary
+                    Open Dictionary
                     <span class="material-icons-sharp">launch</span>
+                </a>
+            </p>
+        </div>
+        <div class="team-stat team-url">
+            <p>Team Advanced Stats</p>
+            <p [attr.data-teamID]="currentTeam!['id']" class="a-left">
+                <a routerLink="/nba/teams/{{currentTeam!['id']}}/stats">Open Stats
+                    <span class="material-icons-sharp">arrow_forward_ios</span>
                 </a>
             </p>
         </div>
