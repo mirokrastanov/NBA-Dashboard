@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Links, Player, StatsAdvanced, StatsAverages, StatsMisc, StatsTotals, Team } from '../nba-types';
+import { Links, Player, Standings, StatsAdvanced, StatsAverages, StatsMisc, StatsTotals, Team } from '../nba-types';
 import { NbaApiService } from '../nba-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { dbTarget } from 'src/app/util/global-constants';
@@ -14,12 +14,16 @@ export class TeamItemComponent {
 
   playersALL: Player[] | null = null;
   teamsALL: Team[] | null = null;
+  standings: {
+    east: Standings[],
+    west: Standings[],
+  } = { east: [], west: [] };
   currentTeam: Team | undefined;
   currentLinks: Links | undefined;
-  stats: {
-    advanced: StatsAdvanced | StatsAdvanced[] | any, averages: StatsAverages | StatsAverages[] | any,
-    misc: StatsMisc | StatsMisc[] | any, totals: StatsTotals | StatsTotals[] | any,
-  } = { advanced: [], averages: [], misc: [], totals: [] };
+  confStanding: {
+    east: string,
+    west: string,
+  } = { east: '', west: '' };
   routeID: string | number | null = null;
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
@@ -55,6 +59,91 @@ export class TeamItemComponent {
             }
             // console.log(this.currentLinks);
             this.isLoading = false;
+          },
+          error: (err) => {
+            this.errorOccurred = true;
+            console.log(err);
+            this.isLoading = false;
+          },
+          complete: () => {
+            this.unsubscribed = true;
+          },
+        });
+        // INNER 2 - Standings East
+        this.apiService.firebaseDbFetch(dbTarget.nba.standings.east).subscribe({
+          next: (data: Standings[]) => {
+            this.standings!.east = data;
+            this.standings!.east.map((x) => {
+              if (x['Team'][1].includes('Philadelphia')) x['Team'][1] = 'Philadelphia Sixers';
+              if (x['Team'][1].includes('Clippers')) x['Team'][1] = 'Los Angeles Clippers';
+              return x;
+            });
+            let currentName = this.currentTeam!.full_name.trim().toLowerCase();
+            this.standings!.east.forEach(x => {
+              let xArr = x['Team'];
+              let xTeam = xArr[1].trim();
+              let xFiltered = xTeam.split('');
+              xFiltered.forEach((y, i) => {
+                let code = y.charCodeAt(0);
+                if (!(code >= 65 && code <= 90) && !(code >= 97 && code <= 122) && code != 32) {
+                  xFiltered.splice(i, 1, ' ');
+                }
+              });
+              xTeam = xFiltered.join('').trim().toLowerCase();
+              if (xTeam == currentName) {
+                console.log(x['Team'][1], ' >> ', x);
+
+                
+                
+              }
+
+
+            });
+
+            // console.log(this.standings!.east);
+            this.isLoading = false;
+          },
+          error: (err) => {
+            this.errorOccurred = true;
+            console.log(err);
+            this.isLoading = false;
+          },
+          complete: () => {
+            this.unsubscribed = true;
+          },
+        });
+        // INNER 2 - Standings West
+        this.apiService.firebaseDbFetch(dbTarget.nba.standings.west).subscribe({
+          next: (data: Standings[]) => {
+            this.standings!.west = data;
+            this.standings!.west.map((x) => {
+              if (x['Team'][1].includes('Philadelphia')) x['Team'][1] = 'Philadelphia Sixers';
+              if (x['Team'][1].includes('Clippers')) x['Team'][1] = 'Los Angeles Clippers';
+              return x;
+            });
+            let currentName = this.currentTeam!.full_name.trim().toLowerCase();
+            this.standings!.west.forEach(x => {
+              let xArr = x['Team'];
+              let xTeam = xArr[1].trim();
+              let xFiltered = xTeam.split('');
+              xFiltered.forEach((y, i) => {
+                let code = y.charCodeAt(0);
+                if (!(code >= 65 && code <= 90) && !(code >= 97 && code <= 122) && code != 32) {
+                  xFiltered.splice(i, 1, ' ');
+                }
+              });
+              xTeam = xFiltered.join('').trim().toLowerCase();
+              if (xTeam == currentName) {
+                console.log(x['Team'][1], ' >> ', x);
+
+                
+                
+              }
+
+
+            });
+
+            // console.log(this.standings!.west);
           },
           error: (err) => {
             this.errorOccurred = true;
