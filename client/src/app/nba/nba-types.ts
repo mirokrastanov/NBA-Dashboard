@@ -151,8 +151,22 @@ export interface StatsTotals {
     'id': string,
 };
 
+export interface Standings {
+    'CONF': [string],
+    'DIV': [string],
+    'GB': [string],
+    'HOME': [string],
+    'L': [string],
+    'LAST10': [string],
+    'OT': [string],
+    'ROAD': [string],
+    'STREAK': [string],
+    'Team': [string, string, string, string],
+    'WIN%': [string],
+    'w': [string],
+};
 
-// TODO 
-// STANDINGS, transactions and userEXTRA for users --- if favorites make it through :)
+// TODO
+// Transactions and userEXTRA for users --- if favorites make it through :)
 
 
