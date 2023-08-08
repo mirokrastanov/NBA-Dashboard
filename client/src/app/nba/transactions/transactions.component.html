@@ -1,1 +1,26 @@
-<p>transactions works!</p>
+<h1>Transactions</h1>
+
+<div *ngIf="isLoading">
+    <app-global-loader></app-global-loader>
+</div>
+
+<div *ngIf="!isLoading" class="transactions-ctr">
+
+    <div class="t-date" *ngFor="let date of transactionsALL; let i = index;">
+        <h1>{{date.date}}</h1>
+
+        <div class="t-event" *ngFor="let event of date.lines;">
+            <p>{{event.body}}</p>
+
+            <div class="t-tags">
+                <ng-container *ngFor="let tag of event.tags;">
+                    <a class="t-tag a-left" routerLink="">{{tag}}
+                        <span class="material-icons-sharp">arrow_forward_ios</span>
+                    </a>
+                </ng-container>
+            </div>
+
+        </div>
+
+    </div>
+</div>
