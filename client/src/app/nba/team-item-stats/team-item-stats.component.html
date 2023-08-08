@@ -14,6 +14,10 @@
     </div>
     
     <div class="team-inner inner-stats">
+        <div class="team-stat hidden-stat">
+            <p>Name</p>
+            <p>{{currentTeam!['full_name']}}</p>
+        </div>
         <h1>Team Stats - Advanced</h1>
         <ng-container *ngFor="let item of stats.advanced | keyvalue">
             <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
