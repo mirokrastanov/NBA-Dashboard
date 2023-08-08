@@ -369,3 +369,61 @@ td a {
         width: 15.75%;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .team-title h1#team-main-title {
+        display: none;
+    }
+
+    .team-inner .team-stat.hidden-stat {
+        display: flex;
+    }
+
+    .team-inner .team-stat.hidden-stat p:nth-of-type(2) {
+        font-size: 24px;
+    }
+
+    .team-title {
+        height: 40px;
+    }
+
+    .team-title a {
+        width: 100%;
+        border-left: none;
+    }
+
+    .team-title a:hover {
+        border-radius: 13px;
+    }
+
+    .team-inner .team-stat {
+        width: 100%;
+    }
+
+    .grid-full {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas:
+            'logo'
+            'line';
+        margin-bottom: 12px;
+    }
+
+    .grid-extra {
+        row-gap: 0px;
+    }
+
+    .team-inner .team-stat.team-stat-small {
+        width: 24%;
+    }
+
+    /* .players-table table td:nth-of-type(3),
+    .players-table table td:nth-of-type(4),
+    .players-table table th:nth-of-type(3),
+    .players-table table th:nth-of-type(4) {
+        display: none;
+    } */
+
+    .players-table table td:nth-of-type(2) {
+        width: 50%;
+    }
+}
