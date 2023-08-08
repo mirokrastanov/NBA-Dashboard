@@ -206,6 +206,10 @@
     font-size: 18px;
 }
 
+.team-stat p:nth-of-type(2) {
+    color: var(--color-dark);
+}
+
 .grid-extra,
 .team-logo {
     display: flex;
