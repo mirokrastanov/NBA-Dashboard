@@ -1,1 +1,86 @@
-<p>team-item-stats works!</p>
+<!-- <h1>Team</h1>
+
+<div *ngIf="isLoading">
+    <app-global-loader></app-global-loader>
+</div>
+
+<div *ngIf="!isLoading" class="team-outer">
+    <div class="team-title">
+        <h1 id="team-main-title">{{currentTeam!['full_name']}}</h1>
+        <a [routerLink]="['/nba/teams']">
+            <span class="material-icons-sharp">arrow_back_ios</span>
+            Back to Teams
+        </a>
+    </div>
+    <div class="team-inner">
+        <div class="team-stat hidden-stat">
+            <p>Name</p>
+            <p>{{currentTeam!['full_name']}}</p>
+        </div>
+        <div class="grid-full">
+            <div class="team-logo" *ngIf="currentLinks">
+                <img src="{{currentLinks!['logo']}}" alt="team-logo-image">
+            </div>
+            <div class="grid-extra">
+                <div class="grid-line team-stat">
+                    <p>City</p>
+                    <p>{{currentTeam!['city']}}</p>
+                </div>
+                <div class="grid-line team-stat">
+                    <p>Conference</p>
+                    <p>{{currentTeam!['conference']}}</p>
+                </div>
+                <div class="grid-line team-stat">
+                    <p>Division</p>
+                    <p>{{currentTeam!['division']}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="team-stat">
+            <p>Abbreviation</p>
+            <p>{{currentTeam!['abbreviation']}}</p>
+        </div>
+        <div class="team-stat team-url">
+            <p>Official Website</p>
+            <p [attr.data-teamID]="currentTeam!['id']" *ngIf="currentLinks">
+                <a class="a-left" href="{{currentLinks!['href']}}" target="_blank">
+                    Click here
+                    <span class="material-icons-sharp">launch</span>
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="team-inner inner-stats">
+        <a>Team Stats - Advanced</a>
+        <ng-container *ngFor="let item of stats.advanced | keyvalue">
+            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
+                <p>{{item.key}}</p>
+                <p>{{item.value}}</p>
+            </div>
+        </ng-container>
+
+        <a>Team Stats - Averages</a>
+        <ng-container *ngFor="let item of stats.averages | keyvalue">
+            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
+                <p>{{item.key}}</p>
+                <p>{{item.value}}</p>
+            </div>
+        </ng-container>
+
+        <a>Team Stats - Misc</a>
+        <ng-container *ngFor="let item of stats.misc | keyvalue">
+            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
+                <p>{{item.key}}</p>
+                <p>{{item.value}}</p>
+            </div>
+        </ng-container>
+
+        <a>Team Stats - Totals</a>
+        <ng-container *ngFor="let item of stats.totals | keyvalue">
+            <div class="team-stat-small team-stat" *ngIf="item.key != 'Team' && item.key != 'id'">
+                <p>{{item.key}}</p>
+                <p>{{item.value}}</p>
+            </div>
+        </ng-container>
+    </div>
+</div> -->
