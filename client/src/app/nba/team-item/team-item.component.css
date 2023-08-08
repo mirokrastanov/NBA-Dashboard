@@ -221,6 +221,8 @@
 
 .grid-extra .grid-line.team-stat {
     width: 100%;
+    margin: 0;
+    padding: 5px 10px;
 }
 
 .team-inner > a {
@@ -302,6 +304,12 @@
     .team-inner .team-stat.team-stat-small {
         width: 24%;
     }
+
+    .grid-extra .grid-line.team-stat {
+        margin-bottom: 20px;
+        padding: 5px 10px;
+    }
+    
 }
 
 @media screen and (max-width: 450px) {
