@@ -172,12 +172,22 @@ export interface Standings {
     'OT': [string],
     'ROAD': [string],
     'STREAK': [string],
-    'Team': [string, string, string, string],
+    'Team': string[],
     'WIN%': [string],
     'w': [string],
 };
 
+interface TransactionLines {
+    body: string,
+    tags: string[],    
+};
+
+export interface Transactions {
+    date: string,
+    lines: [TransactionLines],
+};
+
 // TODO
-// Transactions and userEXTRA for users --- if favorites make it through :)
+// UserEXTRA for users --- if favorites make it through :)
 
 
