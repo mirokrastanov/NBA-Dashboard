@@ -241,7 +241,7 @@
 
     .team-title h1#team-main-title {
         font-size: 24px;
-        margin-left: 15%;
+        margin-left: 5%;
         margin-right: auto;
     }
 
@@ -261,6 +261,10 @@
 
     .team-inner .team-stat.hidden-stat {
         display: flex;
+    }
+
+    .team-inner .team-stat.hidden-stat p:nth-of-type(2) {
+        font-size: 24px;
     }
 
     .team-title {
