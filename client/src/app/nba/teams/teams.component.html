@@ -5,7 +5,13 @@
 </div>
 
 <div *ngIf="!isLoading" class="team-outer">
-    <div class="team-inner"></div>
+    <div class="team-inner">
+        <ng-container *ngFor="let item of teamsALL;">
+            <div class="team-logo" [attr.data-tooltip]="item!.full_name">
+                <img src="{{item!.logo}}" alt="team-logo-image">
+            </div>
+        </ng-container>
+    </div>
 </div>
 
 
