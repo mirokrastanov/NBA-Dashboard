@@ -349,3 +349,23 @@ td a {
     display: block;
     width: 100%;
 }
+
+@media screen and (max-width: 1200px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .team-title h1#team-main-title {
+        font-size: 24px;
+        margin-left: 5%;
+        margin-right: auto;
+    }
+
+    .team-inner .team-stat.hidden-stat {
+        display: none;
+    }
+
+    .team-inner .team-stat.team-stat-small {
+        width: 15.75%;
+    }
+}
