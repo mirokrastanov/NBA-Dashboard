@@ -223,8 +223,11 @@
     width: 100%;
 }
 
-.team-inner h1 {
-    width: 100%;
+.team-inner > a {
+    width: 49%;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
     background-color: var(--color-white);
     padding: 15px;
     border-radius: 13px;
