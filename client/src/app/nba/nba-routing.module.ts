@@ -12,6 +12,8 @@ import { NewsItemComponent } from './news-item/news-item.component';
 import { AnalysisItemComponent } from './analysis-item/analysis-item.component';
 import { PlayerItemComponent } from './player-item/player-item.component';
 import { TeamItemComponent } from './team-item/team-item.component';
+import { TeamItemStatsComponent } from './team-item-stats/team-item-stats.component';
+import { TeamItemRosterComponent } from './team-item-roster/team-item-roster.component';
 
 const routes: Routes = [
     {
@@ -21,6 +23,8 @@ const routes: Routes = [
             { path: 'standings', component: StandingsComponent },
             { path: 'teams', component: TeamsComponent },
             { path: 'teams/:id', component: TeamItemComponent },
+            { path: 'teams/:id/stats', component: TeamItemStatsComponent },
+            { path: 'teams/:id/roster', component: TeamItemRosterComponent },
             { path: 'players', redirectTo: '/nba/players/page/1', pathMatch: 'full' },
             { path: 'players/page/:num', component: PlayersComponent },
             { path: 'players/player/:name', component: PlayerItemComponent },
