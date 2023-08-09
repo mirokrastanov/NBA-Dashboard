@@ -30,16 +30,16 @@ export class TeamItemComponent {
     this.routeID = this.route.snapshot.paramMap.get('id');
     // console.log(this.routeID);
     // OUTER 1 - Teams
-    this.apiService.nbaFetch('teams').subscribe({
+    this.apiService.firebaseDbFetch(dbTarget.nba.teamsAPI).subscribe({
       next: (data) => {
-        this.teamsALL = data.data;
+        this.teamsALL = data;
         this.teamsALL!.map((x) => {
           if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
           if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
           return x;
         });
         this.currentTeam = this.teamsALL!.find(x => x.id == this.routeID)
-        console.log(this.currentTeam);
+        // console.log(this.currentTeam);
         // INNER 1 - Links
         this.apiService.firebaseDbFetch(dbTarget.nba.teamLinks).subscribe({
           next: (data: Links[]) => {
@@ -90,10 +90,10 @@ export class TeamItemComponent {
               if (xTeam == currentName) {
                 // console.log(x['Team'][1], ' >> ', x);
                 this.currentStanding = x;
-                console.log(this.currentStanding);
+                // console.log(this.currentStanding);
               }
             });
-            console.log('east', this.standings!.east);
+            // console.log('east', this.standings!.east);
             this.isLoading = false;
           },
           error: (err) => {
@@ -129,10 +129,10 @@ export class TeamItemComponent {
               if (xTeam == currentName) {
                 // console.log(x['Team'][1], ' >> ', x);
                 this.currentStanding = x;
-                console.log(this.currentStanding);
+                // console.log(this.currentStanding);
               }
             });
-            console.log('west', this.standings!.west);
+            // console.log('west', this.standings!.west);
           },
           error: (err) => {
             this.errorOccurred = true;
