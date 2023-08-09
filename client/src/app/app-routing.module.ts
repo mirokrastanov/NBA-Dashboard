@@ -20,14 +20,15 @@ const routes: Routes = [ // UPPER/LOWER CASE MATTERS !!!!!!! routerLink in the h
   exports: [RouterModule]
 })
 export class AppRoutingModule {
+  aside = () => this.document.body.querySelector('aside')!;
+
   constructor(
-    private router: Router, 
-    @Inject(DOCUMENT) private document: Document, 
+    private router: Router,
+    @Inject(DOCUMENT) private document: Document,
     private authService: AuthService,
     private fireAuth: AngularFireAuth,
-    ) {
-    
-      this.router.events.subscribe((event) => {
+  ) {
+    this.router.events.subscribe((event) => {
       // console.log(event);
       if (event instanceof NavigationStart || event instanceof NavigationSkipped) {
         // console.log('path change');
@@ -37,17 +38,14 @@ export class AppRoutingModule {
 
         this.authService.authStatusListener();
         // FOR TESTING
-        // fireAuth.onAuthStateChanged(async (crendetial) => {
-        //   if (crendetial) {
-        //     console.log(crendetial);
-        //     console.log(crendetial.uid);
-        //   }
-        // })
-        console.log('Authenticated: ', authService.currentUser != null ? true : false);
+        fireAuth.onAuthStateChanged(async (crendetial) => {
+          if (crendetial) {
+            // console.log(crendetial);
+            // console.log(crendetial.uid);
+            console.log('Authenticated: ', authService.currentUser != null ? true : false);
+          }
+        })
       }
     });
   }
-
-  aside = () => this.document.body.querySelector('aside')!;
-
 }
