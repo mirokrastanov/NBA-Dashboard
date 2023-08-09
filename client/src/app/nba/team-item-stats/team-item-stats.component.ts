@@ -27,9 +27,9 @@ export class TeamItemStatsComponent {
     this.routeID = this.route.snapshot.paramMap.get('id');
     // console.log(this.routeID);
     // OUTER 1 - Teams
-    this.apiService.nbaFetch('teams').subscribe({
+    this.apiService.firebaseDbFetch(dbTarget.nba.teamsAPI).subscribe({
       next: (data) => {
-        this.teamsALL = data.data;
+        this.teamsALL = data;
         this.teamsALL!.map((x) => {
           if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
           if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
