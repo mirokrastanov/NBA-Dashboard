@@ -23,26 +23,46 @@ export class TransactionsComponent {
   isLoading: boolean = true;
 
   ngOnInit(): void {
-    this.apiService.nbaFetch('teams').subscribe({
+    this.apiService.firebaseDbFetch(dbTarget.nba.teamsAPI).subscribe({
       next: (data) => {
-        this.teamsALL = data.data;
+        this.teamsALL = data;
         this.teamsALL!.map((x) => {
           if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
           if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
           return x;
         });
+        this.isLoading = false;
+
         // INNER 1 - Transactions
         this.apiService.firebaseDbFetch(dbTarget.nba.transactions).subscribe({
           next: (data) => {
-            let temp = data.slice();
-            temp.shift();
-            this.transactionsALL = temp;
-            // this.transactionsALL = data;
+            this.transactionsALL = data;
             console.log(this.transactionsALL);
-            console.log(this.transactionsALL![1]);
-            console.log(this.teamsALL);
-            
-            // console.log(this.transactionsALL![0]);
+            // console.log(this.transactionsALL![1].lines[0].tags);
+            // console.log(this.teamsALL);
+            for (let i = 0; i < this.transactionsALL!.length; i++) {
+              const transaction = this.transactionsALL![i];
+              for (let j = 0; j < transaction.lines.length; j++) {
+                const line = transaction.lines[j];
+                for (let k = 0; k < line.tags.length; k++) {
+                  const tag = line.tags[k];
+                  let isTeam = this.teamsALL!.find((team) => (team.full_name.trim().toLowerCase().includes(tag.trim().toLowerCase())));
+
+                  if (isTeam) {
+                    // this.transactionsALL![i].lines[j].tags[k] = `${tag}----team----${isTeam.id}`;
+                    this.transactionsALL![i].lines[j].tags[k] = ['team', tag, isTeam.id];
+                  } else {
+                    // this.transactionsALL![i].lines[j].tags[k] = `${tag}----player`;
+                    if (line.body.toLowerCase().includes('free agent')
+                      || (line.body.toLowerCase().includes('ended') && line.body.toLowerCase().includes('contract'))) {
+                      this.transactionsALL![i].lines[j].tags[k] = ['player', tag, 'free'];
+                    } else {
+                      this.transactionsALL![i].lines[j].tags[k] = ['player', tag, 'not'];
+                    }
+                  }
+                }
+              }
+            }
             this.isLoading = false;
           },
           error: (err) => {
@@ -54,35 +74,10 @@ export class TransactionsComponent {
         });
       },
       error: (err) => console.log(err),
-      complete: () => console.log('Data fetched'),
+      complete: () => { },
     });
   }
 
-  onFavClick(e: MouseEvent): void {
-    const subTarget: HTMLElement | EventTarget | any = e.target!;
-    if (subTarget.parentElement.parentElement.classList.contains('ans')
-      || subTarget.parentElement.classList.contains('ans')
-      || subTarget.classList.contains('ans')) return;
 
-    const target: HTMLElement | EventTarget | any = e.currentTarget!;
-    const ques = this.document.querySelectorAll('.fav');
-    // console.log('sub target -->', subTarget);
-    // console.log('target -->', target);
 
-    if (target.classList.contains('fav-active')) target.classList.remove('fav-active');
-    else {
-      target.classList.add('fav-active');
-      ques.forEach(x => {
-        if (x != target) x.classList.remove('fav-active');
-      })
-    }
-  }
-
-  onReadMoreClick(e: MouseEvent): void {
-    e.preventDefault();
-    const target: HTMLElement | EventTarget | any = e.target!;
-    // console.log(target.dataset.index);
-    const currentIndex = target.dataset.index;
-    this.router.navigate([`/nba/news/${currentIndex}`]);
-  }
 }
