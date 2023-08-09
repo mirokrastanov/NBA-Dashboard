@@ -175,6 +175,7 @@ export interface Standings {
     'Team': string[],
     'WIN%': [string],
     'w': [string],
+    'id': string,
 };
 
 interface TransactionLines {
