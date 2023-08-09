@@ -43,17 +43,16 @@ table {
     border-collapse: collapse;
 }
 
-table tr:hover {
-    background-color: var(--color-light);
+table tr {
+    border-radius: 13px;
 }
+
+/* table tr:hover {
+    background-color: var(--color-light);
+} */
 
 table td:nth-of-type(2) {
     width: 10%;
-}
-
-table td:nth-of-type(1):hover a {
-    color: var(--color-primary);
-    font-weight: 700;
 }
 
 table td:nth-of-type(3) {
@@ -77,7 +76,6 @@ table tr:nth-of-type(1) {
     background-color: var(--color-light);
     font-size: 18px;
     line-height: 2;
-    border-radius: 13px;
     box-shadow: var(--box-shadow-2);
 }
 
@@ -89,6 +87,10 @@ table th:nth-of-type(1) {
 table td:nth-of-type(5),
 table th:nth-of-type(5) {
     border-radius: 0 13px 13px 0;
+}
+
+table tr:hover td {
+    background-color: var(--color-light);
 }
 
 td {
@@ -119,10 +121,12 @@ td:hover span {
 
 td:hover span.after {
     margin-left: 10px;
+    margin-top: 1px;
 }
 
 .t-team-ctr .t-link:hover span.after::after {
     content: 'arrow_forward_ios';
+    margin-top: 1px;
 }
 
 .t-team-ctr .t-link:hover span.before::before {
@@ -143,7 +147,7 @@ td a {
     height: 50px;
 }
 
-.t-team-ctr > * {
+.t-team-ctr>* {
     align-self: center;
 }
 
@@ -174,48 +178,14 @@ td a {
     font-size: 18px;
 }
 
+.t-link a:hover {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
 .t-suffix {
     width: 50px;
 }
 
 
-@media screen and (max-width: 768px) {
 
-    .standings-table table td:nth-of-type(3),
-    .standings-table table td:nth-of-type(4),
-    .standings-table table th:nth-of-type(3),
-    .standings-table table th:nth-of-type(4) {
-        display: none;
-    }
-
-    .standings-table table td:nth-of-type(1) {
-        width: 10%;
-    }
-}
-
-@media screen and (max-width: 550px) {
-
-    .standings-table table td:nth-of-type(5),
-    .standings-table table th:nth-of-type(5) {
-        display: none;
-    }
-
-    .standings-table table td:nth-of-type(2) {
-        width: 60%;
-    }
-
-    .standings-table table th:nth-of-type(2) {
-        border-radius: 0 13px 13px 0;
-    }
-}
-
-@media screen and (max-width: 350px) {
-    .standings-table table th:nth-of-type(1),
-    .standings-table table td:nth-of-type(1) {
-        display: none;
-    }
-
-    .standings-table table th:nth-of-type(2) {
-        border-radius: 13px;
-    }
-}
