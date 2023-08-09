@@ -13,9 +13,18 @@
             <p>{{event.body}}</p>
 
             <div class="t-tags">
+                <p>Tags: </p>
                 <ng-container *ngFor="let tag of event.tags;">
-                    <a class="t-tag a-left" routerLink="">{{tag}}
+                    <a *ngIf="tag[0] == 'team'" class="t-tag a-left" [routerLink]="'/nba/teams/' + tag[2]">
+                        {{tag[1]}}
                         <span class="material-icons-sharp">arrow_forward_ios</span>
+                    </a>
+                    <a *ngIf="tag[2] == 'not'" class="t-tag a-left" [routerLink]="'/nba/players/player/' + tag[1]">
+                        {{tag[1]}}
+                        <span class="material-icons-sharp">arrow_forward_ios</span>
+                    </a>
+                    <a *ngIf="tag[2] == 'free'" class="t-tag free-agent" [attr.data-tooltip]="'Player is currently a Free Agent.'">
+                        {{tag[1]}}
                     </a>
                 </ng-container>
             </div>
