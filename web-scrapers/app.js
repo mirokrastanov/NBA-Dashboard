@@ -2,18 +2,19 @@ import { scrapeStandings } from './scrapers/standings.js';
 import { scrapePlayers } from './scrapers/players.js';
 import { scrapeNews } from './scrapers/news.js';
 import { scrapeAnalysis } from './scrapers/analysis.js';
-
-import { firebaseConfig, scrapeURLs } from './constants.js';
+import axios from 'axios';
+import { accessTOKEN, fbTeams, firebaseConfig, scrapeURLs, teamsURL } from './constants.js';
 import { initializeApp } from 'firebase/app';
 // import {
 //     getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, connectAuthEmulator,
-//     onAuthStateChanged, signOut,
+//     onAuthStateChanged, signOut, getIdToken,
 // } from "firebase/auth";
 import { getDatabase, ref, set, get, child } from 'firebase/database';
 import { scrapeTransactions } from './scrapers/transactions.js';
 import { scrapeLeaders } from './scrapers/leaders.js';
 import { scrapeTeamStats } from './scrapers/teamStats.js';
 import { scrapeTeamLinks } from './scrapers/teamLinks.js';
+import { fbAdminPUT, scrapeTeams, teamsOutput } from './scrapers/teamsBallAPI.js';
 
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getDatabase(firebaseApp);
@@ -35,6 +36,7 @@ async function scrapeAll() {
     const teamStatsMisc = await scrapeTeamStats(scrapeURLs.teamStats.misc);
     const teamStatsAdvanced = await scrapeTeamStats(scrapeURLs.teamStats.advanced);
     const teamLinks = await scrapeTeamLinks(scrapeURLs.teamLinks);
+    const teamsAPI = teamsOutput(await scrapeTeams(teamsURL));
 
     set(ref(db, 'nba/standings'), standings);
     set(ref(db, 'nba/players'), players);
@@ -50,9 +52,9 @@ async function scrapeAll() {
     set(ref(db, 'nba/teamStats/misc'), teamStatsMisc);
     set(ref(db, 'nba/teamStats/advanced'), teamStatsAdvanced);
     set(ref(db, 'nba/teamLinks'), teamLinks);
+    fbAdminPUT(fbTeams, teamsAPI);     //==> 'nba/teamsAPI'
 
     console.log('Saved to Firebase!');
-
     return;
 }
 
