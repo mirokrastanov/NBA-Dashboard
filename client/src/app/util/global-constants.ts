@@ -50,6 +50,7 @@ export const dbTarget: DB = {
         },
         transactions: 'nba/transactions/data/',
         teamLinks: 'nba/teamLinks/data/',
+        teamsAPI: 'nba/teamsAPI/data/',
     },
     users: 'users/',
 };
