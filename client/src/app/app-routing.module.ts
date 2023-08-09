@@ -4,6 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { ErrorComponent } from './core/error/error.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { AuthService } from './user/auth.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 const routes: Routes = [ // UPPER/LOWER CASE MATTERS !!!!!!! routerLink in the html should MATCH IT!!!
@@ -19,8 +20,14 @@ const routes: Routes = [ // UPPER/LOWER CASE MATTERS !!!!!!! routerLink in the h
   exports: [RouterModule]
 })
 export class AppRoutingModule {
-  constructor(private router: Router, @Inject(DOCUMENT) private document: Document, private authService: AuthService) {
-    this.router.events.subscribe((event) => {
+  constructor(
+    private router: Router, 
+    @Inject(DOCUMENT) private document: Document, 
+    private authService: AuthService,
+    private fireAuth: AngularFireAuth,
+    ) {
+    
+      this.router.events.subscribe((event) => {
       // console.log(event);
       if (event instanceof NavigationStart || event instanceof NavigationSkipped) {
         // console.log('path change');
@@ -29,6 +36,13 @@ export class AppRoutingModule {
         }
 
         this.authService.authStatusListener();
+        // FOR TESTING
+        // fireAuth.onAuthStateChanged(async (crendetial) => {
+        //   if (crendetial) {
+        //     console.log(crendetial);
+        //     console.log(crendetial.uid);
+        //   }
+        // })
         console.log('Authenticated: ', authService.currentUser != null ? true : false);
       }
     });
