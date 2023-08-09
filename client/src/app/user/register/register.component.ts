@@ -63,6 +63,14 @@ export class RegisterComponent {
           name: formUsername.value,
           email: formEmail.value,
           uid: response.user.uid,
+          favorites: {
+            players: {
+              service: true,
+            },
+            teams: {
+              service: true,
+            },
+          },
         });
         form.reset();
         this.router.navigate(['/dashboard']);
