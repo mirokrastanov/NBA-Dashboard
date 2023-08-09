@@ -28,6 +28,18 @@ export class ProfileComponent {
   favPlayers: number[] = [];
 
   ngOnInit(): void {
+    // IT WORKS - USE IT when implementing favorites
+    // remember to remove the service key during filtering
+    
+    // const test = this.apiService.testUserExtra(dbTarget.users, JSON.parse(localStorage.getItem('user')!).uid)
+    // test.subscribe({
+    //   next: (data) => {
+    //     console.log(data);
+        
+    //   }
+    // })
+    
+
     this.authProfile = JSON.parse(localStorage.getItem('user')!);
     // console.log(this.authProfile);
     this.apiService.firebaseDbFetch(dbTarget.users).subscribe({
