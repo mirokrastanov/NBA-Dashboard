@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NbaApiService } from '../nba-api.service';
-import { Links, Standings, Team } from '../nba-types';
+import { Links, Standings, Team, Team2 } from '../nba-types';
 import { dbTarget } from 'src/app/util/global-constants';
 
 @Component({
@@ -23,7 +23,7 @@ export class StandingsComponent {
   ngOnInit(): void {
     // OUTER 1 - Teams
     this.apiService.firebaseDbFetch(dbTarget.nba.teamsAPI).subscribe({
-      next: (data) => {
+      next: (data: Team[]) => {
         this.teamsALL = data;
         this.teamsALL!.map((x) => {
           if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
@@ -35,20 +35,23 @@ export class StandingsComponent {
         this.apiService.firebaseDbFetch(dbTarget.nba.teamLinks).subscribe({
           next: (data: Links[]) => {
             this.linksALL = data;
-            console.log(this.linksALL);
+            // console.log(this.linksALL);
+            this.teamsALL!.forEach((team: any) => {
+              let found = this.linksALL!.filter(x => team.full_name.toLowerCase().includes(x.name));
+              // console.log(found);
+              if (found.length == 1) team.logo = found[0].logo;
+              else {
+                let arr = team.full_name.toLowerCase().split(' ');
+                found.forEach(foundEl => {
+                  arr.forEach((teamWord: any) => {
+                    if (teamWord == foundEl.name.toLowerCase()) team.logo = foundEl.logo;
+                  })
+                });
+              }
+            });
+            console.log(this.teamsALL);
             
-            // let found = data.filter(x => this.currentTeam!.full_name.toLowerCase().includes(x.name));
-            // // console.log(found);
-            // if (found.length == 1) this.currentLinks = found[0];
-            // else {
-            //   let arr = this.currentTeam!.full_name.toLowerCase().split(' ');
-            //   found.forEach(x => {
-            //     arr.forEach(y => {
-            //       if (y == x.name.toLowerCase()) this.currentLinks = x;
-            //     })
-            //   });
-            // }
-            // console.log(this.currentLinks);
+
             this.isLoading = false;
           },
           error: (err) => {
@@ -111,7 +114,7 @@ export class StandingsComponent {
               return x;
             });
             console.log(this.standings!.west);
-            
+
             // let currentName = this.currentTeam!.full_name.trim().toLowerCase();
             // this.standings!.west.forEach(x => {
             //   let xArr = x['Team'];
