@@ -14,6 +14,8 @@ import { PlayerItemComponent } from './player-item/player-item.component';
 import { TeamItemComponent } from './team-item/team-item.component';
 import { TeamItemStatsComponent } from './team-item-stats/team-item-stats.component';
 import { TeamItemRosterComponent } from './team-item-roster/team-item-roster.component';
+import { StandingsWestComponent } from './standings-west/standings-west.component';
+import { StandingsEastComponent } from './standings-east/standings-east.component';
 
 const routes: Routes = [
     {
@@ -21,6 +23,8 @@ const routes: Routes = [
         children: [
             { path: '', component: ErrorComponent },
             { path: 'standings', component: StandingsComponent },
+            { path: 'standings/west', component: StandingsWestComponent },
+            { path: 'standings/east', component: StandingsEastComponent },
             { path: 'teams', component: TeamsComponent },
             { path: 'teams/:id', component: TeamItemComponent },
             { path: 'teams/:id/stats', component: TeamItemStatsComponent },
