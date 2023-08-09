@@ -23,7 +23,7 @@ export class PlayerItemComponent {
 
   ngOnInit(): void {
     this.routeName = this.route.snapshot.paramMap.get('name');
-    console.log(this.routeName);
+    // console.log(this.routeName);
 
     this.apiService.firebaseDbFetch(dbTarget.nba.teamsAPI).subscribe({
       next: (data) => {
@@ -45,7 +45,7 @@ export class PlayerItemComponent {
               return x;
             });
             this.currentPlayer = player[0];
-            console.log(this.currentPlayer);
+            // console.log(this.currentPlayer);
             this.isLoading = false;
           },
           error: (err) => {

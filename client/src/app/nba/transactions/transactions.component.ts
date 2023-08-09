@@ -37,7 +37,7 @@ export class TransactionsComponent {
         this.apiService.firebaseDbFetch(dbTarget.nba.transactions).subscribe({
           next: (data) => {
             this.transactionsALL = data;
-            console.log(this.transactionsALL);
+            // console.log(this.transactionsALL);
             // console.log(this.transactionsALL![1].lines[0].tags);
             // console.log(this.teamsALL);
             for (let i = 0; i < this.transactionsALL!.length; i++) {

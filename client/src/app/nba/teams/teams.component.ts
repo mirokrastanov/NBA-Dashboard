@@ -45,7 +45,7 @@ export class TeamsComponent implements OnInit {
                 });
               }
             }
-            console.log(this.teamsALL![0]);
+            // console.log(this.teamsALL![0]);
             this.isLoading = false;
           },
           error: (err) => {

@@ -34,7 +34,7 @@ export class TeamItemRosterComponent {
           return x;
         });
         this.currentTeam = this.teamsALL!.find(x => x.id == this.routeID)
-        console.log(this.currentTeam);
+        // console.log(this.currentTeam);
         // INNER 1 - Players
         this.apiService.firebaseDbFetch(dbTarget.nba.players).subscribe({
           next: (data: Player[]) => {
@@ -47,7 +47,7 @@ export class TeamItemRosterComponent {
               return x;
             });
             this.currentRoster = this.currentRoster.filter(x => x!['teamID'].toString() == this.routeID!.toString());
-            console.log(this.currentRoster);
+            // console.log(this.currentRoster);
             this.isLoading = false;
           },
           error: (err) => {
