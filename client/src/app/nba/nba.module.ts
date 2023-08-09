@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlayersComponent } from './players/players.component';
-import { PlayerDetailsComponent } from './player-details/player-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { StandingsComponent } from './standings/standings.component';
 import { TeamsComponent } from './teams/teams.component';
@@ -22,7 +21,6 @@ import { TeamItemRosterComponent } from './team-item-roster/team-item-roster.com
 @NgModule({
   declarations: [
     PlayersComponent,
-    PlayerDetailsComponent,
     StandingsComponent,
     TeamsComponent,
     TransactionsComponent,
@@ -44,7 +42,6 @@ import { TeamItemRosterComponent } from './team-item-roster/team-item-roster.com
   ],
   exports: [
     PlayersComponent,
-    PlayerDetailsComponent,
     StandingsComponent,
     TeamsComponent,
     TransactionsComponent,
