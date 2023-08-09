@@ -179,7 +179,7 @@ export interface Standings {
 
 interface TransactionLines {
     body: string,
-    tags: string[],    
+    tags: any[],
 };
 
 export interface Transactions {
