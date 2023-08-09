@@ -44,9 +44,9 @@ export class PlayersComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentPage = Number(this.route.snapshot.paramMap.get('num'));
-    this.apiService.nbaFetch('teams').subscribe({
+    this.apiService.firebaseDbFetch(dbTarget.nba.teamsAPI).subscribe({
       next: (data) => {
-        this.teamsALL = data.data;
+        this.teamsALL = data;
         this.teamsALL!.map((x) => {
           if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
           if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
