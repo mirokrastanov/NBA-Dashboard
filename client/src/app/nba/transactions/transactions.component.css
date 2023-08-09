@@ -15,9 +15,10 @@
 .t-date h1 {
     background-color: var(--color-white);
     width: 40%;
+    font-size: 20px;
     border-radius: 13px;
     padding: 2px 20px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-2);
     margin: 10px auto;
 }
 
@@ -27,7 +28,8 @@
     margin: 10px;
     border-radius: 13px;
     padding: 10px 30px 0 30px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-2);
+    transition: all 0.3s ease-in-out;
 }
 
 .t-event>p {
@@ -44,6 +46,12 @@
     flex-direction: row;
     justify-content: baseline;
     align-items: stretch;
+}
+
+.t-tags>p {
+    font-size: 16px;
+    align-self: center;
+    margin: auto 20px auto 10px;
 }
 
 .t-tag {
@@ -69,7 +77,32 @@
     transform: translateX(10px);
 }
 
+.t-tag.free-agent {
+    color: var(--color-dark-variant);
+    position: relative;
+}
 
+.t-tag.free-agent::after {
+    content: '';
+    opacity: 0;
+}
+
+.t-tag.free-agent:hover::after {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    content: attr(data-tooltip);
+    color: var(--color-primary);
+    opacity: 1;
+    background-color: var(--color-background);
+    padding: 3px 10px;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 250px;
+    text-align: center;
+}
 
 
 
