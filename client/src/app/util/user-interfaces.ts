@@ -34,6 +34,7 @@ export interface DB {
         },
         transactions: string,
         teamLinks: string,
+        teamsAPI: string,
     },
     users: string,
 };
