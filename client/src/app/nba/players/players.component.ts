@@ -23,7 +23,7 @@ export class PlayersComponent implements OnInit {
         } else if (event.url.startsWith('/nba/players/page/')) {
           const url = event.url.split('/');
           const page: number = Number(url[url.length - 1]);
-          // console.log(page, this.currentPage);
+          // console.log(page, this.currentPage, event instanceof NavigationSkipped);
           if (page != this.currentPage) {
             this.changePage(page);
           }
@@ -68,6 +68,10 @@ export class PlayersComponent implements OnInit {
             // console.log(this.playersALL);
             // console.log(this.playersALL![0]);
             this.isLoading = false;
+            if (!isNaN(this.currentPage) && this.currentPage > this.numPages()) {
+              this.currentPage = this.numPages();
+              this.router.navigate([`/nba/players/page/${this.numPages()}`]);
+            } 
             this.changePage(this.currentPage);
           },
           error: (err) => {
@@ -105,16 +109,22 @@ export class PlayersComponent implements OnInit {
   }
 
   changePage(page: number): void {
-    if (isNaN(page)) page = 1;
-    if (page < 1) page = 1;
-    if (page > this.numPages()) page = this.numPages();
-    this.currentPage = page;
+    if (isNaN(page) || page < 1) {
+      page = 1;
+      this.currentPage = 1;
+    } else if (page > this.numPages()) {
+      page = this.numPages();
+      this.currentPage = this.numPages();
+    } else {
+      this.currentPage = page;
+    }
     this.playersSHOWN = [];
     for (let i = (page - 1) * this.perPage; i < (page * this.perPage); i++) {
       if (i >= this.playersALL!.length) return;
       this.playersSHOWN.push(this.playersALL![i]);
     }
     // console.log(this.playersSHOWN);
+    this.router.navigate([`/nba/players/page/${page}`]);
   }
 
   numPages(): number {
