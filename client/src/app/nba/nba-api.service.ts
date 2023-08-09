@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { endpointsNBA, proxy, noProxy, dbROOT, dbSuffix } from '../util/global-constants';
+import { endpointsNBA, proxy, noProxy, dbROOT, dbSuffix, dbTarget } from '../util/global-constants';
 import { EMPTY } from 'rxjs'; // returns an empty observable
-import { Database, set, ref, update } from '@angular/fire/database';
+import { Database, set, ref, update, push, remove, get } from '@angular/fire/database';
+import { AuthService } from '../user/auth.service';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { Database, set, ref, update } from '@angular/fire/database';
 
 export class NbaApiService {
 
-  constructor(private http: HttpClient, public database: Database) { }
+  constructor(private http: HttpClient, public database: Database, private authService: AuthService) { }
 
   nbaFetch(target: string = '') { // TODO ==> Add and implement dynamic query params input
     if (!target || !endpointsNBA.hasOwnProperty(target)) return EMPTY;
@@ -21,6 +22,22 @@ export class NbaApiService {
 
   firebaseDbFetch(dbTarget: string) {
     return this.http.get<any>(dbROOT + dbTarget + dbSuffix);
+  }
+
+  // THIS WORKS - users only update their own folder !!!
+  testUpdate(keyName: string): void {
+    update(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites'), {
+      keyName: true,
+    });
+  }
+  // WORKS TOO
+  testRemove(keyName: string): void {
+    remove(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/' + keyName));
+
+  }
+
+  testUserExtra(dbTarget: string, uid: string) {
+    return this.http.get<any>(dbROOT + dbTarget + uid + dbSuffix);
   }
 
   // testFetch(): void {
