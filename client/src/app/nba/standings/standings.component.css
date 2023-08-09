@@ -189,3 +189,82 @@ td a {
 
 
 
+
+
+
+@media screen and (max-width: 900px) {
+
+    .standings-table table td:nth-of-type(5),
+    .standings-table table th:nth-of-type(5) {
+        display: none;
+    }
+
+    table td:nth-of-type(4),
+    table th:nth-of-type(4) {
+        border-radius: 0 13px 13px 0;
+    }
+
+    .t-link a {
+        font-size: 16px;
+    }
+
+    table tr th {
+        font-size: 16px;
+    }
+
+    table tr td:not(:first-child) {
+        width: 11%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .standings-table table td:nth-of-type(2),
+    .standings-table table th:nth-of-type(2),
+    .standings-table table td:nth-of-type(3),
+    .standings-table table th:nth-of-type(3) {
+        display: none;
+    }
+
+    table tr td:not(:first-child) {
+        width: 25%;
+    }
+
+}
+
+@media screen and (max-width: 580px) {
+
+    .standings-table table td:nth-of-type(4),
+    .standings-table table th:nth-of-type(4) {
+        display: none;
+    }
+
+    table td:nth-of-type(1),
+    table th:nth-of-type(1) {
+        border-radius: 13px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .t-logo {
+        display: none;
+    }
+
+    .t-rank {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .t-team-ctr {
+        padding: 0;
+    }
+
+    .t-team-ctr a {
+        padding-left: 0;
+        white-space: nowrap;
+    }
+
+    .t-team-ctr span {
+        display: none;
+    }
+}
