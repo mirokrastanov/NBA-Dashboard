@@ -19,58 +19,19 @@ h3 {
     color: var(--color-dark);
 }
 
-.page-btns {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.page-btns div:not(.page-display) {
-    cursor: pointer;
-}
-
-.page-btns .page-back:hover span {
-    transform: translateX(-3px);
-    color: var(--color-primary);
-}
-
-.page-btns .page-forward:hover span {
-    transform: translateX(3px);
-    color: var(--color-primary);
-}
-
-.page-btns>div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 13px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px;
-}
-
-.page-btn {
-    background-color: var(--color-dark-variant-2);
-}
-
-.page-btn span {
-    padding: 0 20px;
-    font-size: 30px;
-    transition: all 0.2s ease-in-out;
-}
-
-.page-display {
-    background-color: var(--color-dark-variant-2);
-    padding: 1px 20px;
-    font-size: 20px;
-    font-weight: bold;
-}
-
 .standings-table {
     background-color: var(--color-white);
     width: 100%;
     padding: 10px;
+    border-radius: 13px;
+    box-shadow: var(--box-shadow-2);
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px 30px;
+    background-color: var(--color-white);
     border-radius: 13px;
     box-shadow: var(--box-shadow);
 }
@@ -86,31 +47,25 @@ table tr:hover {
     background-color: var(--color-light);
 }
 
-table td:nth-of-type(1) {
-    width: 6%;
-}
-
 table td:nth-of-type(2) {
-    width: 35%;
-    cursor: pointer;
+    width: 10%;
 }
 
-table td:nth-of-type(2):hover a {
+table td:nth-of-type(1):hover a {
     color: var(--color-primary);
     font-weight: 700;
 }
 
 table td:nth-of-type(3) {
-    width: 12%;
+    width: 10%;
 }
 
 table td:nth-of-type(4) {
-    width: 12%;
+    width: 10%;
 }
 
 table td:nth-of-type(5) {
-    width: 35%;
-    cursor: pointer;
+    width: 10%;
 }
 
 table td:nth-of-type(5):hover a {
@@ -122,6 +77,8 @@ table tr:nth-of-type(1) {
     background-color: var(--color-light);
     font-size: 18px;
     line-height: 2;
+    border-radius: 13px;
+    box-shadow: var(--box-shadow-2);
 }
 
 table td:nth-of-type(1),
@@ -161,24 +118,64 @@ td:hover span {
 }
 
 td:hover span.after {
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
-td:hover span.after::after {
+.t-team-ctr .t-link:hover span.after::after {
     content: 'arrow_forward_ios';
 }
 
-td:nth-of-type(2):hover span.before::before {
-    content: 'person';
-}
-
-td:nth-of-type(5):hover span.before::before {
+.t-team-ctr .t-link:hover span.before::before {
     content: 'group';
 }
 
 td a {
     display: block;
     width: 100%;
+}
+
+.t-team-ctr {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding-left: 20px;
+    height: 50px;
+}
+
+.t-team-ctr > * {
+    align-self: center;
+}
+
+.t-rank {
+    width: 30px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-dark);
+}
+
+.t-logo {
+    height: 50px;
+    width: 50px;
+}
+
+.t-link {
+    cursor: pointer;
+    height: 100%;
+    width: calc(100% - 90px);
+    position: relative;
+}
+
+.t-link a {
+    padding: 12.5px 0;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 18px;
+}
+
+.t-suffix {
+    width: 50px;
 }
 
 
