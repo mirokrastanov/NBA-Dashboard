@@ -977,4 +977,8 @@ main .recent-orders a {
     .nav .profile .profile-photo {
         display: none;
     }
+
+    .nav .profile {
+        margin-right: 10px;
+    }
 }
