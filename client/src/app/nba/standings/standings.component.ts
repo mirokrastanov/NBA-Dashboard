@@ -28,41 +28,10 @@ export class StandingsComponent {
         this.teamsALL!.map((x) => {
           if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
           if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
+          if (x.name == '76ers') x.name = 'sixers';
           return x;
         });
-
-        // INNER 1 - Links
-        this.apiService.firebaseDbFetch(dbTarget.nba.teamLinks).subscribe({
-          next: (data: Links[]) => {
-            this.linksALL = data;
-            // console.log(this.linksALL);
-            this.teamsALL!.forEach((team: any) => {
-              let found = this.linksALL!.filter(x => team.full_name.toLowerCase().includes(x.name));
-              // console.log(found);
-              if (found.length == 1) team.logo = found[0].logo;
-              else {
-                let arr = team.full_name.toLowerCase().split(' ');
-                found.forEach(foundEl => {
-                  arr.forEach((teamWord: any) => {
-                    if (teamWord == foundEl.name.toLowerCase()) team.logo = foundEl.logo;
-                  })
-                });
-              }
-            });
-            console.log(this.teamsALL);
-            
-
-            this.isLoading = false;
-          },
-          error: (err) => {
-            this.errorOccurred = true;
-            console.log(err);
-            this.isLoading = false;
-          },
-          complete: () => {
-            this.unsubscribed = true;
-          },
-        });
+        // console.log(this.teamsALL);
         // INNER 2 - Standings East
         this.apiService.firebaseDbFetch(dbTarget.nba.standings.east).subscribe({
           next: (data: Standings[]) => {
@@ -72,27 +41,21 @@ export class StandingsComponent {
               if (x['Team'][1].includes('Clippers')) x['Team'][1] = 'Los Angeles Clippers';
               return x;
             });
-            console.log(this.standings!.east);
-
-            // let currentName = this.currentTeam!.full_name.trim().toLowerCase();
-            // this.standings!.east.forEach(x => {
-            //   let xArr = x['Team'];
-            //   let xTeam = xArr[1].trim();
-            //   let xFiltered = xTeam.split('');
-            //   xFiltered.forEach((y, i) => {
-            //     let code = y.charCodeAt(0);
-            //     if (!(code >= 65 && code <= 90) && !(code >= 97 && code <= 122) && code != 32) {
-            //       xFiltered.splice(i, 1, ' ');
-            //     }
-            //   });
-            //   xTeam = xFiltered.join('').trim().toLowerCase();
-            //   if (xTeam == currentName) {
-            //     // console.log(x['Team'][1], ' >> ', x);
-            //     this.currentStanding = x;
-            //     // console.log(this.currentStanding);
-            //   }
-            // });
-            // console.log('east', this.standings!.east);
+            // console.log(this.standings!.east[0]);
+            this.standings!.east.forEach(standing => {
+              let fullName = standing.Team[1].trim().toLowerCase();
+              let found = this.teamsALL!.filter(x => fullName.includes(x.name.trim().toLowerCase()));
+              if (found.length == 1) standing.id = String(found[0].id)
+              else {
+                let arr = fullName.split(' ');
+                found.forEach(foundEl => {
+                  arr.forEach(teamWord => {
+                    if (teamWord == foundEl.name.toLowerCase()) standing.id = String(foundEl.id);
+                  });
+                });
+              }
+            });
+            // console.log(this.standings!.east);
             this.isLoading = false;
           },
           error: (err) => {
@@ -113,27 +76,21 @@ export class StandingsComponent {
               if (x['Team'][1].includes('Clippers')) x['Team'][1] = 'Los Angeles Clippers';
               return x;
             });
+            // console.log(this.standings!.west);
+            this.standings!.west.forEach(standing => {
+              let fullName = standing.Team[1].trim().toLowerCase();
+              let found = this.teamsALL!.filter(x => fullName.includes(x.name.trim().toLowerCase()));
+              if (found.length == 1) standing.id = String(found[0].id)
+              else {
+                let arr = fullName.split(' ');
+                found.forEach(foundEl => {
+                  arr.forEach(teamWord => {
+                    if (teamWord == foundEl.name.toLowerCase()) standing.id = String(foundEl.id);
+                  });
+                });
+              }
+            });
             console.log(this.standings!.west);
-
-            // let currentName = this.currentTeam!.full_name.trim().toLowerCase();
-            // this.standings!.west.forEach(x => {
-            //   let xArr = x['Team'];
-            //   let xTeam = xArr[1].trim();
-            //   let xFiltered = xTeam.split('');
-            //   xFiltered.forEach((y, i) => {
-            //     let code = y.charCodeAt(0);
-            //     if (!(code >= 65 && code <= 90) && !(code >= 97 && code <= 122) && code != 32) {
-            //       xFiltered.splice(i, 1, ' ');
-            //     }
-            //   });
-            //   xTeam = xFiltered.join('').trim().toLowerCase();
-            //   if (xTeam == currentName) {
-            //     // console.log(x['Team'][1], ' >> ', x);
-            //     this.currentStanding = x;
-            //     // console.log(this.currentStanding);
-            //   }
-            // });
-            // console.log('west', this.standings!.west);
           },
           error: (err) => {
             this.errorOccurred = true;
