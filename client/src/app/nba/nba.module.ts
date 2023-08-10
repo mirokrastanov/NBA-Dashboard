@@ -18,6 +18,7 @@ import { TeamItemStatsComponent } from './team-item-stats/team-item-stats.compon
 import { TeamItemRosterComponent } from './team-item-roster/team-item-roster.component';
 import { StandingsWestComponent } from './standings-west/standings-west.component';
 import { StandingsEastComponent } from './standings-east/standings-east.component';
+import { StarLoaderComponent } from './star-loader/star-loader.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { StandingsEastComponent } from './standings-east/standings-east.componen
     TeamItemRosterComponent,
     StandingsWestComponent,
     StandingsEastComponent,
+    StarLoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -59,6 +61,7 @@ import { StandingsEastComponent } from './standings-east/standings-east.componen
     TeamItemRosterComponent,
     StandingsWestComponent,
     StandingsEastComponent,
+    StarLoaderComponent,
   ],
 })
 export class NbaModule { }
