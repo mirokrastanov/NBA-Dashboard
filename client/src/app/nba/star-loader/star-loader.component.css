@@ -1,0 +1,12 @@
+.loader-wrapper {
+    width: 50px;
+    padding-right: 5px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-wrapper > * {
+    transform: scale(0.5);
+}
