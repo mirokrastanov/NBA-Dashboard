@@ -20,6 +20,8 @@ export class PlayerItemComponent {
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
   isLoading: boolean = true;
+  starIsLoading: boolean = true;
+  isFavorite: boolean = false;
 
   ngOnInit(): void {
     this.routeName = this.route.snapshot.paramMap.get('name');
@@ -45,6 +47,7 @@ export class PlayerItemComponent {
               return x;
             });
             this.currentPlayer = player[0];
+            this.fetchFavorites();
             // console.log(this.currentPlayer);
             this.isLoading = false;
           },
@@ -65,6 +68,48 @@ export class PlayerItemComponent {
       },
     });
   };
+
+  fetchFavorites(): void {
+    this.starIsLoading = true;
+    this.apiService.getFavorites().subscribe({
+      next: (data) => {
+        let temp = Object.keys(data!.players).filter(x => x != 'service').join('||||');
+        let favPlayers = this.apiService.decodeStarName(temp).split('||||');
+        if (favPlayers?.length == 0 || !favPlayers) {
+          this.isFavorite = false;
+        } else {
+          if (favPlayers!.find(x => this.currentPlayer!['Player'] == x)!?.length > 0) {
+            this.isFavorite = true;
+          } else {
+            this.isFavorite = false;
+          }
+        }
+        this.starIsLoading = false;
+      },
+      error: (err) => {
+        console.log(err);
+        this.starIsLoading = false;
+      },
+    });
+  }
+
+  onFavPlayer(e: MouseEvent): void {
+    this.apiService.addFavoritePlayer(this.currentPlayer!['Player']);
+    this.starIsLoading = true;
+    setTimeout(() => {
+      this.fetchFavorites();
+      this.starIsLoading = false;
+    }, 1000);
+  }
+
+  onUNfavPlayer(e: MouseEvent): void {
+    this.apiService.removeFavoritePlayer(this.currentPlayer!['Player']);
+    this.starIsLoading = true;
+    setTimeout(() => {
+      this.fetchFavorites();
+      this.starIsLoading = false;
+    }, 1000);
+  }
 
 
 }
