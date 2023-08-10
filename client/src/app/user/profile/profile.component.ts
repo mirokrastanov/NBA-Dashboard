@@ -30,30 +30,13 @@ export class ProfileComponent {
   favPlayers: any[] = [];
 
   ngOnInit(): void {
-    // IT WORKS - USE IT when implementing favorites
-    // remember to remove the service key during filtering
-
-    // const test = this.apiService.testUserExtra(dbTarget.users, JSON.parse(localStorage.getItem('user')!).uid)
-    // test.subscribe({
-    //   next: (data) => {
-    //     console.log(data);
-
-    //   }
-    // })
-
-
-    // this.apiService.getFavorites().subscribe({
-    //   next: (data) => {
-    //     console.log(data);
-
-    //   }
-    // })
-
     this.authProfile = JSON.parse(localStorage.getItem('user')!);
+    this.authService.authStatusListener();
+    setTimeout(() => {
+      this.authProfile = JSON.parse(JSON.stringify(this.authService.currentUser));
+    }, 1000);
     // console.log(this.authProfile);
     this.fetchProfile();
-
-
   }
 
   onUpdateClick(e: MouseEvent): void {
