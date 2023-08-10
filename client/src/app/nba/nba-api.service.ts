@@ -35,9 +35,11 @@ export class NbaApiService {
       [teamID]: true,
     });
   }
+
   addFavoritePlayer(playerName: string): void {
+    const starName = this.encodePlayerName(playerName);
     update(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/players/'), {
-      [playerName]: true,
+      [starName]: true,
     });
   }
 
@@ -46,11 +48,31 @@ export class NbaApiService {
   }
 
   removeFavoritePlayer(playerName: string): void {
-    remove(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/players/' + playerName));
+    const starName = this.encodePlayerName(playerName);
+    remove(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/players/' + starName));
   }
 
   fetchUserExtra(): Observable<any> {
     return this.http.get<any>(dbROOT + dbTarget.users + this.authService.currentUser.uid + dbSuffix);
   }
 
+  encodePlayerName(playerName: string): string {
+    return playerName
+      .replaceAll('.', '<1>')
+      .replaceAll('#', '<2>')
+      .replaceAll('$', '<3>')
+      .replaceAll('/', '<4>')
+      .replaceAll('[', '<5>')
+      .replaceAll(']', '<6>');
+  }
+
+  decodeStarName(starName: string): string {
+    return starName
+      .replaceAll('<1>', '.')
+      .replaceAll('<2>', '#')
+      .replaceAll('<3>', '$')
+      .replaceAll('<4>', '/')
+      .replaceAll('<5>', '[')
+      .replaceAll('<6>', ']');
+  }
 }
