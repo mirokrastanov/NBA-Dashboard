@@ -84,5 +84,13 @@ export class RegisterComponent {
     });
   }
 
-
+  togglePassVisibility(e1: HTMLInputElement, e2: HTMLInputElement): void {
+    if (e1.getAttribute('type') == 'password') {
+      e1.setAttribute('type', 'text');
+      e2.setAttribute('type', 'text');
+    } else {
+      e1.setAttribute('type', 'password');
+      e2.setAttribute('type', 'password');
+    }
+  }
 }
