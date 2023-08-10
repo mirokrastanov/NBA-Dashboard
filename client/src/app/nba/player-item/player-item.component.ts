@@ -3,6 +3,7 @@ import { NbaApiService } from '../nba-api.service';
 import { Player, Team } from '../nba-types';
 import { ActivatedRoute } from '@angular/router';
 import { dbTarget } from 'src/app/util/global-constants';
+import { AuthService } from 'src/app/user/auth.service';
 
 @Component({
   selector: 'app-player-item',
@@ -10,7 +11,11 @@ import { dbTarget } from 'src/app/util/global-constants';
   styleUrls: ['./player-item.component.css']
 })
 export class PlayerItemComponent {
-  constructor(private apiService: NbaApiService, private route: ActivatedRoute) { }
+  constructor(
+    private apiService: NbaApiService,
+    private route: ActivatedRoute,
+    private authService: AuthService,
+  ) { }
 
   playersALL: Player[] | null = null;
   teamsALL: Team[] | null = null;
@@ -22,6 +27,9 @@ export class PlayerItemComponent {
   isLoading: boolean = true;
   starIsLoading: boolean = true;
   isFavorite: boolean = false;
+  get currentUser() {
+    return this.authService.currentUser;
+  }
 
   ngOnInit(): void {
     this.routeName = this.route.snapshot.paramMap.get('name');
@@ -70,6 +78,7 @@ export class PlayerItemComponent {
   };
 
   fetchFavorites(): void {
+    if (!this.currentUser) return;
     this.starIsLoading = true;
     this.apiService.getFavorites().subscribe({
       next: (data) => {
