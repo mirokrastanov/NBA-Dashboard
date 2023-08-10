@@ -178,7 +178,7 @@
 }
 
 .box form .links.recover {
-    bottom: 110px;
+    bottom: 120px;
     right: -46px;
 }
 
@@ -276,4 +276,79 @@
     letter-spacing: 0.025em;
     text-align: center;
     z-index: 1000;
+}
+
+
+.eye {
+    position: absolute;
+    bottom: 68px;
+    right: 20px;
+    color: var(--color-dark);
+    font-size: 40px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.eye:hover {
+    color: var(--color-dark-variant);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 420px) {
+    #login-ctr {
+        position: absolute;
+        left: 1%;
+        width: 98%;
+    }
+
+    .box form {
+        padding: 30px 10px;
+        align-items: baseline;
+    }
+
+    .box h2 {
+        width: 100%;
+    }
+
+    .box form .inputBox {
+        width: 100%;
+
+    }
+
+    .box::before,
+    .box::after,
+    .borderLine::before,
+    .borderLine::after {
+        width: 100%;
+        height: 100%;
+    }
+
+    #login-ctr .box .links {
+        width: 96%;
+        text-align: center;
+        gap: 1%;
+    }
+
+    .eye {
+        right: 0px;
+    }
+
+    #login-ctr .box form .links.recover {
+        text-align: right;
+        right: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+    }
 }
