@@ -17,9 +17,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   aside = () => this.document.body.querySelector('aside')!;
 
   isAuthenticated: any = false;
-  get currentUser(): any {
-    return this.authService.currentUser;
-  }
 
   isLoading = false;
   intervals: any[] = [];
@@ -53,7 +50,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.isAuthenticated = false;
     setTimeout(() => {
       this.isLoading = false;
-      this.router.navigate(['/user/login']);
+      this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
     }, 1000);
   }
 }
