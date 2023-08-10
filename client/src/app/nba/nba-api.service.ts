@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { endpointsNBA, proxy, noProxy, dbROOT, dbSuffix, dbTarget } from '../util/global-constants';
-import { EMPTY } from 'rxjs'; // returns an empty observable
+import { EMPTY, Observable } from 'rxjs'; // returns an empty observable
 import { Database, set, ref, update, push, remove, get } from '@angular/fire/database';
 import { AuthService } from '../user/auth.service';
+import { Favorites } from './nba-types';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class NbaApiService {
 
   constructor(private http: HttpClient, public database: Database, private authService: AuthService) { }
 
-  nbaFetch(target: string = '') { // TODO ==> Add and implement dynamic query params input
+  nbaFetch(target: string = '') {
     if (!target || !endpointsNBA.hasOwnProperty(target)) return EMPTY;
     let address = endpointsNBA[target];
     return this.http.get<any>(proxy + address);
@@ -24,20 +25,36 @@ export class NbaApiService {
     return this.http.get<any>(dbROOT + dbTarget + dbSuffix);
   }
 
+  getFavorites(): Observable<any> {
+    return this.http.get<any>(dbROOT + dbTarget.users + this.authService.currentUser.uid + '/favorites' + dbSuffix);
+  }
+
   // THIS WORKS - users only update their own folder !!!
-  testUpdate(keyName: string): void {
-    update(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites'), {
-      keyName: true,
+  addFavoriteTeam(teamID: string): void {
+    // ADD check if its already added
+    update(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/teams/'), {
+      [teamID]: true,
     });
   }
-  // WORKS TOO
-  testRemove(keyName: string): void {
-    remove(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/' + keyName));
-
+  addFavoritePlayer(playerName: string): void {
+    // ADD check if its already added
+    update(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/players/'), {
+      [playerName]: true,
+    });
   }
 
-  testUserExtra(dbTarget: string, uid: string) {
-    return this.http.get<any>(dbROOT + dbTarget + uid + dbSuffix);
+  removeFavoriteTeam(teamID: string): void {
+    // ADD check if it exists
+    remove(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/teams/' + teamID));
+  }
+
+  removeFavoritePlayer(playerName: string): void {
+    // ADD check if it exists
+    remove(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/players/' + playerName));
+  }
+
+  fetchUserExtra(): Observable<any> {
+    return this.http.get<any>(dbROOT + dbTarget.users + this.authService.currentUser.uid + dbSuffix);
   }
 
   // testFetch(): void {
