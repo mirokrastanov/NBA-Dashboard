@@ -108,7 +108,12 @@ export class ProfileComponent {
     }, 1000);
   }
   onFavTeam(e: MouseEvent): void {
-
+    this.apiService.addFavoriteTeam('testTEAM');
+    this.isLoading = true;
+    setTimeout(() => {
+      this.fetchProfile();
+      this.isLoading = false;
+    }, 1000);
   }
   onUNfavPlayer(e: MouseEvent): void {
     this.apiService.removeFavoritePlayer('test1');
@@ -119,6 +124,11 @@ export class ProfileComponent {
     }, 1000);
   }
   onUNfavTeam(e: MouseEvent): void {
-
+    this.apiService.removeFavoriteTeam('testTEAM');
+    this.isLoading = true;
+    setTimeout(() => {
+      this.fetchProfile();
+      this.isLoading = false;
+    }, 1000);
   }
 }
