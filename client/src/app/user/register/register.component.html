@@ -27,7 +27,7 @@
                 <i></i>
             </div>
             <div class="inputBox">
-                <input name="password" type="password" ngModel required #passwordInput="ngModel" [appMinCount]="6" />
+                <input name="password" type="password" ngModel required #pass #passwordInput="ngModel" [appMinCount]="6" />
                 <label for="password">Password
                     <span *ngIf="passwordInput.dirty">
                         <span class="danger" *ngIf="passwordInput.errors?.['appMinCount']"> is too short!</span>
@@ -36,7 +36,7 @@
                 <i></i>
             </div>
             <div class="inputBox">
-                <input name="repeatPassword" type="password" ngModel required #repeatPasswordInput="ngModel" />
+                <input name="repeatPassword" type="password" ngModel #rPass required #repeatPasswordInput="ngModel" />
                 <label for="repeatPassword">Repeat Password
                     <span *ngIf="repeatPasswordInput.dirty">
                         <span class="danger" *ngIf="repeatPasswordInput.value != passwordInput.value"> must
@@ -49,6 +49,7 @@
             <button *ngIf="isLoggingIn" type="submit" disabled class="spinner-ctr">
                 <app-spinner id="spinner2"></app-spinner>
             </button>
+            <span class="material-icons-sharp eye" (click)="togglePassVisibility(pass, rPass)">visibility</span>
             <div class="links">
                 <span>Have an Account?</span><a [routerLink]="['/user/login']">Login Here</a>
             </div>
