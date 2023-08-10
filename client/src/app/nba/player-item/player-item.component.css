@@ -161,8 +161,26 @@
     color: var(--color-dark);
 }
 
+.player-title .fav-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1px 2px 1px 10px;
+    height: 100%;
+    width: fit-content;
+    white-space: nowrap;
+    border-right: 2px solid var(--color-light);
+}
 
-
+.player-title .fav-btn span {
+    font-size: 42px;
+    font-weight: 100;
+    color: var(--color-primary);
+}
 
 
 @media screen and (max-width: 1200px) {
