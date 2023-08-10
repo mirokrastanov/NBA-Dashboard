@@ -204,8 +204,28 @@
     border-right: 4px solid var(--color-light);
 }
 
+.player-title .fav-btn:hover::after {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    color: var(--color-primary);
+    opacity: 1;
+    background-color: var(--color-background);
+    padding: 5px 20px;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow-2);
+}
+
+.player-title .fav-btn:has(.star_full):hover::after {
+    content: 'Remove from Favorites!';
+}
 
 
+.player-title .fav-btn:has(.star_empty):hover::after {
+    content: 'Add to Favorites!';
+}
 
 
 @media screen and (max-width: 1200px) {
@@ -226,20 +246,25 @@
 
 @media screen and (max-width: 768px) {
     .player-title h1#player-main-title {
-        display: none;
+        margin-left: auto;
     }
 
-    .player-inner .player-stat.hidden-stat {
+    /* .player-inner .player-stat.hidden-stat {
         display: flex;
-    }
+    } */
 
     .player-title {
-        height: 40px;
+        margin-top: 90px;
     }
 
     .player-title a {
         width: 100%;
         border-left: none;
+        top: -90px;
+        background-color: var(--color-white);
+        box-shadow: var(--box-shadow);
+        border-radius: 13px;
+        font-size: 18px;
     }
 
     .player-title a:hover {
