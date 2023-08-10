@@ -7,7 +7,7 @@
 <div *ngIf="!isLoading" class="team-outer">
     <div class="team-title">
         <h1 id="team-main-title">{{currentTeam!['full_name']}}</h1>
-        <div class="fav-btn" *ngIf="currentUser">
+        <div class="fav-btn" *ngIf="isAuthenticated">
             <div *ngIf="starIsLoading"><app-star-loader></app-star-loader></div>
             <span *ngIf="!starIsLoading && !isFavorite" (click)="onFavTeam($event)"
                 class="material-icons-sharp star_empty">star_border</span>
