@@ -102,7 +102,7 @@ h1 {
     row-gap: 10px;
 }
 
-.details-inner {   
+.details-inner {
     background-color: var(--color-white);
     border-radius: 13px;
     /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 2px 2px; */
@@ -144,4 +144,32 @@ h1 {
 
 .user-favorites {
     margin-top: 30px;
+}
+
+.test {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    gap: 5%;
+}
+
+.test div {
+    background-color: plum;
+    padding: 10px 30px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 13px;
+    box-shadow: var(--box-shadow-2);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.test div:hover {
+    background-color: rgba(166, 0, 231, 0.5);
+    box-shadow: var(--box-shadow-3);
+    border-radius: 18px;
 }

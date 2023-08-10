@@ -32,7 +32,11 @@
         </div>
     </div>
 
-    <div class="user-favorites">
+    <div *ngIf="isLoading">
+        <app-profile-loader></app-profile-loader>
+    </div>
+
+    <div *ngIf="!isLoading" class="user-favorites">
         <div class="fav-list">
             <div class="fav" (click)="onFavClick($event)">
                 <div class="ques">
@@ -62,4 +66,10 @@
         </div>
     </div>
 
+    <div class="test">
+        <div (click)="onFavPlayer($event)">FAV PLAYER</div>
+        <div (click)="onFavTeam($event)">FAV TEAM</div>
+        <div (click)="onUNfavPlayer($event)">unFAV PLAYER</div>
+        <div (click)="onUNfavTeam($event)">unFAV TEAM</div>
+    </div>
 </div>
