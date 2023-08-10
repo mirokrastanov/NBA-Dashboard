@@ -3,6 +3,7 @@ import { Links, Player, Standings, StatsAdvanced, StatsAverages, StatsMisc, Stat
 import { NbaApiService } from '../nba-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { dbTarget } from 'src/app/util/global-constants';
+import { AuthService } from 'src/app/user/auth.service';
 
 @Component({
   selector: 'app-team-item',
@@ -10,7 +11,11 @@ import { dbTarget } from 'src/app/util/global-constants';
   styleUrls: ['./team-item.component.css']
 })
 export class TeamItemComponent {
-  constructor(private apiService: NbaApiService, private route: ActivatedRoute) { }
+  constructor(
+    private apiService: NbaApiService, 
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    ) { }
 
   playersALL: Player[] | null = null;
   teamsALL: Team[] | null = null;
@@ -27,6 +32,9 @@ export class TeamItemComponent {
   isLoading: boolean = true;
   starIsLoading: boolean = true;
   isFavorite: boolean = false;
+  get currentUser() {
+    return this.authService.currentUser;
+  }
 
   ngOnInit(): void {
     this.routeID = this.route.snapshot.paramMap.get('id');
@@ -156,6 +164,7 @@ export class TeamItemComponent {
   };
 
   fetchFavorites(): void {
+    if (!this.currentUser) return;
     this.starIsLoading = true;
     this.apiService.getFavorites().subscribe({
       next: (data) => {
