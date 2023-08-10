@@ -7,6 +7,11 @@
 <div *ngIf="!isLoading" class="team-outer">
     <div class="team-title">
         <h1 id="team-main-title">{{currentTeam!['full_name']}}</h1>
+        <div class="fav-btn">
+            <div *ngIf="starIsLoading"><app-star-loader></app-star-loader></div>
+            <span *ngIf="!starIsLoading && !isFavorite" (click)="onFavTeam($event)" class="material-icons-sharp star_empty">star_border</span>
+            <span *ngIf="!starIsLoading && isFavorite" (click)="onUNfavTeam($event)" class="material-icons-sharp star_full">star</span>
+        </div>
         <a [routerLink]="['/nba/teams']">
             <span class="material-icons-sharp">arrow_back_ios</span>
             Back to Teams
