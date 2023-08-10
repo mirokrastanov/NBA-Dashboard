@@ -1,0 +1,42 @@
+#dashboard-ctr {
+    width: 100%;
+}
+
+#dashboard-ctr > div {
+    background-color: var(--color-white);
+    padding: 10px 30px;
+    border-radius: 13px;
+    box-shadow: var(--box-shadow);
+}
+
+.unlock-ctr {
+
+}
+
+.overlay-ctr {
+
+}
+
+.overlay-inner {
+
+}
+
+.overlay-inner span {
+
+}
+
+.unlock-content {
+
+}
+
+.unlock-content h2 {
+
+}
+
+.unlock-content p {
+    
+}
+
+.unlock-content button {
+    
+}
