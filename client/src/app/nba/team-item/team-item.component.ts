@@ -12,10 +12,10 @@ import { AuthService } from 'src/app/user/auth.service';
 })
 export class TeamItemComponent {
   constructor(
-    private apiService: NbaApiService, 
+    private apiService: NbaApiService,
     private route: ActivatedRoute,
     private authService: AuthService,
-    ) { }
+  ) { }
 
   playersALL: Player[] | null = null;
   teamsALL: Team[] | null = null;
@@ -32,11 +32,11 @@ export class TeamItemComponent {
   isLoading: boolean = true;
   starIsLoading: boolean = true;
   isFavorite: boolean = false;
-  get currentUser() {
-    return this.authService.currentUser;
-  }
+  isAuthenticated: any = false;
+
 
   ngOnInit(): void {
+    this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
     this.routeID = this.route.snapshot.paramMap.get('id');
     // console.log(this.routeID);
     // OUTER 1 - Teams
@@ -164,27 +164,33 @@ export class TeamItemComponent {
   };
 
   fetchFavorites(): void {
-    if (!this.currentUser) return;
-    this.starIsLoading = true;
-    this.apiService.getFavorites().subscribe({
-      next: (data) => {
-        let favTeams = Object.keys(data!.teams).filter(x => x != 'service');
-        // console.log(favTeams);
-        if (favTeams?.length == 0 || !favTeams) {
-          this.isFavorite = false;
-        } else {
-          if (favTeams!.find(x => String(this.currentTeam!.id) == x)!?.length > 0) {
-            this.isFavorite = true;
-          } else {
-            this.isFavorite = false;
-          }
-        }
-        this.starIsLoading = false;
+    this.authService.fireAuth.authState.subscribe({
+      next: (authStatus) => {
+        this.isAuthenticated = authStatus;
+        if (!this.isAuthenticated) return;
+        this.starIsLoading = true;
+        this.apiService.getFavorites().subscribe({
+          next: (data) => {
+            let favTeams = Object.keys(data!.teams).filter(x => x != 'service');
+            // console.log(favTeams);
+            if (favTeams?.length == 0 || !favTeams) {
+              this.isFavorite = false;
+            } else {
+              if (favTeams!.find(x => String(this.currentTeam!.id) == x)!?.length > 0) {
+                this.isFavorite = true;
+              } else {
+                this.isFavorite = false;
+              }
+            }
+            this.starIsLoading = false;
+          },
+          error: (err) => {
+            console.log(err);
+            this.starIsLoading = false;
+          },
+        });
       },
-      error: (err) => {
-        console.log(err);
-        this.starIsLoading = false;
-      },
+      error: (err) => console.log(),
     });
   }
 
