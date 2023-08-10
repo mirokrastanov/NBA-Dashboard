@@ -168,19 +168,44 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    padding: 1px 2px 1px 10px;
+    align-items: stretch;
     height: 100%;
     width: fit-content;
     white-space: nowrap;
     border-right: 2px solid var(--color-light);
+    border-radius: 13px 0 0 13px;
+    cursor: pointer;
 }
 
 .player-title .fav-btn span {
     font-size: 42px;
     font-weight: 100;
-    color: var(--color-primary);
+    transition: all 0.5s ease-in-out;
+    padding: 11px 10px 0 9px;
+    border-radius: 13px 0 0 13px;
+    margin-right: 0;
+    transform: rotate(145deg);
 }
+
+.player-title .fav-btn:hover span {
+    transform: rotate(0deg);
+}
+
+.player-title .fav-btn .star_empty {
+    color: var(--color-dark-variant);
+}
+
+.player-title .fav-btn .star_full {
+    color: goldenrod;
+}
+
+.player-title .fav-btn:has(.star_full) {
+    box-shadow: var(--box-shadow-2);
+    border-right: none;
+}
+
+
+
 
 
 @media screen and (max-width: 1200px) {
