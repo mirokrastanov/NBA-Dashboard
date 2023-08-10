@@ -27,11 +27,11 @@ export class PlayerItemComponent {
   isLoading: boolean = true;
   starIsLoading: boolean = true;
   isFavorite: boolean = false;
-  get currentUser() {
-    return this.authService.currentUser;
-  }
+  isAuthenticated: any = false;
+
 
   ngOnInit(): void {
+    this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
     this.routeName = this.route.snapshot.paramMap.get('name');
     // console.log(this.routeName);
 
@@ -78,27 +78,33 @@ export class PlayerItemComponent {
   };
 
   fetchFavorites(): void {
-    if (!this.currentUser) return;
-    this.starIsLoading = true;
-    this.apiService.getFavorites().subscribe({
-      next: (data) => {
-        let temp = Object.keys(data!.players).filter(x => x != 'service').join('||||');
-        let favPlayers = this.apiService.decodeStarName(temp).split('||||');
-        if (favPlayers?.length == 0 || !favPlayers) {
-          this.isFavorite = false;
-        } else {
-          if (favPlayers!.find(x => this.currentPlayer!['Player'] == x)!?.length > 0) {
-            this.isFavorite = true;
-          } else {
-            this.isFavorite = false;
-          }
-        }
-        this.starIsLoading = false;
+    this.authService.fireAuth.authState.subscribe({
+      next: (authStatus) => {
+        this.isAuthenticated = authStatus;
+        if (!this.isAuthenticated) return;
+        this.starIsLoading = true;
+        this.apiService.getFavorites().subscribe({
+          next: (data) => {
+            let temp = Object.keys(data!.players).filter(x => x != 'service').join('||||');
+            let favPlayers = this.apiService.decodeStarName(temp).split('||||');
+            if (favPlayers?.length == 0 || !favPlayers) {
+              this.isFavorite = false;
+            } else {
+              if (favPlayers!.find(x => this.currentPlayer!['Player'] == x)!?.length > 0) {
+                this.isFavorite = true;
+              } else {
+                this.isFavorite = false;
+              }
+            }
+            this.starIsLoading = false;
+          },
+          error: (err) => {
+            console.log(err);
+            this.starIsLoading = false;
+          },
+        });
       },
-      error: (err) => {
-        console.log(err);
-        this.starIsLoading = false;
-      },
+      error: (err) => console.log(),
     });
   }
 
@@ -122,3 +128,14 @@ export class PlayerItemComponent {
 
 
 }
+
+
+// this.authService.fireAuth.authState.subscribe({
+//   next: (authStatus) => {
+//     this.isAuthenticated = authStatus;
+//     if (!this.isAuthenticated) return;
+
+
+//   },
+//   error: (err) => console.log(),
+// });
