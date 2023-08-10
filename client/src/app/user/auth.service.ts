@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   isAuthenticated: boolean = this.fireAuth.currentUser != null ? true : false;
-  currentUser: any = undefined;
+  currentUser: any = JSON.parse(localStorage.getItem('user')!);
 
   authStatusListener(): void {
     this.fireAuth.onAuthStateChanged(async (credential) => {
