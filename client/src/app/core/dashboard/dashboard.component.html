@@ -1,5 +1,5 @@
 <div id="dashboard-ctr">
-    <div class="unlock-ctr">
+    <div *ngIf="!currentUser" class="unlock-ctr">
         <div class="overlay-ctr">
             <div class="overlay-inner">
                 <span class="material-icons-sharp">lock</span>
@@ -16,7 +16,14 @@
         </div>
     </div>
 
+    <div class="stats-ctr">
+        <div class="stats-inner">
 
+        </div>
+        <div class="stats-inner">
+
+        </div>
+    </div>
 
 </div>
 
