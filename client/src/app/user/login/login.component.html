@@ -17,7 +17,7 @@
                 <i></i>
             </div>
             <div class="inputBox">
-                <input name="password" type="password" ngModel required #passwordInput="ngModel" [appMinCount]="6" />
+                <input name="password" type="password" #pass ngModel required #passwordInput="ngModel" [appMinCount]="6" />
                 <label for="password">Password
                     <span *ngIf="passwordInput.dirty">
                         <span class="danger" *ngIf="passwordInput.errors?.['appMinCount']"> is too short!</span>
@@ -29,6 +29,7 @@
             <button *ngIf="isLoggingIn || isRecoveringPassword" type="submit" disabled class="spinner-ctr">
                 <app-spinner id="spinner"></app-spinner>
             </button>
+            <span class="material-icons-sharp eye" (click)="togglePassVisibility(pass)">visibility</span>
             <div class="links">
                 <span>Not a member?</span><a [routerLink]="['/user/register']">Register Here</a>
             </div>
