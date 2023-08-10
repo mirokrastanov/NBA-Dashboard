@@ -20,11 +20,13 @@ export class TeamItemComponent {
   } = { east: [], west: [] };
   currentTeam: Team | undefined;
   currentLinks: Links | undefined;
-  currentStanding: Standings | null = null; 
+  currentStanding: Standings | null = null;
   routeID: string | number | null = null;
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
   isLoading: boolean = true;
+  starIsLoading: boolean = true;
+  isFavorite: boolean = false;
 
   ngOnInit(): void {
     this.routeID = this.route.snapshot.paramMap.get('id');
@@ -40,6 +42,8 @@ export class TeamItemComponent {
         });
         this.currentTeam = this.teamsALL!.find(x => x.id == this.routeID)
         // console.log(this.currentTeam);
+        this.fetchFavorites();
+
         // INNER 1 - Links
         this.apiService.firebaseDbFetch(dbTarget.nba.teamLinks).subscribe({
           next: (data: Links[]) => {
@@ -150,4 +154,46 @@ export class TeamItemComponent {
       },
     });
   };
+
+  fetchFavorites(): void {
+    this.starIsLoading = true;
+    this.apiService.getFavorites().subscribe({
+      next: (data) => {
+        let favTeams = Object.keys(data!.teams).filter(x => x != 'service');
+        // console.log(favTeams);
+        if (favTeams?.length == 0 || !favTeams) {
+          this.isFavorite = false;
+        } else {
+          if (favTeams!.find(x => String(this.currentTeam!.id) == x)!?.length > 0) {
+            this.isFavorite = true;
+          } else {
+            this.isFavorite = false;
+          }
+        }
+        this.starIsLoading = false;
+      },
+      error: (err) => {
+        console.log(err);
+        this.starIsLoading = false;
+      },
+    });
+  }
+
+  onFavTeam(e: MouseEvent): void {
+    this.apiService.addFavoriteTeam(String(this.currentTeam!.id));
+    this.starIsLoading = true;
+    setTimeout(() => {
+      this.fetchFavorites();
+      this.starIsLoading = false;
+    }, 1000);
+  }
+
+  onUNfavTeam(e: MouseEvent): void {
+    this.apiService.removeFavoriteTeam(String(this.currentTeam!.id));
+    this.starIsLoading = true;
+    setTimeout(() => {
+      this.fetchFavorites();
+      this.starIsLoading = false;
+    }, 1000);
+  }
 }
