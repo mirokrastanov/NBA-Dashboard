@@ -188,6 +188,15 @@ export interface Transactions {
     lines: TransactionLines[],
 };
 
+export interface Favorites {
+    players: {
+        [key: string]: string | number | boolean,
+    },
+    teams: {
+        [key: string]: string | number | boolean,
+    },
+};
+
 // TODO
 // UserEXTRA for users --- if favorites make it through :)
 
