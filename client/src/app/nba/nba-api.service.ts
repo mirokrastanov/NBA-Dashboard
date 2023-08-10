@@ -29,27 +29,23 @@ export class NbaApiService {
     return this.http.get<any>(dbROOT + dbTarget.users + this.authService.currentUser.uid + '/favorites' + dbSuffix);
   }
 
-  // THIS WORKS - users only update their own folder !!!
+  // Users can only update their own folder !!! Key name prevents duplicates automatically. NO extra checks needed.
   addFavoriteTeam(teamID: string): void {
-    // ADD check if its already added
     update(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/teams/'), {
       [teamID]: true,
     });
   }
   addFavoritePlayer(playerName: string): void {
-    // ADD check if its already added
     update(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/players/'), {
       [playerName]: true,
     });
   }
 
   removeFavoriteTeam(teamID: string): void {
-    // ADD check if it exists
     remove(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/teams/' + teamID));
   }
 
   removeFavoritePlayer(playerName: string): void {
-    // ADD check if it exists
     remove(ref(this.database, 'users/' + this.authService.currentUser.uid + '/favorites/players/' + playerName));
   }
 
@@ -57,9 +53,4 @@ export class NbaApiService {
     return this.http.get<any>(dbROOT + dbTarget.users + this.authService.currentUser.uid + dbSuffix);
   }
 
-  // testFetch(): void {
-  //   set(ref(this.database, 'users/' + 'test'), {
-  //     credential: 'test-prop'
-  //   });
-  // }
 }
