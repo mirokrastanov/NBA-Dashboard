@@ -1,0 +1,13 @@
+.side-loader-screen-size {
+    position: absolute;
+    top: 7%;
+    left: 0;
+    background-color: var(--color-background);
+    width: 100%;
+    height: 93%;
+    padding-bottom: 10%;
+    z-index: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
