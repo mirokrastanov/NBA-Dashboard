@@ -517,7 +517,8 @@ main .recent-orders a {
     letter-spacing: 0.025em;
     color: var(--color-primary);
     opacity: 1;
-    background-color: var(--color-light);
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow-2);
     padding: 3px 10px;
     font-weight: 700;
     font-size: 14px;
@@ -699,7 +700,8 @@ main .recent-orders a {
     aside .sidebar a:hover::after {
         content: attr(data-tooltip);
         letter-spacing: 0.05em;
-        background-color: var(--color-light);
+        background-color: var(--color-background);
+        box-shadow: var(--box-shadow-2);
         opacity: 1;
         padding: 3px 10px;
         font-weight: 700;
