@@ -5,7 +5,7 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { NbaApiService } from 'src/app/nba/nba-api.service';
 import { dbTarget } from 'src/app/util/global-constants';
-import { Favorites } from 'src/app/nba/nba-types';
+import { Favorites, Team } from 'src/app/nba/nba-types';
 
 @Component({
   selector: 'app-profile',
@@ -54,9 +54,9 @@ export class ProfileComponent {
     if (target.classList.contains('fav-active')) target.classList.remove('fav-active');
     else {
       target.classList.add('fav-active');
-      ques.forEach(x => {
-        if (x != target) x.classList.remove('fav-active');
-      })
+      // ques.forEach(x => {
+      //   if (x != target) x.classList.remove('fav-active');
+      // })
     }
   }
 
@@ -65,8 +65,24 @@ export class ProfileComponent {
       next: (data) => {
         this.dbProfile = data;
         this.favorites = this.dbProfile.favorites;
-        this.favPlayers = Object.keys(this.favorites!.players).filter(x => x != 'service');
-        this.favTeams = Object.keys(this.favorites!.teams).filter(x => x != 'service');
+        this.favPlayers = this.apiService.decodeStarName(
+          Object.keys(this.favorites!.players)
+            .filter(x => x != 'service')
+            .join('||||')
+        ).split('||||');
+        let teamIDs = Object.keys(this.favorites!.teams).filter(x => x != 'service');
+        let teams: Team[] = [];
+        this.apiService.firebaseDbFetch(dbTarget.nba.teamsAPI).subscribe({
+          next: (data: Team[]) => {
+            teamIDs.forEach((teamID) => {
+              let res = data.find(team => String(teamID) == String(team.id));
+              teams.push(res!);
+            });
+            this.favTeams = teams;
+            // console.log(this.favPlayers, this.favTeams);
+          },
+          error: (err) => console.log(err),
+        })
         // console.log(this.dbProfile);
         this.isLoading = false;
       },
