@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { endpointsNBA, proxy, noProxy, dbROOT, dbSuffix, dbTarget } from '../util/global-constants';
 import { EMPTY, Observable } from 'rxjs'; // returns an empty observable
-import { Database, set, ref, update, push, remove, get } from '@angular/fire/database';
+import { Database, set, ref, update, push, remove, get, child, onValue } from '@angular/fire/database';
 import { AuthService } from '../user/auth.service';
-import { Favorites } from './nba-types';
 
 
 @Injectable({
@@ -12,8 +11,13 @@ import { Favorites } from './nba-types';
 })
 
 export class NbaApiService {
-
   constructor(private http: HttpClient, public database: Database, private authService: AuthService) { }
+
+  async getFbCollection(path: string): Promise<void> {
+    let snapshot = await get(ref(this.database, path));
+    let temp = snapshot.val();
+    return temp;    
+  }
 
   nbaFetch(target: string = '') {
     if (!target || !endpointsNBA.hasOwnProperty(target)) return EMPTY;
