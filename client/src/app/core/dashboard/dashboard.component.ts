@@ -11,14 +11,13 @@ import { Order, orders } from 'src/assets/mockData';
 export class DashboardComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private authService: AuthService
+    private authService: AuthService,
   ) { }
 
-  get currentUser(): any {
-    return this.authService.currentUser;
-  }
+  isAuthenticated: any = false;
 
   ngOnInit(): void {
+    this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
 
   }
 
