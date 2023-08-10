@@ -262,6 +262,49 @@
 }
 
 
+.team-title .fav-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    height: 100%;
+    width: fit-content;
+    white-space: nowrap;
+    border-right: 2px solid var(--color-light);
+    border-radius: 13px 0 0 13px;
+    cursor: pointer;
+}
+
+.team-title .fav-btn span {
+    font-size: 42px;
+    font-weight: 100;
+    transition: all 0.5s ease-in-out;
+    padding: 11px 10px 0 9px;
+    border-radius: 13px 0 0 13px;
+    margin-right: 0;
+    transform: rotate(145deg);
+}
+
+.team-title .fav-btn:hover span {
+    transform: rotate(0deg);
+}
+
+.team-title .fav-btn .star_empty {
+    color: var(--color-dark-variant);
+}
+
+.team-title .fav-btn .star_full {
+    color: goldenrod;
+}
+
+.team-title .fav-btn:has(.star_full) {
+    box-shadow: var(--box-shadow-2);
+    border-right: 4px solid var(--color-light);
+}
+
 
 
 
