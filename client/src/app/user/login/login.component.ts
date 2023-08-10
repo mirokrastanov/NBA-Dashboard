@@ -75,4 +75,11 @@ export class LoginComponent {
     });
   }
 
+  togglePassVisibility(e1: HTMLInputElement): void {
+    if (e1.getAttribute('type') == 'password') {
+      e1.setAttribute('type', 'text');
+    } else {
+      e1.setAttribute('type', 'password');
+    }
+  }
 }
