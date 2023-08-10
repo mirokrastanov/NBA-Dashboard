@@ -38,28 +38,36 @@
 
     <div *ngIf="!isLoading" class="user-favorites">
         <div class="fav-list">
-            <div class="fav" (click)="onFavClick($event)">
+            <div class="fav fav-active" (click)="onFavClick($event)">
                 <div class="ques">
-                    <p>Players ({{favPlayers.length}})</p>
+                    <p>Favorite Players ({{favPlayers.length}})</p>
                     <span class="material-icons-sharp">add</span>
                 </div>
                 <div class="ans">
-                    <p>This is content 1. Players below...</p>
-                    <div class="profile-fav-card" *ngFor="let item of favTeams">
-                        player card here...
+                    <div class="profile-fav-card" *ngFor="let item of favPlayers">
+                        <a routerLink="/nba/players/player/{{item}}">
+                            <span class="material-icons-sharp before">star</span>
+                            <span class="material-icons-sharp before">person</span>
+                            {{item}}
+                            <span class="material-icons-sharp after"></span>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="fav" (click)="onFavClick($event)">
+            <div class="fav fav-active" (click)="onFavClick($event)">
                 <div class="ques">
-                    <p>Teams ({{favTeams.length}})</p>
+                    <p>Favorite Teams ({{favTeams.length}})</p>
                     <span class="material-icons-sharp">add</span>
                 </div>
                 <div class="ans">
-                    <p>This is content 2. Teams below...</p>
                     <div class="profile-fav-card" *ngFor="let item of favTeams">
-                        player card here...
+                        <a routerLink="/nba/teams/{{item!['id']}}">
+                            <span class="material-icons-sharp before">star</span>
+                            <span class="material-icons-sharp before">groups</span>
+                            {{item!['full_name']}}
+                            <span class="material-icons-sharp after"></span>
+                        </a>
                     </div>
                 </div>
             </div>
