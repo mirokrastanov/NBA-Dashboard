@@ -40,9 +40,10 @@
             </p>
         </div>
         <div class="profile-photo">
-            <span class="material-icons-sharp">
-                account_circle
-            </span>
+            <img *ngIf="!authProfile.photoURL!"
+                src="../../../assets/images/user-avatar.png" alt="profile-img" class="img-bg">
+            <img *ngIf="authProfile.photoURL!" src="{{authProfile.photoURL !}}"
+                alt="profile-img">
         </div>
     </a>
 
