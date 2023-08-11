@@ -37,6 +37,7 @@ export class DashboardComponent implements OnInit {
         this.teamsALL!.map((x) => {
           if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
           if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
+          if (x.name == '76ers') x.name = 'sixers';
           return x;
         });
         console.log(this.teamsALL);
@@ -80,7 +81,19 @@ export class DashboardComponent implements OnInit {
               if (x['Team'][1].includes('Clippers')) x['Team'][1] = 'Los Angeles Clippers';
               return x;
             });
-
+            this.standings!.east.forEach(standing => {
+              let fullName = standing.Team[1].trim().toLowerCase();
+              let found = this.teamsALL!.filter(x => fullName.includes(x.name.trim().toLowerCase()));
+              if (found.length == 1) standing.id = String(found[0].id)
+              else {
+                let arr = fullName.split(' ');
+                found.forEach(foundEl => {
+                  arr.forEach(teamWord => {
+                    if (teamWord == foundEl.name.toLowerCase()) standing.id = String(foundEl.id);
+                  });
+                });
+              }
+            });
             console.log('east', this.standings!.east);
             this.isLoading = false;
           },
@@ -102,7 +115,19 @@ export class DashboardComponent implements OnInit {
               if (x['Team'][1].includes('Clippers')) x['Team'][1] = 'Los Angeles Clippers';
               return x;
             });
-
+            this.standings!.west.forEach(standing => {
+              let fullName = standing.Team[1].trim().toLowerCase();
+              let found = this.teamsALL!.filter(x => fullName.includes(x.name.trim().toLowerCase()));
+              if (found.length == 1) standing.id = String(found[0].id)
+              else {
+                let arr = fullName.split(' ');
+                found.forEach(foundEl => {
+                  arr.forEach(teamWord => {
+                    if (teamWord == foundEl.name.toLowerCase()) standing.id = String(foundEl.id);
+                  });
+                });
+              }
+            });
             console.log('west', this.standings!.west);
           },
           error: (err) => {
@@ -118,7 +143,7 @@ export class DashboardComponent implements OnInit {
         this.apiService.firebaseDbFetch(dbTarget.nba.leaders.advanced).subscribe({
           next: (data: LeadersInner[]) => {
             this.leadersALL.advanced = data;
-            
+
             console.log(this.leadersALL.advanced![0]);
             console.log(this.leadersALL.advanced![0].top5[0]);
           },
@@ -157,7 +182,7 @@ export class DashboardComponent implements OnInit {
           next: (data: LeadersInner[]) => {
             this.leadersALL.totals = data;
             console.log(this.leadersALL);
-            
+
           },
           error: (err) => {
             this.errorOccurred = true;
