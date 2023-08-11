@@ -1,0 +1,334 @@
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+    align-items: center;
+    gap: 1.5rem;
+    position: fixed;
+    left: 14rem;
+    width: calc(100% - 14rem);
+    height: 5rem;
+    grid-area: topnav;
+    z-index: 100;
+    background-color: var(--color-background);
+}
+
+.nav button {
+    display: none;
+}
+
+.dark-mode {
+    background-color: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 2.5rem;
+    width: 6rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.dark-mode span {
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-dark);
+}
+
+.dark-mode span.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--border-radius-1);
+}
+
+.nav .profile {
+    display: flex;
+    height: 2.5rem;
+    flex-direction: row;
+    width: fit-content;
+    justify-content: center;
+    gap: 0;
+    text-align: right;
+    cursor: pointer;
+}
+
+.nav .profile .profile-photo {
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.nav .profile .profile-photo span {
+    font-size: 40px;
+    color: var(--color-primary);
+}
+
+.nav .profile:hover::after,
+.nav .dark-mode:hover::after {
+    position: absolute;
+    top: 70px;
+    content: attr(data-tooltip);
+    letter-spacing: 0.025em;
+    color: var(--color-primary);
+    opacity: 1;
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow-2);
+    padding: 3px 10px;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.user-profile {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.user-profile:hover {
+    box-shadow: none;
+}
+
+.user-profile img {
+    width: 11rem;
+    height: auto;
+    margin-bottom: 0.8rem;
+    border-radius: 50%;
+}
+
+.user-profile h2 {
+    margin-bottom: 0.2rem;
+}
+
+.nav .profile .info * {
+    color: var(--color-primary);
+}
+
+.nav form {
+    width: 55%;
+}
+
+.nav form .form-input {
+    display: flex;
+    align-items: center;
+    height: 36px;
+}
+
+.nav form .form-input #search-select {
+    height: 100%;
+    width: fit-content;
+    padding-right: 2px;
+    font-size: 16px;
+    font-weight: 700;
+    border: 2px solid var(--color-primary);
+    border-left: none;
+    border-right: none;
+    background: var(--color-white);
+    color: var(--color-dark);
+}
+
+.nav form .form-input input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: var(--color-white);
+    border-radius: 36px 0 0 36px;
+    outline: none;
+    width: 100%;
+    color: var(--color-dark);
+    border: 2px solid var(--color-primary);
+}
+
+#search-ctr>div>input[type=search] {
+    font-size: 18px;
+    letter-spacing: 0.025em;
+}
+
+.nav form .form-input button {
+    width: 80px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
+}
+
+.nav form button span {
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1200px) {
+    .nav {
+        left: 9rem;
+        width: calc(100% - 9rem);
+        padding-right: 2%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        background-color: var(--color-white);
+        padding: 0 var(--padding-1);
+        height: 4.6rem;
+        width: 100%;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--color-light);
+        margin: 0;
+        padding-left: 50px;
+        gap: 0.5rem;
+    }
+
+    .nav .dark-mode {
+        min-width: 60px;
+        max-width: 70px;
+        transform: translateX(-40%);
+    }
+
+    .nav button:not(.nav form button) {
+        display: inline-block;
+        background-color: transparent;
+        cursor: pointer;
+        color: var(--color-dark);
+        position: absolute;
+        left: 1rem;
+    }
+
+    .nav button span {
+        font-size: 2rem;
+    }
+
+    .nav form {
+        width: 37%;
+    }
+
+    .nav form .form-input input {
+        display: none;
+    }
+
+    .nav form .form-input #search-select {
+        display: none;
+    }
+
+    .nav form .form-input button {
+        background: transparent;
+        color: var(--color-dark);
+        border-radius: 0px;
+        width: fit-content;
+        padding: 0px 15px;
+        position: absolute;
+    }
+
+    #menu-btn {
+        height: 100%;
+        left: 0;
+        width: fit-content;
+        padding: 0px 15px;
+    }
+
+    .nav form.show {
+        position: absolute;
+        background-color: var(--color-white);
+        height: inherit;
+        margin: 0px;
+        left: 0px;
+        top: 0px;
+        max-width: 768px;
+        width: 100%;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav form.show .form-input {
+        width: 90%;
+    }
+
+    .nav form.show .form-input input {
+        display: block;
+        width: 100%;
+        background-color: var(--color-white);
+    }
+
+    .nav form.show .form-input #search-select {
+        display: block;
+    }
+
+    .nav form.show .form-input button {
+        width: 36px;
+        height: 100%;
+        color: var(--color-white);
+        background: var(--color-primary);
+        border-radius: 0 36px 36px 0;
+        position: relative;
+    }
+
+    .nav form.show .form-input button span {
+        font-size: 1rem;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .nav {
+        gap: 0;
+        padding: 0 0 0 50px;
+    }
+
+    .nav form {
+        width: 50%;
+    }
+
+    .nav .profile .profile-photo {
+        display: none;
+    }
+
+    .nav .profile {
+        margin-right: 10px;
+    }
+}
