@@ -115,10 +115,19 @@ h1 {
     width: 34%;
     min-width: 200px;
     margin-right: 1%;
+    position: relative;
+    background-color: unset;
+    box-shadow: unset;
+}
+
+.details-inner:nth-child(1):has(.img-bg) {
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
 }
 
 .details-inner:nth-child(1) img {
     object-fit: cover;
+    border-radius: 13px;
 }
 
 .details-inner:nth-child(2) {
@@ -247,6 +256,82 @@ h1 {
 
 .ans .profile-fav-card:hover a span.before:nth-child(1) {
     transform: rotate(145deg);
+}
+
+.user-details .details-inner:nth-child(1):hover {
+    cursor: pointer;
+}
+
+.user-details .details-inner:nth-child(1):hover::after {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    content: 'Click on the Avatar to change it';
+    letter-spacing: 0.025em;
+    color: var(--color-primary);
+    opacity: 1;
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow-2);
+    padding: 3px 10px;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.show-img-upload {
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow-3);
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    border-top: 2px solid var(--color-dark-variant);
+    border-bottom: 2px solid var(--color-dark-variant);
+    z-index: 500;
+}
+
+.show-img-upload input {
+    font-size: 18px;
+    height: 50px;
+    background-color: var(--color-dark-variant);
+    color: var(--color-white);
+    border-radius: 13px;
+}
+
+.show-img-upload button {
+    padding: 10px 20px;
+    background-color: var(--color-dark-variant);
+    color: var(--color-white);
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.show-img-upload .ks {
+    color: var(--color-white);
+    font-size: 24px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: var(--color-dark-variant);
+    padding: 0 13px 2px 13px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.hide-el {
+    display: none;
 }
 
 
