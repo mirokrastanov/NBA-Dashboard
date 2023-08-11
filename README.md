@@ -1,6 +1,10 @@
 # NBA-Dashboard (IN PROGRESS...)
 🏀📆💻▶️A Fully Responsive Full Stack Web Application offering a modern dashboard with NBA stats, team rosters, leaderboard, upcoming games and more with a detailed page for each.
 
+
+# CLOUD DEMO
+[Check it out](https://nba-1-480a7.web.app/)
+
 # Tech to be used
 ## Front End side 
 - Angular SPA - Incorporates an open source API with NBA data and all of Angular's magic.
