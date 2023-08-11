@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy, ViewChild, ViewChildren, Input, AfterViewInit, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AuthService } from 'src/app/user/auth.service';
 import { AbstractControl, NgForm } from '@angular/forms';
@@ -20,7 +20,9 @@ export class TopNavComponent implements OnInit, OnDestroy {
     private router: Router,
   ) { }
 
-  @ViewChild('searchForm') searchForm: NgForm | undefined;
+  @ViewChild('searchForm') searchForm: any;
+  @ViewChild('sInput') sInput: ElementRef<HTMLInputElement> | undefined;
+
   aside = () => this.document.body.querySelector('aside')!;
   inputEl = () => this.document.body.querySelector('input[type="search"]');
   get currentUser(): any {
@@ -43,6 +45,11 @@ export class TopNavComponent implements OnInit, OnDestroy {
       if (window.innerWidth > 768) {
         this.document.querySelector('#search-ctr')!.classList.remove('show');
         this.document.querySelector('#search-ctr .search-btn span')!.textContent = 'search';
+      } else {
+        if (this.searchResults.length > 0) {
+          this.document.querySelector('#search-ctr')!.classList.add('show');
+          this.document.querySelector('#search-ctr .search-btn span')!.textContent = 'close';
+        }
       }
     }, 100);
     this.intervals.push(interval);
@@ -59,6 +66,7 @@ export class TopNavComponent implements OnInit, OnDestroy {
           return x;
         });
         this.teamsALL!.sort((a, b) => a.full_name.localeCompare(b.full_name));
+        // this.searchResults = this.teamsALL!; // DEV TEST CODE for search results ctr
 
         // INNER 1 - Players
         this.apiService.firebaseDbFetch(dbTarget.nba.players).subscribe({
@@ -107,7 +115,7 @@ export class TopNavComponent implements OnInit, OnDestroy {
   }
 
   onSearchResultClick(name: string, id: string | undefined): void {
-    console.log(name, id);
+    // console.log(name, id);
     this.searchForm?.reset();
     this.searchResults = [];
     if (id) this.router.navigate([`/nba/teams/${id}`]);
@@ -130,9 +138,6 @@ export class TopNavComponent implements OnInit, OnDestroy {
       sForm.classList.remove('show');
       sIcon.textContent = 'search';
     }
-    // TODO: Add actual search form handling & query to db
-    const searchString: AbstractControl<any> = this.searchForm!.controls['search-string'];
-    // console.log(searchString.value, sBtn.textContent, sForm.classList.contains('show'));
   }
 
   modeSwitchHandler(light: HTMLElement, dark: HTMLElement): void {
