@@ -44,7 +44,7 @@
             <h3>Analysis</h3>
         </a>
         <a *ngIf="isAuthenticated" data-tooltip="Profile" [routerLink]="['/user/profile']"
-            [routerLinkActive]="['active']">
+            [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
             <span class="material-icons-sharp">manage_accounts</span>
             <h3>My Profile</h3>
         </a>
