@@ -38,7 +38,6 @@
             <div class="team-outer">
                 <div class="team-inner">
                     <ng-container *ngFor="let team of standings.east!; let i = index;">
-                        <div class="team-standing" *ngIf="i < 3">{{team['Team'][0]}}</div>
                         <a *ngIf="i < 3" routerLink="/nba/teams/{{team!['id']}}" class="team-logo"
                             [attr.data-tooltip]="team!['Team'][1]">
                             <div class="team-standing">{{team['Team'][0]}}</div>
