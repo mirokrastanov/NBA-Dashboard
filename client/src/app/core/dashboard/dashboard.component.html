@@ -17,24 +17,34 @@
     </div>
 
 
-    <h1 class="section-title">NBA Standings Top 5</h1>
-    <div class="stats-ctr">
+    <h1 class="section-title">NBA Standings Sneak Peak</h1>
+    <div class="standings-ctr">
         <ng-container *ngIf="standings.west!.length > 0">
-            <div class="stats-inner">
-                <h3 class="category">Western Conference</h3>
-                <table class="leaders">
-                    <tr>
-                        <th>Rank</th>
-                        <th>Team</th>
-                    </tr>
-                    <tr *ngFor="let team of standings.west!">
-                        <td>{{team!['Team'][0]}}</td>
-                        <td>
-                            <img src="{{team['Team'][3]}}" alt="team-logo">
-                            <a class="a-left" routerLink="/nba/teams/{{team['id']}}">{{team['Team'][1]}}</a>
-                        </td>
-                    </tr>
-                </table>
+            <h2 class="sub-title">Western Conference - TOP 3</h2>
+            <div class="team-outer">
+                <div class="team-inner">
+                    <ng-container *ngFor="let team of standings.west!; let i = index;">
+                        <a *ngIf="i < 3" routerLink="/nba/teams/{{team!['id']}}" class="team-logo"
+                            [attr.data-tooltip]="team!['Team'][1]">
+                            <div class="team-standing">{{team['Team'][0]}}</div>
+                            <img src="{{team['Team'][3]}}" alt="team-logo-image">
+                        </a>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="standings.east!.length > 0">
+            <h2 class="sub-title">Eastern Conference - TOP 3</h2>
+            <div class="team-outer">
+                <div class="team-inner">
+                    <ng-container *ngFor="let team of standings.east!; let i = index;">
+                        <a *ngIf="i < 3" routerLink="/nba/teams/{{team!['id']}}" class="team-logo"
+                            [attr.data-tooltip]="team!['Team'][1]">
+                            <div class="team-standing">{{team['Team'][0]}}</div>
+                            <img src="{{team['Team'][3]}}" alt="team-logo-image">
+                        </a>
+                    </ng-container>
+                </div>
             </div>
         </ng-container>
     </div>
