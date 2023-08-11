@@ -15,7 +15,16 @@ export class TeamItemComponent {
     private apiService: NbaApiService,
     private route: ActivatedRoute,
     private authService: AuthService,
-  ) { }
+  ) {
+    route.params.subscribe(val => {
+      // console.log(val);
+      this.isLoading = true;
+      this.initCode();
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 500);
+    });
+  }
 
   playersALL: Player[] | null = null;
   teamsALL: Team[] | null = null;
@@ -36,6 +45,59 @@ export class TeamItemComponent {
 
 
   ngOnInit(): void {
+    this.initCode();
+  };
+
+  fetchFavorites(): void {
+    this.authService.fireAuth.authState.subscribe({
+      next: (authStatus) => {
+        this.isAuthenticated = authStatus;
+        if (!this.isAuthenticated) return;
+        this.starIsLoading = true;
+        this.apiService.getFavorites().subscribe({
+          next: (data) => {
+            let favTeams = Object.keys(data!.teams).filter(x => x != 'service');
+            // console.log(favTeams);
+            if (favTeams?.length == 0 || !favTeams) {
+              this.isFavorite = false;
+            } else {
+              if (favTeams!.find(x => String(this.currentTeam!.id) == x)!?.length > 0) {
+                this.isFavorite = true;
+              } else {
+                this.isFavorite = false;
+              }
+            }
+            this.starIsLoading = false;
+          },
+          error: (err) => {
+            console.log(err);
+            this.starIsLoading = false;
+          },
+        });
+      },
+      error: (err) => console.log(),
+    });
+  }
+
+  onFavTeam(e: MouseEvent): void {
+    this.apiService.addFavoriteTeam(String(this.currentTeam!.id));
+    this.starIsLoading = true;
+    setTimeout(() => {
+      this.fetchFavorites();
+      this.starIsLoading = false;
+    }, 1000);
+  }
+
+  onUNfavTeam(e: MouseEvent): void {
+    this.apiService.removeFavoriteTeam(String(this.currentTeam!.id));
+    this.starIsLoading = true;
+    setTimeout(() => {
+      this.fetchFavorites();
+      this.starIsLoading = false;
+    }, 1000);
+  }
+
+  initCode(): void {
     this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
     this.routeID = this.route.snapshot.paramMap.get('id');
     // console.log(this.routeID);
@@ -46,6 +108,7 @@ export class TeamItemComponent {
         this.teamsALL!.map((x) => {
           if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
           if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
+          if (x.name == '76ers') x.name = 'sixers';
           return x;
         });
         this.currentTeam = this.teamsALL!.find(x => x.id == this.routeID)
@@ -161,54 +224,5 @@ export class TeamItemComponent {
         // console.log('Teams data fetched!');
       },
     });
-  };
-
-  fetchFavorites(): void {
-    this.authService.fireAuth.authState.subscribe({
-      next: (authStatus) => {
-        this.isAuthenticated = authStatus;
-        if (!this.isAuthenticated) return;
-        this.starIsLoading = true;
-        this.apiService.getFavorites().subscribe({
-          next: (data) => {
-            let favTeams = Object.keys(data!.teams).filter(x => x != 'service');
-            // console.log(favTeams);
-            if (favTeams?.length == 0 || !favTeams) {
-              this.isFavorite = false;
-            } else {
-              if (favTeams!.find(x => String(this.currentTeam!.id) == x)!?.length > 0) {
-                this.isFavorite = true;
-              } else {
-                this.isFavorite = false;
-              }
-            }
-            this.starIsLoading = false;
-          },
-          error: (err) => {
-            console.log(err);
-            this.starIsLoading = false;
-          },
-        });
-      },
-      error: (err) => console.log(),
-    });
-  }
-
-  onFavTeam(e: MouseEvent): void {
-    this.apiService.addFavoriteTeam(String(this.currentTeam!.id));
-    this.starIsLoading = true;
-    setTimeout(() => {
-      this.fetchFavorites();
-      this.starIsLoading = false;
-    }, 1000);
-  }
-
-  onUNfavTeam(e: MouseEvent): void {
-    this.apiService.removeFavoriteTeam(String(this.currentTeam!.id));
-    this.starIsLoading = true;
-    setTimeout(() => {
-      this.fetchFavorites();
-      this.starIsLoading = false;
-    }, 1000);
   }
 }
