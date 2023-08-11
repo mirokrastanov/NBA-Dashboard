@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { Database } from '@angular/fire/database';
+import { Database, ref, set } from '@angular/fire/database';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { NbaApiService } from 'src/app/nba/nba-api.service';
@@ -20,6 +20,7 @@ export class ProfileComponent {
     public database: Database,
     private apiService: NbaApiService,
   ) { }
+
   authProfile: any | null = null;
   dbProfile: any | null = null;
   favorites: Favorites | null = null;
@@ -34,14 +35,11 @@ export class ProfileComponent {
     this.authService.authStatusListener();
     setTimeout(() => {
       this.authProfile = JSON.parse(JSON.stringify(this.authService.currentUser));
+      // console.log(this.authProfile.photoURL);
+
     }, 1000);
     // console.log(this.authProfile);
     this.fetchProfile();
-  }
-
-  onUpdateClick(e: MouseEvent): void {
-    // get Update profile from the auth service !!! >> see what fits best
-
   }
 
   onFavClick(e: MouseEvent): void {
@@ -98,4 +96,28 @@ export class ProfileComponent {
     });
   }
 
+  showImgUpload(iUP: HTMLElement) {
+    iUP.classList.remove('hide-el');
+    // console.log('show');
+  }
+
+  hideImgUpload(iUP: HTMLElement) {
+    iUP.classList.add('hide-el');
+    // console.log('hide');
+  }
+
+  onAvatarChange(photoURL: string, iUP: HTMLElement) {
+    iUP.classList.add('hide-el');
+    iUP.nodeValue = '';
+    // console.log(photoURL);
+
+    this.authService.updateProfile({ photoURL });
+    setTimeout(() => {
+      this.authService.authStatusListener();
+      setTimeout(() => {
+        this.authProfile = JSON.parse(JSON.stringify(this.authService.currentUser));
+        // console.log(this.authProfile.photoURL);
+      }, 1000);
+    }, 1000);
+  }
 }
