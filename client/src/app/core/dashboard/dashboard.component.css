@@ -1,12 +1,11 @@
 #dashboard-ctr {
     width: 100%;
-    padding-top: 40px;
 }
 
 #dashboard-ctr>div {
     background-color: var(--color-white);
     border-radius: 13px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-2);
     position: relative;
 }
 
@@ -17,6 +16,8 @@
     flex-direction: column;
     justify-content: stretch;
     align-items: stretch;
+    margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 .overlay-ctr {
@@ -66,7 +67,7 @@
     color: var(--color-dark);
 }
 
-.unlock-content button {
+.unlock-content a {
     padding: 6px 30px 6px 25px;
     border-radius: 25px;
     font-size: 16px;
@@ -79,20 +80,182 @@
     background-color: var(--color-primary);
     box-shadow: var(--box-shadow);
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
-.unlock-content button span {
+.unlock-content a span {
     font-size: 20px;
     padding-bottom: 1px;
     margin-right: 10px;
     transition: all 0.6s ease-in-out;
 }
 
-.unlock-content button:hover {
+.unlock-content a:hover {
     box-shadow: var(--box-shadow-2);
     letter-spacing: 0.025em;
 }
 
-.unlock-content button:hover span {
+.unlock-content a:hover span {
     transform: rotate(360deg);
+}
+
+.section-title {
+    margin-bottom: 0;
+    font-size: 22px;
+    /* padding: 10px;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow-2);
+    border-radius: 13px; */
+}
+
+.sub-title {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 30px;
+    background-color: var(--color-light);
+    box-shadow: var(--box-shadow-2);
+    border-radius: 13px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.sub-title:first-of-type {
+    margin-top: 10px;
+}
+
+#dashboard-ctr .stats-ctr {
+    background-color: unset;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 0 10px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+}
+
+.stats-inner {
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow-2);
+    width: 32%;
+    padding: 10px;
+    border-radius: 13px;
+}
+
+.stats-inner:nth-of-type(1),
+.stats-inner:nth-of-type(2),
+.stats-inner:nth-of-type(3) {
+    margin-bottom: 10px;
+}
+
+.category {
+    font-size: 16px;
+    text-align: center;
+    background-color: var(--color-light);
+    box-shadow: var(--box-shadow-2);
+    border-radius: 13px;
+    margin-bottom: 5px;
+    padding: 2px 0;
+}
+
+.leaders {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+
+.leaders tr {
+    border-radius: 13px;
+}
+
+.leaders tr:hover {
+    background-color: var(--color-light);
+}
+
+.leaders th:nth-child(1),
+.leaders td:nth-child(1) {
+    width: 15%;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 13px 0 0 13px;
+}
+
+.leaders th:nth-child(3),
+.leaders td:nth-child(3) {
+    width: 20%;
+    border-radius: 0 13px 13px 0;
+}
+
+.leaders th:nth-child(2),
+.leaders td:nth-child(2) {
+    width: 65%;
+}
+
+.leaders td a {
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    transition: all 0.3s ease-in-out;
+    padding-left: 10px;
+}
+
+.leaders tr td:last-child {
+    font-weight: 700;
+}
+
+.leaders td a:hover {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+
+@media screen and (max-width: 1200px) {
+    #dashboard-ctr .stats-ctr {
+        gap: 4%;
+    }
+
+    .stats-inner {
+        width: 43%;
+    }
+
+    .stats-inner:nth-of-type(1),
+    .stats-inner:nth-of-type(2),
+    .stats-inner:nth-of-type(3),
+    .stats-inner:nth-of-type(4) {
+        margin-bottom: 20px;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    #dashboard-ctr .stats-ctr {
+        gap: 1%;
+    }
+
+    .stats-inner {
+        width: 49%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #dashboard-ctr .stats-ctr {
+        gap: 0%;
+    }
+
+    .stats-inner {
+        width: 100%;
+    }
+    .stats-inner:nth-of-type(5),
+    .stats-inner:nth-of-type(6) {
+        margin-bottom: 20px;
+    }
 }
