@@ -1,24 +1,20 @@
 <div class="nav">
     <form id="search-ctr" #searchForm="ngForm" #sForm>
         <div class="form-input">
-            <input name="search-string" type="search" placeholder="Search Teams and Players..." ngModel #input="ngModel">
+            <input (input)="onSearchTyping(sInput)" #sInput name="search-string" type="search"
+                placeholder="Search Teams and Players..." ngModel #input="ngModel" autocomplete="off">
             <button class="search-btn" type="submit" #searchBtn
-                (click)="searchHandler($event, sForm, searchBtn, searchIcon)" data-tooltip="Results show up automatically when you're typing">
+                (click)="searchHandler($event, sForm, searchBtn, searchIcon)"
+                data-tooltip="Results show up automatically when you're typing">
                 <span class="material-icons-sharp" #searchIcon>
                     search
                 </span>
             </button>
         </div>
     </form>
-    <div class="search-results-ctr">
-        <div class="search-result-line">
-            <a class="search-result-link">Johhny Bravo</a>
-        </div>
-        <div class="search-result-line">
-            <a class="search-result-link">Johhny Bravo</a>
-        </div>
-        <div class="search-result-line">
-            <a class="search-result-link">Johhny Bravo</a>
+    <div class="search-results-ctr" *ngIf="searchResults!.length > 0">
+        <div class="search-result-line" *ngFor="let result of searchResults; let i = index;">
+            <a (click)="onSearchResultClick(result.name, result.id)" class="search-result-link">{{result.name}}</a>
         </div>
     </div>
     <button id="menu-btn" (click)="menuHandler()">
