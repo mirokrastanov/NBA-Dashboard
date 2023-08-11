@@ -108,7 +108,7 @@ export class ProfileComponent {
 
   onAvatarChange(photoURL: string, iUP: HTMLElement) {
     iUP.classList.add('hide-el');
-    iUP.nodeValue = '';
+    if (photoURL == '') return;
     // console.log(photoURL);
 
     this.authService.updateProfile({ photoURL });
