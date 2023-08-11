@@ -29,6 +29,7 @@ export class TransactionsComponent {
         this.teamsALL!.map((x) => {
           if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
           if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
+          if (x.name == '76ers') x.name = 'sixers';
           return x;
         });
         this.isLoading = false;
