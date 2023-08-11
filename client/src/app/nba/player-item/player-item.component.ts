@@ -15,7 +15,16 @@ export class PlayerItemComponent {
     private apiService: NbaApiService,
     private route: ActivatedRoute,
     private authService: AuthService,
-  ) { }
+  ) {
+    route.params.subscribe(val => {
+      // console.log(val);
+      this.isLoading = true;
+      this.initCode();
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 500);
+    });
+  }
 
   playersALL: Player[] | null = null;
   teamsALL: Team[] | null = null;
@@ -31,50 +40,7 @@ export class PlayerItemComponent {
 
 
   ngOnInit(): void {
-    this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
-    this.routeName = this.route.snapshot.paramMap.get('name');
-    // console.log(this.routeName);
-
-    this.apiService.firebaseDbFetch(dbTarget.nba.teamsAPI).subscribe({
-      next: (data) => {
-        this.teamsALL = data;
-        this.teamsALL!.map((x) => {
-          if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
-          if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
-          return x;
-        });
-        this.apiService.firebaseDbFetch(dbTarget.nba.players).subscribe({
-          next: (data: Player[]) => {
-            this.playersALL = data.slice();
-            let player: Player[] | undefined;
-            player = this.playersALL!.filter(x => x['Player']!.toLowerCase() == this.routeName!.toLowerCase());
-            player.map((x) => {
-              let teamID = this.teamsALL!.find(y => y.full_name == x['Current Team'])?.id;
-              x['teamID'] = String(teamID);
-              this.teamID = teamID!;
-              return x;
-            });
-            this.currentPlayer = player[0];
-            this.fetchFavorites();
-            // console.log(this.currentPlayer);
-            this.isLoading = false;
-          },
-          error: (err) => {
-            this.errorOccurred = true;
-            console.log(err);
-            this.isLoading = false;
-          },
-          complete: () => {
-            this.unsubscribed = true;
-            // console.log('Players data fetched!');
-          },
-        });
-      },
-      error: (err) => { console.log(err) },
-      complete: () => {
-        // console.log('Teams data fetched!');
-      },
-    });
+    this.initCode();
   };
 
   fetchFavorites(): void {
@@ -126,7 +92,53 @@ export class PlayerItemComponent {
     }, 1000);
   }
 
+  initCode(): void {
+    this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
+    this.routeName = this.route.snapshot.paramMap.get('name');
+    // console.log(this.routeName);
 
+    this.apiService.firebaseDbFetch(dbTarget.nba.teamsAPI).subscribe({
+      next: (data) => {
+        this.teamsALL = data;
+        this.teamsALL!.map((x) => {
+          if (x.full_name.includes('Philadelphia')) x.full_name = 'Philadelphia Sixers';
+          if (x.full_name.includes('Clippers')) x.full_name = 'Los Angeles Clippers';
+          if (x.name == '76ers') x.name = 'sixers';
+          return x;
+        });
+        this.apiService.firebaseDbFetch(dbTarget.nba.players).subscribe({
+          next: (data: Player[]) => {
+            this.playersALL = data.slice();
+            let player: Player[] | undefined;
+            player = this.playersALL!.filter(x => x['Player']!.toLowerCase() == this.routeName!.toLowerCase());
+            player.map((x) => {
+              let teamID = this.teamsALL!.find(y => y.full_name == x['Current Team'])?.id;
+              x['teamID'] = String(teamID);
+              this.teamID = teamID!;
+              return x;
+            });
+            this.currentPlayer = player[0];
+            this.fetchFavorites();
+            // console.log(this.currentPlayer);
+            this.isLoading = false;
+          },
+          error: (err) => {
+            this.errorOccurred = true;
+            console.log(err);
+            this.isLoading = false;
+          },
+          complete: () => {
+            this.unsubscribed = true;
+            // console.log('Players data fetched!');
+          },
+        });
+      },
+      error: (err) => { console.log(err) },
+      complete: () => {
+        // console.log('Teams data fetched!');
+      },
+    });
+  }
 }
 
 
