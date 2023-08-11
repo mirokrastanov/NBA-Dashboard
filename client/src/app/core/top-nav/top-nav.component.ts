@@ -33,12 +33,29 @@ export class TopNavComponent implements OnInit, OnDestroy {
   playersALL: Player[] | null = null;
   teamsALL: Team2[] | null = null;
   searchResults: any[] = [];
+  authProfile: any | null = null;
 
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
   isLoading: boolean = true;
 
   ngOnInit(): void {
+    // console.log(this.currentUser);
+    this.authProfile = JSON.parse(localStorage.getItem('user')!);
+    this.authService.authStatusListener();
+    setTimeout(() => {
+      this.authProfile = JSON.parse(JSON.stringify(this.authService.currentUser));
+      // console.log(this.authProfile.photoURL);
+
+    }, 1000);
+    let interval2 = setInterval(() => {
+      this.authService.authStatusListener();
+      setTimeout(() => {
+        this.authProfile = JSON.parse(JSON.stringify(this.authService.currentUser));
+      }, 1000);
+    }, 5000);
+    this.intervals.push(interval2);
+
     this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
     // console.log(window.innerWidth + 'x' + window.innerHeight);
     let interval = setInterval(() => {
