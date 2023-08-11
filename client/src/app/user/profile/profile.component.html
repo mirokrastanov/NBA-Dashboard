@@ -1,11 +1,21 @@
 <h1>User Profile</h1>
 
 <div class="content-full">
+    <div class="show-img-upload hide-el" #iUP>
+        <div class="ks" (click)="hideImgUpload(iUP)">x</div>
+        <label for="url">Image URL</label>
+        <input name="url" type="text" #input autocomplete="off">
+        <button (click)="onAvatarChange(input.value, iUP)">Use Avatar</button>
+    </div>
 
     <div class="user-details">
         <div class="details-outer">
             <div class="details-inner">
-                <img src="../../../assets/images/user-avatar.png" alt="profile-img">
+                <!-- <img src="../../../assets/images/user-avatar.png" alt="profile-img"> -->
+                <img (click)="showImgUpload(iUP)" *ngIf="!authProfile.photoURL!"
+                    src="../../../assets/images/user-avatar.png" alt="profile-img" class="img-bg">
+                <img (click)="showImgUpload(iUP)" *ngIf="authProfile.photoURL!" src="{{authProfile.photoURL!}}"
+                    alt="profile-img">
             </div>
             <div class="details-inner">
                 <div>
