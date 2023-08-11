@@ -17,6 +17,27 @@
     </div>
 
 
+    <h1 class="section-title">NBA Standings Top 5</h1>
+    <div class="stats-ctr">
+        <ng-container *ngIf="standings.west!.length > 0">
+            <div class="stats-inner">
+                <h3 class="category">Western Conference</h3>
+                <table class="leaders">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Team</th>
+                    </tr>
+                    <tr *ngFor="let team of standings.west!">
+                        <td>{{team!['Team'][0]}}</td>
+                        <td>
+                            <img src="{{team['Team'][3]}}" alt="team-logo">
+                            <a class="a-left" routerLink="/nba/teams/{{team['id']}}">{{team['Team'][1]}}</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </ng-container>
+    </div>
 
     <h1 class="section-title">NBA Season Leaders</h1>
     <ng-container *ngIf="leadersALL.advanced.length > 0">
