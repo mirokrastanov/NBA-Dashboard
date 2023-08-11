@@ -197,7 +197,20 @@ export interface Favorites {
     },
 };
 
-// TODO
-// UserEXTRA for users --- if favorites make it through :)
+export interface LeadersInner {
+    category: string,
+    top5: [{
+        player: string,
+        rank: number,
+        stat: string,
+    }],
+}
+
+export interface Leaders {
+    advanced: LeadersInner[],
+    averages: LeadersInner[],
+    misc: LeadersInner[],
+    totals: LeadersInner[],
+}
 
 
