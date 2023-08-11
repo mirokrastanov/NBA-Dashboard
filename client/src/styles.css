@@ -159,120 +159,6 @@ b {
         'aside main';
 }
 
-aside {
-    height: 100vh;
-    display: block;
-    grid-area: aside;
-    width: 12rem;
-    position: fixed;
-    z-index: 100;
-}
-
-aside .toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1.4rem;
-}
-
-aside .toggle .logo {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: linear 0.2s;
-}
-
-aside .toggle .logo img {
-    height: 2.8rem;
-}
-
-aside .toggle .logo:hover {
-    transform: scale(1.1);
-}
-
-aside .toggle .close {
-    padding-right: 1rem;
-    display: none;
-}
-
-aside .sidebar {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--color-white);
-    box-shadow: var(--box-shadow);
-    border-radius: 15px;
-    height: 84vh;
-    position: relative;
-    top: 1.5rem;
-    transition: all 0.3s ease;
-    /* border: 2px solid var(--color-primary); */
-}
-
-aside .sidebar:hover {
-    box-shadow: none;
-}
-
-aside .sidebar a {
-    display: flex;
-    align-items: center;
-    color: var(--color-info-dark);
-    height: 3.7rem;
-    gap: 1rem;
-    position: relative;
-    margin-left: 2rem;
-    transition: all 0.3s ease;
-}
-
-aside .sidebar a span {
-    font-size: 1.6rem;
-    transition: all 0.3s ease;
-}
-
-aside .sidebar a:last-child {
-    position: absolute;
-    bottom: 2rem;
-    width: 100%;
-}
-
-aside .sidebar a.active {
-    width: 100%;
-    color: var(--color-primary);
-    background-color: var(--color-light);
-    margin-left: 0;
-}
-
-aside .sidebar a:nth-of-type(1).active {
-    border-radius: 15px 15px 0px 0px;
-}
-
-aside .sidebar a.active::before {
-    content: '';
-    width: 6px;
-    height: 18px;
-    background-color: var(--color-primary);
-}
-
-aside .sidebar a.active span {
-    color: var(--color-primary);
-    margin-left: calc(1rem - 3px);
-}
-
-aside .sidebar a:hover {
-    color: var(--color-primary);
-}
-
-aside .sidebar a:hover span {
-    margin-left: 0.6rem;
-}
-
-aside .sidebar .message-count {
-    background-color: var(--color-danger);
-    padding: 2px 6px;
-    color: var(--color-white);
-    font-size: 11px;
-    border-radius: var(--border-radius-1);
-}
-
 main {
     grid-area: main;
 }
@@ -314,7 +200,7 @@ main .content-lg .progresss {
     height: 92px;
     border-radius: 50%;
 }
-
+/* 
 main .content-lg svg {
     width: 7rem;
     height: 7rem;
@@ -343,7 +229,7 @@ main .content-lg .searches svg circle {
     stroke: var(--color-primary);
     stroke-dashoffset: -30;
     stroke-dasharray: 200;
-}
+} */
 
 main .content-lg .progresss .percentage {
     position: absolute;
@@ -481,52 +367,12 @@ main .recent-orders a {
 
 
 
+
+
 @media screen and (max-width: 1200px) {
     .container {
         width: 95%;
         grid-template-columns: 6rem auto;
-    }
-
-    aside {
-        display: block;
-        width: 6rem;
-    }
-
-    aside .logo h2 {
-        display: none;
-    }
-
-    aside .toggle .logo img {
-        height: 2.4rem;
-    }
-
-    aside .sidebar {
-        height: 88vh;
-    }
-
-    aside .sidebar h3 {
-        display: none;
-    }
-
-    aside .sidebar a {
-        width: 5.6rem;
-    }
-
-    aside .sidebar a:last-child {
-        position: absolute;
-        bottom: 5rem;
-    }
-
-    aside .sidebar a:hover::after {
-        content: attr(data-tooltip);
-        letter-spacing: 0.05em;
-        background-color: var(--color-background);
-        box-shadow: var(--box-shadow-2);
-        opacity: 1;
-        padding: 3px 10px;
-        font-weight: 700;
-        font-size: 14px;
-        border-radius: 5px;
     }
 
     main .content-lg {
@@ -562,14 +408,6 @@ main .recent-orders a {
 
 }
 
-@media screen and (max-height: 620px) and (min-width: 1200px) {
-    aside .sidebar a:last-child {
-        position: initial;
-        width: 100%;
-        margin-bottom: 25%;
-    }
-}
-
 @media screen and (max-width: 768px) {
     .container {
         width: 100%;
@@ -582,74 +420,6 @@ main .recent-orders a {
 
     .container main {
         padding: 0;
-    }
-
-    aside {
-        position: fixed;
-        background-color: var(--color-white);
-        width: 15rem;
-        z-index: 3;
-        box-shadow: 1rem 3rem 4rem var(--color-light);
-        height: 100vh;
-        left: -100%;
-        display: none;
-        animation: showMenu 0.4s ease forwards;
-    }
-
-    @keyframes showMenu {
-        to {
-            left: 0;
-        }
-    }
-
-    aside .logo {
-        margin-left: 1rem;
-    }
-
-    aside .logo h2 {
-        display: inline;
-    }
-
-    aside .sidebar h3 {
-        display: inline;
-    }
-
-    aside .sidebar a {
-        width: 100%;
-        height: 3.4rem;
-    }
-
-    aside .sidebar a:last-child {
-        position: absolute;
-        bottom: 5rem;
-    }
-
-    aside .toggle {
-        justify-content: space-between;
-    }
-
-    aside .toggle .close {
-        display: inline-block;
-        cursor: pointer;
-        transition: linear 0.2s;
-    }
-
-    aside .toggle .close span {
-        font-size: 30px;
-    }
-
-    aside .toggle .close:hover {
-        transform: scale(1.2);
-        color: var(--color-primary);
-    }
-
-    aside .sidebar a:hover::after {
-        content: none;
-        opacity: 0;
-    }
-
-    aside .sidebar a:nth-of-type(1).active {
-        border-radius: 0px;
     }
 
     main {
