@@ -54,8 +54,7 @@ export class TopNavComponent implements OnInit, OnDestroy {
     }
     // TODO: Add actual search form handling & query to db
     const searchString: AbstractControl<any> = this.searchForm!.controls['search-string'];
-    const searchType: HTMLSelectElement = sForm.querySelector('#search-select')!;
-    console.log(searchString.value, searchType.value, sBtn.textContent, sForm.classList.contains('show'));
+    console.log(searchString.value, sBtn.textContent, sForm.classList.contains('show'));
 
 
 
