@@ -394,6 +394,12 @@
     .nav form button.search-btn:hover::after {
         display: none;
     }
+
+    .nav .search-results-ctr {
+        left: 5%;
+        width: 90%;
+    }
+
 }
 
 @media screen and (max-width: 400px) {
