@@ -1,13 +1,9 @@
 <div class="nav">
     <form id="search-ctr" #searchForm="ngForm" #sForm>
         <div class="form-input">
-            <input name="search-string" type="search" placeholder="Search..." ngModel #input="ngModel">
-            <select name="search-select" id="search-select">
-                <option value="players">Players</option>
-                <option value="teams">Teams</option>
-            </select>
+            <input name="search-string" type="search" placeholder="Search Teams and Players..." ngModel #input="ngModel">
             <button class="search-btn" type="submit" #searchBtn
-                (click)="searchHandler($event, sForm, searchBtn, searchIcon)">
+                (click)="searchHandler($event, sForm, searchBtn, searchIcon)" data-tooltip="Results show up automatically when you're typing">
                 <span class="material-icons-sharp" #searchIcon>
                     search
                 </span>
