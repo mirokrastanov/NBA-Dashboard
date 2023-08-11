@@ -194,117 +194,6 @@ main .content-lg h3 {
     font-size: 1rem;
 }
 
-main .content-lg .progresss {
-    position: relative;
-    width: 92px;
-    height: 92px;
-    border-radius: 50%;
-}
-/* 
-main .content-lg svg {
-    width: 7rem;
-    height: 7rem;
-}
-
-main .content-lg svg circle {
-    fill: none;
-    stroke-width: 10;
-    stroke-linecap: round;
-    transform: translate(5px, 5px);
-}
-
-main .content-lg .sales svg circle {
-    stroke: var(--color-success);
-    stroke-dashoffset: 350;
-    stroke-dasharray: 440;
-}
-
-main .content-lg .visits svg circle {
-    stroke: var(--color-danger);
-    stroke-dashoffset: 0;
-    stroke-dasharray: 440;
-}
-
-main .content-lg .searches svg circle {
-    stroke: var(--color-primary);
-    stroke-dashoffset: -30;
-    stroke-dasharray: 200;
-} */
-
-main .content-lg .progresss .percentage {
-    position: absolute;
-    top: -3px;
-    left: -1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-}
-
-main .content-lg .progresss .percentage p {
-    font-size: 22px;
-    font-weight: 700;
-}
-
-main .new-users {
-    margin-top: 1.3rem;
-}
-
-main .new-users .user-list {
-    background-color: var(--color-white);
-    padding: var(--card-padding);
-    border-radius: var(--card-border-radius);
-    margin-top: 1rem;
-    box-shadow: var(--box-shadow);
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 1.4rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-main .new-users .user-list:hover {
-    box-shadow: none;
-}
-
-main .new-users .user-list .user {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-main .new-users .user-list .user img {
-    width: 5rem;
-    height: 5rem;
-    margin-bottom: 0.4rem;
-    border-radius: 50%;
-}
-
-main .recent-orders {
-    margin-top: 1.3rem;
-}
-
-main .recent-orders h2 {
-    margin-bottom: 0.8rem;
-}
-
-main .recent-orders table {
-    background-color: var(--color-white);
-    width: 100%;
-    padding: var(--card-padding);
-    text-align: center;
-    box-shadow: var(--box-shadow);
-    border-radius: var(--card-border-radius);
-    transition: all 0.3s ease;
-}
-
-main .recent-orders table:hover {
-    box-shadow: none;
-}
-
 main table tbody td {
     height: 2.8rem;
     border-bottom: 1px solid var(--color-light);
@@ -314,15 +203,6 @@ main table tbody td {
 main table tbody tr:last-child td {
     border: none;
 }
-
-main .recent-orders a {
-    text-align: center;
-    display: block;
-    margin: 1rem auto;
-    color: var(--color-primary);
-}
-
-
 
 .a-left,
 .a-right {
@@ -380,22 +260,6 @@ main .recent-orders a {
         gap: 0;
     }
 
-    main .new-users .user-list .user {
-        flex-basis: 40%;
-    }
-
-    main .recent-orders {
-        width: 94%;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 2rem 0 0 0.8rem;
-    }
-
-    main .recent-orders table {
-        width: 83vw;
-    }
-
     main table thead tr th:last-child,
     main table thead tr th:first-child {
         display: none;
@@ -427,18 +291,4 @@ main .recent-orders a {
         padding: 0 1rem;
     }
 
-    main .new-users .user-list .user {
-        flex-basis: 35%;
-    }
-
-    main .recent-orders {
-        position: relative;
-        margin: 3rem 0 0 0;
-        width: 100%;
-    }
-
-    main .recent-orders table {
-        width: 100%;
-        margin: 0;
-    }
 }
