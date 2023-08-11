@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
   isLoading: boolean = true;
   isAuthenticated: any = false;
 
-
   ngOnInit(): void {
     this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
     // OUTER 1 - Teams
@@ -40,7 +39,7 @@ export class DashboardComponent implements OnInit {
           if (x.name == '76ers') x.name = 'sixers';
           return x;
         });
-        console.log(this.teamsALL);
+        // console.log(this.teamsALL);
         // INNER 1 - Links
         this.apiService.firebaseDbFetch(dbTarget.nba.teamLinks).subscribe({
           next: (data: Links[]) => {
@@ -94,7 +93,7 @@ export class DashboardComponent implements OnInit {
                 });
               }
             });
-            console.log('east', this.standings!.east);
+            // console.log('east', this.standings!.east);
             this.isLoading = false;
           },
           error: (err) => {
@@ -128,7 +127,7 @@ export class DashboardComponent implements OnInit {
                 });
               }
             });
-            console.log('west', this.standings!.west);
+            // console.log('west', this.standings!.west);
           },
           error: (err) => {
             this.errorOccurred = true;
@@ -143,9 +142,8 @@ export class DashboardComponent implements OnInit {
         this.apiService.firebaseDbFetch(dbTarget.nba.leaders.advanced).subscribe({
           next: (data: LeadersInner[]) => {
             this.leadersALL.advanced = data;
-
-            console.log(this.leadersALL.advanced![0]);
-            console.log(this.leadersALL.advanced![0].top5[0]);
+            // console.log(this.leadersALL.advanced![0]);
+            // console.log(this.leadersALL.advanced![0].top5[0]);
           },
           error: (err) => {
             this.errorOccurred = true;
@@ -157,8 +155,7 @@ export class DashboardComponent implements OnInit {
         this.apiService.firebaseDbFetch(dbTarget.nba.leaders.averages).subscribe({
           next: (data: LeadersInner[]) => {
             this.leadersALL.averages = data;
-
-            console.log(this.leadersALL.averages);
+            // console.log(this.leadersALL.averages);
           },
           error: (err) => {
             this.errorOccurred = true;
@@ -181,8 +178,7 @@ export class DashboardComponent implements OnInit {
         this.apiService.firebaseDbFetch(dbTarget.nba.leaders.totals).subscribe({
           next: (data: LeadersInner[]) => {
             this.leadersALL.totals = data;
-            console.log(this.leadersALL);
-
+            // console.log(this.leadersALL);
           },
           error: (err) => {
             this.errorOccurred = true;
@@ -190,17 +186,9 @@ export class DashboardComponent implements OnInit {
             this.isLoading = false;
           }
         });
-
-
-
-
-
-
-
       },
       error: (err) => { console.log(err) },
     });
   };
-
 
 }
