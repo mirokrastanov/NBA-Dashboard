@@ -1,4 +1,4 @@
-# NBA-Dashboard (IN PROGRESS...)
+# NBA-Dashboard (Finished! README in progress...)
 🏀📆💻▶️A Fully Responsive Full Stack Web Application offering a modern dashboard with NBA stats, team rosters, leaderboard, upcoming games and more with a detailed page for each.
 
 
@@ -6,7 +6,9 @@
 ## [Check it out](https://nba-1-480a7.web.app/)
 
 
-# Tech to be used
+# The rest of this document has not been updated yet... Please check tomorrow.
+
+
 ## Front End side 
 - Angular SPA - Incorporates an open source API with NBA data and all of Angular's magic.
 - Update: The project employs a few CUSTOM BUILT web scrapers (built by me) in order to fetch important additional data, unavailable from the open API source I'll use.
@@ -18,10 +20,6 @@
 - Firebase as a database for hosting the Users and additional application information (a complete copy of the whole dynamic data that will be fetched by the app). 
 - Some sort of a encryption and hashing techniques would also be employed (TBD).
 
-## README - NYI (In progress...)
-## DEMO - NYI (In progress...)
-
-# ETA - August 10th, 2023 
 
 
 <!-- 
