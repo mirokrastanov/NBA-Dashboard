@@ -2,9 +2,11 @@
 🏀📆💻▶️A Fully Responsive Full Stack Web Application offering a modern dashboard with NBA stats, team rosters, leaderboard, upcoming games and more with a detailed page for each.
 
 ## App Demo
-### The app was deployed using the Firebase Hosting service
-### [Check it out](https://nba-1-480a7.web.app/)
+- The app was deployed using the Firebase Hosting service
+- DEMO: [Check it out](https://nba-1-480a7.web.app/)
 
+<br />
+<br />
 
 # General App Overview
 ## Introduction
@@ -63,7 +65,7 @@
 
 
 ## A lot more awaits you on the app. Thank You! 
-### [Check it out](https://nba-1-480a7.web.app/)
+### DEMO: [Check it out](https://nba-1-480a7.web.app/)
 
 
 <br />
@@ -73,7 +75,7 @@
 
 ## Front End side 
 ### This SPA project was built using the Angular framework
-- More information regarding Angular can be found in (this README)[https://github.com/mirokrastanov/NBA-Dashboard/blob/main/client/README.md] and in the (Angular Docs)[https://docs.angularjs.org/api].
+- More information regarding Angular can be found in [this README](https://github.com/mirokrastanov/NBA-Dashboard/blob/main/client/README.md) and in the [Angular Docs](https://docs.angularjs.org/api).
 
 
 ## Back End side
