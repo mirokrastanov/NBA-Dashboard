@@ -1,4 +1,8 @@
-<div id="dashboard-ctr">
+<div *ngIf="isLoading">
+    <app-global-loader></app-global-loader>
+</div>
+
+<div *ngIf="!isLoading" id="dashboard-ctr">
     <div *ngIf="!isAuthenticated" class="unlock-ctr">
         <div class="overlay-ctr">
             <div class="overlay-inner">
