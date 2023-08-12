@@ -1,52 +1,88 @@
-# NBA-Dashboard (Finished! README in progress...)
+# NBA-Dashboard
 🏀📆💻▶️A Fully Responsive Full Stack Web Application offering a modern dashboard with NBA stats, team rosters, leaderboard, upcoming games and more with a detailed page for each.
 
+## App Demo
+### The app was deployed using the Firebase Hosting service
+### [Check it out](https://nba-1-480a7.web.app/)
 
-# CLOUD DEMO
-## [Check it out](https://nba-1-480a7.web.app/)
+
+# General App Overview
+## Introduction
+- The app provides all sorts of NBA information. 
+- The user experience is nicely designed and styled with beautiful elements. 
+- Both Light and Dark mode are available throughout the whole application pages.
+- Mobile devices gain a specifically designed experience tuned for small screen devices.
+
+## Key Features
+- Light/Dark modes - selection is remembered
+- Favorites/Likes for Logged in Users. Favorites are displayed in the User's Profile.
+- Authentication
+- Guest features/access are limited
+- Users get an enhanced experience and twice as many available features
+- Search with auto suggestions (show up as you type) 
+- Dynamic navigation with animations and active highlight
+- Special mobile device views and navigation show/hide button
+- And much more...
+
+## Page Map
+- 1. Dashboard (Some elements change depending on guest/user status)
+- 2. Standings
+    - 1. Western Conference Standings
+    - 2. Eastern Conference Standings
+- 3. Teams
+    - 1. Selected Team Details
+        - 1. Team Roster
+        - 2. Team Advanced Stats
+- 4. Players
+    - 1. Selected Player Details
+- 5. Transactions (Only for logged in Users)
+- 6. News (Only for logged in Users)
+    - 1. Current News Article Details (Only for logged in Users)
+- 7. Analysis (Only for logged in Users)
+    - 1. Current Analysis Article Details (Only for logged in Users)
+- 8. User Profile (Only for logged in Users)
+
+## Sneak Peak Images 
+- Dashboard (User View)
+
+- Dashboard (Guest View)
+
+- Teams (with nice hover effects)
+
+- Navigation (with a custom animated tooltip on hover)
+
+- Navigation on big screens
+
+- Navigation on mobile devices (toggled on)
+
+- Mobile View with navigation toggled off
+
+- Liked Team (already added to favorites)
+
+- Not liked (you can click on the star to add it to favorites). Also showcases the custom tooltip on hover telling you what happens if you click the star. The star also spins with an animation effect, but to see that you must try out the app. :)
 
 
-# The rest of this document has not been updated yet... Please check tomorrow.
+## A lot more awaits you on the app. Thank You! 
+### [Check it out](https://nba-1-480a7.web.app/)
 
+
+<br />
+<br />
+
+# Technical Information
 
 ## Front End side 
-- Angular SPA - Incorporates an open source API with NBA data and all of Angular's magic.
-- Update: The project employs a few CUSTOM BUILT web scrapers (built by me) in order to fetch important additional data, unavailable from the open API source I'll use.
-- In addition all of the info will be fetched at preset intervals and stored as a json doc on Firebase to avoid running into forcemajor, issues or maintenance leading to those outside services being unavailable during the project defence.
-- (TBD) I'd also like to setup a secondary layer of backup in the form of a custom back end server that will only be used to replace firebase in case their service somehow fails at the day of the defence too. But that is still not certain as there are many tasks still on the dev track for me.
-
-## Back End side 
-- A Node.js server using Express.js. (As a secondary backup layer in case Firebase is in maintenance etc - TBD on whether such a measure would make it to the release date)  
-- Firebase as a database for hosting the Users and additional application information (a complete copy of the whole dynamic data that will be fetched by the app). 
-- Some sort of a encryption and hashing techniques would also be employed (TBD).
+### This SPA project was built using the Angular framework
+- More information regarding Angular can be found in (this README)[https://github.com/mirokrastanov/NBA-Dashboard/blob/main/client/README.md] and in the (Angular Docs)[https://docs.angularjs.org/api].
 
 
+## Back End side
+### Back End is fully handled by Firebase
+- Read the details of this project's back end handling and challenges. [Here](https://github.com/mirokrastanov/NBA-Dashboard/blob/main/server/README.md)
 
-<!-- 
-# NBADashboard
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page. -->
+### NBA Data obtained via web scraping
+- The lack of a free and feasible good API led to me learning web scraping and incorporating it for this project.
+- It was a great way for me to learn more about the `puppeteer` library and web scraping as a whole.
+- This of course made the Front End use of this data harder than using a regular API. 
+- There were many challenges and the process was very involved. 
+- Read more about it [Here](https://github.com/mirokrastanov/NBA-Dashboard/tree/main/web-scrapers)
