@@ -5,7 +5,8 @@ import { AbstractControl, NgForm } from '@angular/forms';
 import { Player, Team, Team2 } from 'src/app/nba/nba-types';
 import { dbTarget } from 'src/app/util/global-constants';
 import { NbaApiService } from 'src/app/nba/nba-api.service';
-import { Router } from '@angular/router';
+import { NavigationSkipped, NavigationStart, Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-top-nav',
@@ -18,7 +19,19 @@ export class TopNavComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private apiService: NbaApiService,
     private router: Router,
-  ) { }
+    private fireAuth: AngularFireAuth,
+  ) {
+    this.router.events.subscribe((event) => {
+      // console.log(event);
+      if (event instanceof NavigationStart || event instanceof NavigationSkipped) {
+        // console.log('path change');
+        let mode = localStorage.getItem('dark-mode') == 'true' ? true : false;
+        if (mode != this.darkModeON) {
+          this.checkDarkModeState();
+        }
+      }
+    });
+  }
 
   @ViewChild('searchForm') searchForm: any;
   @ViewChild('sInput') sInput: ElementRef<HTMLInputElement> | undefined;
@@ -34,6 +47,8 @@ export class TopNavComponent implements OnInit, OnDestroy {
   teamsALL: Team2[] | null = null;
   searchResults: any[] = [];
   authProfile: any | null = null;
+  darkModeON: boolean = false;
+  photoURL: string = '../../../assets/images/user-avatar.png';
 
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
@@ -41,13 +56,20 @@ export class TopNavComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // console.log(this.currentUser);
+    this.checkDarkModeState();
     this.authProfile = JSON.parse(localStorage.getItem('user')!);
     this.authService.authStatusListener();
-    setTimeout(() => {
-      this.authProfile = JSON.parse(JSON.stringify(this.authService.currentUser));
-      // console.log(this.authProfile.photoURL);
-
-    }, 1000);
+    this.fireAuth.onAuthStateChanged(async (crendetial) => {
+      if (crendetial) {
+        setTimeout(() => {
+          this.authProfile = JSON.parse(JSON.stringify(crendetial));
+          if (this.authProfile!.photoURL) {
+            this.photoURL = this.authProfile!.photoURL;
+          }
+          // console.log(this.authProfile.photoURL);
+        }, 1000);
+      }
+    })
     let interval2 = setInterval(() => {
       this.authService.authStatusListener();
       setTimeout(() => {
@@ -157,7 +179,33 @@ export class TopNavComponent implements OnInit, OnDestroy {
     }
   }
 
+  checkDarkModeState(): boolean {
+    const storageData = localStorage.getItem('dark-mode');
+    if (storageData) {
+      if (storageData == 'true') {
+        this.darkModeON = true;
+        this.document.body.classList.toggle('dark-mode-variables');
+        return true;
+      }
+    } else {
+      localStorage.setItem('dark-mode', 'false');
+      this.darkModeON = false;
+      return false;
+    }
+    return false;
+  }
+
   modeSwitchHandler(light: HTMLElement, dark: HTMLElement): void {
+    // console.log(dark.classList.contains('active'), light.classList.contains('active'));
+    if (dark.classList.contains('active')) {
+      this.darkModeON = false;
+      localStorage.setItem('dark-mode', 'false');
+    } else {
+      this.darkModeON = true;
+      localStorage.setItem('dark-mode', 'true');
+    }
+    // console.log('mode', localStorage.getItem('dark-mode'));
+
     this.document.body.classList.toggle('dark-mode-variables');
     light.classList.toggle('active');
     dark.classList.toggle('active');
