@@ -364,7 +364,7 @@ h1 {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 5% 20%;
+        padding: 0 5%;
     }
 
     .details-outer .details-inner img {
@@ -378,7 +378,7 @@ h1 {
     }
 
     .details-outer .details-inner {
-        padding: 10px;
+        padding: 0 10px;
     }
 
     .details-outer .details-inner:nth-child(2) div {
