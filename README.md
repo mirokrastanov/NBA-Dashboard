@@ -2,8 +2,8 @@
 🏀📆💻▶️A Fully Responsive Full Stack Web Application offering a modern dashboard with NBA stats, team rosters, leaderboard, upcoming games and more with a detailed page for each.
 
 ## App Demo
-- The app was deployed using the Firebase Hosting service
-- DEMO: [Check it out](https://nba-1-480a7.web.app/)
+#### The app was deployed using the Firebase Hosting service
+<a href="https://nba-1-480a7.web.app/" target="_blank"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/try-now-btn.png?raw=true" height="60px" /></a>
 - BACKUP: [In case main hosting is down](https://nba-1-480a7.firebaseapp.com/)
 
 <br />
@@ -67,8 +67,8 @@
 
 
 ## A lot more awaits you on the app. Thank You! 
-### DEMO: [Check it out](https://nba-1-480a7.web.app/)
-### BACKUP: [In case main hosting is down](https://nba-1-480a7.firebaseapp.com/)
+<a href="https://nba-1-480a7.web.app/" target="_blank"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/try-now-btn.png?raw=true" height="60px" /></a>
+- BACKUP: [In case main hosting is down](https://nba-1-480a7.firebaseapp.com/)
 
 
 
