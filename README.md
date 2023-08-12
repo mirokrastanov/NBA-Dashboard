@@ -4,6 +4,7 @@
 ## App Demo
 - The app was deployed using the Firebase Hosting service
 - DEMO: [Check it out](https://nba-1-480a7.web.app/)
+- BACKUP: [In case main hosting is down](https://nba-1-480a7.firebaseapp.com/)
 
 <br />
 <br />
@@ -46,26 +47,29 @@
 
 ## Sneak Peak Images 
 - Dashboard (User View)
-
+<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/1.png?raw=true" alt="game-image" height="600px"></a></p>
 - Dashboard (Guest View)
-
+<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/2.png?raw=true" alt="game-image" height="600px"></a></p>
 - Teams (with nice hover effects)
-
+<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/3.png?raw=true" alt="game-image" height="600px"></a></p>
 - Navigation (with a custom animated tooltip on hover)
-
+<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/4.png?raw=true" alt="game-image" height="300px"></a></p>
 - Navigation on big screens
-
+<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/5.png?raw=true" alt="game-image" height="600px"></a></p>
 - Navigation on mobile devices (toggled on)
-
+<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/6.png?raw=true" alt="game-image" height="600px"></a></p>
 - Mobile View with navigation toggled off
-
+<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/7.png?raw=true" alt="game-image" height="600px"></a></p>
 - Liked Team (already added to favorites)
-
+<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/8.png?raw=true" alt="game-image" height="100px"></a></p>
 - Not liked (you can click on the star to add it to favorites). Also showcases the custom tooltip on hover telling you what happens if you click the star. The star also spins with an animation effect, but to see that you must try out the app. :)
+<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/9.png?raw=true" alt="game-image" height="200px"></a></p>
 
 
 ## A lot more awaits you on the app. Thank You! 
 ### DEMO: [Check it out](https://nba-1-480a7.web.app/)
+### BACKUP: [In case main hosting is down](https://nba-1-480a7.firebaseapp.com/)
+
 
 
 <br />
