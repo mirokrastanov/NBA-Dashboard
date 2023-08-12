@@ -27,22 +27,22 @@
 - And much more...
 
 ## Page Map
-- 1. Dashboard (Some elements change depending on guest/user status)
-- 2. Standings
-    - 1. Western Conference Standings
-    - 2. Eastern Conference Standings
-- 3. Teams
-    - 1. Selected Team Details
-        - 1. Team Roster
-        - 2. Team Advanced Stats
-- 4. Players
-    - 1. Selected Player Details
-- 5. Transactions (Only for logged in Users)
-- 6. News (Only for logged in Users)
-    - 1. Current News Article Details (Only for logged in Users)
-- 7. Analysis (Only for logged in Users)
-    - 1. Current Analysis Article Details (Only for logged in Users)
-- 8. User Profile (Only for logged in Users)
+- Dashboard (Some elements change depending on guest/user status)
+- Standings
+    - Western Conference Standings
+    - Eastern Conference Standings
+- Teams
+    - Selected Team Details
+        - Team Roster
+        - Team Advanced Stats
+- Players
+    - Selected Player Details
+- Transactions (Only for logged in Users)
+- News (Only for logged in Users)
+    - Current News Article Details (Only for logged in Users)
+- Analysis (Only for logged in Users)
+    - Current Analysis Article Details (Only for logged in Users)
+- User Profile (Only for logged in Users)
 
 ## Sneak Peak Images 
 - Dashboard (User View)
