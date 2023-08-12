@@ -92,6 +92,15 @@
     background-color: var(--color-white);
     border-top: 2px solid var(--color-background);
     position: relative;
+    min-height: 50px;
+}
+
+.ans div:nth-child(2) p {
+    align-self: center;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .ans div:nth-child(1) {
