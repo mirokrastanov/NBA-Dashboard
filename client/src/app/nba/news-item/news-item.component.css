@@ -19,10 +19,10 @@
     font-size: 18px;
     border-radius: 13px;
     display: flex;
-    align-items: stretch;
-    justify-content: space-between;
-    transition: all 0.3s ease-in-out;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    transition: all 0.3s ease-in-out;
     gap: 10px;
     position: relative;
     height: fit-content;
@@ -83,11 +83,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     gap: 10px;
     background-color: var(--color-white);
     border-top: 2px solid var(--color-background);
-    height: fit-content;
+    position: relative;
+    min-height: 50px;
+}
+
+.ans div:nth-child(2) p,
+.ans div:nth-child(2) a {
+    align-self: center;
+}
+
+.ans div:nth-child(2) a {
+    height: 100%;
+    align-self: stretch;
 }
 
 .ans div:nth-child(1) {
@@ -219,7 +230,6 @@
     
     .content-lg.content-full .na-ctr .ques {
         padding: 0;
-        
     }
  
     .ans div p,
@@ -230,8 +240,22 @@
 
     .ques p,
     .ques a {
-        font-size: 16px;
+        text-align: center;
         padding: 5px;
+    }
+
+    div.na-ctr>div.fav-list>div.fav>div.ques>p {
+        color: var(--color-dark);
+        font-size: 20px;
+    }
+
+    .ques {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .ques a:hover {
+        background-color: unset;
     }
 }
 
