@@ -24,6 +24,7 @@ export async function scrapeNews(url) {
         const source = await element.$('p.article-source > a');
         const img = await element.$('div.lead-photo img');
 
+        if (!source) continue;
         const titleTxt = await page.evaluate(title => title.textContent, title);
         const sourceTxt = await page.evaluate(source => source.textContent, source);
         const sourceURL = await page.evaluate(source => source.getAttribute('href'), source);
