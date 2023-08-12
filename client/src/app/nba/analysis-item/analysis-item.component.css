@@ -19,14 +19,13 @@
     font-size: 18px;
     border-radius: 13px;
     display: flex;
-    align-items: stretch;
-    justify-content: space-between;
-    transition: all 0.3s ease-in-out;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    transition: all 0.3s ease-in-out;
     gap: 10px;
     height: fit-content;
     position: relative;
-    height: fit-content;
 }
 
 .ques p {
@@ -84,11 +83,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     gap: 10px;
     background-color: var(--color-white);
     border-top: 2px solid var(--color-background);
-    height: fit-content;
+    position: relative;
+    min-height: 50px;
+}
+
+.ans div:nth-child(2) p,
+.ans div:nth-child(2) a {
+    align-self: center;
+}
+
+.ans div:nth-child(2) a {
+    height: 100%;
+    align-self: stretch;
 }
 
 .ans div:nth-child(1) {
@@ -226,21 +236,21 @@
 
 
 
-@media screen and (max-width: 768px) {    
+@media screen and (max-width: 768px) {
     .content-lg.content-full {
         width: inherit;
     }
-    
+
     .content-lg.content-full .na-ctr {
         margin: 5px auto;
         padding: 10px;
         border-radius: 22px;
     }
-    
+
     .content-lg.content-full .na-ctr .ques {
         padding: 0;
     }
- 
+
     .ans div p,
     .ans div a {
         font-size: 14px;
@@ -249,12 +259,26 @@
 
     .ques p,
     .ques a {
-        font-size: 16px;
         padding: 5px;
+        text-align: center;
+    }
+
+    div.na-ctr>div.fav-list>div.fav>div.ques>p {
+        color: var(--color-dark);
+        font-size: 20px;
+    }
+
+    .ques {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .ques a:hover {
+        background-color: unset;
     }
 }
 
-@media screen and (max-width: 400px) {    
+@media screen and (max-width: 400px) {
     .content-lg.content-full .na-ctr {
         margin: 0 auto;
         padding: 0;
@@ -262,7 +286,7 @@
     }
 }
 
-@media screen and (max-width: 330px) {    
+@media screen and (max-width: 330px) {
     .content-lg.content-full .na-ctr {
         margin: 0;
         padding: 0;
