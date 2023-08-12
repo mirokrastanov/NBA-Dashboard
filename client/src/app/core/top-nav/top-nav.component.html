@@ -23,10 +23,10 @@
         </span>
     </button>
     <div data-tooltip="Mode switch" class="dark-mode" (click)="modeSwitchHandler(light, dark)">
-        <span #light class="material-icons-sharp active">
+        <span #light class="material-icons-sharp {{!darkModeON ? 'active' : ''}}">
             light_mode
         </span>
-        <span #dark class="material-icons-sharp">
+        <span #dark class="material-icons-sharp {{darkModeON ? 'active' : ''}}">
             dark_mode
         </span>
     </div>
@@ -39,11 +39,9 @@
                 <b *ngIf="!isAuthenticated">Username</b>
             </p>
         </div>
-        <div class="profile-photo">
-            <img *ngIf="!authProfile.photoURL!"
-                src="../../../assets/images/user-avatar.png" alt="profile-img" class="img-bg">
-            <img *ngIf="authProfile.photoURL!" src="{{authProfile.photoURL !}}"
-                alt="profile-img">
+        <div class="profile-photo" *ngIf="isAuthenticated">
+            <img src="{{photoURL}}" alt="profile-img"
+                class="{{photoURL != '../../../assets/images/user-avatar.png' ? 'img-bg' : ''}}">
         </div>
     </a>
 
