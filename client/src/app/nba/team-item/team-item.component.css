@@ -413,4 +413,13 @@
     .team-inner .team-stat.team-stat-small {
         width: 49%;
     }
+
+    .team-title h1#team-main-title {
+        margin-left: 50px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        margin-right: 0;
+    }
 }
