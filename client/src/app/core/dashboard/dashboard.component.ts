@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
   unsubscribed: boolean = false;
   errorOccurred: boolean = false;
   isLoading: boolean = true;
-  isAuthenticated: any = false;
+  isAuthenticated: any = Boolean(localStorage.getItem('user'));
 
   ngOnInit(): void {
     this.authService.fireAuth.authState.subscribe(authStatus => this.isAuthenticated = authStatus);
