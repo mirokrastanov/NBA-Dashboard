@@ -38,21 +38,38 @@ export class StandingsEastComponent {
               if (x['Team'][1].includes('Clippers')) x['Team'][1] = 'Los Angeles Clippers';
               return x;
             });
-            // console.log(this.standings!.east[0]);
+            // console.log(this.standings!.east);
             this.standings!.east.forEach(standing => {
               let fullName = standing.Team[1].trim().toLowerCase();
               let found = this.teamsALL!.filter(x => fullName.includes(x.name.trim().toLowerCase()));
               if (found.length == 1) standing.id = String(found[0].id)
               else {
-                let arr = fullName.split(' ');
-                found.forEach(foundEl => {
-                  arr.forEach(teamWord => {
-                    if (teamWord == foundEl.name.toLowerCase()) standing.id = String(foundEl.id);
+                found.forEach(team => {
+                  let name = team.name.trim().toLowerCase();
+                  // console.log(name, standing.Team[1]);
+
+                  // SPECIAL FILTERING IS REQUIRED due to the standing.Team[1] not having a true space 
+                  // character instead another character that seems like a space, but IS NOT !!! 
+                  // Therefore I am replacing it with a real space to proceed with mapping of ids.
+                  let xFiltered = standing.Team[1].trim().toLowerCase().split('');
+                  xFiltered.forEach((y, i) => {
+                    let code = y.charCodeAt(0);
+                    if (!(code >= 65 && code <= 90) && !(code >= 97 && code <= 122) && code != 32) {
+                      xFiltered.splice(i, 1, ' ');
+                    }
+                  });
+                  let arr = xFiltered.join('').trim().toLowerCase().split(' ');
+                  // console.log(arr);
+                  arr.forEach(word => {
+                    // console.log(word);
+                    if (word == name) {
+                      standing.id = String(team.id);
+                    }
                   });
                 });
               }
             });
-            // console.log(this.standings!.east);
+            console.log(this.standings!.east);
             this.isLoading = false;
           },
           error: (err) => {
