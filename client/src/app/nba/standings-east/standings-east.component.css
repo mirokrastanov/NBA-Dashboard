@@ -269,9 +269,9 @@ td a {
 }
 
 @media screen and (max-width: 450px) {
-    .t-logo {
+    /* .t-logo {
         display: none;
-    }
+    } */
 
     .t-rank {
         margin: 0;
@@ -283,7 +283,7 @@ td a {
     }
 
     .t-team-ctr a {
-        padding-left: 0;
+        padding-left: 5px;
         white-space: nowrap;
     }
 
