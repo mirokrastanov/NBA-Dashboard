@@ -42,7 +42,8 @@ export class AppRoutingModule {
           if (crendetial) {
             // console.log(crendetial);
             // console.log(crendetial.uid);
-            console.log('Authenticated: ', authService.currentUser != null ? true : false);
+            
+            // console.log('Authenticated: ', authService.currentUser != null ? true : false);
           }
         })
       }
