@@ -75,6 +75,17 @@ export class TopNavComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         this.authProfile = JSON.parse(JSON.stringify(this.authService.currentUser));
       }, 1000);
+      this.fireAuth.onAuthStateChanged(async (crendetial) => {
+        if (crendetial) {
+          setTimeout(() => {
+            this.authProfile = JSON.parse(JSON.stringify(crendetial));
+            if (this.authProfile!.photoURL) {
+              this.photoURL = this.authProfile!.photoURL;
+            }
+            // console.log(this.authProfile.photoURL);
+          }, 1000);
+        }
+      })
     }, 5000);
     this.intervals.push(interval2);
 
