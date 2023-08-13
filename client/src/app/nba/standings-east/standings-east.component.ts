@@ -69,7 +69,7 @@ export class StandingsEastComponent {
                 });
               }
             });
-            console.log(this.standings!.east);
+            // console.log(this.standings!.east);
             this.isLoading = false;
           },
           error: (err) => {
