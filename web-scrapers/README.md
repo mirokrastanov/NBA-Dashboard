@@ -19,8 +19,8 @@
 ## Challenges 
 - The use of scraped information due to the lack of a free fit for the purpose API has made this task much harder due to many factors.
 - Main issue was the lack of consistent identifiers, which made the finding, filtering, sorting and mapping post-scrape operations very complex. 
-- Furthermore, portional fetching using search or query parameters was no possible with firebase as it is. Therefore some clever solutions needed to be implemented and used in the process of building the SPA with Angular.
-- Read more about those challenges and how they war solved on the main README.md of the whole project. [Here](https://github.com/mirokrastanov/NBA-Dashboard)
+- Furthermore, partial fetching using search or query parameters was not possible with firebase as it is. Therefore some clever solutions needed to be implemented and used in the process of building the SPA with Angular.
+- Read more about those challenges and how they were solved on the main README.md of the whole project. [Here](https://github.com/mirokrastanov/NBA-Dashboard)
 
 ## ALL INFORMATION SCRAPED IS PUBLIC and it was used solely for this student project! 
 ### Sources
