@@ -1,11 +1,16 @@
 # NBA-Dashboard
 🏀📆💻▶️A Fully Responsive Full Stack Web Application offering a modern dashboard with NBA stats, team rosters, leaderboard, upcoming games and more with a detailed page for each.
+### Disclaimer
+- This is a non-commercial student project designed to showcase programming skills. I have only used it in a student environment @SoftUni.
+<br />
 
 ## App Demo
 #### The app was deployed using the Firebase Hosting service
 <a href="https://nba-1-480a7.web.app/" target="_blank"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/try-now-btn.png?raw=true" height="60px" /></a>
 - BACKUP: [In case main hosting is down](https://nba-1-480a7.firebaseapp.com/)
 
+#### Data last updated - Aug 2023
+- Please note - the last data update was made in August 2023. The data will not be updated further as this is a showcase student project. If needed the scraping algorithms can be queued to perform an update regularily. Or better yet - be replaced with a real API. For this project I could not find a suitable and free API in order to showcase my skills. Using a real API would be much easier anyways. :)
 <br />
 <br />
 
