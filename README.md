@@ -1,5 +1,7 @@
 # NBA-Dashboard
 🏀📆💻▶️A Fully Responsive Full Stack Web Application offering a modern dashboard with NBA stats, team rosters, leaderboard, upcoming games and more with a detailed page for each.
+## Selected for Best Project from all the students in the course <a href="https://github.com/mirokrastanov/Software-Engineering-SoftUni/tree/main/softuni-angular">Angular - June 2023</a> (close to 500 people) 😊
+
 ### Disclaimer
 - This is a non-commercial student project designed to showcase programming skills. I have only used it in a student environment @SoftUni.
 <br />
