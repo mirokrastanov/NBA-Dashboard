@@ -8,10 +8,10 @@
     <div class="player-title">
         <h1 id="player-main-title">{{currentPlayer!['Player']}}</h1>
         <div class="fav-btn" *ngIf="isAuthenticated">
-            <div *ngIf="starIsLoading"><app-star-loader></app-star-loader></div>
-            <span *ngIf="!starIsLoading && !isFavorite" (click)="onFavPlayer($event)"
+            <div *ngIf="!noStar && starIsLoading"><app-star-loader></app-star-loader></div>
+            <span *ngIf="!noStar && !starIsLoading && !isFavorite" (click)="onFavPlayer($event)"
                 class="material-icons-sharp star_empty">star_border</span>
-            <span *ngIf="!starIsLoading && isFavorite" (click)="onUNfavPlayer($event)"
+            <span *ngIf="!noStar && !starIsLoading && isFavorite" (click)="onUNfavPlayer($event)"
                 class="material-icons-sharp star_full">star</span>
         </div>
         <a [routerLink]="['/nba/players']">
@@ -30,11 +30,14 @@
         </div>
         <div class="player-stat player-team">
             <p>Current Team</p>
-            <p [attr.data-teamID]="currentPlayer!['teamID']">
+            <p *ngIf="!noStar" [attr.data-teamID]="currentPlayer!['teamID']">
                 <a class="a-left" routerLink="/nba/teams/{{teamID}}">
                     {{currentPlayer!['Current Team']}}
                     <span class="material-icons-sharp">arrow_forward_ios</span>
                 </a>
+            </p>
+            <p *ngIf="noStar" [attr.data-teamID]="['no-data']">
+                <span>No data</span>
             </p>
         </div>
         <div class="player-stat">
@@ -67,7 +70,7 @@
         </div>
         <div class="player-stat info">
             <p>More Information</p>
-            <p>
+            <p *ngIf="!noStar">
                 <a class="a-left" href="https://basketball.realgm.com/search/?q={{currentPlayer!['Player']}}"
                     target="_blank">
                     Click here
@@ -75,6 +78,9 @@
                         launch
                     </span>
                 </a>
+            </p>
+            <p *ngIf="noStar">
+                <span>No data</span>
             </p>
         </div>
     </div>

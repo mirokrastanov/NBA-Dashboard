@@ -35,6 +35,7 @@ export class PlayerItemComponent {
   errorOccurred: boolean = false;
   isLoading: boolean = true;
   starIsLoading: boolean = true;
+  noStar: boolean = false;
   isFavorite: boolean = false;
   isAuthenticated: any = false;
 
@@ -111,14 +112,37 @@ export class PlayerItemComponent {
             this.playersALL = data.slice();
             let player: Player[] | undefined;
             player = this.playersALL!.filter(x => x['Player']!.toLowerCase() == this.routeName!.toLowerCase());
-            player.map((x) => {
-              let teamID = this.teamsALL!.find(y => y.full_name == x['Current Team'])?.id;
-              x['teamID'] = String(teamID);
-              this.teamID = teamID!;
-              return x;
-            });
-            this.currentPlayer = player[0];
-            this.fetchFavorites();
+            // console.log(player);
+
+            if (player!.length > 0) {
+              player.map((x) => {
+                let teamID = this.teamsALL!.find(y => y.full_name == x['Current Team'])?.id;
+                x['teamID'] = String(teamID);
+                this.teamID = teamID!;
+                return x;
+              });
+              this.currentPlayer = player[0];
+              this.fetchFavorites();
+              this.noStar = false;
+
+            } else {
+              this.currentPlayer = {
+                "Age": "No data",
+                "Current Team": "No data",
+                "Draft Status": "Removed from DB. Sorry!",
+                "HT": "No data",
+                "Nationality": "No data",
+                "Player": "Player doesn't exist",
+                "Pos": "No data",
+                "Pre-Draft Team": "No data",
+                "WT": "No data",
+                "YOS": "No data",
+                "id": "No data",
+                "teamID": "No data",
+              };
+              this.noStar = true;
+            }
+
             // console.log(this.currentPlayer);
             this.isLoading = false;
           },
